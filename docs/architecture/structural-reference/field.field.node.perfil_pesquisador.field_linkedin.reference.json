@@ -1,0 +1,32 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_linkedin",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_linkedin",
+                "node.type.perfil_pesquisador"
+            ],
+            "module": [
+                "link"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_linkedin",
+        "field_name": "field_linkedin",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "LinkedIn",
+        "description": "URL do perfil LinkedIn",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "title": 1,
+            "link_type": 17
+        },
+        "field_type": "link"
+    }
+}

@@ -1,0 +1,684 @@
+{
+  "snapshot": {
+    "started_utc": "2026-10-06T18:31:43.282008+00:00",
+    "source_root": "/var/www/html",
+    "source_database": "drupal",
+    "source_read_only": true,
+    "production_files_modified": false,
+    "snapshot_options": [
+      "single-transaction",
+      "quick",
+      "skip-lock-tables",
+      "skip-add-locks",
+      "hex-blob",
+      "no-tablespaces"
+    ],
+    "raw_snapshot_private": true,
+    "runtime_settings_included": false,
+    "dump": {
+      "path": "/root/neruds_portal_20261006/private/production-drupal-20261006T183143Z.sql.gz",
+      "compressed_bytes": 8267236,
+      "sha256": "6e097ee6f7cd88f63f3291e5bca7d661fb797d21e7fa844fdec6c29330ea946d",
+      "completed_utc": "2026-10-06T18:31:45.855731+00:00"
+    },
+    "runtime": {
+      "file_count": 98284,
+      "logical_bytes": 641340368,
+      "aggregate_sha256": "ea4e4303bf023d6286a3c1200fa397678458a0766d73c851202efe7fb3b56986",
+      "symlink_count": 0,
+      "escaping_symlink_count": 0,
+      "filenames_exported": false,
+      "path": "/root/neruds_portal_20261006/private/runtime/site",
+      "excluded_patterns": [
+        "settings*.php",
+        ".env*",
+        "auth.json",
+        ".git",
+        "*.sql",
+        "*.sql.*",
+        "*.dump",
+        "*.bak",
+        "*.bak*",
+        "*backup*",
+        "/web/sites/*/files/config_*/",
+        "*.log"
+      ]
+    },
+    "uploads": {
+      "file_count": 391,
+      "logical_bytes": 54319491,
+      "aggregate_sha256": "6660c2bbefb8f9360a15a3cce3338e417c9c22e4456ba5fdc058d332ece76c7b",
+      "symlink_count": 0,
+      "escaping_symlink_count": 0,
+      "filenames_exported": false
+    },
+    "composer_hashes": {
+      "composer.json": "a8104b7cf57eb6b28bf1332d950905738c54b5261c893c1fa99a30f6167c08d1",
+      "composer.lock": "cc1bfacc83dcb78df2e7fb3bced99eafac0685e778d5d5fc0b626dca92386d14"
+    },
+    "settings_candidates_remaining": 0,
+    "ended_utc": "2026-10-06T18:33:44.836610+00:00",
+    "copy_refinements": [
+      {
+        "at_utc": "2026-10-06T18:46:57.433738+00:00",
+        "reason": "Restrict config_* exclusion to public files; recover legitimate vendor/core code omitted by broad initial pattern.",
+        "files_added": 507,
+        "existing_snapshot_files_and_uploads_preserved": true
+      }
+    ]
+  },
+  "restore": {
+    "completed_utc": "2026-10-06T18:33:51.903301+00:00",
+    "snapshot_path": "/root/neruds_portal_20261006/private/production-drupal-20261006T183143Z.sql.gz",
+    "snapshot_sha256": "6e097ee6f7cd88f63f3291e5bca7d661fb797d21e7fa844fdec6c29330ea946d",
+    "target_database": "neruds_portal_copy",
+    "version": "11.8.3-MariaDB-ubu2404",
+    "container": "neruds_portal_snapshot_db_20261006",
+    "container_id": "fed8ee54f6fcc3397771028645334f8bb0f17e989da6570a7035e2b89c275e83",
+    "image_id": "sha256:ea44c9edeacf2ea7118f19851a505c102daa97cfbc442422decb17edaa5c4038",
+    "image_digests": [
+      "mariadb@sha256:ae6119716edac6998ae85508431b3d2e666530ddf4e94c61a10710caec9b0f71"
+    ],
+    "network_mode": "none",
+    "host_port_bindings": [],
+    "memory_limit": 536870912,
+    "nano_cpus": 1000000000,
+    "db_socket": "/root/neruds_portal_20261006/private/runtime/dbsocket/mysqld.sock",
+    "volume": "neruds_portal_snapshot_db_20261006_data",
+    "credential_file": "/root/neruds_portal_20261006/private/db.env",
+    "credentials_printed": false,
+    "engines": [
+      {
+        "engine": "InnoDB",
+        "table_count": 428,
+        "data_bytes_estimated": 77430784,
+        "index_bytes_estimated": 28098560
+      }
+    ],
+    "sanitized": true,
+    "web_started": false,
+    "drupal_bootstrapped": false,
+    "sanitization_manifest": "/root/neruds_portal_20261006/private/sanitization-manifest.json"
+  },
+  "sanitization": {
+    "started_utc": "2026-10-06T18:41:31+00:00",
+    "target_database": "neruds_portal_copy",
+    "production_modified": false,
+    "drupal_bootstrapped": false,
+    "web_started": false,
+    "raw_snapshot_preserved": true,
+    "purged_tables": [
+      {
+        "table": "batch",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 1
+      },
+      {
+        "table": "cache_access_policy",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "cache_ai",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "cache_bootstrap",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 7
+      },
+      {
+        "table": "cache_config",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 4401
+      },
+      {
+        "table": "cache_container",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 2
+      },
+      {
+        "table": "cache_data",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 327
+      },
+      {
+        "table": "cache_default",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 112
+      },
+      {
+        "table": "cache_discovery",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 267
+      },
+      {
+        "table": "cache_dynamic_page_cache",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 21
+      },
+      {
+        "table": "cache_entity",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 268
+      },
+      {
+        "table": "cache_jsonapi_normalizations",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "cache_menu",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 24
+      },
+      {
+        "table": "cache_page",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 12
+      },
+      {
+        "table": "cache_project_browser",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "cache_render",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 204
+      },
+      {
+        "table": "cache_rest",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "cache_schema_metatag_cache",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "cache_toolbar",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email",
+        "category": "mail_and_notifications",
+        "rows_removed": 61
+      },
+      {
+        "table": "easy_email__attachment",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email__attachment_path",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email__bcc_address",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email__bcc_uid",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email__cc_address",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email__cc_uid",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email__field_related_user",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email__recipient_address",
+        "category": "mail_and_notifications",
+        "rows_removed": 42
+      },
+      {
+        "table": "easy_email__recipient_uid",
+        "category": "mail_and_notifications",
+        "rows_removed": 29
+      },
+      {
+        "table": "easy_email_revision",
+        "category": "mail_and_notifications",
+        "rows_removed": 61
+      },
+      {
+        "table": "easy_email_revision__attachment",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email_revision__attachment_path",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email_revision__bcc_address",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email_revision__bcc_uid",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email_revision__cc_address",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email_revision__cc_uid",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email_revision__field_related_user",
+        "category": "mail_and_notifications",
+        "rows_removed": 0
+      },
+      {
+        "table": "easy_email_revision__recipient_address",
+        "category": "mail_and_notifications",
+        "rows_removed": 42
+      },
+      {
+        "table": "easy_email_revision__recipient_uid",
+        "category": "mail_and_notifications",
+        "rows_removed": 29
+      },
+      {
+        "table": "flood",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "key_value_expire",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 103
+      },
+      {
+        "table": "neruds_notification_prefs",
+        "category": "mail_and_notifications",
+        "rows_removed": 1
+      },
+      {
+        "table": "queue",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 4
+      },
+      {
+        "table": "search_api_db_neruds_content_index",
+        "category": "search_indexes",
+        "rows_removed": 649
+      },
+      {
+        "table": "search_api_db_neruds_content_index_created",
+        "category": "search_indexes",
+        "rows_removed": 207
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_ano_publicacao",
+        "category": "search_indexes",
+        "rows_removed": 47
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_areas_tematicas",
+        "category": "search_indexes",
+        "rows_removed": 3
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_autor_noticia",
+        "category": "search_indexes",
+        "rows_removed": 4
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_autores",
+        "category": "search_indexes",
+        "rows_removed": 171
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_doi",
+        "category": "search_indexes",
+        "rows_removed": 22
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_email",
+        "category": "search_indexes",
+        "rows_removed": 5
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_lattes_id",
+        "category": "search_indexes",
+        "rows_removed": 7
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_linhas_pesquisa",
+        "category": "search_indexes",
+        "rows_removed": 30
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_orcid",
+        "category": "search_indexes",
+        "rows_removed": 7
+      },
+      {
+        "table": "search_api_db_neruds_content_index_field_revista_veiculo",
+        "category": "search_indexes",
+        "rows_removed": 19
+      },
+      {
+        "table": "search_api_db_neruds_content_index_search_api_datasource",
+        "category": "search_indexes",
+        "rows_removed": 649
+      },
+      {
+        "table": "search_api_db_neruds_content_index_search_api_language",
+        "category": "search_indexes",
+        "rows_removed": 649
+      },
+      {
+        "table": "search_api_db_neruds_content_index_status",
+        "category": "search_indexes",
+        "rows_removed": 207
+      },
+      {
+        "table": "search_api_db_neruds_content_index_text",
+        "category": "search_indexes",
+        "rows_removed": 12095
+      },
+      {
+        "table": "search_api_db_neruds_content_index_type",
+        "category": "search_indexes",
+        "rows_removed": 207
+      },
+      {
+        "table": "search_api_item",
+        "category": "search_indexes",
+        "rows_removed": 649
+      },
+      {
+        "table": "search_api_task",
+        "category": "search_indexes",
+        "rows_removed": 0
+      },
+      {
+        "table": "search_dataset",
+        "category": "search_indexes",
+        "rows_removed": 340
+      },
+      {
+        "table": "search_index",
+        "category": "search_indexes",
+        "rows_removed": 10823
+      },
+      {
+        "table": "search_total",
+        "category": "search_indexes",
+        "rows_removed": 2122
+      },
+      {
+        "table": "semaphore",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 0
+      },
+      {
+        "table": "sessions",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 3
+      },
+      {
+        "table": "user__roles",
+        "category": "authentication_and_user_fields",
+        "rows_removed": 3
+      },
+      {
+        "table": "users_data",
+        "category": "authentication_and_user_fields",
+        "rows_removed": 2
+      },
+      {
+        "table": "watchdog",
+        "category": "cache_sessions_logs_queue",
+        "rows_removed": 1137
+      },
+      {
+        "table": "webform_submission",
+        "category": "form_submissions",
+        "rows_removed": 2
+      },
+      {
+        "table": "webform_submission_data",
+        "category": "form_submissions",
+        "rows_removed": 8
+      }
+    ],
+    "rows_removed_total": 36085,
+    "key_value_entries_removed": 2295,
+    "key_value_collections_preserved": [
+      "system.schema",
+      "entity.definitions.installed",
+      "entity.storage_schema.sql"
+    ],
+    "accounts_before": 3,
+    "comment_private_metadata_rows": 0,
+    "configuration_changes": [
+      "ai.ai_prompt.ai_translate__ai_translate_default",
+      "ai.ai_prompt.suggest_tags__suggest_tags_default",
+      "ai.ai_prompt.suggest_vocabulary__suggest_vocabulary_default",
+      "ai.ai_prompt_type.ai_translate",
+      "ai.ai_prompt_type.suggest_tags",
+      "ai.ai_prompt_type.suggest_vocabulary",
+      "ai.external_moderation",
+      "ai.settings",
+      "ai_ckeditor.settings",
+      "ai_content_suggestions.settings",
+      "ai_image_alt_text.settings",
+      "ai_observability.settings",
+      "ai_translate.settings",
+      "automated_cron.settings",
+      "captcha.settings",
+      "friendlycaptcha.settings",
+      "gemini_provider.settings",
+      "jsonapi.settings",
+      "key.key.drpss",
+      "key.key.neruds_google_api_gemini",
+      "klaro.klaro_app.ai_alt_text_generation",
+      "klaro.klaro_app.bluesky",
+      "klaro.klaro_app.cms",
+      "klaro.klaro_app.deepchat",
+      "klaro.klaro_app.facebook",
+      "klaro.klaro_app.ga",
+      "klaro.klaro_app.google_maps",
+      "klaro.klaro_app.google_recaptcha",
+      "klaro.klaro_app.gtm",
+      "klaro.klaro_app.instagram",
+      "klaro.klaro_app.klaro",
+      "klaro.klaro_app.leaflet",
+      "klaro.klaro_app.linkedin",
+      "klaro.klaro_app.mastodon",
+      "klaro.klaro_app.mastodon_module",
+      "klaro.klaro_app.matomo",
+      "klaro.klaro_app.matomo_cookies",
+      "klaro.klaro_app.simple_popup_blocks",
+      "klaro.klaro_app.threads",
+      "klaro.klaro_app.tiktok",
+      "klaro.klaro_app.umami",
+      "klaro.klaro_app.vimeo",
+      "klaro.klaro_app.x",
+      "klaro.klaro_app.youtube",
+      "klaro.klaro_purpose.advertising",
+      "klaro.klaro_purpose.analytics",
+      "klaro.klaro_purpose.cms",
+      "klaro.klaro_purpose.external_content",
+      "klaro.klaro_purpose.livechat",
+      "klaro.klaro_purpose.security",
+      "klaro.klaro_purpose.styling",
+      "klaro.settings",
+      "klaro.texts",
+      "mailsystem.settings",
+      "mcp.settings",
+      "neruds_google_integration.settings",
+      "recaptcha.settings",
+      "symfony_mailer_lite.message",
+      "symfony_mailer_lite.settings",
+      "symfony_mailer_lite.symfony_mailer_lite_transport.native",
+      "system.mail",
+      "system.site",
+      "update.settings",
+      "user.mail",
+      "user.role.authenticated",
+      "user.settings",
+      "webform.settings",
+      "webform.webform.contact"
+    ],
+    "redaction_counts": {
+      "credential_fields_cleared": 10,
+      "integration_switches_disabled": 7,
+      "integration_destinations_cleared": 0,
+      "signature_values_cleared": 0,
+      "production_paths_cleared": 0,
+      "email_addresses_replaced": 20,
+      "production_urls_neutralized": 0
+    },
+    "active_accounts_remaining": 0,
+    "non_invalid_account_email_count": 0,
+    "controls": {
+      "mailer": "test_mail_collector",
+      "automated_cron_interval": 0,
+      "jsonapi_read_only": true,
+      "user_registration": "admin_only",
+      "maintenance_mode": true,
+      "state_operational_values_removed": true,
+      "production_environment_not_loaded": true
+    },
+    "structural_reference": {
+      "path": "/root/neruds_portal_20261006/private/structural-reference-sanitized",
+      "file_count": 570,
+      "aggregate_sha256": "9f64a69f2a1f878eeaa92a7aa058433540d0888ec343acb747cd8894cf139ab6",
+      "scan_findings_count": 0,
+      "full_importable_export": false
+    },
+    "completed_utc": "2026-10-06T18:41:32+00:00",
+    "sanitized": true,
+    "limitations": [
+      "Public editorial content and its published researcher identities were preserved in the private database; this is not a fully anonymized public dataset.",
+      "Application-specific outbound behavior has not been exercised. No Drupal bootstrap or web server was started.",
+      "Reference config is intentionally incomplete and requires review before use."
+    ]
+  },
+  "verification": {
+    "checked_at_utc": "2026-10-06T18:43:34.519725+00:00",
+    "query_exit": 0,
+    "checks": {
+      "active_users": true,
+      "real_emails": true,
+      "valid_hashes": true,
+      "non_maintenance_state": true,
+      "maintenance_mode": true,
+      "all_purged_tables_empty": true,
+      "mailer_is_test_collector": true,
+      "automatic_cron_disabled": true,
+      "jsonapi_read_only": true,
+      "registration_admin_only": true,
+      "container_isolated": true,
+      "reference_hashes_match": true,
+      "reference_scan_clean": true,
+      "production_settings_absent": true,
+      "private_permissions": true,
+      "snapshot_hash_matches": true,
+      "no_web_or_drupal_bootstrap_recorded": true,
+      "runtime_manifest_matches": true
+    },
+    "database": "neruds_portal_copy",
+    "version": "11.8.3-MariaDB-ubu2404",
+    "nonempty_purged_tables": [],
+    "container": {
+      "name": "neruds_portal_snapshot_db_20261006",
+      "state": "running",
+      "network_mode": "none",
+      "memory_limit": 536870912,
+      "nano_cpus": 1000000000,
+      "host_ports": {},
+      "mounts": [
+        {
+          "source": "/var/lib/docker/volumes/neruds_portal_snapshot_db_20261006_data/_data",
+          "destination": "/var/lib/mysql"
+        },
+        {
+          "source": "/root/neruds_portal_20261006/private/runtime/dbsocket",
+          "destination": "/run/mysqld"
+        }
+      ]
+    },
+    "pass": true,
+    "runtime_rehashed_at_utc": "2026-10-06T18:46:57.436064+00:00"
+  },
+  "reference_summary": {
+    "generated_utc": "2026-10-06T18:41:32+00:00",
+    "source": "sanitized isolated copy of production snapshot",
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "includes": [
+      "content type bundles",
+      "taxonomy vocabularies without terms",
+      "field definitions without default content",
+      "entity display structures",
+      "views with free-text blocks omitted",
+      "sanitized roles",
+      "theme selection/settings"
+    ],
+    "excludes": [
+      "content rows",
+      "user accounts",
+      "credentials",
+      "private/uploaded files",
+      "full site config",
+      "state",
+      "sessions",
+      "tokens",
+      "queues",
+      "webform submissions"
+    ],
+    "file_count": 570,
+    "aggregate_sha256": "9f64a69f2a1f878eeaa92a7aa058433540d0888ec343acb747cd8894cf139ab6",
+    "scan_findings_count": 0,
+    "quarantined_config_names": []
+  },
+  "sanitized_database_export": {
+    "path": "/root/neruds_portal_20261006/private/neruds-portal-sanitized-20261006T185014Z.sql.gz",
+    "compressed_bytes": 3834426,
+    "sha256": "d5d133bc8dec9b2d897cb6ce8aa578de671da293b17fe00643a4c400837de02a",
+    "generated_utc": "2026-10-06T18:50:16.581624+00:00",
+    "database": "neruds_portal_copy",
+    "private_mode": "0600",
+    "contains_public_editorial_content": true,
+    "not_for_git": true,
+    "source_production_read": false
+  },
+  "recovery_without_production": {
+    "sanitized_sql": "/root/neruds_portal_20261006/private/neruds-portal-sanitized-20261006T185014Z.sql.gz",
+    "runtime_tree": "/root/neruds_portal_20261006/private/runtime/site",
+    "public_uploads_within_private_tree": "/root/neruds_portal_20261006/private/runtime/site/web/sites/default/files",
+    "existing_container": "neruds_portal_snapshot_db_20261006",
+    "existing_volume": "neruds_portal_snapshot_db_20261006_data",
+    "credential_file": "/root/neruds_portal_20261006/private/db.env",
+    "requirements": "MariaDB 11.8.3 or separately validated compatible version; dedicated empty database/socket/volume, no public DB port; own generated application settings; no production connection."
+  }
+}

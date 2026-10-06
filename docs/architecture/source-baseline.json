@@ -1,0 +1,22 @@
+{
+  "captured_on": "2026-10-06",
+  "source": "https://neruds.org",
+  "source_root": "/var/www/html",
+  "document_root": "web/",
+  "cms": "Drupal CMS 1.2.8",
+  "core": "11.2.12",
+  "php": "8.4.14",
+  "database": "MariaDB 11.8.3",
+  "repository_import": "287 files: composer manifests and custom application code",
+  "excluded": [
+    "production settings/env/credentials",
+    "database and backups",
+    "uploaded files",
+    "vendor/core/contrib generated dependencies",
+    "backup directories and unrelated vhost aliases"
+  ],
+  "manifest": "source-manifest.json",
+  "source_is_current_production": true,
+  "source_is_old_homolog": false,
+  "status": "unmodified dependency baseline; upgrade and application validation pending"
+}

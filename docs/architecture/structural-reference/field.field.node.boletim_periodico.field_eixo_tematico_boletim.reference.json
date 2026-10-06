@@ -1,0 +1,51 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim_periodico.field_eixo_tematico_boletim",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_eixo_tematico_boletim",
+                "node.type.boletim_periodico",
+                "taxonomy.vocabulary.eixos_tematicos"
+            ],
+            "module": [
+                "ai_translate"
+            ]
+        },
+        "third_party_settings": {
+            "ai_translate": {
+                "entity_reference": {
+                    "translate_references": "default"
+                },
+                "translate_references": "default"
+            }
+        },
+        "id": "node.boletim_periodico.field_eixo_tematico_boletim",
+        "field_name": "field_eixo_tematico_boletim",
+        "entity_type": "node",
+        "bundle": "boletim_periodico",
+        "label": "Eixo Temático",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "eixos_tematicos": "eixos_tematicos"
+                },
+                "sort": {
+                    "field": "name",
+                    "direction": "asc"
+                },
+                "auto_create": false,
+                "auto_create_bundle": ""
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

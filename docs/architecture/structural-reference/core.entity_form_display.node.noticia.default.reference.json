@@ -1,0 +1,143 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.node.noticia.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.noticia.body",
+                "field.field.node.noticia.comment",
+                "field.field.node.noticia.field_areas_tematicas",
+                "field.field.node.noticia.field_autor_noticia",
+                "field.field.node.noticia.field_data_noticia",
+                "field.field.node.noticia.field_data_publicacao",
+                "field.field.node.noticia.field_doi",
+                "field.field.node.noticia.field_drive_folder_url",
+                "field.field.node.noticia.field_fonte_externa",
+                "field.field.node.noticia.field_google_calendar_id",
+                "field.field.node.noticia.field_imagem_destaque",
+                "field.field.node.noticia.field_linha_pesquisa",
+                "field.field.node.noticia.field_link_noticia",
+                "field.field.node.noticia.field_ods",
+                "field.field.node.noticia.field_orcid",
+                "field.field.node.noticia.field_palavras_chave",
+                "field.field.node.noticia.field_pdf",
+                "field.field.node.noticia.field_projeto_associado",
+                "field.field.node.noticia.field_projeto_relacionado",
+                "field.field.node.noticia.field_resumo_noticia",
+                "field.field.node.noticia.field_tags",
+                "field.field.node.noticia.field_territorio",
+                "image.style.medium",
+                "node.type.noticia"
+            ],
+            "module": [
+                "link",
+                "svg_image",
+                "text"
+            ]
+        },
+        "id": "node.noticia.default",
+        "targetEntityType": "node",
+        "bundle": "noticia",
+        "mode": "default",
+        "content": {
+            "body": {
+                "type": "text_textarea_with_summary",
+                "weight": 3,
+                "region": "content",
+                "settings": {
+                    "rows": 9,
+                    "summary_rows": 3,
+                    "placeholder": "",
+                    "show_summary": false
+                },
+                "third_party_settings": []
+            },
+            "field_imagem_destaque": {
+                "type": "image_image",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "progress_indicator": "bar",
+                    "preview_image_style": "medium"
+                },
+                "third_party_settings": []
+            },
+            "field_link_noticia": {
+                "type": "link_default",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "placeholder_url": "https://exemplo.com/noticia",
+                    "placeholder_title": "Título do link (opcional)"
+                },
+                "third_party_settings": []
+            },
+            "field_projeto_associado": {
+                "type": "entity_reference_autocomplete",
+                "weight": 4,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": "Digite o nome do projeto..."
+                },
+                "third_party_settings": []
+            },
+            "status": {
+                "type": "boolean_checkbox",
+                "weight": 99,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "title": {
+                "type": "string_textfield",
+                "weight": 1,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            }
+        },
+        "hidden": {
+            "comment": true,
+            "created": true,
+            "field_areas_tematicas": true,
+            "field_autor_noticia": true,
+            "field_data_noticia": true,
+            "field_data_publicacao": true,
+            "field_doi": true,
+            "field_drive_folder_url": true,
+            "field_fonte_externa": true,
+            "field_google_calendar_id": true,
+            "field_linha_pesquisa": true,
+            "field_ods": true,
+            "field_orcid": true,
+            "field_palavras_chave": true,
+            "field_pdf": true,
+            "field_projeto_relacionado": true,
+            "field_resumo_noticia": true,
+            "field_tags": true,
+            "field_territorio": true,
+            "langcode": true,
+            "moderation_state": true,
+            "path": true,
+            "promote": true,
+            "publish_on": true,
+            "publish_state": true,
+            "sticky": true,
+            "uid": true,
+            "unpublish_on": true,
+            "unpublish_state": true,
+            "url_redirects": true
+        }
+    }
+}

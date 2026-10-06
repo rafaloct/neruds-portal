@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.evento_cientifico.field_organizadores",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_organizadores",
+                "node.type.evento_cientifico"
+            ]
+        },
+        "id": "node.evento_cientifico.field_organizadores",
+        "field_name": "field_organizadores",
+        "entity_type": "node",
+        "bundle": "evento_cientifico",
+        "label": "Organizadores",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

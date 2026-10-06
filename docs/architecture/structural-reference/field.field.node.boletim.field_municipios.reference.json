@@ -1,0 +1,37 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim.field_municipios",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_municipios",
+                "node.type.boletim"
+            ]
+        },
+        "id": "node.boletim.field_municipios",
+        "field_name": "field_municipios",
+        "entity_type": "node",
+        "bundle": "boletim",
+        "label": "Municípios",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": {
+                    "municipios": "municipios"
+                },
+                "sort": {
+                    "field": "_none"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

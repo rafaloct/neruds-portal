@@ -1,0 +1,38 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao.field_autores_publicacao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_autores_publicacao",
+                "node.type.perfil_pesquisador",
+                "node.type.publicacao"
+            ]
+        },
+        "id": "node.publicacao.field_autores_publicacao",
+        "field_name": "field_autores_publicacao",
+        "entity_type": "node",
+        "bundle": "publicacao",
+        "label": "Autores",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": {
+                    "perfil_pesquisador": "perfil_pesquisador"
+                },
+                "sort": {
+                    "field": "_none"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

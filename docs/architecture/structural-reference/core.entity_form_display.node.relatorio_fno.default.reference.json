@@ -1,0 +1,251 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.node.relatorio_fno.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.relatorio_fno.field_embed_code",
+                "field.field.node.relatorio_fno.field_fno_key_findings",
+                "field.field.node.relatorio_fno.field_fno_methodology",
+                "field.field.node.relatorio_fno.field_fno_report_embed",
+                "field.field.node.relatorio_fno.field_fno_report_url",
+                "field.field.node.relatorio_fno.field_fno_research_period",
+                "field.field.node.relatorio_fno.field_fno_researchers",
+                "field.field.node.relatorio_fno.field_looker_url",
+                "field.field.node.relatorio_fno.field_metodologia",
+                "field.field.node.relatorio_fno.field_periodo_pesquisa",
+                "field.field.node.relatorio_fno.field_pesquisadores",
+                "field.field.node.relatorio_fno.field_principais_descobertas",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "content_moderation",
+                "link",
+                "path",
+                "text"
+            ]
+        },
+        "id": "node.relatorio_fno.default",
+        "targetEntityType": "node",
+        "bundle": "relatorio_fno",
+        "mode": "default",
+        "content": {
+            "created": {
+                "type": "datetime_timestamp",
+                "weight": 10,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_embed_code": {
+                "type": "text_textarea",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_fno_key_findings": {
+                "type": "text_textarea",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "rows": 8,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_fno_methodology": {
+                "type": "text_textarea",
+                "weight": 4,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_fno_report_embed": {
+                "type": "text_textarea",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": "Cole aqui o código iframe do Looker Studio"
+                },
+                "third_party_settings": []
+            },
+            "field_fno_report_url": {
+                "type": "link_default",
+                "weight": 1,
+                "region": "content",
+                "settings": {
+                    "placeholder_url": "https://lookerstudio.google.com/...",
+                    "placeholder_title": "Título do relatório"
+                },
+                "third_party_settings": []
+            },
+            "field_fno_research_period": {
+                "type": "string_textfield",
+                "weight": 3,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": "Ex: 2023-2024"
+                },
+                "third_party_settings": []
+            },
+            "field_fno_researchers": {
+                "type": "entity_reference_autocomplete",
+                "weight": 6,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": "Digite o nome do pesquisador..."
+                },
+                "third_party_settings": []
+            },
+            "field_looker_url": {
+                "type": "link_default",
+                "weight": 1,
+                "region": "content",
+                "settings": {
+                    "placeholder_url": "",
+                    "placeholder_title": ""
+                },
+                "third_party_settings": []
+            },
+            "field_metodologia": {
+                "type": "text_textarea",
+                "weight": 4,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_periodo_pesquisa": {
+                "type": "string_textfield",
+                "weight": 3,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_pesquisadores": {
+                "type": "string_textfield",
+                "weight": 6,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_principais_descobertas": {
+                "type": "text_textarea",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "langcode": {
+                "type": "language_select",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "include_locked": true
+                },
+                "third_party_settings": []
+            },
+            "moderation_state": {
+                "type": "moderation_state_default",
+                "weight": 100,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "path": {
+                "type": "path",
+                "weight": 30,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "promote": {
+                "type": "boolean_checkbox",
+                "weight": 15,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "status": {
+                "type": "boolean_checkbox",
+                "weight": 120,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "sticky": {
+                "type": "boolean_checkbox",
+                "weight": 16,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "title": {
+                "type": "string_textfield",
+                "weight": 0,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "uid": {
+                "type": "entity_reference_autocomplete",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "url_redirects": {
+                "weight": 50,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            }
+        },
+        "hidden": {
+            "publish_on": true,
+            "publish_state": true,
+            "unpublish_on": true,
+            "unpublish_state": true
+        }
+    }
+}

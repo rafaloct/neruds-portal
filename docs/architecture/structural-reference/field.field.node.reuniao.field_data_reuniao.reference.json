@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.reuniao.field_data_reuniao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_data_reuniao",
+                "node.type.reuniao"
+            ],
+            "module": [
+                "datetime"
+            ]
+        },
+        "id": "node.reuniao.field_data_reuniao",
+        "field_name": "field_data_reuniao",
+        "entity_type": "node",
+        "bundle": "reuniao",
+        "label": "Data e Hora",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "datetime"
+    }
+}

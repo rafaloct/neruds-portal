@@ -1,0 +1,17 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.projeto_pesquisa_extensao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Projeto de Pesquisa/Extensão",
+        "type": "projeto_pesquisa_extensao",
+        "description": "Projetos de pesquisa e extensão do NERUDS",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": false
+    }
+}

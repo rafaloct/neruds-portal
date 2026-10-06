@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_participantes",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_participantes",
+                "node.type.projeto_pesquisa_extensao"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_participantes",
+        "field_name": "field_participantes",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Participantes",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

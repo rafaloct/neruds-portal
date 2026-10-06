@@ -1,0 +1,36 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.acao_extensionista.field_pdf",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_pdf",
+                "node.type.acao_extensionista"
+            ],
+            "module": [
+                "file"
+            ]
+        },
+        "id": "node.acao_extensionista.field_pdf",
+        "field_name": "field_pdf",
+        "entity_type": "node",
+        "bundle": "acao_extensionista",
+        "label": "PDF ",
+        "description": "",
+        "required": false,
+        "translatable": false,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:file",
+            "handler_settings": [],
+            "file_directory": "[date:custom:Y]-[date:custom:m]",
+            "file_extensions": "txt",
+            "max_filesize": "50MB",
+            "description_field": false
+        },
+        "field_type": "file"
+    }
+}

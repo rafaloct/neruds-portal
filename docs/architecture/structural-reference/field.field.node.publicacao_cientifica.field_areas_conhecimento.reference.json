@@ -1,0 +1,39 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao_cientifica.field_areas_conhecimento",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_areas_conhecimento",
+                "node.type.publicacao_cientifica",
+                "taxonomy.vocabulary.area_conhecimento"
+            ]
+        },
+        "id": "node.publicacao_cientifica.field_areas_conhecimento",
+        "field_name": "field_areas_conhecimento",
+        "entity_type": "node",
+        "bundle": "publicacao_cientifica",
+        "label": "Áreas de Conhecimento",
+        "description": "Áreas de conhecimento da publicação",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "area_conhecimento": "area_conhecimento"
+                },
+                "sort": {
+                    "field": "name",
+                    "direction": "asc"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

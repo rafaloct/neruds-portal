@@ -1,0 +1,51 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.storage.contact_message.field_finalidade",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "contact",
+                "options"
+            ]
+        },
+        "id": "contact_message.field_finalidade",
+        "field_name": "field_finalidade",
+        "entity_type": "contact_message",
+        "type": "list_string",
+        "settings": {
+            "allowed_values": [
+                {
+                    "value": "pesquisa",
+                    "label": "Informações sobre Pesquisas"
+                },
+                {
+                    "value": "parceria",
+                    "label": "Proposta de Parceria"
+                },
+                {
+                    "value": "evento",
+                    "label": "Inscrição em Evento ou Curso"
+                },
+                {
+                    "value": "imprensa",
+                    "label": "Imprensa"
+                },
+                {
+                    "value": "outro",
+                    "label": "Outros Assuntos"
+                }
+            ],
+            "allowed_values_function": ""
+        },
+        "module": "options",
+        "locked": false,
+        "cardinality": 1,
+        "translatable": true,
+        "indexes": [],
+        "persist_with_no_fields": false,
+        "custom_storage": false
+    }
+}

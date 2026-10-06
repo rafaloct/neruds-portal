@@ -1,0 +1,36 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim_periodico.field_pdf_boletim",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_pdf_boletim",
+                "node.type.boletim_periodico"
+            ],
+            "module": [
+                "file"
+            ]
+        },
+        "id": "node.boletim_periodico.field_pdf_boletim",
+        "field_name": "field_pdf_boletim",
+        "entity_type": "node",
+        "bundle": "boletim_periodico",
+        "label": "PDF do Boletim",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:file",
+            "handler_settings": [],
+            "file_directory": "[date:custom:Y]-[date:custom:m]",
+            "file_extensions": "pdf",
+            "max_filesize": "",
+            "description_field": false
+        },
+        "field_type": "file"
+    }
+}

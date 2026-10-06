@@ -1,0 +1,32 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.noticia.field_fonte_externa",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_fonte_externa",
+                "node.type.noticia"
+            ],
+            "module": [
+                "link"
+            ]
+        },
+        "id": "node.noticia.field_fonte_externa",
+        "field_name": "field_fonte_externa",
+        "entity_type": "node",
+        "bundle": "noticia",
+        "label": "Fonte Externa (Link)",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "title": 1,
+            "link_type": 17
+        },
+        "field_type": "link"
+    }
+}

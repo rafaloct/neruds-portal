@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.eixos_tematicos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Eixos Temáticos",
+        "vid": "eixos_tematicos",
+        "description": "Principais áreas temáticas de pesquisa do NERUDS",
+        "weight": 0,
+        "new_revision": false
+    }
+}

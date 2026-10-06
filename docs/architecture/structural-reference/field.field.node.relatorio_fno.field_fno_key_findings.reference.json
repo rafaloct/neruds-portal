@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_fno_key_findings",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_fno_key_findings",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.relatorio_fno.field_fno_key_findings",
+        "field_name": "field_fno_key_findings",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "Principais Resultados",
+        "description": "Resumo dos principais achados da pesquisa",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": []
+        },
+        "field_type": "text_long"
+    }
+}

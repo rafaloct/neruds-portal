@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.tipo_projeto",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Tipo de Projeto",
+        "vid": "tipo_projeto",
+        "description": "Tipos de projetos",
+        "weight": 0,
+        "new_revision": false
+    }
+}

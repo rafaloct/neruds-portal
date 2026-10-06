@@ -1,0 +1,53 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "user.role.authenticated",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "dashboard.dashboard.welcome",
+                "filter.format.webform_default"
+            ],
+            "module": [
+                "captcha",
+                "coffee",
+                "comment",
+                "contact",
+                "dashboard",
+                "editoria11y",
+                "file",
+                "filter",
+                "honeypot",
+                "klaro",
+                "media",
+                "neruds_mcp",
+                "node",
+                "system"
+            ]
+        },
+        "id": "authenticated",
+        "label": "Usuário autenticado",
+        "weight": 1,
+        "is_admin": false,
+        "permissions": [
+            "access coffee",
+            "access comments",
+            "access content",
+            "access site-wide contact form",
+            "delete own files",
+            "edit own comments",
+            "mark as hidden in editoria11y",
+            "post comments",
+            "skip CAPTCHA",
+            "skip comment approval",
+            "use klaro",
+            "use text format webform_default",
+            "view editoria11y checker",
+            "view media",
+            "view own unpublished content",
+            "view welcome dashboard"
+        ]
+    }
+}

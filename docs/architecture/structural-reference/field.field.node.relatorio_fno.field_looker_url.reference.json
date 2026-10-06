@@ -1,0 +1,32 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_looker_url",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_looker_url",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "link"
+            ]
+        },
+        "id": "node.relatorio_fno.field_looker_url",
+        "field_name": "field_looker_url",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "URL do Looker Studio",
+        "description": "URL do dashboard do Looker Studio para este relatório",
+        "required": true,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "title": 0,
+            "link_type": 1
+        },
+        "field_type": "link"
+    }
+}

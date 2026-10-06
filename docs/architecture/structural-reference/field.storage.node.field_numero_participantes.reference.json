@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.storage.node.field_numero_participantes",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "node"
+            ]
+        },
+        "id": "node.field_numero_participantes",
+        "field_name": "field_numero_participantes",
+        "entity_type": "node",
+        "type": "integer",
+        "settings": {
+            "unsigned": false,
+            "size": "normal"
+        },
+        "module": "core",
+        "locked": false,
+        "cardinality": 1,
+        "translatable": true,
+        "indexes": [],
+        "persist_with_no_fields": false,
+        "custom_storage": false
+    }
+}

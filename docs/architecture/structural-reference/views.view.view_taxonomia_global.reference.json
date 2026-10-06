@@ -1,0 +1,207 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "views.view.view_taxonomia_global",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_eixos_tematicos",
+                "field.storage.node.field_ods_interesse",
+                "field.storage.node.field_palavras_chave",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "node",
+                "user"
+            ]
+        },
+        "id": "view_taxonomia_global",
+        "label": "Taxonomia Global",
+        "module": "views",
+        "description": "Exibe nuvem/lista de termos agregando múltiplos tipos de conteúdo.",
+        "tag": "NERUDS",
+        "base_table": "node_field_data",
+        "base_field": "nid",
+        "display": {
+            "default": {
+                "id": "default",
+                "display_title": "Padrão",
+                "display_plugin": "default",
+                "position": null,
+                "display_options": {
+                    "title": "Taxonomia",
+                    "fields": {
+                        "field_palavras_chave": {
+                            "id": "field_palavras_chave",
+                            "table": "node__field_palavras_chave",
+                            "field": "field_palavras_chave",
+                            "entity_type": "node",
+                            "plugin_id": "standard",
+                            "label": "Palavras‑chave",
+                            "plugin": "field"
+                        },
+                        "field_eixos_tematicos": {
+                            "id": "field_eixos_tematicos",
+                            "table": "node__field_eixos_tematicos",
+                            "field": "field_eixos_tematicos",
+                            "entity_type": "node",
+                            "plugin_id": "standard",
+                            "label": "Eixos",
+                            "plugin": "field"
+                        },
+                        "field_ods_interesse": {
+                            "id": "field_ods_interesse",
+                            "table": "node__field_ods_interesse",
+                            "field": "field_ods_interesse",
+                            "entity_type": "node",
+                            "plugin_id": "standard",
+                            "label": "ODS",
+                            "plugin": "field"
+                        }
+                    },
+                    "pager": {
+                        "type": "mini",
+                        "options": {
+                            "items_per_page": 20
+                        }
+                    },
+                    "exposed_form": {
+                        "type": "basic"
+                    },
+                    "access": {
+                        "type": "perm",
+                        "options": {
+                            "perm": "access content"
+                        }
+                    },
+                    "cache": {
+                        "type": "tag"
+                    },
+                    "sorts": {
+                        "created": {
+                            "id": "created",
+                            "table": "node_field_data",
+                            "field": "created",
+                            "plugin_id": "date",
+                            "order": "DESC"
+                        }
+                    },
+                    "filters": {
+                        "status": {
+                            "id": "status",
+                            "table": "node_field_data",
+                            "field": "status",
+                            "plugin_id": "boolean",
+                            "value": "1"
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "node_field_data",
+                            "field": "type",
+                            "plugin_id": "bundle",
+                            "value": {
+                                "projeto_pesquisa_extensao": "projeto_pesquisa_extensao"
+                            }
+                        },
+                        "field_palavras_chave": {
+                            "id": "field_palavras_chave",
+                            "table": "node__field_palavras_chave",
+                            "field": "field_palavras_chave",
+                            "plugin_id": "entity_reference",
+                            "operator": "or",
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_palavras_chave_op",
+                                "label": "field_palavras_chave",
+                                "identifier": "field_palavras_chave"
+                            }
+                        }
+                    },
+                    "style": {
+                        "type": "grid"
+                    },
+                    "row": {
+                        "type": "fields"
+                    },
+                    "query": {
+                        "type": "views_query"
+                    },
+                    "css_class": "view-neruds",
+                    "display_extenders": [],
+                    "style_options": {
+                        "columns": 6
+                    }
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_content",
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": [
+                        "config:field.storage.node.field_eixos_tematicos",
+                        "config:field.storage.node.field_ods_interesse",
+                        "config:field.storage.node.field_palavras_chave"
+                    ]
+                }
+            },
+            "block_1": {
+                "id": "block_1",
+                "display_title": "bloco_nuvem_termos",
+                "display_plugin": "block",
+                "position": 2,
+                "display_options": {
+                    "css_class": "view-neruds",
+                    "display_extenders": []
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_content",
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": [
+                        "config:field.storage.node.field_eixos_tematicos",
+                        "config:field.storage.node.field_ods_interesse",
+                        "config:field.storage.node.field_palavras_chave"
+                    ]
+                }
+            },
+            "page_1": {
+                "id": "page_1",
+                "display_title": "Página",
+                "display_plugin": "page",
+                "position": 1,
+                "display_options": {
+                    "title": "Taxonomia",
+                    "css_class": "view-neruds",
+                    "display_extenders": [],
+                    "path": "/taxonomia-global"
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_content",
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": [
+                        "config:field.storage.node.field_eixos_tematicos",
+                        "config:field.storage.node.field_ods_interesse",
+                        "config:field.storage.node.field_palavras_chave"
+                    ]
+                }
+            }
+        }
+    }
+}

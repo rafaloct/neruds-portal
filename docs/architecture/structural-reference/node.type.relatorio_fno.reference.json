@@ -1,0 +1,17 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.relatorio_fno",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Relatório FNO",
+        "type": "relatorio_fno",
+        "description": "Relatórios de pesquisa do Fundo Constitucional de Financiamento do Norte (FNO)",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": true
+    }
+}

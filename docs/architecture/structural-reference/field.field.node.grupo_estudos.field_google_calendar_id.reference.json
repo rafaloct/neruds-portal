@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.grupo_estudos.field_google_calendar_id",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_google_calendar_id",
+                "node.type.grupo_estudos"
+            ]
+        },
+        "id": "node.grupo_estudos.field_google_calendar_id",
+        "field_name": "field_google_calendar_id",
+        "entity_type": "node",
+        "bundle": "grupo_estudos",
+        "label": "Google Calendar ID",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

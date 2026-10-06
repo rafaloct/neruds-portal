@@ -1,0 +1,36 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim_periodico.field_resumo_boletim",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_resumo_boletim",
+                "filter.format.basic_html",
+                "filter.format.full_html",
+                "node.type.boletim_periodico"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.boletim_periodico.field_resumo_boletim",
+        "field_name": "field_resumo_boletim",
+        "entity_type": "node",
+        "bundle": "boletim_periodico",
+        "label": "Resumo",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": [
+                "full_html",
+                "basic_html"
+            ]
+        },
+        "field_type": "text_long"
+    }
+}

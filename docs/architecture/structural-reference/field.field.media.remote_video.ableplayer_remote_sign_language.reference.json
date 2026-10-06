@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.media.remote_video.ableplayer_remote_sign_language",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.media.ableplayer_remote_sign_language",
+                "media.type.remote_video"
+            ]
+        },
+        "id": "media.remote_video.ableplayer_remote_sign_language",
+        "field_name": "ableplayer_remote_sign_language",
+        "entity_type": "media",
+        "bundle": "remote_video",
+        "label": "URL of Sign Language Video (YouTube Only)",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

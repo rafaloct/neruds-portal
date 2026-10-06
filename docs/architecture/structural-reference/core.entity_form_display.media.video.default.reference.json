@@ -1,0 +1,12 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.media.video.default",
+    "data": {
+        "content": {
+            "field_ableplayer_media_caption": {
+                "type": "media_library_widget"
+            }
+        }
+    }
+}

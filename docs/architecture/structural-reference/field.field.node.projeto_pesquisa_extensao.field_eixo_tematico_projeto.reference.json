@@ -1,0 +1,37 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_eixo_tematico_projeto",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_eixo_tematico_projeto",
+                "node.type.projeto_pesquisa_extensao"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_eixo_tematico_projeto",
+        "field_name": "field_eixo_tematico_projeto",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Eixos Temáticos",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": {
+                    "eixos_tematicos": "eixos_tematicos"
+                },
+                "sort": {
+                    "field": "_none"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

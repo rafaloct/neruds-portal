@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_embed_code",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_embed_code",
+                "filter.format.basic_html",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.relatorio_fno.field_embed_code",
+        "field_name": "field_embed_code",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "Código de Embed",
+        "description": "Código HTML de embed do Looker Studio",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": [
+                "basic_html"
+            ]
+        },
+        "field_type": "text_long"
+    }
+}

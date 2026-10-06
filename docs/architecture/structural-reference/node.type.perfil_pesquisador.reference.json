@@ -1,0 +1,17 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.perfil_pesquisador",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Perfil do Pesquisador",
+        "type": "perfil_pesquisador",
+        "description": "Perfis dos pesquisadores e colaboradores",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": false
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.storage.node.field_pdf",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "file",
+                "node"
+            ]
+        },
+        "id": "node.field_pdf",
+        "field_name": "field_pdf",
+        "entity_type": "node",
+        "type": "file",
+        "settings": {
+            "target_type": "file",
+            "display_field": false,
+            "display_default": false,
+            "uri_scheme": "public"
+        },
+        "module": "file",
+        "locked": false,
+        "cardinality": 5,
+        "translatable": true,
+        "indexes": [],
+        "persist_with_no_fields": false,
+        "custom_storage": false
+    }
+}

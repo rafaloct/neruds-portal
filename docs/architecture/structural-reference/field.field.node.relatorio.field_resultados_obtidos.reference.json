@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio.field_resultados_obtidos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_resultados_obtidos",
+                "node.type.relatorio"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.relatorio.field_resultados_obtidos",
+        "field_name": "field_resultados_obtidos",
+        "entity_type": "node",
+        "bundle": "relatorio",
+        "label": "Resultados Obtidos",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": []
+        },
+        "field_type": "text_long"
+    }
+}

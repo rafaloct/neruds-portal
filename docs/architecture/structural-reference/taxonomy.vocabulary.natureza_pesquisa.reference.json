@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.natureza_pesquisa",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Natureza da Pesquisa",
+        "vid": "natureza_pesquisa",
+        "description": "Classificação da natureza dos projetos",
+        "weight": 0,
+        "new_revision": false
+    }
+}

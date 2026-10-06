@@ -1,0 +1,65 @@
+# Dependencies and build output are reproduced from lockfiles.
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+**/node_modules/
+**/__pycache__/
+*.py[cod]
+/build/
+/dist/
+/.cache/
+
+# Local runtime, content, backups and database copies.
+/private/
+/backups/
+/snapshots/
+/.runtime/
+/var/
+/web/sites/*/files/
+/web/sites/*/private/
+*.sql
+*.sql.*
+*.dump
+*.dump.*
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+
+# Real environment files and credentials never belong in Git.
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+auth.json
+**/auth.json
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+.htpasswd
+**/.htpasswd
+
+# Only the reviewed environment-based settings file is versioned.
+**/settings*.php
+**/settings.php.*
+!web/sites/default/settings.php
+!**/settings*.php.example
+**/services.local.yml
+
+# Local editor and OS files.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

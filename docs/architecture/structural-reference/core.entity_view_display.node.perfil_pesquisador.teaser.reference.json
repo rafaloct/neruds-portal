@@ -1,0 +1,127 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.perfil_pesquisador.teaser",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "field.field.node.perfil_pesquisador.field_areas_conhecimento",
+                "field.field.node.perfil_pesquisador.field_biografia",
+                "field.field.node.perfil_pesquisador.field_eixos_tematicos",
+                "field.field.node.perfil_pesquisador.field_email",
+                "field.field.node.perfil_pesquisador.field_formacao",
+                "field.field.node.perfil_pesquisador.field_foto_perfil",
+                "field.field.node.perfil_pesquisador.field_google_scholar",
+                "field.field.node.perfil_pesquisador.field_instituicao",
+                "field.field.node.perfil_pesquisador.field_lattes",
+                "field.field.node.perfil_pesquisador.field_lattes_id",
+                "field.field.node.perfil_pesquisador.field_linhas_pesquisa",
+                "field.field.node.perfil_pesquisador.field_linkedin",
+                "field.field.node.perfil_pesquisador.field_nome_completo",
+                "field.field.node.perfil_pesquisador.field_ods",
+                "field.field.node.perfil_pesquisador.field_ods_interesse",
+                "field.field.node.perfil_pesquisador.field_orcid",
+                "field.field.node.perfil_pesquisador.field_orcid_id",
+                "field.field.node.perfil_pesquisador.field_producoes_pesquisador",
+                "field.field.node.perfil_pesquisador.field_projetos_pesquisador",
+                "field.field.node.perfil_pesquisador.field_researchgate",
+                "field.field.node.perfil_pesquisador.field_telefone",
+                "field.field.node.perfil_pesquisador.field_tipo_vinculo",
+                "image.style.medium",
+                "node.type.perfil_pesquisador"
+            ],
+            "module": [
+                "svg_image",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.perfil_pesquisador.teaser",
+        "targetEntityType": "node",
+        "bundle": "perfil_pesquisador",
+        "mode": "teaser",
+        "content": {
+            "field_biografia": {
+                "type": "text_summary_or_trimmed",
+                "label": "hidden",
+                "settings": {
+                    "trim_length": 200
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_foto_perfil": {
+                "type": "image",
+                "label": "hidden",
+                "settings": {
+                    "image_link": "content",
+                    "image_style": "medium",
+                    "image_loading": {
+                        "attribute": "lazy"
+                    },
+                    "svg_attributes": {
+                        "width": null,
+                        "height": null
+                    },
+                    "svg_render_as_image": true
+                },
+                "third_party_settings": [],
+                "weight": 0,
+                "region": "content"
+            },
+            "field_nome_completo": {
+                "type": "string",
+                "label": "above",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_ods": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 50,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "field_areas_conhecimento": true,
+            "field_eixos_tematicos": true,
+            "field_email": true,
+            "field_formacao": true,
+            "field_google_scholar": true,
+            "field_instituicao": true,
+            "field_lattes": true,
+            "field_lattes_id": true,
+            "field_linhas_pesquisa": true,
+            "field_linkedin": true,
+            "field_ods_interesse": true,
+            "field_orcid": true,
+            "field_orcid_id": true,
+            "field_producoes_pesquisador": true,
+            "field_projetos_pesquisador": true,
+            "field_researchgate": true,
+            "field_telefone": true,
+            "field_tipo_vinculo": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

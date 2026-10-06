@@ -1,0 +1,9 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "system.theme",
+    "data": {
+        "admin": "claro",
+        "default": "neruds_gui"
+    }
+}

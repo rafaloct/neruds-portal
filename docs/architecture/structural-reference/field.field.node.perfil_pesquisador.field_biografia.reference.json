@@ -1,0 +1,40 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_biografia",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_biografia",
+                "filter.format.basic_html",
+                "filter.format.content_format",
+                "filter.format.full_html",
+                "filter.format.plain_text",
+                "node.type.perfil_pesquisador"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_biografia",
+        "field_name": "field_biografia",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "Biografia/Resumo",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": [
+                "content_format",
+                "basic_html",
+                "plain_text",
+                "full_html"
+            ]
+        },
+        "field_type": "text_long"
+    }
+}

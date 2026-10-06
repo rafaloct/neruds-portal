@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.boletim_periodico",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "workflows"
+            ]
+        },
+        "third_party_settings": {
+            "workflows": {
+                "workflow": "editorial_boletins"
+            }
+        },
+        "name": "Boletim Periódico",
+        "type": "boletim_periodico",
+        "description": "Boletins técnicos, informativos, de extensão e científicos do NERUDS",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": true
+    }
+}

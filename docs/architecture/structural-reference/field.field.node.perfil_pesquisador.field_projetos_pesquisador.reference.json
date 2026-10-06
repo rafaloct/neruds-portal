@@ -1,0 +1,38 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_projetos_pesquisador",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_projetos_pesquisador",
+                "node.type.perfil_pesquisador",
+                "node.type.projeto_pesquisa_extensao"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_projetos_pesquisador",
+        "field_name": "field_projetos_pesquisador",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "Projetos de Pesquisa e Extensão",
+        "description": "Lista de projetos de pesquisa e extensão associados ao pesquisador",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": [
+                    "projeto_pesquisa_extensao"
+                ],
+                "sort": {
+                    "field": "title",
+                    "direction": "ASC"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

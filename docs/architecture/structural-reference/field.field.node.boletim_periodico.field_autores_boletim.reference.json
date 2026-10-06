@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim_periodico.field_autores_boletim",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_autores_boletim",
+                "node.type.boletim_periodico",
+                "node.type.perfil_pesquisador"
+            ]
+        },
+        "id": "node.boletim_periodico.field_autores_boletim",
+        "field_name": "field_autores_boletim",
+        "entity_type": "node",
+        "bundle": "boletim_periodico",
+        "label": "Autores (Pesquisadores)",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": [
+                    "perfil_pesquisador"
+                ],
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

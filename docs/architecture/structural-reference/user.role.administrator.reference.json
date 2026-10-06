@@ -1,0 +1,21 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "user.role.administrator",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "comment"
+            ]
+        },
+        "id": "administrator",
+        "label": "Administrator",
+        "weight": 3,
+        "is_admin": true,
+        "permissions": [
+            "administer comments"
+        ]
+    }
+}

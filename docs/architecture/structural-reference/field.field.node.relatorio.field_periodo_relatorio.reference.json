@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio.field_periodo_relatorio",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_periodo_relatorio",
+                "node.type.relatorio"
+            ],
+            "module": [
+                "datetime_range"
+            ]
+        },
+        "id": "node.relatorio.field_periodo_relatorio",
+        "field_name": "field_periodo_relatorio",
+        "entity_type": "node",
+        "bundle": "relatorio",
+        "label": "Período do Relatório",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "daterange"
+    }
+}

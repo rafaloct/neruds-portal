@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao.field_territorio",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_territorio",
+                "node.type.publicacao",
+                "taxonomy.vocabulary.territorios"
+            ]
+        },
+        "id": "node.publicacao.field_territorio",
+        "field_name": "field_territorio",
+        "entity_type": "node",
+        "bundle": "publicacao",
+        "label": "Territorio",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "territorios": "territorios"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim.field_mes",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_mes",
+                "node.type.boletim"
+            ]
+        },
+        "id": "node.boletim.field_mes",
+        "field_name": "field_mes",
+        "entity_type": "node",
+        "bundle": "boletim",
+        "label": "Mês",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

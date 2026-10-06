@@ -1,0 +1,17 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.evento_cientifico",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Evento Científico",
+        "type": "evento_cientifico",
+        "description": "Eventos científicos organizados ou participados",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": true
+    }
+}

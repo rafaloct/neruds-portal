@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_eixos_tematicos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_eixos_tematicos",
+                "node.type.perfil_pesquisador",
+                "taxonomy.vocabulary.eixos_tematicos"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_eixos_tematicos",
+        "field_name": "field_eixos_tematicos",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "Eixos Temáticos",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "eixos_tematicos": "eixos_tematicos"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

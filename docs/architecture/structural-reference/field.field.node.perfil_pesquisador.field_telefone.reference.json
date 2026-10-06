@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_telefone",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_telefone",
+                "node.type.perfil_pesquisador"
+            ],
+            "module": [
+                "telephone"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_telefone",
+        "field_name": "field_telefone",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "Telefone",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "telephone"
+    }
+}

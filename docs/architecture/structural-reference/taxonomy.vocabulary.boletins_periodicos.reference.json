@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.boletins_periodicos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Boletins Periódicos",
+        "vid": "boletins_periodicos",
+        "description": "Tipos de boletim (técnico, informativo, de extensão, científico)",
+        "weight": 0,
+        "new_revision": false
+    }
+}

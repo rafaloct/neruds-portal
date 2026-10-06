@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.setor_produtivo_cadeia",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Setor Produtivo/Cadeia",
+        "vid": "setor_produtivo_cadeia",
+        "description": "Setores produtivos e cadeias",
+        "weight": 0,
+        "new_revision": false
+    }
+}

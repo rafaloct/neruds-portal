@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.acao_extensionista.field_tipo_acao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_tipo_acao",
+                "node.type.acao_extensionista",
+                "taxonomy.vocabulary.tipo_acao_extensionista"
+            ]
+        },
+        "id": "node.acao_extensionista.field_tipo_acao",
+        "field_name": "field_tipo_acao",
+        "entity_type": "node",
+        "bundle": "acao_extensionista",
+        "label": "Tipo de Ação Extensionista",
+        "description": "",
+        "required": null,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "tipo_acao_extensionista": "tipo_acao_extensionista"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

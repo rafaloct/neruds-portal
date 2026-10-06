@@ -1,0 +1,17 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.acao_extensionista",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Ação Extensionista",
+        "type": "acao_extensionista",
+        "description": "Ações de extensão realizadas pelo NERUDS",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": true
+    }
+}

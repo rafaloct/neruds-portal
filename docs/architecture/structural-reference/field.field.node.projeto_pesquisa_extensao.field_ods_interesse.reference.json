@@ -1,0 +1,51 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_ods_interesse",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_ods_interesse",
+                "node.type.projeto_pesquisa_extensao",
+                "taxonomy.vocabulary.ods"
+            ],
+            "module": [
+                "ai_translate"
+            ]
+        },
+        "third_party_settings": {
+            "ai_translate": {
+                "entity_reference": {
+                    "translate_references": "default"
+                },
+                "translate_references": "default"
+            }
+        },
+        "id": "node.projeto_pesquisa_extensao.field_ods_interesse",
+        "field_name": "field_ods_interesse",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "ODS de Interesse",
+        "description": "Objetivos de Desenvolvimento Sustentável relacionados ao projeto",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "ods": "ods"
+                },
+                "sort": {
+                    "field": "name",
+                    "direction": "asc"
+                },
+                "auto_create": false,
+                "auto_create_bundle": "ods"
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

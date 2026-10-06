@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.tipo_publicacao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Tipo de Publicação",
+        "vid": "tipo_publicacao",
+        "description": "Tipos de publicações científicas",
+        "weight": 0,
+        "new_revision": false
+    }
+}

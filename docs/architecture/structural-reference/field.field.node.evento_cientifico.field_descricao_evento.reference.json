@@ -1,0 +1,38 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.evento_cientifico.field_descricao_evento",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_descricao_evento",
+                "filter.format.basic_html",
+                "filter.format.content_format",
+                "filter.format.plain_text",
+                "node.type.evento_cientifico"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.evento_cientifico.field_descricao_evento",
+        "field_name": "field_descricao_evento",
+        "entity_type": "node",
+        "bundle": "evento_cientifico",
+        "label": "Descrição do Evento",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": [
+                "content_format",
+                "basic_html",
+                "plain_text"
+            ]
+        },
+        "field_type": "text_long"
+    }
+}

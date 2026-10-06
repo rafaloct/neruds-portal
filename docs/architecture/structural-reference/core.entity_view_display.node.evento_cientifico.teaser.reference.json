@@ -1,0 +1,122 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.evento_cientifico.teaser",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "field.field.node.evento_cientifico.comment",
+                "field.field.node.evento_cientifico.field_areas_tematicas",
+                "field.field.node.evento_cientifico.field_chamada_trabalhos",
+                "field.field.node.evento_cientifico.field_data_evento",
+                "field.field.node.evento_cientifico.field_descricao_evento",
+                "field.field.node.evento_cientifico.field_eixos_tematicos",
+                "field.field.node.evento_cientifico.field_imagem_destaque",
+                "field.field.node.evento_cientifico.field_link_inscricao",
+                "field.field.node.evento_cientifico.field_link_submissao",
+                "field.field.node.evento_cientifico.field_local_evento",
+                "field.field.node.evento_cientifico.field_ods",
+                "field.field.node.evento_cientifico.field_organizadores",
+                "field.field.node.evento_cientifico.field_pdf",
+                "field.field.node.evento_cientifico.field_tags",
+                "image.style.medium",
+                "node.type.evento_cientifico"
+            ],
+            "module": [
+                "datetime",
+                "svg_image",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.evento_cientifico.teaser",
+        "targetEntityType": "node",
+        "bundle": "evento_cientifico",
+        "mode": "teaser",
+        "content": {
+            "field_data_evento": {
+                "type": "datetime_default",
+                "label": "above",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "medium"
+                },
+                "third_party_settings": [],
+                "weight": 5,
+                "region": "content"
+            },
+            "field_descricao_evento": {
+                "type": "text_trimmed",
+                "label": "hidden",
+                "settings": {
+                    "trim_length": 180
+                },
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            },
+            "field_imagem_destaque": {
+                "type": "image",
+                "label": "hidden",
+                "settings": {
+                    "image_link": "",
+                    "image_style": "medium",
+                    "image_loading": {
+                        "attribute": "lazy"
+                    },
+                    "svg_attributes": {
+                        "width": null,
+                        "height": null
+                    },
+                    "svg_render_as_image": true
+                },
+                "third_party_settings": [],
+                "weight": 0,
+                "region": "content"
+            },
+            "field_local_evento": {
+                "type": "string",
+                "label": "above",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 6,
+                "region": "content"
+            },
+            "field_ods": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 50,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "comment": true,
+            "field_areas_tematicas": true,
+            "field_chamada_trabalhos": true,
+            "field_eixos_tematicos": true,
+            "field_link_inscricao": true,
+            "field_link_submissao": true,
+            "field_organizadores": true,
+            "field_pdf": true,
+            "field_tags": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

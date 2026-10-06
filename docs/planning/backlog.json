@@ -1,0 +1,1865 @@
+{
+  "schema_version": "1.0",
+  "artifact_kind": "draft_backlog",
+  "created_date": "2026-10-06",
+  "project_title": "Novo portal de pesquisa NERUDS",
+  "planning_status": "Plano criado para o repositório privado rafaloct/neruds-portal em 06/10/2026; os estados operacionais atuais vivem nas issues.",
+  "source_of_truth": "GitHub do novo repositório; origem técnica inicial é o Drupal que serve neruds.org na data da captura.",
+  "product_goal": "Portal institucional de pesquisa em Drupal nativo, com novo design, conteúdo confiável e conexões entre pesquisadores, projetos, produção, territórios e resultados.",
+  "design_direction": {
+    "references": [
+      "CEBRAP: qualidade editorial e organização da produção de pesquisa",
+      "Instituto Perene: clareza institucional, projetos e resultados"
+    ],
+    "constraint": "Construir identidade própria do NERUDS. Não copiar identidade, código ou ativos das referências. O homolog Jaspr foi rejeitado visualmente e não é a base deste projeto."
+  },
+  "origin_policy": [
+    "Clonar a origem atual identificada de neruds.org, preservando conteúdo útil e registrando a proveniência.",
+    "Não tratar neruds_staging, cópias antigas de auditoria ou o frontend Jaspr como substitutos da origem atual.",
+    "Toda atualização, migração e validação funcional ocorre na cópia isolada; a produção continua intacta até autorização específica de publicação."
+  ],
+  "paths_policy": "Caminhos são relativos à nova raiz do projeto Drupal. A origem de produção foi confirmada em /var/www/html com DocumentRoot web/. Nomes de bundles, tema e módulos devem ser conferidos no inventário e ajustados à origem. Placeholders <tema_neruds> e <migracao_neruds> não autorizam sobrescrever componentes existentes.",
+  "priority_definitions": {
+    "P0": "Bloqueia a segurança, a integridade da base ou a publicação da candidata.",
+    "P1": "Necessário para o portal de pesquisa e a experiência pública previstos.",
+    "P2": "Melhoria posterior que não bloqueia o primeiro portal; não utilizada para inflar este escopo."
+  },
+  "relative_size_definitions": {
+    "S": "Pequena: mudança delimitada em uma configuração ou componente.",
+    "M": "Média: um resultado funcional com poucos componentes e testes focais.",
+    "L": "Maior: um resultado único com integração ou migração; dividir somente se o inventário demonstrar escopo excessivo, preservando dependências."
+  },
+  "governance": {
+    "one_issue_one_branch_one_pr": true,
+    "github_is_operational_source_of_truth": true,
+    "merges": "Sem merge ou auto-merge automáticos. Integração depende de revisão e autorização aplicável.",
+    "deployments": "Sem deploy automático. Nenhum trabalho de planejamento autoriza alterar produção.",
+    "agent_execution": "Selecionar uma issue pronta por execução, verificar dependências e sobreposição de caminhos, trabalhar em branch/cópia isolada e abrir PR revisável.",
+    "ready_rule": "Uma issue só recebe agent:ready depois de escopo, dependências, caminhos permitidos e testes estarem claros; human_gate=true impede execução automática.",
+    "overlap_rule": "Não trabalhar simultaneamente em configurações Drupal sobrepostas sem coordenação explícita registrada na issue/PR.",
+    "labels": [
+      "agent:backlog",
+      "agent:ready",
+      "agent:working",
+      "agent:review",
+      "human-gate",
+      "priority:P0",
+      "priority:P1",
+      "area:base",
+      "area:drupal",
+      "area:editorial",
+      "area:design",
+      "area:conteudo",
+      "area:descoberta",
+      "area:operacoes",
+      "area:release"
+    ],
+    "human_gates": "Somente NERUDS-032 exige gate humano obrigatório por alteração de produção. Decisões editoriais ausentes são registradas concretamente; o agente continua o trabalho independente autorizado.",
+    "bootstrap_rule": "Somente NERUDS-001 inicia com agent:ready. As demais issues iniciam no backlog com dependências explícitas; a coordenação promove uma próxima tarefa quando a evidência justificar.",
+    "project_permission_note": "Milestones e issues independem do scope project. Se GitHub Projects não puder ser criado pela autenticação disponível, preservar sua especificação/importação preparada sem bloquear a fila por issues."
+  },
+  "global_out_of_scope": [
+    "Reaproveitamento visual ou reimplementação do protótipo Jaspr.",
+    "PWA, aplicativo móvel, IA/RAG, agentes editoriais autônomos, monetização, marketplace ou emissão de certificados.",
+    "Novos serviços pagos, compra de domínio, campanhas, envio de mensagens ou convites a terceiros.",
+    "Atualização de produção, alteração global da VPS ou uso de contas reais durante desenvolvimento."
+  ],
+  "definition_of_done": [
+    "Objetivo único cumprido e diff limitado ao escopo permitido.",
+    "Critérios de aceite acompanhados de evidências do candidato real.",
+    "Testes focais executados ou bloqueio real documentado, sem ampliar matriz por hipótese.",
+    "Segredos e dados privados ausentes do Git, logs e artefatos públicos.",
+    "PR explica problema, mudança, comportamento resultante e limitações.",
+    "Estado da issue, dependências e próximos passos registrados no GitHub; sem iniciar automaticamente a próxima tarefa."
+  ],
+  "milestones": [
+    {
+      "key": "M01",
+      "title": "Origem confiável e cópia isolada",
+      "order": 1,
+      "objective": "Estabelecer como base o Drupal que serve neruds.org atualmente, com origem comprovada, conteúdo protegido e desenvolvimento reproduzível.",
+      "completion_criteria": [
+        "Origem atual identificada e registrada, sem assumir equivalência com homologações ou backups antigos.",
+        "Cópia própria restaurada com banco, arquivos, configurações e integrações isolados.",
+        "Baseline saneado e versionado; contrato de trabalho e CI sem publicação automática."
+      ]
+    },
+    {
+      "key": "M02",
+      "title": "Drupal atualizado e compatível",
+      "order": 2,
+      "objective": "Colocar a cópia em versões mantidas e compatíveis, preservando os recursos existentes que continuarem úteis.",
+      "completion_criteria": [
+        "Versões de destino fundamentadas no inventário e em documentação oficial vigente na execução.",
+        "Core, módulos necessários e código próprio funcionam juntos na cópia.",
+        "Lockfiles e evidências permitem reproduzir o resultado sem atualizar serviços de produção."
+      ]
+    },
+    {
+      "key": "M03",
+      "title": "Governança editorial e organização do conteúdo",
+      "order": 3,
+      "objective": "Definir taxonomias, relações, revisão e permissões para uma equipe de pesquisa manter o portal com autonomia.",
+      "completion_criteria": [
+        "Vocabulários e regras de relacionamento documentados e configurados.",
+        "Rascunho, revisão, publicação e arquivamento possuem regras claras.",
+        "Permissões são verificadas por ação e conteúdo no Drupal nativo."
+      ]
+    },
+    {
+      "key": "M04",
+      "title": "Novo design institucional e experiência pública",
+      "order": 4,
+      "objective": "Construir um novo tema Drupal responsivo e acessível, inspirado na qualidade editorial de CEBRAP e Instituto Perene e na identidade do NERUDS.",
+      "completion_criteria": [
+        "Sistema visual e componentes próprios implementados com comparação visual revisável.",
+        "Navegação completa funciona em celular, desktop e teclado.",
+        "Home e páginas institucionais representam o núcleo com linguagem clara e conteúdo verificável."
+      ]
+    },
+    {
+      "key": "M05",
+      "title": "Pesquisadores, projetos e acervo conectado",
+      "order": 5,
+      "objective": "Transformar o conteúdo herdado em um portal de pesquisa navegável, com relações entre pessoas, projetos, produção e territórios.",
+      "completion_criteria": [
+        "Perfis, projetos, publicações e acervo possuem páginas e relações consistentes.",
+        "Territórios e resultados utilizam dados verificáveis, com estados claros quando faltarem informações.",
+        "Conteúdo herdado relevante foi preservado, mapeado e conferido na nova estrutura."
+      ]
+    },
+    {
+      "key": "M06",
+      "title": "Descoberta, mídia e desempenho",
+      "order": 6,
+      "objective": "Facilitar encontrar, compartilhar e acessar a produção do núcleo com páginas rápidas e conteúdo completo.",
+      "completion_criteria": [
+        "Busca e filtros alcançam conteúdo antigo e recente com paginação coerente.",
+        "Metadados, aliases e redirects preservam descoberta e links existentes.",
+        "Imagens, arquivos e desempenho atendem critérios medidos na cópia, incluindo acessibilidade."
+      ]
+    },
+    {
+      "key": "M07",
+      "title": "Operação recuperável e entrega reproduzível",
+      "order": 7,
+      "objective": "Preparar manutenção, recuperação e entrega sem depender de conhecimento informal de uma única pessoa.",
+      "completion_criteria": [
+        "Restauração de banco, arquivos e configuração demonstrada.",
+        "Monitoramento mínimo e runbooks permitem diagnosticar falhas sem expor dados sensíveis.",
+        "Artefato candidato está ligado a commit, lockfiles e configuração, com entrega manual controlada."
+      ]
+    },
+    {
+      "key": "M08",
+      "title": "Validação e publicação com autorização específica",
+      "order": 8,
+      "objective": "Validar o portal completo e preparar uma publicação futura com reversão e decisão explícita.",
+      "completion_criteria": [
+        "Fluxos públicos e editoriais essenciais validados na cópia.",
+        "Pacote de lançamento apresenta versão, escopo, evidências, riscos e reversão.",
+        "Produção só é alterada após autorização específica para o candidato e o procedimento; não existe publicação automática."
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "key": "NERUDS-001",
+      "milestone": "M01",
+      "title": "Validar a cópia atual e consolidar o inventário de importação",
+      "objective": "Conferir a proveniência e os limites da cópia do Drupal atual para preparar sua importação segura em rafaloct/neruds-portal.",
+      "included_scope": [
+        "Usar a origem já confirmada /var/www/html com DocumentRoot web/ e conferir manifesto, serviços, versões e vínculo da cópia com neruds.org.",
+        "Revisar arquivos candidatos à importação, integrações e dados que exigem exclusão ou sanitização, sem divulgar credenciais.",
+        "Registrar data, identificadores, hashes de referência e critérios para restaurar/versionar a cópia nos próximos tickets."
+      ],
+      "excluded_scope": [
+        "Alterar produção, inicializar cópias antigas como origem atual ou repetir investigação de infraestrutura sem necessidade.",
+        "Importar dumps, arquivos privados, uploads completos, configurações secretas ou código não revisado ao GitHub.",
+        "Executar atualização, redesign ou publicação nesta primeira issue."
+      ],
+      "probable_paths": [
+        "docs/baseline/source-inventory.md",
+        "docs/baseline/source-manifest.json",
+        "composer.json (leitura, raiz a confirmar)",
+        "composer.lock (leitura, raiz a confirmar)"
+      ],
+      "dependencies": [],
+      "acceptance_criteria": [
+        "Manifesto liga a cópia ao Drupal atual em /var/www/html/web e informa eventual defasagem.",
+        "Inventário identifica core, temas, módulos e runtime sem valores de segredo.",
+        "Arquivos incluídos/excluídos da futura importação e integrações a isolar estão enumerados.",
+        "Commit de bootstrap ou PR entrega revisão da base e critérios de importação, mantendo as próximas tarefas delimitadas e sem publicar código não saneado."
+      ],
+      "focal_tests": [
+        "Conferir origem e integridade de uma amostra representativa da cópia contra o manifesto autorizado.",
+        "Validar manifesto/lista de importação e revisar ausência de credenciais no material versionável."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Ready",
+      "initial_labels": [
+        "agent:ready",
+        "priority:P0",
+        "area:base"
+      ],
+      "github": {
+        "number": 1,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/1"
+      }
+    },
+    {
+      "key": "NERUDS-002",
+      "milestone": "M01",
+      "title": "Preparar infraestrutura de desenvolvimento isolada para o Drupal",
+      "objective": "Criar um ambiente próprio capaz de receber a cópia sem acessar banco, arquivos ou integrações de produção.",
+      "included_scope": [
+        "Serviços e volumes próprios, portas restritas e limites de recursos.",
+        "Configurações locais por variáveis de ambiente e arquivos de exemplo sem credenciais reais.",
+        "Bloqueio ou substituição de e-mail, jobs, webhooks e integrações externas antes de iniciar o Drupal copiado."
+      ],
+      "excluded_scope": [
+        "Alterar rede, PHP, banco, proxy ou serviços globais da VPS.",
+        "Restaurar dados ou executar migrações de produção nesta issue."
+      ],
+      "probable_paths": [
+        "compose.yaml ou infraestrutura equivalente a confirmar",
+        "config/local/",
+        "web/sites/default/settings.local.php.example",
+        "docs/development/local-environment.md"
+      ],
+      "dependencies": [
+        "NERUDS-001"
+      ],
+      "acceptance_criteria": [
+        "Banco, arquivos e credenciais locais não apontam para serviços de produção.",
+        "Binds, redes e volumes não reutilizam diretórios de produção.",
+        "Tentativas de envio externo do ambiente de teste são bloqueadas ou chegam apenas a coletor local.",
+        "Ambiente inicia e encerra sem alterar o serviço publicado."
+      ],
+      "focal_tests": [
+        "Inspecionar mounts, endpoints e configuração efetiva com valores sensíveis omitidos.",
+        "Executar checagem de isolamento usando destinos locais de teste e coletor de e-mail.",
+        "Confirmar limites de CPU/RAM e portas apenas no ambiente novo."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:base"
+      ],
+      "github": {
+        "number": 2,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/2"
+      }
+    },
+    {
+      "key": "NERUDS-003",
+      "milestone": "M01",
+      "title": "Restaurar uma cópia protegida do portal atual no ambiente isolado",
+      "objective": "Produzir uma cópia funcional e identificável do neruds.org atual para desenvolvimento e migração.",
+      "included_scope": [
+        "Captura controlada de código, banco e arquivos necessários a partir da origem identificada, ou uso de snapshot recente cuja origem e integridade sejam demonstráveis.",
+        "Sanitização de credenciais, contas de teste, dados pessoais desnecessários e integrações antes de disponibilizar a cópia.",
+        "Restauração somente em serviços novos e registro do ponto de origem."
+      ],
+      "excluded_scope": [
+        "Colocar dumps, arquivos privados ou credenciais no Git.",
+        "Restaurar sobre produção, usar contas reais em testes ou ativar envios externos."
+      ],
+      "probable_paths": [
+        "docs/baseline/clone-procedure.md",
+        "docs/baseline/clone-verification.json",
+        "scripts/clone/ (se necessário)",
+        "web/sites/default/settings.local.php.example"
+      ],
+      "dependencies": [
+        "NERUDS-002"
+      ],
+      "acceptance_criteria": [
+        "Cópia abre páginas representativas do portal atual usando apenas serviços próprios.",
+        "Código, banco e arquivos pertencem a um ponto de origem documentado, com limitações de consistência registradas.",
+        "Contas de teste e integrações locais substituem as credenciais e destinos reais.",
+        "Dados privados continuam privados e os dados de trabalho não aparecem no repositório."
+      ],
+      "focal_tests": [
+        "Abrir na cópia home, página institucional, item de conteúdo, imagem e arquivo representativos.",
+        "Comparar contagens agregadas e referências de arquivos antes e depois da restauração.",
+        "Verificar que links de autenticação e operações administrativas usam a cópia."
+      ],
+      "priority": "P0",
+      "relative_size": "L",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:base"
+      ],
+      "github": {
+        "number": 3,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/3"
+      }
+    },
+    {
+      "key": "NERUDS-004",
+      "milestone": "M01",
+      "title": "Registrar um baseline versionado e livre de segredos",
+      "objective": "Transformar o código autorizado da origem atual em uma base Git revisável e reproduzível.",
+      "included_scope": [
+        "Preservação do histórico existente quando disponível e registro explícito da proveniência quando não houver Git na origem.",
+        "Saneamento de arquivos antes do commit, regras de ignore, arquivos de exemplo e lockfiles.",
+        "Inventário de componentes próprios a preservar e hashes de referência do baseline."
+      ],
+      "excluded_scope": [
+        "Publicar dumps, uploads privados, arquivos de sessão, caches, dependências geradas ou secrets.",
+        "Copiar o design/código Jaspr rejeitado para formar o novo portal."
+      ],
+      "probable_paths": [
+        ".gitignore",
+        "composer.json",
+        "composer.lock",
+        "web/modules/custom/",
+        "web/themes/custom/",
+        "config/sync/",
+        "docs/baseline/versioned-baseline.md"
+      ],
+      "dependencies": [
+        "NERUDS-003"
+      ],
+      "acceptance_criteria": [
+        "Commit de bootstrap ou PR do baseline identifica o que veio da origem atual e o que foi saneado.",
+        "Varredura do conteúdo a versionar não encontra segredos não tratados.",
+        "Lockfiles e instruções permitem montar a cópia sem depender de arquivos secretos do autor.",
+        "Arquivos privados e artefatos volumosos estão fora do Git, com forma documentada de restauração."
+      ],
+      "focal_tests": [
+        "Executar revisão de segredos somente sobre arquivos destinados ao Git e resolver os achados reais.",
+        "Verificar instalação com lockfile em ambiente descartável usando configurações de exemplo.",
+        "Conferir diff e inventário de arquivos incluídos."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:base"
+      ],
+      "github": {
+        "number": 4,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/4"
+      }
+    },
+    {
+      "key": "NERUDS-005",
+      "milestone": "M01",
+      "title": "Configurar o contrato de trabalho por issues e a integração contínua",
+      "objective": "Estabelecer GitHub como fonte de verdade operacional e verificar cada mudança antes de revisão.",
+      "included_scope": [
+        "AGENTS.md, instruções de contribuição e coordenação com uma issue por branch e PR.",
+        "Labels de fila, prioridades, áreas, dependências e regras de bloqueio.",
+        "CI focado em validação de dependências, sintaxe, padrões e testes pertinentes ao código modificado, com varredura de segredos."
+      ],
+      "excluded_scope": [
+        "Auto-merge, deploy por push ou escolha automática de uma segunda tarefa.",
+        "Exigir aprovações adicionais para leitura ou mudanças reversíveis dentro do escopo já autorizado."
+      ],
+      "probable_paths": [
+        "AGENTS.md",
+        "CONTRIBUTING.md",
+        "docs/operations/agent-workflow.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/ISSUE_TEMPLATE/",
+        ".github/workflows/ci.yml"
+      ],
+      "dependencies": [
+        "NERUDS-004"
+      ],
+      "acceptance_criteria": [
+        "Agente identifica uma issue pronta, dependências, caminhos permitidos e evidências esperadas antes de alterar código.",
+        "PRs registram problema, mudança, testes e limitações; não misturam tarefas não relacionadas.",
+        "CI roda sem segredos de produção e sem realizar deploy.",
+        "Labels de fila e human-gate possuem significado claro e não acionam merge/deploy automático."
+      ],
+      "focal_tests": [
+        "Abrir PR de teste controlado e confirmar execução apenas dos checks previstos.",
+        "Inspecionar workflows para comprovar ausência de permissões e gatilhos de publicação automática."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:base"
+      ],
+      "github": {
+        "number": 5,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/5"
+      }
+    },
+    {
+      "key": "NERUDS-006",
+      "milestone": "M02",
+      "title": "Definir a matriz de atualização do Drupal e suas dependências",
+      "objective": "Escolher um conjunto mantido e compatível de core, runtime e módulos com base na origem real.",
+      "included_scope": [
+        "Inventário de compatibilidade de Composer, PHP, core, contrib, temas e módulos próprios.",
+        "Consulta a notas oficiais e avisos aplicáveis às versões efetivamente encontradas.",
+        "Plano de atualização com dependências obrigatórias, substituições justificadas e ordem mínima de mudanças."
+      ],
+      "excluded_scope": [
+        "Assumir que versões de clones antigos correspondem à produção atual.",
+        "Atualizar pacotes, PHP global ou módulos nesta issue."
+      ],
+      "probable_paths": [
+        "docs/upgrade/compatibility-matrix.md",
+        "docs/upgrade/update-sequence.md",
+        "composer.json",
+        "composer.lock"
+      ],
+      "dependencies": [
+        "NERUDS-004"
+      ],
+      "acceptance_criteria": [
+        "Cada pacote necessário tem destino ou decisão documentada, com fonte e data.",
+        "Bloqueios reais de compatibilidade estão identificados, inclusive mudanças que precisam acompanhar o core.",
+        "Versões propostas são mantidas na data da execução; números do relatório antigo não são usados sem revalidação.",
+        "Plano preserva Drupal nativo e não inclui troca de framework ou recursos novos sem necessidade."
+      ],
+      "focal_tests": [
+        "Executar diagnóstico de dependências e requisitos de plataforma somente na cópia.",
+        "Revisar restrições de Composer contra a sequência proposta."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:drupal"
+      ],
+      "github": {
+        "number": 6,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/6"
+      }
+    },
+    {
+      "key": "NERUDS-007",
+      "milestone": "M02",
+      "title": "Atualizar o Drupal core e o runtime da cópia",
+      "objective": "Executar a atualização de core aprovada na matriz sem alterar o runtime compartilhado da produção.",
+      "included_scope": [
+        "Mudanças mínimas em Composer e imagem/runtime próprios necessárias ao core.",
+        "Atualizações de banco e configuração somente na cópia.",
+        "Ajustes de dependências inseparáveis do core explicitamente identificados na matriz."
+      ],
+      "excluded_scope": [
+        "Atualizar indiscriminadamente todo o Composer.",
+        "Alterar PHP, banco ou serviços de produção; redesenhar o tema nesta issue."
+      ],
+      "probable_paths": [
+        "composer.json",
+        "composer.lock",
+        "Dockerfile ou imagem/runtime equivalente",
+        "config/sync/ quando exigido pela atualização",
+        "docs/upgrade/core-evidence.md"
+      ],
+      "dependencies": [
+        "NERUDS-006",
+        "NERUDS-005"
+      ],
+      "acceptance_criteria": [
+        "Core inicia na versão de destino com requisitos atendidos.",
+        "Atualizações da cópia terminam sem erros pendentes; desvios de configuração são revisados.",
+        "Home, login local, administração e leitura de conteúdo existente continuam funcionais.",
+        "Commit e lockfile reproduzem a atualização em restauração descartável."
+      ],
+      "focal_tests": [
+        "Composer validate e verificação de plataforma.",
+        "Rodar updates e diagnóstico Drupal na cópia; conferir status pendente.",
+        "Smoke local de leitura pública e sessão administrativa de teste."
+      ],
+      "priority": "P0",
+      "relative_size": "L",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:drupal"
+      ],
+      "github": {
+        "number": 7,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/7"
+      }
+    },
+    {
+      "key": "NERUDS-008",
+      "milestone": "M02",
+      "title": "Atualizar ou remover dependências contrib incompatíveis e sem manutenção",
+      "objective": "Regularizar os módulos e temas contribuídos necessários ao portal na base atualizada.",
+      "included_scope": [
+        "Atualização dos pacotes listados na matriz que não foram inseparáveis do core.",
+        "Remoção ou substituição apenas de extensões desnecessárias, incompatíveis ou sem manutenção, com impacto explícito.",
+        "Revisão de permissões e configuração alteradas pelos updates."
+      ],
+      "excluded_scope": [
+        "Adicionar IA, agentes editoriais, PWA, monetização ou serviços pagos como parte da atualização.",
+        "Remover funcionalidade editorial em uso sem substituição ou decisão documentada."
+      ],
+      "probable_paths": [
+        "composer.json",
+        "composer.lock",
+        "config/sync/",
+        "docs/upgrade/contrib-evidence.md"
+      ],
+      "dependencies": [
+        "NERUDS-007"
+      ],
+      "acceptance_criteria": [
+        "Dependências necessárias têm versões compatíveis e mantidas ou exceção explicitamente pendente que bloqueia o release.",
+        "Nenhum módulo removido deixa configuração quebrada ou conteúdo inacessível.",
+        "Avisos de segurança relevantes são avaliados sem confundir versão afetada com exploração comprovada.",
+        "Recursos existentes preservados são testados nas rotas que utilizam cada extensão alterada."
+      ],
+      "focal_tests": [
+        "Composer audit e análise dos resultados aplicáveis.",
+        "Executar update de configuração e teste focal dos módulos modificados.",
+        "Comparar inventário habilitado com a matriz aprovada."
+      ],
+      "priority": "P0",
+      "relative_size": "L",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:drupal"
+      ],
+      "github": {
+        "number": 8,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/8"
+      }
+    },
+    {
+      "key": "NERUDS-009",
+      "milestone": "M02",
+      "title": "Revisar segurança e compatibilidade do código Drupal próprio",
+      "objective": "Revisar e corrigir os módulos e temas próprios preservados para a versão atualizada, com decisões explícitas sobre achados de segurança.",
+      "included_scope": [
+        "Correção de APIs removidas/depreciadas que afetam o runtime escolhido.",
+        "Ajustes focais de serviços, hooks, plugins, Twig e configuração próprios.",
+        "Remoção de código morto apenas quando comprovada e relacionada à compatibilidade.",
+        "Revisão focal de autorização, proteção CSRF, validação e escape, consultas, cache por acesso e tratamento de credenciais nas rotas e serviços próprios preservados."
+      ],
+      "excluded_scope": [
+        "Redesign, refatoração ampla sem necessidade ou reimplementação da autenticação nativa.",
+        "Portar componentes do homolog Jaspr."
+      ],
+      "probable_paths": [
+        "web/modules/custom/",
+        "web/themes/custom/",
+        "config/sync/",
+        "tests/ ou diretórios de testes dos módulos próprios",
+        "docs/security/custom-code-review.md"
+      ],
+      "dependencies": [
+        "NERUDS-008"
+      ],
+      "acceptance_criteria": [
+        "Código próprio carrega sem erros de compatibilidade no runtime alvo.",
+        "Comportamentos preservados têm evidência focal de funcionamento.",
+        "Mudanças não alteram permissões ou visibilidade de conteúdo inadvertidamente.",
+        "Pendências sem impacto imediato ficam registradas, sem ampliar o PR.",
+        "Achados no código próprio têm evidência, decisão e correção focal; falhas materiais de segurança pendentes bloqueiam o release."
+      ],
+      "focal_tests": [
+        "Análise estática e sintaxe nos arquivos modificados.",
+        "Testes Drupal disponíveis para plugins/serviços afetados.",
+        "Smoke das páginas e operações que dependem de código próprio.",
+        "Testar rotas próprias por acesso permitido/negado e entradas de teste pertinentes aos achados, sem acesso ou envio para serviços reais."
+      ],
+      "priority": "P0",
+      "relative_size": "L",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:drupal"
+      ],
+      "github": {
+        "number": 9,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/9"
+      }
+    },
+    {
+      "key": "NERUDS-010",
+      "milestone": "M03",
+      "title": "Definir taxonomias e relações do acervo de pesquisa",
+      "objective": "Criar uma organização editorial consistente que conecte conteúdo, pessoas, projetos e territórios.",
+      "included_scope": [
+        "Vocabulários para linhas/eixos de pesquisa, tipo de produção, territórios e temas, reaproveitando termos úteis existentes.",
+        "Regras de relacionamento e identificadores entre pesquisadores, projetos, publicações e itens do acervo.",
+        "Dicionário de dados com campos obrigatórios, opcionais e fontes de informação."
+      ],
+      "excluded_scope": [
+        "Inventar territórios atendidos, vinculações institucionais ou resultados.",
+        "Reclassificar automaticamente todo conteúdo ou introduzir geolocalização sensível."
+      ],
+      "probable_paths": [
+        "config/sync/taxonomy.vocabulary.*.yml",
+        "config/sync/field.storage.*.yml",
+        "config/sync/field.field.*.yml",
+        "docs/editorial/content-dictionary.md"
+      ],
+      "dependencies": [
+        "NERUDS-009"
+      ],
+      "acceptance_criteria": [
+        "Vocabulários e relações possuem definição e finalidade editorial claras.",
+        "Termos legados têm destino previsto, com duplicidades e ambiguidades identificadas.",
+        "Campos indicam informação desconhecida sem preenchimento fictício.",
+        "Taxonomias podem ser geridas no Drupal por papéis autorizados."
+      ],
+      "focal_tests": [
+        "Criar e relacionar registros de teste com os vocabulários definidos.",
+        "Verificar validação de referências e comportamento de termos ausentes/arquivados."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:editorial"
+      ],
+      "github": {
+        "number": 10,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/10"
+      }
+    },
+    {
+      "key": "NERUDS-011",
+      "milestone": "M03",
+      "title": "Configurar revisão editorial, publicação e arquivamento",
+      "objective": "Implementar um fluxo editorial nativo com estados e transições verificáveis.",
+      "included_scope": [
+        "Estados mínimos de rascunho, revisão, publicado e arquivado conforme compatibilidade da origem.",
+        "Revisões de conteúdo e identificação de autoria das alterações.",
+        "Configuração do fluxo para os tipos de conteúdo previstos, com orientação curta para a equipe."
+      ],
+      "excluded_scope": [
+        "Criar painel editorial paralelo, autenticação própria ou aprovação por IA.",
+        "Publicar conteúdo real automaticamente ou enviar mensagens externas em testes."
+      ],
+      "probable_paths": [
+        "config/sync/workflows.workflow.*.yml",
+        "config/sync/core.entity_form_display.*.yml",
+        "config/sync/node.type.*.yml",
+        "docs/editorial/workflow.md"
+      ],
+      "dependencies": [
+        "NERUDS-010"
+      ],
+      "acceptance_criteria": [
+        "Rascunhos e revisões pendentes não aparecem em listagens públicas.",
+        "Transições definidas preservam histórico e autoria.",
+        "Arquivamento retira conteúdo da navegação conforme regra, sem apagar o histórico.",
+        "Equipe consegue entender o fluxo a partir de instruções e exemplos de teste."
+      ],
+      "focal_tests": [
+        "Executar rascunho → revisão → publicação → arquivamento com contas locais.",
+        "Conferir visualização anônima antes e depois de cada transição.",
+        "Verificar recuperação de revisão sem perder autoria."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:editorial"
+      ],
+      "github": {
+        "number": 11,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/11"
+      }
+    },
+    {
+      "key": "NERUDS-012",
+      "milestone": "M03",
+      "title": "Aplicar permissões editoriais por ação no Drupal",
+      "objective": "Garantir que cada papel acesse somente o conteúdo e as ações previstos.",
+      "included_scope": [
+        "Matriz de permissões de visitante, colaborador editorial, revisor e administração, adaptada ao quadro real.",
+        "Permissões nativas de edição, revisão, publicação, mídia, taxonomias e acesso administrativo.",
+        "Revisão de endpoints e integrações expostos por módulos preservados."
+      ],
+      "excluded_scope": [
+        "Autorizar por fragmentos de nome de papel ou proteger apenas a interface.",
+        "Criar contas de pessoas reais, enviar convites ou liberar integrações sem necessidade."
+      ],
+      "probable_paths": [
+        "config/sync/user.role.*.yml",
+        "config/sync/workflows.workflow.*.yml",
+        "web/modules/custom/ apenas se houver regra específica comprovadamente necessária",
+        "docs/editorial/permissions-matrix.md"
+      ],
+      "dependencies": [
+        "NERUDS-011"
+      ],
+      "acceptance_criteria": [
+        "Visitante não lê rascunhos, dados administrativos ou arquivos privados.",
+        "Colaborador, revisor e administrador executam exatamente as ações previstas.",
+        "Acesso direto à URL/API recebe a mesma proteção da interface.",
+        "Qualquer submissão pública, se mantida, usa fluxo separado e sem privilégio editorial.",
+        "Respostas protegidas e seus caches não expõem dados ao trocar de conta, sair da sessão ou acessar como visitante."
+      ],
+      "focal_tests": [
+        "Testar leitura e mutações relevantes por papel com contas locais.",
+        "Verificar acesso direto a rascunho, revisão, arquivo privado e endpoint administrativo.",
+        "Conferir ausência de permissões amplas herdadas sem justificativa.",
+        "Repetir acesso ao mesmo conteúdo após alternar duas contas de teste e a sessão anônima, conferindo cabeçalhos e variação de cache."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:editorial"
+      ],
+      "github": {
+        "number": 12,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/12"
+      }
+    },
+    {
+      "key": "NERUDS-013",
+      "milestone": "M04",
+      "title": "Criar o sistema visual do novo tema institucional",
+      "objective": "Definir e implementar uma linguagem visual própria para o novo portal Drupal.",
+      "included_scope": [
+        "Direção visual inspirada na qualidade editorial das referências CEBRAP/Instituto Perene, sem copiar código ou identidade.",
+        "Tipografia, cores, espaçamento, grid, links, botões, cards, estados e componentes de formulário.",
+        "Proposta revisável com páginas representativas e critérios de acessibilidade desde o início."
+      ],
+      "excluded_scope": [
+        "Reaproveitar a aparência rejeitada do frontend Jaspr.",
+        "Redefinir marca institucional, inventar logotipos oficiais ou depender de ativos sem licença."
+      ],
+      "probable_paths": [
+        "web/themes/custom/neruds_research/",
+        "docs/design/design-system.md",
+        "docs/design/reference-matrix.md"
+      ],
+      "dependencies": [
+        "NERUDS-001",
+        "NERUDS-009"
+      ],
+      "acceptance_criteria": [
+        "Tema estabelece hierarquia editorial sóbria e identidade do NERUDS.",
+        "Componentes cobrem estados padrão, foco, erro e indisponibilidade.",
+        "Contraste, foco e tamanhos de interação são verificáveis com meta WCAG 2.2 AA.",
+        "Preview com conteúdo de teste permite revisar desktop e celular antes de espalhar o design."
+      ],
+      "focal_tests": [
+        "Inspeção de contraste, navegação por teclado e foco nos componentes.",
+        "Comparação visual em larguras de referência e zoom.",
+        "Validar Twig/CSS/JS alterados sem depender de produção."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:design"
+      ],
+      "github": {
+        "number": 13,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/13"
+      }
+    },
+    {
+      "key": "NERUDS-014",
+      "milestone": "M04",
+      "title": "Implementar navegação e estrutura global responsivas",
+      "objective": "Permitir acesso claro às áreas principais em qualquer dispositivo e por teclado.",
+      "included_scope": [
+        "Cabeçalho, menu completo, busca de acesso rápido, breadcrumbs, rodapé e link de pular conteúdo.",
+        "Layouts responsivos com idioma do documento e landmarks semânticos.",
+        "Estados de menu aberto/fechado, foco e navegação sem JavaScript quando viável."
+      ],
+      "excluded_scope": [
+        "Construir páginas de cada coleção ou alterar seu modelo de dados.",
+        "Ocultar destinos essenciais no celular ou exigir hover como único acesso."
+      ],
+      "probable_paths": [
+        "web/themes/custom/neruds_research/templates/layout/",
+        "web/themes/custom/neruds_research/templates/navigation/",
+        "web/themes/custom/neruds_research/css/",
+        "web/themes/custom/neruds_research/js/",
+        "config/sync/system.menu.*.yml"
+      ],
+      "dependencies": [
+        "NERUDS-013"
+      ],
+      "acceptance_criteria": [
+        "Menu móvel oferece os mesmos destinos principais do desktop.",
+        "Usuário percorre e fecha menus por teclado sem perda de foco.",
+        "Documento usa pt-BR, landmarks e link de salto funcionais.",
+        "Não há corte horizontal em 360, 390, 768 e 1440 px nem em zoom representativo."
+      ],
+      "focal_tests": [
+        "Fluxo de teclado e toque no menu em duas larguras.",
+        "Checar landmarks, idioma e foco com ferramenta de acessibilidade e inspeção manual.",
+        "Smoke de todos os links principais em ambiente local."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:design"
+      ],
+      "github": {
+        "number": 14,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/14"
+      }
+    },
+    {
+      "key": "NERUDS-015",
+      "milestone": "M04",
+      "title": "Construir a home editorial do NERUDS",
+      "objective": "Apresentar o núcleo e conduzir o visitante ao conteúdo de pesquisa relevante.",
+      "included_scope": [
+        "Página inicial com apresentação, destaques selecionados, linhas de pesquisa, produção recente e caminhos para pessoas/projetos/acervo.",
+        "Blocos administráveis pela equipe editorial, com regras de quantidade e imagens.",
+        "Estados vazios discretos e indicadores apenas quando houver definição e fonte."
+      ],
+      "excluded_scope": [
+        "Carrossel obrigatório, números de impacto inventados ou textos técnicos de infraestrutura.",
+        "Reimplementar coleções completas dentro da home."
+      ],
+      "probable_paths": [
+        "web/themes/custom/neruds_research/templates/page--front.html.twig",
+        "config/sync/views.view.*.yml",
+        "config/sync/block.block.*.yml",
+        "config/sync/core.entity_view_display.*.yml"
+      ],
+      "dependencies": [
+        "NERUDS-014",
+        "NERUDS-010"
+      ],
+      "acceptance_criteria": [
+        "Home explica quem é o núcleo e oferece caminhos inequívocos para conhecer sua produção.",
+        "Destaques podem ser alterados sem editar código.",
+        "Conteúdo indisponível não gera cards quebrados nem números fictícios.",
+        "H1 e hierarquia de seções são coerentes, preservando a composição visual aprovada no preview."
+      ],
+      "focal_tests": [
+        "Trocar destaque e ordenar conteúdo usando conta editorial local.",
+        "Verificar home com acervo completo, poucas entradas e imagem ausente.",
+        "Revisar foco, leitura móvel e carregamento dos blocos."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:design"
+      ],
+      "github": {
+        "number": 15,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/15"
+      }
+    },
+    {
+      "key": "NERUDS-016",
+      "milestone": "M04",
+      "title": "Organizar páginas institucionais e contato do núcleo",
+      "objective": "Disponibilizar informação institucional clara, atualizável e com contato funcional.",
+      "included_scope": [
+        "Páginas sobre o núcleo, linhas de pesquisa, equipe/organização e contato, conforme conteúdo real disponível.",
+        "Estrutura editorial e links institucionais verificados a partir da origem e fontes fornecidas.",
+        "Formulário de contato nativo ou módulo mantido com antispam acessível e coletor local em testes."
+      ],
+      "excluded_scope": [
+        "Inventar missão, cargos, vínculos ou declarações institucionais.",
+        "Enviar mensagens reais durante desenvolvimento ou cadastrar destinatários sem confirmação."
+      ],
+      "probable_paths": [
+        "config/sync/node.type.*.yml",
+        "config/sync/views.view.*.yml",
+        "config/sync/webform.webform.*.yml ou configuração do contato nativo",
+        "web/themes/custom/neruds_research/templates/content/",
+        "docs/editorial/institutional-content.md"
+      ],
+      "dependencies": [
+        "NERUDS-014",
+        "NERUDS-012"
+      ],
+      "acceptance_criteria": [
+        "Páginas distinguem informação confirmada e lacunas pendentes de curadoria.",
+        "Contato informa destino e expectativa de resposta sem expor dados administrativos.",
+        "Envio de teste chega ao coletor local e apresenta confirmação/erro acessíveis.",
+        "Páginas podem ser mantidas pelo fluxo editorial previsto."
+      ],
+      "focal_tests": [
+        "Verificar links institucionais sem executar ações externas.",
+        "Submeter formulário com dados fictícios ao coletor local e testar erros de validação.",
+        "Revisar navegação e semântica de formulário por teclado."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:design"
+      ],
+      "github": {
+        "number": 16,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/16"
+      }
+    },
+    {
+      "key": "NERUDS-017",
+      "milestone": "M05",
+      "title": "Implementar perfis de pesquisadores e relações com a produção",
+      "objective": "Criar perfis pesquisáveis que conectem pessoas ao trabalho do núcleo.",
+      "included_scope": [
+        "Campos de nome, apresentação, vínculo, linhas de pesquisa, imagem e identificadores públicos quando disponíveis.",
+        "Listagem de pesquisadores e página individual com projetos/publicações relacionados.",
+        "Fallback proporcional para foto e dados ausentes, com controle de visibilidade editorial."
+      ],
+      "excluded_scope": [
+        "Importar dados pessoais sensíveis ou criar vínculos não confirmados.",
+        "Sincronização automática externa com Lattes/ORCID nesta etapa."
+      ],
+      "probable_paths": [
+        "config/sync/node.type.*pesquisador*.yml",
+        "config/sync/field.*.yml",
+        "config/sync/views.view.*pesquisador*.yml",
+        "web/themes/custom/neruds_research/templates/content/"
+      ],
+      "dependencies": [
+        "NERUDS-010",
+        "NERUDS-012",
+        "NERUDS-014"
+      ],
+      "acceptance_criteria": [
+        "Listagem e perfil exibem somente campos públicos definidos no contrato.",
+        "Relações mostram conteúdo real ligado à pessoa e respeitam estado de publicação.",
+        "Perfil incompleto continua legível e não exige foto genérica dominante.",
+        "Identificadores externos têm formato validado e links seguros."
+      ],
+      "focal_tests": [
+        "Criar perfil completo e incompleto e conferir renderização.",
+        "Relacionar projeto/publicação de teste e verificar acesso anônimo.",
+        "Testar filtro por linha e paginação da listagem."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:conteudo"
+      ],
+      "github": {
+        "number": 17,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/17"
+      }
+    },
+    {
+      "key": "NERUDS-018",
+      "milestone": "M05",
+      "title": "Implementar projetos de pesquisa e extensão",
+      "objective": "Apresentar projetos com contexto, período, equipe, território e resultados relacionados.",
+      "included_scope": [
+        "Campos e páginas de projeto, com situação, objetivos, equipe, parceiros confirmados e territórios.",
+        "Listagem com filtros essenciais e ligações para produção/resultados.",
+        "Diferenciação entre pesquisa e extensão sem duplicar estrutura desnecessariamente."
+      ],
+      "excluded_scope": [
+        "Inventar financiadores, orçamento ou resultados.",
+        "Adicionar gestão financeira, monitoramento de bolsistas ou sistema interno de projetos."
+      ],
+      "probable_paths": [
+        "config/sync/node.type.*projeto*.yml",
+        "config/sync/field.*.yml",
+        "config/sync/views.view.*projeto*.yml",
+        "web/themes/custom/neruds_research/templates/content/"
+      ],
+      "dependencies": [
+        "NERUDS-017",
+        "NERUDS-010",
+        "NERUDS-012",
+        "NERUDS-014"
+      ],
+      "acceptance_criteria": [
+        "Projeto conecta equipe, territórios e produção sem duplicar cadastros.",
+        "Situação e período possuem validação e não sugerem projeto ativo quando encerrado.",
+        "Listagem permite localizar projeto além da primeira página.",
+        "Campos não informados não geram afirmações ou métricas fictícias."
+      ],
+      "focal_tests": [
+        "Criar projetos de teste ativo e encerrado com relações.",
+        "Verificar filtros, paginação e acesso a rascunhos.",
+        "Checar datas e estados vazios na página individual."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:conteudo"
+      ],
+      "github": {
+        "number": 18,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/18"
+      }
+    },
+    {
+      "key": "NERUDS-019",
+      "milestone": "M05",
+      "title": "Implementar publicações e referências bibliográficas",
+      "objective": "Disponibilizar produção acadêmica com metadados consistentes e acesso ao original.",
+      "included_scope": [
+        "Tipos de produção relevantes, autoria, ano, título, veículo, identificador e relação com projetos/linhas.",
+        "Listagem, detalhe, referência bibliográfica legível e acesso a arquivo ou endereço original.",
+        "Validação de DOI/URLs e distinção entre arquivo público disponível e referência externa."
+      ],
+      "excluded_scope": [
+        "Inventar DOI, autoria, revista ou licença.",
+        "Integração automática com provedores externos ou normalização bibliométrica avançada."
+      ],
+      "probable_paths": [
+        "config/sync/node.type.*publicacao*.yml",
+        "config/sync/field.*.yml",
+        "config/sync/views.view.*publicacao*.yml",
+        "web/themes/custom/neruds_research/templates/content/"
+      ],
+      "dependencies": [
+        "NERUDS-017",
+        "NERUDS-018",
+        "NERUDS-010",
+        "NERUDS-012",
+        "NERUDS-014"
+      ],
+      "acceptance_criteria": [
+        "Publicação apresenta os metadados disponíveis sem campo fictício obrigatório.",
+        "Autores locais se relacionam com perfis; autores externos permanecem representáveis.",
+        "DOI e links são validados e o usuário distingue baixar arquivo de abrir fonte externa.",
+        "Produção antiga é alcançável por listagem e filtros."
+      ],
+      "focal_tests": [
+        "Cadastrar artigo, relatório e produção sem DOI com dados de teste.",
+        "Testar relações de autoria e projeto.",
+        "Verificar link/arquivo público e bloqueio de rascunhos."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:conteudo"
+      ],
+      "github": {
+        "number": 19,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/19"
+      }
+    },
+    {
+      "key": "NERUDS-020",
+      "milestone": "M05",
+      "title": "Estruturar o acervo documental e de dados públicos",
+      "objective": "Organizar documentos e conjuntos de dados autorizados para consulta pública.",
+      "included_scope": [
+        "Metadados de tipo, descrição, data, fonte, responsáveis, território, licença e condição de acesso.",
+        "Listagem e detalhe de acervo com referências a projetos e publicações.",
+        "Tratamento explícito de material restrito ou ainda sem autorização de divulgação."
+      ],
+      "excluded_scope": [
+        "Publicar bases com dados pessoais ou arquivos privados por conveniência.",
+        "Criar repositório científico completo, DOI próprio ou upload aberto anônimo."
+      ],
+      "probable_paths": [
+        "config/sync/node.type.*acervo*.yml",
+        "config/sync/media.type.*.yml",
+        "config/sync/field.*.yml",
+        "config/sync/views.view.*acervo*.yml",
+        "web/themes/custom/neruds_research/templates/content/"
+      ],
+      "dependencies": [
+        "NERUDS-018",
+        "NERUDS-019",
+        "NERUDS-010",
+        "NERUDS-012",
+        "NERUDS-014"
+      ],
+      "acceptance_criteria": [
+        "Item distingue acesso público, restrito e referência externa.",
+        "Licença e fonte são registradas quando conhecidas; lacunas não viram autorização implícita.",
+        "Arquivos privados não podem ser baixados por URL anônima.",
+        "Acervo permite navegar por tipo e território com paginação."
+      ],
+      "focal_tests": [
+        "Testar item público, restrito e somente referenciado.",
+        "Conferir permissões do arquivo independentemente da página.",
+        "Validar filtros e relações com projetos/publicações."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:conteudo"
+      ],
+      "github": {
+        "number": 20,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/20"
+      }
+    },
+    {
+      "key": "NERUDS-021",
+      "milestone": "M05",
+      "title": "Apresentar atuação territorial e resultados verificáveis",
+      "objective": "Mostrar onde e como o NERUDS atua a partir de projetos e evidências existentes.",
+      "included_scope": [
+        "Página de atuação por território e relações com projetos/produção.",
+        "Resultados e indicadores editoriais com definição, período e fonte.",
+        "Exibição de resultados qualitativos quando não houver medida quantitativa defensável."
+      ],
+      "excluded_scope": [
+        "Mapa obrigatório, localização sensível de participantes ou painéis em tempo real.",
+        "Gerar métricas de impacto automaticamente a partir de contagens sem método."
+      ],
+      "probable_paths": [
+        "config/sync/views.view.*territorio*.yml",
+        "config/sync/field.*.yml",
+        "web/themes/custom/neruds_research/templates/content/",
+        "docs/editorial/impact-indicators.md"
+      ],
+      "dependencies": [
+        "NERUDS-018",
+        "NERUDS-019",
+        "NERUDS-020",
+        "NERUDS-010",
+        "NERUDS-014"
+      ],
+      "acceptance_criteria": [
+        "Cada indicador publicado tem definição, período e fonte verificável.",
+        "Territórios remetem a projetos/resultados reais, sem georreferenciamento pessoal desnecessário.",
+        "Ausência de dados resulta em omissão ou indicação clara, nunca em número inventado.",
+        "Navegação territorial funciona também como lista acessível."
+      ],
+      "focal_tests": [
+        "Conferir um resultado qualitativo e um indicador quantitativo de teste com fonte.",
+        "Validar contagens contra consultas do próprio acervo.",
+        "Testar territórios sem projeto publicado e por teclado."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:conteudo"
+      ],
+      "github": {
+        "number": 21,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/21"
+      }
+    },
+    {
+      "key": "NERUDS-022",
+      "milestone": "M05",
+      "title": "Migrar e conferir o conteúdo herdado na estrutura nova",
+      "objective": "Preservar o conteúdo útil da origem atual ao preencher os modelos e relações do novo portal.",
+      "included_scope": [
+        "Mapeamento do legado para os tipos novos, mantendo identificadores e aliases quando possível.",
+        "Migração idempotente ou procedimento editorial reexecutável com relatório de contagens, conflitos e lacunas.",
+        "Curadoria dos itens representativos e exclusão justificada apenas de material duplicado, técnico ou inadequado à publicação."
+      ],
+      "excluded_scope": [
+        "Apagar a origem, substituir conteúdo real por textos genéricos ou publicar dados restritos.",
+        "Raspar novas fontes externas ou inventar conteúdo para completar páginas."
+      ],
+      "probable_paths": [
+        "web/modules/custom/neruds_content_migration/ quando necessário",
+        "config/sync/migrate_plus.migration.*.yml quando aplicável",
+        "scripts/content/",
+        "docs/content/migration-map.md",
+        "docs/content/migration-report.json"
+      ],
+      "dependencies": [
+        "NERUDS-017",
+        "NERUDS-018",
+        "NERUDS-019",
+        "NERUDS-020",
+        "NERUDS-021"
+      ],
+      "acceptance_criteria": [
+        "Contagens de entrada, saída, duplicidades e exclusões estão reconciliadas.",
+        "Amostras antigas e recentes preservam texto, autoria, relações, arquivos e visibilidade.",
+        "Reexecução não duplica registros e mantém rastreabilidade à origem.",
+        "Lacunas editoriais restantes são listadas com responsável ou decisão necessária."
+      ],
+      "focal_tests": [
+        "Executar migração duas vezes em restauração descartável e comparar identificadores/contagens.",
+        "Conferir amostras de cada tipo e casos com arquivo privado ou alias legado.",
+        "Verificar rascunhos e conteúdo arquivado após importação."
+      ],
+      "priority": "P0",
+      "relative_size": "L",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:conteudo"
+      ],
+      "github": {
+        "number": 22,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/22"
+      }
+    },
+    {
+      "key": "NERUDS-023",
+      "milestone": "M06",
+      "title": "Implementar busca unificada com filtros e paginação",
+      "objective": "Permitir encontrar pessoas, projetos, publicações e acervo sem depender de listas recentes.",
+      "included_scope": [
+        "Busca textual sobre campos públicos definidos e filtros por tipo, linha, ano e território quando aplicáveis.",
+        "Paginação, ordenação, estados vazios e URLs compartilháveis de consulta.",
+        "Uso da solução Drupal compatível mais simples que atenda aos critérios, sem serviço externo obrigatório."
+      ],
+      "excluded_scope": [
+        "Busca por IA, personalização individual, Solr ou serviço pago sem necessidade demonstrada.",
+        "Indexar rascunhos, conteúdo privado ou campos administrativos."
+      ],
+      "probable_paths": [
+        "config/sync/search_api.*.yml ou busca nativa a confirmar",
+        "config/sync/views.view.*busca*.yml",
+        "web/themes/custom/neruds_research/templates/views/",
+        "web/modules/custom/ apenas para lacuna comprovada"
+      ],
+      "dependencies": [
+        "NERUDS-022",
+        "NERUDS-014",
+        "NERUDS-012"
+      ],
+      "acceptance_criteria": [
+        "Consulta retorna itens antigos e recentes de todos os tipos previstos.",
+        "Filtros e paginação mantêm parâmetros e contagens coerentes.",
+        "Conteúdo despublicado deixa de ser acessível na busca.",
+        "Campos de busca e filtros funcionam por teclado e apresentam resultado vazio claro."
+      ],
+      "focal_tests": [
+        "Executar conjunto pequeno de consultas conhecidas, incluindo acentos, termo inexistente e item antigo.",
+        "Combinar dois filtros, paginar e abrir resultado.",
+        "Publicar/despublicar item de teste e conferir índice/acesso."
+      ],
+      "priority": "P1",
+      "relative_size": "L",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:descoberta"
+      ],
+      "github": {
+        "number": 23,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/23"
+      }
+    },
+    {
+      "key": "NERUDS-024",
+      "milestone": "M06",
+      "title": "Preservar URLs e preparar metadados para descoberta pública",
+      "objective": "Manter links úteis do portal atual e preparar a descoberta correta da nova versão.",
+      "included_scope": [
+        "Mapeamento de aliases e redirects do conteúdo migrado.",
+        "Títulos, descrições, canonical, compartilhamento e sitemap conforme tipos de conteúdo.",
+        "Separação de configuração para manter homologação não indexável e ativar descoberta somente no lançamento autorizado."
+      ],
+      "excluded_scope": [
+        "Alterar DNS, publicar sitemap em produção ou remover proteção da homologação.",
+        "Afirmar posicionamento garantido em buscadores ou implantar campanhas."
+      ],
+      "probable_paths": [
+        "config/sync/pathauto.pattern.*.yml",
+        "config/sync/metatag.metatag_defaults.*.yml",
+        "config/sync/redirect.*.yml ou importação controlada",
+        "web/themes/custom/neruds_research/templates/",
+        "docs/content/url-map.csv"
+      ],
+      "dependencies": [
+        "NERUDS-022",
+        "NERUDS-014"
+      ],
+      "acceptance_criteria": [
+        "URLs legadas relevantes têm destino individual ou 404 real justificado, sem redirecionamento genérico enganoso.",
+        "Metadados variam pelo conteúdo e não expõem informação privada.",
+        "Homologação permanece protegida e não indexável.",
+        "Sitemap e canonical podem ser ativados para o domínio final por configuração revisável."
+      ],
+      "focal_tests": [
+        "Testar amostra de redirects, alias inexistente e cadeia sem loops.",
+        "Inspecionar metadados de home, perfil, projeto e publicação.",
+        "Verificar comportamento de indexação da cópia sem chamar buscadores."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:descoberta"
+      ],
+      "github": {
+        "number": 24,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/24"
+      }
+    },
+    {
+      "key": "NERUDS-025",
+      "milestone": "M06",
+      "title": "Padronizar mídia, arquivos e alternativas acessíveis",
+      "objective": "Garantir imagens proporcionais e acesso correto a arquivos do acervo.",
+      "included_scope": [
+        "Estilos de imagem responsiva, dimensões, texto alternativo, crédito e fallback.",
+        "Renderização de arquivos com tipo, tamanho e descrição úteis.",
+        "Revisão dos caminhos públicos/privados e referências preservadas pela migração."
+      ],
+      "excluded_scope": [
+        "Otimizar destrutivamente arquivos originais ou publicar material com acesso restrito.",
+        "Gerar imagens fictícias para representar pessoas, projetos ou resultados reais."
+      ],
+      "probable_paths": [
+        "config/sync/image.style.*.yml",
+        "config/sync/responsive_image.styles.*.yml",
+        "config/sync/media.type.*.yml",
+        "web/themes/custom/neruds_research/templates/field/",
+        "web/themes/custom/neruds_research/templates/content/"
+      ],
+      "dependencies": [
+        "NERUDS-022",
+        "NERUDS-014",
+        "NERUDS-012"
+      ],
+      "acceptance_criteria": [
+        "Imagens usam variantes adequadas sem distorção ou deslocamento excessivo do layout.",
+        "Imagens informativas têm alternativa textual e decorativas não geram ruído.",
+        "Arquivos apresentam informações de acesso e download corretas.",
+        "Originais são preservados e arquivos privados continuam protegidos por acesso direto."
+      ],
+      "focal_tests": [
+        "Verificar foto, capa, imagem ausente e imagem de grande dimensão em desktop/celular.",
+        "Testar arquivo público, privado e referência quebrada.",
+        "Inspecionar dimensões reservadas e texto alternativo."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:descoberta"
+      ],
+      "github": {
+        "number": 25,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/25"
+      }
+    },
+    {
+      "key": "NERUDS-026",
+      "milestone": "M06",
+      "title": "Medir e corrigir gargalos de desempenho do portal",
+      "objective": "Reduzir os gargalos demonstrados nas páginas representativas da nova base.",
+      "included_scope": [
+        "Medição reproduzível de home, busca, listagem, detalhe e sessão editorial.",
+        "Correções focais de cache Drupal, consultas, assets e imagens identificadas pelas medições.",
+        "Definição de orçamento de desempenho documentado para a infraestrutura de teste e comparação antes/depois."
+      ],
+      "excluded_scope": [
+        "Teste de carga em produção, refatoração ampla por hipótese ou cache de respostas administrativas.",
+        "Adicionar infraestrutura externa sem evidência de necessidade."
+      ],
+      "probable_paths": [
+        "web/themes/custom/neruds_research/",
+        "web/modules/custom/ quando necessário",
+        "config/sync/system.performance.yml",
+        "docs/performance/baseline.json",
+        "docs/performance/results.md"
+      ],
+      "dependencies": [
+        "NERUDS-023",
+        "NERUDS-025"
+      ],
+      "acceptance_criteria": [
+        "Medição registra hardware, cenário, cache e condições para comparação.",
+        "Gargalos prioritários têm melhora demonstrada sem regressão de conteúdo ou acesso.",
+        "Cache público não permite ler respostas ou dados de outra sessão.",
+        "Orçamento acordado para páginas representativas é atendido ou riscos restantes estão explicitamente bloqueados no release."
+      ],
+      "focal_tests": [
+        "Comparar métricas antes/depois com um conjunto fixo de páginas e repetições.",
+        "Verificar cache frio/quente e navegação anônima/autenticada.",
+        "Reexecutar apenas os testes de acesso afetados pelas mudanças de cache."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:descoberta"
+      ],
+      "github": {
+        "number": 26,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/26"
+      }
+    },
+    {
+      "key": "NERUDS-027",
+      "milestone": "M07",
+      "title": "Implementar backup e comprovar restauração da candidata",
+      "objective": "Demonstrar que banco, arquivos e configuração do portal podem ser recuperados de forma coerente.",
+      "included_scope": [
+        "Procedimento de backup com retenção, acesso e armazenamento definidos para a futura operação.",
+        "Cópia consistente de banco, arquivos públicos/privados e configurações necessárias.",
+        "Restauração em ambiente descartável e registro de tempo e perdas esperadas."
+      ],
+      "excluded_scope": [
+        "Substituir backup ou banco de produção nesta etapa.",
+        "Considerar existência de arquivo SQL antigo como prova de recuperação."
+      ],
+      "probable_paths": [
+        "scripts/backup/",
+        "docs/operations/backup-restore.md",
+        "docs/operations/restore-evidence.json",
+        "config/examples/backup.env.example"
+      ],
+      "dependencies": [
+        "NERUDS-022",
+        "NERUDS-009"
+      ],
+      "acceptance_criteria": [
+        "Backup identificável restaura uma instância funcional sem depender da máquina do autor.",
+        "Amostras de conteúdo, arquivos e permissões coincidem com o ponto recuperado.",
+        "Credenciais e backups ficam fora do Git e do alcance público.",
+        "Tempo de recuperação e ponto recuperável estão medidos; retenção e responsável estão definidos."
+      ],
+      "focal_tests": [
+        "Restaurar backup em banco e volumes descartáveis.",
+        "Comparar contagens agregadas, hashes de arquivos amostrados e acesso público/privado.",
+        "Executar smoke mínimo após restauração."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:operacoes"
+      ],
+      "github": {
+        "number": 27,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/27"
+      }
+    },
+    {
+      "key": "NERUDS-028",
+      "milestone": "M07",
+      "title": "Preparar diagnóstico operacional e runbooks de manutenção",
+      "objective": "Permitir identificar e responder às falhas essenciais do portal com evidências suficientes.",
+      "included_scope": [
+        "Logs úteis e sem credenciais, verificação de disponibilidade e identificação da versão.",
+        "Runbooks de falha de banco, disco, certificado, mídia e atualização.",
+        "Plano de alertas com destinos a configurar somente quando autorizados, e rotinas de revisão de versões."
+      ],
+      "excluded_scope": [
+        "Enviar mensagens a terceiros ou ativar integrações de alerta sem autorização.",
+        "Implantar plataforma de observabilidade complexa ou coletar dados pessoais de navegação desnecessários."
+      ],
+      "probable_paths": [
+        "docs/operations/runbook.md",
+        "docs/operations/monitoring.md",
+        "scripts/health/",
+        "config/examples/"
+      ],
+      "dependencies": [
+        "NERUDS-009",
+        "NERUDS-027"
+      ],
+      "acceptance_criteria": [
+        "Operador localiza versão e distingue falha de aplicação, banco e proxy usando o runbook.",
+        "Logs de cenários testados não expõem senha, token ou payload pessoal.",
+        "Verificações não gravam dados de negócio nem dependem de conta real.",
+        "Destinos, responsáveis e ações pendentes estão claros sem alertas externos disparados."
+      ],
+      "focal_tests": [
+        "Simular falha controlada de dependência apenas na cópia e seguir o runbook.",
+        "Inspecionar logs gerados pelas falhas de teste.",
+        "Conferir identificação de versão e check de disponibilidade."
+      ],
+      "priority": "P1",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P1",
+        "area:operacoes"
+      ],
+      "github": {
+        "number": 28,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/28"
+      }
+    },
+    {
+      "key": "NERUDS-029",
+      "milestone": "M07",
+      "title": "Preparar build reproduzível e entrega manual da candidata",
+      "objective": "Gerar um artefato identificável e um procedimento de entrega que não publique automaticamente.",
+      "included_scope": [
+        "Build ligado a commit, lockfiles e versões do toolchain.",
+        "Configuração separada por ambiente e comandos de entrega/reversão revisáveis.",
+        "Checks necessários ao artefato e armazenamento autorizado sem dados de produção embutidos."
+      ],
+      "excluded_scope": [
+        "Deploy por push, auto-merge ou modificação do roteamento atual.",
+        "Incluir secrets ou cópia de banco real na imagem."
+      ],
+      "probable_paths": [
+        "Dockerfile ou receita equivalente",
+        ".github/workflows/build.yml",
+        "scripts/release/",
+        "docs/operations/release-procedure.md"
+      ],
+      "dependencies": [
+        "NERUDS-005",
+        "NERUDS-008",
+        "NERUDS-009",
+        "NERUDS-027"
+      ],
+      "acceptance_criteria": [
+        "Artefato identifica commit e digest e pode ser gerado novamente a partir do repositório.",
+        "Configuração e secrets são injetados fora da imagem e diferenciam ambientes.",
+        "CI valida e produz artefato sem publicar ou iniciar deploy.",
+        "Procedimento de reversão especifica compatibilidade de banco/arquivos, sem prometer rollback automático de migração irreversível."
+      ],
+      "focal_tests": [
+        "Construir artefato em ambiente limpo e executar smoke local.",
+        "Inspecionar conteúdo da imagem e permissões dos workflows.",
+        "Ensaiar comandos de entrega/reversão somente em ambiente descartável."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:operacoes"
+      ],
+      "github": {
+        "number": 29,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/29"
+      }
+    },
+    {
+      "key": "NERUDS-030",
+      "milestone": "M08",
+      "title": "Validar os fluxos completos e a acessibilidade da candidata",
+      "objective": "Comprovar que o portal atende os principais percursos públicos e editoriais na cópia.",
+      "included_scope": [
+        "Cenário público de navegação, busca, item antigo, relações e arquivo.",
+        "Cenário editorial por papel, revisão, publicação, arquivamento e troca de sessão.",
+        "Revisão de acessibilidade focada em teclado, semântica, formulários, contraste e responsividade."
+      ],
+      "excluded_scope": [
+        "Testar todas as combinações possíveis ou abrir novas frentes sem relação com bloqueadores.",
+        "Login real, envio externo, carga em produção ou publicação no domínio atual."
+      ],
+      "probable_paths": [
+        "tests/functional/ ou suíte existente a confirmar",
+        "docs/qa/acceptance-matrix.md",
+        "docs/qa/evidence/"
+      ],
+      "dependencies": [
+        "NERUDS-016",
+        "NERUDS-021",
+        "NERUDS-022",
+        "NERUDS-023",
+        "NERUDS-024",
+        "NERUDS-025",
+        "NERUDS-026",
+        "NERUDS-012",
+        "NERUDS-029"
+      ],
+      "acceptance_criteria": [
+        "Percurso público completo funciona em desktop e celular, inclusive conteúdo antigo.",
+        "Papéis autorizados e negados produzem o comportamento previsto nas ações essenciais.",
+        "Não há bloqueador de teclado, idioma, foco, leitura ou formulário nos percursos testados.",
+        "Defeitos materiais geram correção focal rastreável; aprovação depende do candidato efetivamente testado."
+      ],
+      "focal_tests": [
+        "Executar uma matriz curta de cenários completos em duas larguras e por teclado.",
+        "Usar verificação automática de acessibilidade como apoio e inspeção manual dos fluxos.",
+        "Testar logout/troca de conta e acesso direto aos dados privados."
+      ],
+      "priority": "P0",
+      "relative_size": "L",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:release"
+      ],
+      "github": {
+        "number": 30,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/30"
+      }
+    },
+    {
+      "key": "NERUDS-031",
+      "milestone": "M08",
+      "title": "Consolidar conteúdo final e preparar o pacote de lançamento",
+      "objective": "Entregar uma candidata concreta e revisável para decisão de publicação.",
+      "included_scope": [
+        "Revisão final de conteúdo institucional e amostras de cada coleção com fontes e lacunas explicitadas.",
+        "Relatório de critérios de aceite, bloqueadores resolvidos e riscos remanescentes.",
+        "Manifesto da candidata, plano de atualização dos dados desde o snapshot, janela proposta, backup e reversão."
+      ],
+      "excluded_scope": [
+        "Inventar validações de responsáveis ou aprovar em nome da coordenação.",
+        "Alterar produção, trocar DNS/proxy ou considerar esta preparação como autorização de publicação."
+      ],
+      "probable_paths": [
+        "docs/release/candidate-manifest.json",
+        "docs/release/content-review.md",
+        "docs/release/readiness.md",
+        "docs/release/cutover-plan.md"
+      ],
+      "dependencies": [
+        "NERUDS-030",
+        "NERUDS-027",
+        "NERUDS-028",
+        "NERUDS-029"
+      ],
+      "acceptance_criteria": [
+        "Manifesto aponta exatamente commit, digest, configuração e evidências da candidata.",
+        "Plano resolve como incorporar alterações editoriais ocorridas na origem após a clonagem, sem sobrescrevê-las silenciosamente.",
+        "Dados institucionais e conteúdo sensível pendentes de decisão impedem sua publicação, com lacunas apresentadas de forma concreta.",
+        "Pacote descreve comandos/ações, escopo, backup, validação pós-publicação e condições de abortar/reverter."
+      ],
+      "focal_tests": [
+        "Conferir que todas as evidências correspondem ao mesmo candidato.",
+        "Ensaiar incorporação de um delta editorial fictício e verificar ausência de perda/duplicação.",
+        "Revisar completude do plano de reversão usando a restauração já demonstrada."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": false,
+      "human_gate_reason": null,
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:release"
+      ],
+      "github": {
+        "number": 31,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/31"
+      }
+    },
+    {
+      "key": "NERUDS-032",
+      "milestone": "M08",
+      "title": "Publicar a versão aprovada e verificar o resultado",
+      "objective": "Executar uma publicação futura do candidato somente após autorização específica de Rafael.",
+      "included_scope": [
+        "Confirmar autorização vinculada a candidato, ambiente, ações de banco/arquivos e alteração de roteamento.",
+        "Executar o procedimento aprovado, preservando alterações de conteúdo e backup imediatamente anterior.",
+        "Verificar páginas, permissões, arquivos e contato conforme limites autorizados; registrar resultado e eventual reversão."
+      ],
+      "excluded_scope": [
+        "Publicar nesta rodada de planejamento.",
+        "Usar autorização genérica para outro HEAD, outro domínio, migrações diferentes ou ações adicionais.",
+        "Auto-merge, deploy automático ou envio de mensagens reais fora do escopo aprovado."
+      ],
+      "probable_paths": [
+        "docs/release/deployment-record.md",
+        "docs/release/candidate-manifest.json",
+        "docs/release/cutover-plan.md",
+        "configuração de deploy/proxy somente nos caminhos explicitamente aprovados"
+      ],
+      "dependencies": [
+        "NERUDS-031"
+      ],
+      "acceptance_criteria": [
+        "Existe autorização explícita para o commit/digest e procedimento exatos; mudanças posteriores invalidam essa autorização.",
+        "Backup e estratégia de preservação do conteúdo recente estão confirmados antes da execução.",
+        "Verificações do domínio final aprovadas ou reversão executada conforme critérios do plano.",
+        "Registro final informa versão, horário, resultados e pendências sem expor credenciais."
+      ],
+      "focal_tests": [
+        "Revalidar integridade do candidato e ausência de mudança não aprovada antes de executar.",
+        "Smoke público e administrativo de baixo impacto limitado à autorização.",
+        "Verificar sinais operacionais e critérios de reversão definidos no pacote."
+      ],
+      "priority": "P0",
+      "relative_size": "M",
+      "human_gate": true,
+      "human_gate_reason": "Esta issue altera produção. Exige autorização explícita posterior, vinculada ao commit/digest, domínio, migrações, backup e procedimento concretos. A criação deste backlog não autoriza a publicação.",
+      "status": "proposed",
+      "scope_basis": "Drupal nativo de neruds.org; origem /var/www/html e docroot web/ confirmados. Conferir nomes de componentes antes da implementação.",
+      "initial_status": "Backlog",
+      "initial_labels": [
+        "agent:backlog",
+        "priority:P0",
+        "area:release",
+        "human-gate"
+      ],
+      "github": {
+        "number": 32,
+        "url": "https://github.com/rafaloct/neruds-portal/issues/32"
+      }
+    }
+  ],
+  "repository": "rafaloct/neruds-portal",
+  "repository_visibility": "private",
+  "source_root_confirmed": "/var/www/html",
+  "source_document_root_confirmed": "web/",
+  "source_confirmation_note": "Informação de origem confirmada pela coordenação durante esta tarefa; o inventário deve conferir como a cópia se relaciona com esse serviço e não repetir a busca pela origem sem motivo."
+}

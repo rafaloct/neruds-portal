@@ -1,0 +1,187 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "views.view.neruds_busca",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "search_api.index.neruds_content_index"
+            ],
+            "module": [
+                "search_api"
+            ]
+        },
+        "id": "neruds_busca",
+        "label": "NERUDS Busca",
+        "module": "views",
+        "description": "Search results page powered by Search API",
+        "tag": "",
+        "base_table": "search_api_index_neruds_content_index",
+        "base_field": "search_api_id",
+        "display": {
+            "default": {
+                "id": "default",
+                "display_title": "Default",
+                "display_plugin": "default",
+                "position": 0,
+                "display_options": {
+                    "title": "Resultados da Busca",
+                    "fields": {
+                        "title": {
+                            "id": "title",
+                            "table": "search_api_index_neruds_content_index",
+                            "field": "title",
+                            "plugin_id": "search_api_field",
+                            "label": "",
+                            "exclude": false,
+                            "type": "string"
+                        }
+                    },
+                    "pager": {
+                        "type": "full",
+                        "options": {
+                            "items_per_page": 15
+                        }
+                    },
+                    "access": {
+                        "type": "none"
+                    },
+                    "cache": {
+                        "type": "search_api_tag"
+                    },
+                    "empty": {
+                        "area_text_custom": {
+                            "id": "area_text_custom",
+                            "table": "views",
+                            "field": "area_text_custom",
+                            "plugin_id": "text_custom",
+                            "content": "[Free text omitted from structural reference]"
+                        }
+                    },
+                    "sorts": {
+                        "search_api_relevance": {
+                            "id": "search_api_relevance",
+                            "table": "search_api_index_neruds_content_index",
+                            "field": "search_api_relevance",
+                            "plugin_id": "search_api",
+                            "order": "DESC"
+                        }
+                    },
+                    "filters": {
+                        "search_api_fulltext": {
+                            "id": "search_api_fulltext",
+                            "table": "search_api_index_neruds_content_index",
+                            "field": "search_api_fulltext",
+                            "plugin_id": "search_api_fulltext",
+                            "operator": "or",
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "search_api_fulltext_op",
+                                "label": "Buscar",
+                                "identifier": "keys",
+                                "required": false
+                            },
+                            "min_length": 2
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "search_api_index_neruds_content_index",
+                            "field": "type",
+                            "plugin_id": "search_api_string",
+                            "operator": "=",
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "type_op",
+                                "label": "Tipo de conteúdo",
+                                "identifier": "type",
+                                "required": false
+                            }
+                        },
+                        "status": {
+                            "id": "status",
+                            "table": "search_api_index_neruds_content_index",
+                            "field": "status",
+                            "plugin_id": "search_api_boolean",
+                            "value": "1",
+                            "exposed": false
+                        }
+                    },
+                    "style": {
+                        "type": "default"
+                    },
+                    "row": {
+                        "type": "search_api",
+                        "options": {
+                            "view_modes": {
+                                "entity:node": {
+                                    "article": "teaser",
+                                    "boletim_periodico": "teaser",
+                                    "evento_cientifico": "teaser",
+                                    "grupo_estudos": "teaser",
+                                    "noticia": "teaser",
+                                    "page": "teaser",
+                                    "perfil_pesquisador": "teaser",
+                                    "projeto_pesquisa_extensao": "teaser",
+                                    "publicacao_cientifica": "teaser"
+                                }
+                            }
+                        }
+                    },
+                    "query": {
+                        "type": "search_api_query"
+                    },
+                    "display_extenders": []
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_content",
+                        "languages:language_interface",
+                        "url",
+                        "url.query_args",
+                        "user.node_grants:view"
+                    ],
+                    "tags": [
+                        "config:search_api.index.neruds_content_index",
+                        "search_api_list:neruds_content_index"
+                    ]
+                }
+            },
+            "page_1": {
+                "id": "page_1",
+                "display_title": "Página de Busca",
+                "display_plugin": "page",
+                "position": 1,
+                "display_options": {
+                    "exposed_form": {
+                        "type": "basic",
+                        "options": {
+                            "submit_button": "Buscar",
+                            "reset_button": true,
+                            "reset_button_label": "Limpar",
+                            "exposed_sorts_label": "Ordenar por"
+                        }
+                    },
+                    "display_extenders": [],
+                    "path": "busca"
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_content",
+                        "languages:language_interface",
+                        "url",
+                        "url.query_args",
+                        "user.node_grants:view"
+                    ],
+                    "tags": [
+                        "config:search_api.index.neruds_content_index",
+                        "search_api_list:neruds_content_index"
+                    ]
+                }
+            }
+        }
+    }
+}

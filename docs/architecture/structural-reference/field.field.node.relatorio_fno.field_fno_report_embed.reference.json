@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_fno_report_embed",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_fno_report_embed",
+                "filter.format.basic_html",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.relatorio_fno.field_fno_report_embed",
+        "field_name": "field_fno_report_embed",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "Código de Incorporação",
+        "description": "Código iframe para incorporar o relatório",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": [
+                "basic_html"
+            ]
+        },
+        "field_type": "text_long"
+    }
+}

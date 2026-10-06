@@ -1,0 +1,92 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.relatorio.teaser",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "field.field.node.relatorio.field_anexos_relatorio",
+                "field.field.node.relatorio.field_areas_tematicas",
+                "field.field.node.relatorio.field_arquivo_relatorio",
+                "field.field.node.relatorio.field_dificuldades_encontradas",
+                "field.field.node.relatorio.field_objetivos_alcancados",
+                "field.field.node.relatorio.field_pdf",
+                "field.field.node.relatorio.field_periodo_relatorio",
+                "field.field.node.relatorio.field_projeto_vinculado",
+                "field.field.node.relatorio.field_proximos_passos",
+                "field.field.node.relatorio.field_resultados_obtidos",
+                "field.field.node.relatorio.field_resumo_executivo",
+                "field.field.node.relatorio.field_tags",
+                "field.field.node.relatorio.field_tipo_relatorio",
+                "node.type.relatorio"
+            ],
+            "module": [
+                "datetime_range",
+                "options",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.relatorio.teaser",
+        "targetEntityType": "node",
+        "bundle": "relatorio",
+        "mode": "teaser",
+        "content": {
+            "field_periodo_relatorio": {
+                "type": "daterange_default",
+                "label": "inline",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "short",
+                    "from_to": "both",
+                    "separator": " a "
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_resumo_executivo": {
+                "type": "text_summary_or_trimmed",
+                "label": "hidden",
+                "settings": {
+                    "trim_length": 600
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_tipo_relatorio": {
+                "type": "list_default",
+                "label": "inline",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 3,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "field_anexos_relatorio": true,
+            "field_areas_tematicas": true,
+            "field_arquivo_relatorio": true,
+            "field_dificuldades_encontradas": true,
+            "field_objetivos_alcancados": true,
+            "field_pdf": true,
+            "field_projeto_vinculado": true,
+            "field_proximos_passos": true,
+            "field_resultados_obtidos": true,
+            "field_tags": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

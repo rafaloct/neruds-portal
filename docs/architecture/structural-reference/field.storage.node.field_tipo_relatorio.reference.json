@@ -1,0 +1,47 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.storage.node.field_tipo_relatorio",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "node",
+                "options"
+            ]
+        },
+        "id": "node.field_tipo_relatorio",
+        "field_name": "field_tipo_relatorio",
+        "entity_type": "node",
+        "type": "list_string",
+        "settings": {
+            "allowed_values": [
+                {
+                    "value": "parcial",
+                    "label": "Relatório Parcial"
+                },
+                {
+                    "value": "final",
+                    "label": "Relatório Final"
+                },
+                {
+                    "value": "atividade",
+                    "label": "Relatório de Atividade"
+                },
+                {
+                    "value": "financeiro",
+                    "label": "Relatório Financeiro"
+                }
+            ],
+            "allowed_values_function": ""
+        },
+        "module": "options",
+        "locked": false,
+        "cardinality": 1,
+        "translatable": true,
+        "indexes": [],
+        "persist_with_no_fields": false,
+        "custom_storage": false
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.evento_cientifico.field_areas_tematicas",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_areas_tematicas",
+                "node.type.evento_cientifico",
+                "taxonomy.vocabulary.area_conhecimento"
+            ]
+        },
+        "id": "node.evento_cientifico.field_areas_tematicas",
+        "field_name": "field_areas_tematicas",
+        "entity_type": "node",
+        "bundle": "evento_cientifico",
+        "label": "Áreas Temáticas",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "area_conhecimento": "area_conhecimento"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

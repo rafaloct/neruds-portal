@@ -1,0 +1,17 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.grupo_estudos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Grupo de Estudos",
+        "type": "grupo_estudos",
+        "description": "Grupos de estudos com membros e cronogramas.",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": true
+    }
+}

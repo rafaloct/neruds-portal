@@ -1,0 +1,137 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.projeto_pesquisa_extensao.card",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.card",
+                "field.field.node.projeto_pesquisa_extensao.comment",
+                "field.field.node.projeto_pesquisa_extensao.field_areas_conhecimento",
+                "field.field.node.projeto_pesquisa_extensao.field_coordenador",
+                "field.field.node.projeto_pesquisa_extensao.field_data_fim",
+                "field.field.node.projeto_pesquisa_extensao.field_data_inicio",
+                "field.field.node.projeto_pesquisa_extensao.field_descricao_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_eixo_tematico_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_eixos_tematicos",
+                "field.field.node.projeto_pesquisa_extensao.field_equipe_pesquisa",
+                "field.field.node.projeto_pesquisa_extensao.field_equipe_pesquisadores",
+                "field.field.node.projeto_pesquisa_extensao.field_financiamento",
+                "field.field.node.projeto_pesquisa_extensao.field_galeria_imagens",
+                "field.field.node.projeto_pesquisa_extensao.field_imagens_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_justificativa",
+                "field.field.node.projeto_pesquisa_extensao.field_linha_pesquisa_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_linhas_pesquisa",
+                "field.field.node.projeto_pesquisa_extensao.field_local_execucao",
+                "field.field.node.projeto_pesquisa_extensao.field_metodologia",
+                "field.field.node.projeto_pesquisa_extensao.field_microrregiao_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_municipio_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_municipios",
+                "field.field.node.projeto_pesquisa_extensao.field_objetivos",
+                "field.field.node.projeto_pesquisa_extensao.field_ods",
+                "field.field.node.projeto_pesquisa_extensao.field_ods_interesse",
+                "field.field.node.projeto_pesquisa_extensao.field_ods_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_palavras_chave",
+                "field.field.node.projeto_pesquisa_extensao.field_participantes",
+                "field.field.node.projeto_pesquisa_extensao.field_resumo",
+                "field.field.node.projeto_pesquisa_extensao.field_setor_produtivo_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_status_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_tipo_projeto",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.card",
+        "targetEntityType": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "mode": "card",
+        "content": {
+            "field_coordenador": {
+                "type": "string",
+                "label": "above",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            },
+            "field_equipe_pesquisa": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 30,
+                "region": "content"
+            },
+            "field_ods_interesse": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 13,
+                "region": "content"
+            },
+            "field_resumo": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 11,
+                "region": "content"
+            },
+            "field_status_projeto": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 12,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "body": true,
+            "comment": true,
+            "field_areas_conhecimento": true,
+            "field_data_fim": true,
+            "field_data_inicio": true,
+            "field_descricao_projeto": true,
+            "field_eixo_tematico_projeto": true,
+            "field_eixos_tematicos": true,
+            "field_equipe_pesquisadores": true,
+            "field_financiamento": true,
+            "field_galeria_imagens": true,
+            "field_imagens_projeto": true,
+            "field_justificativa": true,
+            "field_linha_pesquisa_projeto": true,
+            "field_linhas_pesquisa": true,
+            "field_local_execucao": true,
+            "field_metodologia": true,
+            "field_microrregiao_projeto": true,
+            "field_municipio_projeto": true,
+            "field_municipios": true,
+            "field_objetivos": true,
+            "field_ods": true,
+            "field_ods_projeto": true,
+            "field_palavras_chave": true,
+            "field_participantes": true,
+            "field_setor_produtivo_projeto": true,
+            "field_tipo_projeto": true,
+            "langcode": true,
+            "links": true,
+            "search_api_excerpt": true
+        }
+    }
+}

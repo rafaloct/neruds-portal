@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_orcid",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_orcid",
+                "node.type.perfil_pesquisador"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_orcid",
+        "field_name": "field_orcid",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "ORCID",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

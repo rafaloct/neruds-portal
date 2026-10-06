@@ -1,0 +1,124 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.relatorio_fno.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.relatorio_fno.field_embed_code",
+                "field.field.node.relatorio_fno.field_fno_key_findings",
+                "field.field.node.relatorio_fno.field_fno_methodology",
+                "field.field.node.relatorio_fno.field_fno_report_embed",
+                "field.field.node.relatorio_fno.field_fno_report_url",
+                "field.field.node.relatorio_fno.field_fno_research_period",
+                "field.field.node.relatorio_fno.field_fno_researchers",
+                "field.field.node.relatorio_fno.field_looker_url",
+                "field.field.node.relatorio_fno.field_metodologia",
+                "field.field.node.relatorio_fno.field_periodo_pesquisa",
+                "field.field.node.relatorio_fno.field_pesquisadores",
+                "field.field.node.relatorio_fno.field_principais_descobertas",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "link",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.relatorio_fno.default",
+        "targetEntityType": "node",
+        "bundle": "relatorio_fno",
+        "mode": "default",
+        "content": {
+            "field_fno_key_findings": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 5,
+                "region": "content"
+            },
+            "field_fno_methodology": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 4,
+                "region": "content"
+            },
+            "field_fno_report_embed": {
+                "type": "text_default",
+                "label": "hidden",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_fno_report_url": {
+                "type": "link",
+                "label": "above",
+                "settings": {
+                    "trim_length": 80,
+                    "url_only": false,
+                    "url_plain": false,
+                    "rel": "nofollow",
+                    "target": "_blank"
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_fno_research_period": {
+                "type": "string",
+                "label": "inline",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 3,
+                "region": "content"
+            },
+            "field_fno_researchers": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 6,
+                "region": "content"
+            },
+            "field_looker_url": {
+                "type": "link",
+                "label": "above",
+                "settings": {
+                    "trim_length": 80,
+                    "url_only": false,
+                    "url_plain": false,
+                    "rel": "",
+                    "target": "_blank"
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "field_embed_code": true,
+            "field_metodologia": true,
+            "field_periodo_pesquisa": true,
+            "field_pesquisadores": true,
+            "field_principais_descobertas": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

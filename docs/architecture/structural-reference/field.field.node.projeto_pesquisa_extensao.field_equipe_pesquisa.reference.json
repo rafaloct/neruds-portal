@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_equipe_pesquisa",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_equipe_pesquisa",
+                "node.type.perfil_pesquisador",
+                "node.type.projeto_pesquisa_extensao"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_equipe_pesquisa",
+        "field_name": "field_equipe_pesquisa",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Equipe de Pesquisa",
+        "description": "Pesquisadores participantes do projeto (equipe executora)",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": {
+                    "perfil_pesquisador": "perfil_pesquisador"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

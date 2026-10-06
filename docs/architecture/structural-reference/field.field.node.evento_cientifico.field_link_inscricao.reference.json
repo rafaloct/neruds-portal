@@ -1,0 +1,32 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.evento_cientifico.field_link_inscricao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_link_inscricao",
+                "node.type.evento_cientifico"
+            ],
+            "module": [
+                "link"
+            ]
+        },
+        "id": "node.evento_cientifico.field_link_inscricao",
+        "field_name": "field_link_inscricao",
+        "entity_type": "node",
+        "bundle": "evento_cientifico",
+        "label": "Link de Inscrição",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "title": 0,
+            "link_type": 0
+        },
+        "field_type": "link"
+    }
+}

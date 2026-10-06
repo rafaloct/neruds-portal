@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.territorios",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": [],
+        "name": "Territorios",
+        "vid": "territorios",
+        "description": null,
+        "weight": 0,
+        "new_revision": false
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim_periodico.field_ods_boletim",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_ods_boletim",
+                "node.type.boletim_periodico",
+                "taxonomy.vocabulary.ods_interesse"
+            ],
+            "module": [
+                "ai_translate"
+            ]
+        },
+        "third_party_settings": {
+            "ai_translate": {
+                "entity_reference": {
+                    "translate_references": "default"
+                },
+                "translate_references": "default"
+            }
+        },
+        "id": "node.boletim_periodico.field_ods_boletim",
+        "field_name": "field_ods_boletim",
+        "entity_type": "node",
+        "bundle": "boletim_periodico",
+        "label": "ODS Agenda 2030",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "ods_interesse": "ods_interesse"
+                },
+                "sort": {
+                    "field": "name",
+                    "direction": "asc"
+                },
+                "auto_create": false,
+                "auto_create_bundle": ""
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

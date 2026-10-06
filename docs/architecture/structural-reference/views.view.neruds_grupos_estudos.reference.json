@@ -1,0 +1,238 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "views.view.neruds_grupos_estudos",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "node.type.grupo_estudos"
+            ],
+            "module": [
+                "node",
+                "user"
+            ]
+        },
+        "id": "neruds_grupos_estudos",
+        "label": "Grupos de Estudos NERUDS",
+        "module": "views",
+        "description": "Lista de grupos de estudos do NERUDS.",
+        "tag": "neruds",
+        "base_table": "node_field_data",
+        "base_field": "nid",
+        "display": {
+            "default": {
+                "id": "default",
+                "display_title": "Padrão",
+                "display_plugin": "default",
+                "position": 0,
+                "display_options": {
+                    "title": "Grupos de Estudos",
+                    "pager": {
+                        "type": "full",
+                        "options": {
+                            "pagination_heading_level": "h2",
+                            "items_per_page": 20
+                        }
+                    },
+                    "exposed_form": {
+                        "type": "basic",
+                        "options": []
+                    },
+                    "access": {
+                        "type": "perm",
+                        "options": {
+                            "perm": "access content"
+                        }
+                    },
+                    "cache": {
+                        "type": "tag",
+                        "options": []
+                    },
+                    "empty": {
+                        "area_text_custom": {
+                            "id": "area_text_custom",
+                            "table": "views",
+                            "field": "area_text_custom",
+                            "empty": true,
+                            "content": "[Free text omitted from structural reference]"
+                        }
+                    },
+                    "sorts": {
+                        "created": {
+                            "id": "created",
+                            "table": "node_field_data",
+                            "field": "created",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "date",
+                            "order": "DESC",
+                            "expose": {
+                                "label": ""
+                            },
+                            "exposed": false
+                        }
+                    },
+                    "filters": {
+                        "status": {
+                            "id": "status",
+                            "table": "node_field_data",
+                            "field": "status",
+                            "value": "1",
+                            "group": 1,
+                            "expose": {
+                                "operator": ""
+                            }
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "node_field_data",
+                            "field": "type",
+                            "plugin_id": "bundle",
+                            "operator": "in",
+                            "value": {
+                                "grupo_estudos": "grupo_estudos"
+                            }
+                        }
+                    },
+                    "style": {
+                        "type": "grid",
+                        "options": {
+                            "columns": 2,
+                            "alignment": "horizontal",
+                            "row_class_custom": "",
+                            "row_class_default": true,
+                            "col_class_custom": "",
+                            "col_class_default": true,
+                            "default_col_count": true
+                        }
+                    },
+                    "row": {
+                        "type": "entity:node",
+                        "options": {
+                            "relationship": "none",
+                            "view_mode": "teaser"
+                        }
+                    },
+                    "query": {
+                        "type": "views_query",
+                        "options": []
+                    },
+                    "use_ajax": true,
+                    "display_extenders": []
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            },
+            "block_1": {
+                "id": "block_1",
+                "display_title": "Bloco Homepage",
+                "display_plugin": "block",
+                "position": 2,
+                "display_options": {
+                    "pager": {
+                        "type": "some",
+                        "options": {
+                            "offset": 0,
+                            "pagination_heading_level": "h2",
+                            "items_per_page": 3
+                        }
+                    },
+                    "sorts": {
+                        "created": {
+                            "id": "created",
+                            "table": "node_field_data",
+                            "field": "created",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "date",
+                            "order": "DESC",
+                            "expose": {
+                                "label": ""
+                            },
+                            "exposed": false
+                        }
+                    },
+                    "filters": {
+                        "status": {
+                            "id": "status",
+                            "table": "node_field_data",
+                            "field": "status",
+                            "value": "1",
+                            "group": 1,
+                            "expose": {
+                                "operator": ""
+                            }
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "node_field_data",
+                            "field": "type",
+                            "plugin_id": "bundle",
+                            "operator": "in",
+                            "value": {
+                                "grupo_estudos": "grupo_estudos"
+                            }
+                        }
+                    },
+                    "filter_groups": {
+                        "operator": "AND",
+                        "groups": {
+                            "1": "AND"
+                        }
+                    },
+                    "defaults": {
+                        "pager": false,
+                        "sorts": false,
+                        "filters": false,
+                        "filter_groups": false
+                    },
+                    "display_extenders": [],
+                    "block_description": "Grupos de Estudos",
+                    "block_category": "NERUDS"
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            },
+            "page_1": {
+                "id": "page_1",
+                "display_title": "Página",
+                "display_plugin": "page",
+                "position": 1,
+                "display_options": {
+                    "display_extenders": [],
+                    "path": "grupos-de-estudos"
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            }
+        }
+    }
+}

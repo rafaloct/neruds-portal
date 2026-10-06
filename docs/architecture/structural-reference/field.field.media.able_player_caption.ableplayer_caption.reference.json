@@ -1,0 +1,36 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.media.able_player_caption.ableplayer_caption",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.media.ableplayer_caption",
+                "media.type.able_player_caption"
+            ],
+            "module": [
+                "file"
+            ]
+        },
+        "id": "media.able_player_caption.ableplayer_caption",
+        "field_name": "ableplayer_caption",
+        "entity_type": "media",
+        "bundle": "able_player_caption",
+        "label": "Arquivo",
+        "description": "",
+        "required": true,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:file",
+            "handler_settings": [],
+            "file_directory": "[date:custom:Y]-[date:custom:m]",
+            "file_extensions": "vtt",
+            "max_filesize": "",
+            "description_field": false
+        },
+        "field_type": "file"
+    }
+}

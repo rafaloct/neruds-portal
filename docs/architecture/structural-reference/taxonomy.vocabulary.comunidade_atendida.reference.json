@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.comunidade_atendida",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Comunidade Atendida",
+        "vid": "comunidade_atendida",
+        "description": "Comunidades atendidas pelos projetos",
+        "weight": 0,
+        "new_revision": false
+    }
+}

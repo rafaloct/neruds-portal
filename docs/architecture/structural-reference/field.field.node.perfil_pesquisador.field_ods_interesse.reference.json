@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_ods_interesse",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_ods_interesse",
+                "node.type.perfil_pesquisador",
+                "taxonomy.vocabulary.ods"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_ods_interesse",
+        "field_name": "field_ods_interesse",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "ODS de Interesse",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "ods": "ods"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

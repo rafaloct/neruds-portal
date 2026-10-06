@@ -1,0 +1,79 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.reuniao.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.reuniao.field_data_reuniao",
+                "field.field.node.reuniao.field_participantes_reuniao",
+                "field.field.node.reuniao.field_pauta",
+                "node.type.reuniao"
+            ],
+            "module": [
+                "datetime",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.reuniao.default",
+        "targetEntityType": "node",
+        "bundle": "reuniao",
+        "mode": "default",
+        "content": {
+            "comment": {
+                "type": "comment_default",
+                "settings": {
+                    "view_mode": "full",
+                    "pager_id": 0
+                },
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            },
+            "field_data_reuniao": {
+                "type": "datetime_default",
+                "label": "above",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "long"
+                },
+                "third_party_settings": [],
+                "weight": 0,
+                "region": "content"
+            },
+            "field_participantes_reuniao": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 5,
+                "region": "content"
+            },
+            "field_pauta": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "body": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

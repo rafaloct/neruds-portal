@@ -1,0 +1,282 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "views.view.neruds_eventos",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.card",
+                "node.type.evento_cientifico"
+            ],
+            "module": [
+                "node",
+                "user"
+            ]
+        },
+        "id": "neruds_eventos",
+        "label": "Eventos Científicos NERUDS",
+        "module": "views",
+        "description": "",
+        "tag": "neruds",
+        "base_table": "node_field_data",
+        "base_field": "nid",
+        "display": {
+            "default": {
+                "id": "default",
+                "display_title": "Padrão",
+                "display_plugin": "default",
+                "position": 0,
+                "display_options": {
+                    "title": "Eventos Científicos NERUDS",
+                    "pager": {
+                        "type": "mini",
+                        "options": {
+                            "offset": 0,
+                            "pagination_heading_level": "h2",
+                            "items_per_page": 9,
+                            "total_pages": null,
+                            "id": 0,
+                            "tags": {
+                                "next": "Próxima ›",
+                                "previous": "‹ Anterior"
+                            }
+                        }
+                    },
+                    "exposed_form": {
+                        "type": "basic",
+                        "options": {
+                            "submit_button": "Filtrar",
+                            "reset_button": true,
+                            "reset_button_label": "Limpar",
+                            "exposed_sorts_label": "Ordenar por",
+                            "expose_sort_order": true,
+                            "sort_asc_label": "Crescente",
+                            "sort_desc_label": "Decrescente"
+                        }
+                    },
+                    "access": {
+                        "type": "perm",
+                        "options": {
+                            "perm": "access content"
+                        }
+                    },
+                    "cache": {
+                        "type": "tag",
+                        "options": []
+                    },
+                    "empty": {
+                        "area_text_custom": {
+                            "id": "area_text_custom",
+                            "table": "views",
+                            "field": "area_text_custom",
+                            "empty": true,
+                            "content": "[Free text omitted from structural reference]"
+                        }
+                    },
+                    "sorts": {
+                        "created": {
+                            "id": "created",
+                            "table": "node_field_data",
+                            "field": "created",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "date",
+                            "order": "DESC",
+                            "expose": {
+                                "label": ""
+                            },
+                            "exposed": false
+                        }
+                    },
+                    "filters": {
+                        "status": {
+                            "id": "status",
+                            "table": "node_field_data",
+                            "field": "status",
+                            "value": "1",
+                            "expose": {
+                                "operator": ""
+                            }
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "node_field_data",
+                            "field": "type",
+                            "plugin_id": "bundle",
+                            "operator": "in",
+                            "value": {
+                                "evento_cientifico": "evento_cientifico"
+                            }
+                        },
+                        "title": {
+                            "id": "title",
+                            "table": "node_field_data",
+                            "field": "title",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "string",
+                            "operator": "contains",
+                            "value": "",
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "",
+                                "label": "Buscar",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "title_op",
+                                "identifier": "title",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "placeholder": "Digite para buscar..."
+                            },
+                            "is_grouped": false
+                        }
+                    },
+                    "style": {
+                        "type": "grid",
+                        "options": {
+                            "columns": 3,
+                            "alignment": "horizontal",
+                            "row_class_custom": "",
+                            "row_class_default": true,
+                            "col_class_custom": "",
+                            "col_class_default": true,
+                            "default_col_count": true
+                        }
+                    },
+                    "row": {
+                        "type": "entity:node",
+                        "options": {
+                            "relationship": "none",
+                            "view_mode": "card"
+                        }
+                    },
+                    "query": {
+                        "type": "views_query",
+                        "options": []
+                    },
+                    "use_ajax": true,
+                    "display_extenders": []
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            },
+            "block_1": {
+                "id": "block_1",
+                "display_title": "Bloco Homepage",
+                "display_plugin": "block",
+                "position": 2,
+                "display_options": {
+                    "pager": {
+                        "type": "some",
+                        "options": {
+                            "offset": 0,
+                            "pagination_heading_level": "h2",
+                            "items_per_page": 3
+                        }
+                    },
+                    "sorts": {
+                        "created": {
+                            "id": "created",
+                            "table": "node_field_data",
+                            "field": "created",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "date",
+                            "order": "DESC",
+                            "expose": {
+                                "label": ""
+                            },
+                            "exposed": false
+                        }
+                    },
+                    "filters": {
+                        "status": {
+                            "id": "status",
+                            "table": "node_field_data",
+                            "field": "status",
+                            "value": "1",
+                            "expose": {
+                                "operator": ""
+                            }
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "node_field_data",
+                            "field": "type",
+                            "plugin_id": "bundle",
+                            "operator": "in",
+                            "value": {
+                                "evento_cientifico": "evento_cientifico"
+                            }
+                        }
+                    },
+                    "filter_groups": {
+                        "operator": "AND",
+                        "groups": {
+                            "1": "AND"
+                        }
+                    },
+                    "defaults": {
+                        "pager": false,
+                        "sorts": false,
+                        "filters": false,
+                        "filter_groups": false
+                    },
+                    "display_extenders": [],
+                    "block_description": "Próximos Eventos",
+                    "block_category": "NERUDS"
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            },
+            "page_1": {
+                "id": "page_1",
+                "display_title": "Página",
+                "display_plugin": "page",
+                "position": 1,
+                "display_options": {
+                    "display_extenders": [],
+                    "path": "eventos"
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            }
+        }
+    }
+}

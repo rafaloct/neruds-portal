@@ -1,0 +1,67 @@
+name: neruds-portal-dev
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: infra/dev/Dockerfile
+    environment:
+      NERUDS_ENVIRONMENT: development
+      NERUDS_DB_HOST: db
+      NERUDS_DB_PORT: "3306"
+      NERUDS_DB_NAME: "${NERUDS_DB_NAME:?Set NERUDS_DB_NAME in the local .env}"
+      NERUDS_DB_USER: "${NERUDS_DB_USER:?Set NERUDS_DB_USER in the local .env}"
+      NERUDS_DB_PASSWORD: "${NERUDS_DB_PASSWORD:?Generate NERUDS_DB_PASSWORD locally}"
+      NERUDS_HASH_SALT: "${NERUDS_HASH_SALT:?Generate NERUDS_HASH_SALT locally}"
+    ports:
+      - "127.0.0.1:${NERUDS_HTTP_PORT:-18086}:80"
+    volumes:
+      - public_files:/var/www/html/web/sites/default/files
+      - private_files:/var/www/private
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    networks:
+      - isolated
+    depends_on:
+      db:
+        condition: service_healthy
+    cpus: "1.0"
+    mem_limit: 768m
+    pids_limit: 128
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+
+  db:
+    image: mariadb:11.8.3
+    environment:
+      MARIADB_DATABASE: "${NERUDS_DB_NAME:?Set NERUDS_DB_NAME in the local .env}"
+      MARIADB_USER: "${NERUDS_DB_USER:?Set NERUDS_DB_USER in the local .env}"
+      MARIADB_PASSWORD: "${NERUDS_DB_PASSWORD:?Generate NERUDS_DB_PASSWORD locally}"
+      MARIADB_ROOT_PASSWORD: "${NERUDS_DB_ROOT_PASSWORD:?Generate NERUDS_DB_ROOT_PASSWORD locally}"
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - isolated
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+    cpus: "1.0"
+    mem_limit: 768m
+    pids_limit: 256
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+
+networks:
+  isolated:
+    driver: bridge
+    internal: true
+
+volumes:
+  database:
+  public_files:
+  private_files:

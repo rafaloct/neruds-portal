@@ -1,0 +1,47 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_imagens_projeto",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_imagens_projeto",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "image"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_imagens_projeto",
+        "field_name": "field_imagens_projeto",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Galeria de Imagens",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:file",
+            "handler_settings": [],
+            "file_directory": "[date:custom:Y]-[date:custom:m]",
+            "file_extensions": "png gif jpg jpeg webp",
+            "max_filesize": "",
+            "max_resolution": "",
+            "min_resolution": "",
+            "alt_field": true,
+            "alt_field_required": true,
+            "title_field": false,
+            "title_field_required": false,
+            "default_image": {
+                "alt": "",
+                "title": "",
+                "width": null,
+                "height": null
+            }
+        },
+        "field_type": "image"
+    }
+}

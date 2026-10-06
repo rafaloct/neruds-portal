@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.biomas",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Biomas",
+        "vid": "biomas",
+        "description": "Biomas brasileiros",
+        "weight": 0,
+        "new_revision": false
+    }
+}

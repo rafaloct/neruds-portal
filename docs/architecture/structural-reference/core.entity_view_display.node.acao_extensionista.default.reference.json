@@ -1,0 +1,110 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.acao_extensionista.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.acao_extensionista.field_apoiadores",
+                "field.field.node.acao_extensionista.field_impactos_resultados",
+                "field.field.node.acao_extensionista.field_local_acao",
+                "field.field.node.acao_extensionista.field_municipio",
+                "field.field.node.acao_extensionista.field_numero_participantes",
+                "field.field.node.acao_extensionista.field_pdf",
+                "field.field.node.acao_extensionista.field_tipo_acao",
+                "node.type.acao_extensionista"
+            ],
+            "module": [
+                "file",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.acao_extensionista.default",
+        "targetEntityType": "node",
+        "bundle": "acao_extensionista",
+        "mode": "default",
+        "content": {
+            "field_apoiadores": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 106,
+                "region": "content"
+            },
+            "field_impactos_resultados": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 103,
+                "region": "content"
+            },
+            "field_local_acao": {
+                "type": "string",
+                "label": "above",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 101,
+                "region": "content"
+            },
+            "field_municipio": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 105,
+                "region": "content"
+            },
+            "field_numero_participantes": {
+                "type": "number_integer",
+                "label": "above",
+                "settings": {
+                    "thousand_separator": "",
+                    "prefix_suffix": true
+                },
+                "third_party_settings": [],
+                "weight": 102,
+                "region": "content"
+            },
+            "field_pdf": {
+                "type": "file_default",
+                "label": "above",
+                "settings": {
+                    "use_description_as_link_text": true
+                },
+                "third_party_settings": [],
+                "weight": 107,
+                "region": "content"
+            },
+            "field_tipo_acao": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 104,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "langcode": true
+        }
+    }
+}

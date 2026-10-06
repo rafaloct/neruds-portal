@@ -1,0 +1,104 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.boletim.teaser",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "field.field.node.boletim.field_ano",
+                "field.field.node.boletim.field_autores",
+                "field.field.node.boletim.field_conteudo_html",
+                "field.field.node.boletim.field_conteudo_pdf",
+                "field.field.node.boletim.field_eixos_tematicos",
+                "field.field.node.boletim.field_imagem_capa",
+                "field.field.node.boletim.field_mes",
+                "field.field.node.boletim.field_municipios",
+                "field.field.node.boletim.field_ods",
+                "field.field.node.boletim.field_periodo_publicacao",
+                "field.field.node.boletim.field_projeto_associado",
+                "field.field.node.boletim.field_resumo",
+                "field.field.node.boletim.field_setores_produtivos",
+                "image.style.medium",
+                "node.type.boletim"
+            ],
+            "module": [
+                "datetime_range",
+                "svg_image",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.boletim.teaser",
+        "targetEntityType": "node",
+        "bundle": "boletim",
+        "mode": "teaser",
+        "content": {
+            "field_imagem_capa": {
+                "type": "image",
+                "label": "hidden",
+                "settings": {
+                    "image_link": "",
+                    "image_style": "medium",
+                    "image_loading": {
+                        "attribute": "lazy"
+                    },
+                    "svg_attributes": {
+                        "width": null,
+                        "height": null
+                    },
+                    "svg_render_as_image": true
+                },
+                "third_party_settings": [],
+                "weight": 0,
+                "region": "content"
+            },
+            "field_periodo_publicacao": {
+                "type": "daterange_default",
+                "label": "inline",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "short",
+                    "from_to": "both",
+                    "separator": " a "
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_resumo": {
+                "type": "text_summary_or_trimmed",
+                "label": "hidden",
+                "settings": {
+                    "trim_length": 600
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "field_ano": true,
+            "field_autores": true,
+            "field_conteudo_html": true,
+            "field_conteudo_pdf": true,
+            "field_eixos_tematicos": true,
+            "field_mes": true,
+            "field_municipios": true,
+            "field_ods": true,
+            "field_projeto_associado": true,
+            "field_setores_produtivos": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

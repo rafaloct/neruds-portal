@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.geografia_estados",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Geografia - Estados",
+        "vid": "geografia_estados",
+        "description": "Estados brasileiros para localização geográfica.",
+        "weight": 0,
+        "new_revision": false
+    }
+}

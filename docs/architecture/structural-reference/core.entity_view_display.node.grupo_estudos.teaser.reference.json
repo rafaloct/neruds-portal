@@ -1,0 +1,77 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.grupo_estudos.teaser",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "field.field.node.grupo_estudos.field_cronograma",
+                "field.field.node.grupo_estudos.field_doi",
+                "field.field.node.grupo_estudos.field_drive_folder_url",
+                "field.field.node.grupo_estudos.field_google_calendar_id",
+                "field.field.node.grupo_estudos.field_lider",
+                "field.field.node.grupo_estudos.field_linha_pesquisa",
+                "field.field.node.grupo_estudos.field_membros",
+                "field.field.node.grupo_estudos.field_ods",
+                "field.field.node.grupo_estudos.field_orcid",
+                "field.field.node.grupo_estudos.field_territorio",
+                "node.type.grupo_estudos"
+            ],
+            "module": [
+                "datetime_range",
+                "user"
+            ]
+        },
+        "id": "node.grupo_estudos.teaser",
+        "targetEntityType": "node",
+        "bundle": "grupo_estudos",
+        "mode": "teaser",
+        "content": {
+            "field_cronograma": {
+                "type": "daterange_default",
+                "label": "inline",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "short",
+                    "from_to": "both",
+                    "separator": " a "
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_lider": {
+                "type": "entity_reference_label",
+                "label": "inline",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "field_doi": true,
+            "field_drive_folder_url": true,
+            "field_google_calendar_id": true,
+            "field_linha_pesquisa": true,
+            "field_membros": true,
+            "field_ods": true,
+            "field_orcid": true,
+            "field_territorio": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

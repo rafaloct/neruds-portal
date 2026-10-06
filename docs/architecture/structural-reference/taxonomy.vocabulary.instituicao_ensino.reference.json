@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.instituicao_ensino",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Instituição de Ensino",
+        "vid": "instituicao_ensino",
+        "description": "Instituições de ensino superior",
+        "weight": 0,
+        "new_revision": false
+    }
+}

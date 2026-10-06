@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.storage.easy_email.field_related_user",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "easy_email",
+                "user"
+            ]
+        },
+        "id": "easy_email.field_related_user",
+        "field_name": "field_related_user",
+        "entity_type": "easy_email",
+        "type": "entity_reference",
+        "settings": {
+            "target_type": "user"
+        },
+        "module": "core",
+        "locked": false,
+        "cardinality": 1,
+        "translatable": true,
+        "indexes": [],
+        "persist_with_no_fields": false,
+        "custom_storage": false
+    }
+}

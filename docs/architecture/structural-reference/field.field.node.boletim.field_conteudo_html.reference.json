@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim.field_conteudo_html",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_conteudo_html",
+                "node.type.boletim"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.boletim.field_conteudo_html",
+        "field_name": "field_conteudo_html",
+        "entity_type": "node",
+        "bundle": "boletim",
+        "label": "Conteúdo (HTML)",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": []
+        },
+        "field_type": "text_long"
+    }
+}

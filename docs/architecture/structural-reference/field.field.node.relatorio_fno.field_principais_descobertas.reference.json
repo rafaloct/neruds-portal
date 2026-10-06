@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_principais_descobertas",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_principais_descobertas",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.relatorio_fno.field_principais_descobertas",
+        "field_name": "field_principais_descobertas",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "Principais Descobertas",
+        "description": "Resumo das principais descobertas do relatório",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": []
+        },
+        "field_type": "text_long"
+    }
+}

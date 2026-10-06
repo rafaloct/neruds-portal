@@ -1,0 +1,33 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "user.role.revisor",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "ai_image_alt_text",
+                "content_moderation",
+                "editoria11y",
+                "neruds_extensionista_guard",
+                "node",
+                "system"
+            ]
+        },
+        "id": "revisor",
+        "label": "Revisor",
+        "weight": 5,
+        "is_admin": false,
+        "permissions": [
+            "access content",
+            "access content overview",
+            "access user profiles",
+            "generate ai alt tags",
+            "mark as hidden in editoria11y",
+            "review neruds news",
+            "view any unpublished content",
+            "view editoria11y checker"
+        ]
+    }
+}

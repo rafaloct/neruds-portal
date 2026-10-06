@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao.field_linha_pesquisa",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_linha_pesquisa",
+                "node.type.publicacao",
+                "taxonomy.vocabulary.linhas_pesquisa"
+            ]
+        },
+        "id": "node.publicacao.field_linha_pesquisa",
+        "field_name": "field_linha_pesquisa",
+        "entity_type": "node",
+        "bundle": "publicacao",
+        "label": "Linha de Pesquisa",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "linhas_pesquisa": "linhas_pesquisa"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

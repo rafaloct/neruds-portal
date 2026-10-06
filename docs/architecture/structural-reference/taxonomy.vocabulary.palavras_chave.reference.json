@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.palavras_chave",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Palavras-chave",
+        "vid": "palavras_chave",
+        "description": "Palavras-chave para indexação e busca de conteúdo",
+        "weight": 0,
+        "new_revision": false
+    }
+}

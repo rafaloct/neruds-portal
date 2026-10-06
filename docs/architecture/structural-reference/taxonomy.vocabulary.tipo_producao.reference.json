@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.tipo_producao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Tipo de Produção Científica",
+        "vid": "tipo_producao",
+        "description": "Classifica o tipo de produção do núcleo de pesquisa.",
+        "weight": 0,
+        "new_revision": false
+    }
+}

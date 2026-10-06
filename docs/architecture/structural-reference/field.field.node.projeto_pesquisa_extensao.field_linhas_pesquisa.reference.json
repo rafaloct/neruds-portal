@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_linhas_pesquisa",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_linhas_pesquisa",
+                "node.type.projeto_pesquisa_extensao",
+                "taxonomy.vocabulary.linhas_pesquisa"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_linhas_pesquisa",
+        "field_name": "field_linhas_pesquisa",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Linhas de Pesquisa",
+        "description": "Linhas de pesquisa relacionadas ao projeto",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "linhas_pesquisa": "linhas_pesquisa"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

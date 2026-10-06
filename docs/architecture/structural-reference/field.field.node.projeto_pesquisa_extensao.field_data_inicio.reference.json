@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_data_inicio",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_data_inicio",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "datetime"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_data_inicio",
+        "field_name": "field_data_inicio",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Data de Início",
+        "description": "",
+        "required": null,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "datetime"
+    }
+}

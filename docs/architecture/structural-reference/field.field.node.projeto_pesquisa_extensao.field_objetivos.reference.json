@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_objetivos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_objetivos",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_objetivos",
+        "field_name": "field_objetivos",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Objetivos",
+        "description": "Objetivo geral e objetivos específicos do projeto",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": []
+        },
+        "field_type": "text_long"
+    }
+}

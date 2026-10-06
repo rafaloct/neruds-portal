@@ -1,0 +1,38 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.acao_extensionista.field_impactos_resultados",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_impactos_resultados",
+                "filter.format.basic_html",
+                "filter.format.content_format",
+                "filter.format.plain_text",
+                "node.type.acao_extensionista"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.acao_extensionista.field_impactos_resultados",
+        "field_name": "field_impactos_resultados",
+        "entity_type": "node",
+        "bundle": "acao_extensionista",
+        "label": "Impactos e Resultados",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": [
+                "content_format",
+                "basic_html",
+                "plain_text"
+            ]
+        },
+        "field_type": "text_long"
+    }
+}

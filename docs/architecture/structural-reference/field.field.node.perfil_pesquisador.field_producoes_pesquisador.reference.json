@@ -1,0 +1,38 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.perfil_pesquisador.field_producoes_pesquisador",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_producoes_pesquisador",
+                "node.type.perfil_pesquisador",
+                "node.type.publicacao_cientifica"
+            ]
+        },
+        "id": "node.perfil_pesquisador.field_producoes_pesquisador",
+        "field_name": "field_producoes_pesquisador",
+        "entity_type": "node",
+        "bundle": "perfil_pesquisador",
+        "label": "Produções Científicas",
+        "description": "Lista de produções científicas associadas ao pesquisador",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": [
+                    "publicacao_cientifica"
+                ],
+                "sort": {
+                    "field": "title",
+                    "direction": "ASC"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

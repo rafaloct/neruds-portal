@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_fno_methodology",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_fno_methodology",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.relatorio_fno.field_fno_methodology",
+        "field_name": "field_fno_methodology",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "Metodologia",
+        "description": "Descrição da metodologia utilizada na pesquisa",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": []
+        },
+        "field_type": "text_long"
+    }
+}

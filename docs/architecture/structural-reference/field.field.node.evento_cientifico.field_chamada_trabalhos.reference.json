@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.evento_cientifico.field_chamada_trabalhos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_chamada_trabalhos",
+                "node.type.evento_cientifico"
+            ]
+        },
+        "id": "node.evento_cientifico.field_chamada_trabalhos",
+        "field_name": "field_chamada_trabalhos",
+        "entity_type": "node",
+        "bundle": "evento_cientifico",
+        "label": "Chamada de Trabalhos Aberta?",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "on_label": "On",
+            "off_label": "Off"
+        },
+        "field_type": "boolean"
+    }
+}

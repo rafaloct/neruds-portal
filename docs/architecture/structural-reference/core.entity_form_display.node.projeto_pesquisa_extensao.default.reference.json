@@ -1,0 +1,343 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.node.projeto_pesquisa_extensao.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.projeto_pesquisa_extensao.comment",
+                "field.field.node.projeto_pesquisa_extensao.field_areas_conhecimento",
+                "field.field.node.projeto_pesquisa_extensao.field_coordenador",
+                "field.field.node.projeto_pesquisa_extensao.field_data_fim",
+                "field.field.node.projeto_pesquisa_extensao.field_data_inicio",
+                "field.field.node.projeto_pesquisa_extensao.field_descricao_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_eixo_tematico_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_eixos_tematicos",
+                "field.field.node.projeto_pesquisa_extensao.field_equipe_pesquisa",
+                "field.field.node.projeto_pesquisa_extensao.field_equipe_pesquisadores",
+                "field.field.node.projeto_pesquisa_extensao.field_financiamento",
+                "field.field.node.projeto_pesquisa_extensao.field_galeria_imagens",
+                "field.field.node.projeto_pesquisa_extensao.field_imagens_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_justificativa",
+                "field.field.node.projeto_pesquisa_extensao.field_linha_pesquisa_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_linhas_pesquisa",
+                "field.field.node.projeto_pesquisa_extensao.field_local_execucao",
+                "field.field.node.projeto_pesquisa_extensao.field_metodologia",
+                "field.field.node.projeto_pesquisa_extensao.field_microrregiao_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_municipio_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_municipios",
+                "field.field.node.projeto_pesquisa_extensao.field_objetivos",
+                "field.field.node.projeto_pesquisa_extensao.field_ods",
+                "field.field.node.projeto_pesquisa_extensao.field_ods_interesse",
+                "field.field.node.projeto_pesquisa_extensao.field_ods_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_palavras_chave",
+                "field.field.node.projeto_pesquisa_extensao.field_participantes",
+                "field.field.node.projeto_pesquisa_extensao.field_resumo",
+                "field.field.node.projeto_pesquisa_extensao.field_setor_produtivo_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_status_projeto",
+                "field.field.node.projeto_pesquisa_extensao.field_tipo_projeto",
+                "image.style.medium",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "datetime",
+                "field_group",
+                "svg_image",
+                "tagify",
+                "text"
+            ]
+        },
+        "third_party_settings": {
+            "field_group": {
+                "group_tabs": {
+                    "children": [],
+                    "label": "Tabs",
+                    "parent_name": "",
+                    "weight": 0,
+                    "format_type": "tabs",
+                    "format_settings": {
+                        "direction": "horizontal"
+                    }
+                },
+                "group_visao_geral": {
+                    "children": [
+                        "title",
+                        "field_resumo",
+                        "field_justificativa",
+                        "field_objetivos"
+                    ],
+                    "label": "Visão Geral",
+                    "parent_name": "group_tabs",
+                    "weight": 1,
+                    "format_type": "tab",
+                    "format_settings": {
+                        "formatter": "closed"
+                    }
+                },
+                "group_detalhes": {
+                    "children": [
+                        "field_status_projeto",
+                        "field_data_inicio",
+                        "field_data_fim",
+                        "field_coordenador",
+                        "field_equipe_pesquisa",
+                        "field_financiamento"
+                    ],
+                    "label": "Detalhes & Prazos",
+                    "parent_name": "group_tabs",
+                    "weight": 2,
+                    "format_type": "tab",
+                    "format_settings": {
+                        "formatter": "closed"
+                    }
+                },
+                "group_classificacao": {
+                    "children": [
+                        "field_tipo_projeto",
+                        "field_linhas_pesquisa",
+                        "field_eixos_tematicos",
+                        "field_ods_interesse"
+                    ],
+                    "label": "Classificação",
+                    "parent_name": "group_tabs",
+                    "weight": 3,
+                    "format_type": "tab",
+                    "format_settings": {
+                        "formatter": "closed"
+                    }
+                },
+                "group_midia": {
+                    "children": [
+                        "field_galeria_imagens",
+                        "field_imagem_destaque"
+                    ],
+                    "label": "Mídia & Galeria",
+                    "parent_name": "group_tabs",
+                    "weight": 4,
+                    "format_type": "tab",
+                    "format_settings": {
+                        "formatter": "closed"
+                    }
+                }
+            }
+        },
+        "id": "node.projeto_pesquisa_extensao.default",
+        "targetEntityType": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "mode": "default",
+        "content": {
+            "field_coordenador": {
+                "type": "string_textfield",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_data_fim": {
+                "type": "datetime_default",
+                "weight": 6,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_data_inicio": {
+                "type": "datetime_default",
+                "weight": 5,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_eixos_tematicos": {
+                "type": "options_select",
+                "weight": 17,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_equipe_pesquisa": {
+                "type": "entity_reference_autocomplete",
+                "weight": 11,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": "Buscar pesquisador..."
+                },
+                "third_party_settings": []
+            },
+            "field_financiamento": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 14,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "field_galeria_imagens": {
+                "type": "image_image",
+                "weight": 13,
+                "region": "content",
+                "settings": {
+                    "progress_indicator": "bar",
+                    "preview_image_style": "medium"
+                },
+                "third_party_settings": []
+            },
+            "field_justificativa": {
+                "type": "text_textarea",
+                "weight": 10,
+                "region": "content",
+                "settings": {
+                    "rows": 10,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_linhas_pesquisa": {
+                "type": "options_select",
+                "weight": 18,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_metodologia": {
+                "type": "text_textarea",
+                "weight": 9,
+                "region": "content",
+                "settings": {
+                    "rows": 10,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_objetivos": {
+                "type": "text_textarea",
+                "weight": 8,
+                "region": "content",
+                "settings": {
+                    "rows": 10,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_ods_interesse": {
+                "type": "options_select",
+                "weight": 16,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_participantes": {
+                "type": "string_textfield",
+                "weight": 12,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_resumo": {
+                "type": "text_textarea",
+                "weight": 7,
+                "region": "content",
+                "settings": {
+                    "rows": 10,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_status_projeto": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 3,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "field_tipo_projeto": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 4,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "status": {
+                "type": "boolean_checkbox",
+                "weight": 99,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "title": {
+                "type": "string_textfield",
+                "weight": 1,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            }
+        },
+        "hidden": {
+            "comment": true,
+            "created": true,
+            "field_areas_conhecimento": true,
+            "field_descricao_projeto": true,
+            "field_eixo_tematico_projeto": true,
+            "field_equipe_pesquisadores": true,
+            "field_imagens_projeto": true,
+            "field_linha_pesquisa_projeto": true,
+            "field_local_execucao": true,
+            "field_microrregiao_projeto": true,
+            "field_municipio_projeto": true,
+            "field_municipios": true,
+            "field_ods": true,
+            "field_ods_projeto": true,
+            "field_palavras_chave": true,
+            "field_setor_produtivo_projeto": true,
+            "langcode": true,
+            "moderation_state": true,
+            "path": true,
+            "promote": true,
+            "publish_on": true,
+            "publish_state": true,
+            "sticky": true,
+            "uid": true,
+            "unpublish_on": true,
+            "unpublish_state": true,
+            "url_redirects": true
+        }
+    }
+}

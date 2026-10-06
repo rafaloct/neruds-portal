@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim.field_periodo_publicacao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_periodo_publicacao",
+                "node.type.boletim"
+            ],
+            "module": [
+                "datetime"
+            ]
+        },
+        "id": "node.boletim.field_periodo_publicacao",
+        "field_name": "field_periodo_publicacao",
+        "entity_type": "node",
+        "bundle": "boletim",
+        "label": "Período de Publicação",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "datetime"
+    }
+}

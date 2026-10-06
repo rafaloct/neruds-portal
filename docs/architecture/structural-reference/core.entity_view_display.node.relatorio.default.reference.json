@@ -1,0 +1,163 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.relatorio.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.relatorio.field_anexos_relatorio",
+                "field.field.node.relatorio.field_areas_tematicas",
+                "field.field.node.relatorio.field_arquivo_relatorio",
+                "field.field.node.relatorio.field_dificuldades_encontradas",
+                "field.field.node.relatorio.field_objetivos_alcancados",
+                "field.field.node.relatorio.field_pdf",
+                "field.field.node.relatorio.field_periodo_relatorio",
+                "field.field.node.relatorio.field_projeto_vinculado",
+                "field.field.node.relatorio.field_proximos_passos",
+                "field.field.node.relatorio.field_resultados_obtidos",
+                "field.field.node.relatorio.field_resumo_executivo",
+                "field.field.node.relatorio.field_tags",
+                "field.field.node.relatorio.field_tipo_relatorio",
+                "node.type.relatorio"
+            ],
+            "module": [
+                "datetime_range",
+                "file",
+                "options",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.relatorio.default",
+        "targetEntityType": "node",
+        "bundle": "relatorio",
+        "mode": "default",
+        "content": {
+            "field_areas_tematicas": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 9,
+                "region": "content"
+            },
+            "field_arquivo_relatorio": {
+                "type": "file_default",
+                "label": "above",
+                "settings": {
+                    "use_description_as_link_text": true
+                },
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            },
+            "field_dificuldades_encontradas": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 6,
+                "region": "content"
+            },
+            "field_objetivos_alcancados": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 4,
+                "region": "content"
+            },
+            "field_pdf": {
+                "type": "file_default",
+                "label": "above",
+                "settings": {
+                    "use_description_as_link_text": true
+                },
+                "third_party_settings": [],
+                "weight": 11,
+                "region": "content"
+            },
+            "field_periodo_relatorio": {
+                "type": "daterange_default",
+                "label": "above",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "medium",
+                    "from_to": "both",
+                    "separator": " a "
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_projeto_vinculado": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 8,
+                "region": "content"
+            },
+            "field_proximos_passos": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 7,
+                "region": "content"
+            },
+            "field_resultados_obtidos": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 5,
+                "region": "content"
+            },
+            "field_resumo_executivo": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_tags": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 12,
+                "region": "content"
+            },
+            "field_tipo_relatorio": {
+                "type": "list_default",
+                "label": "inline",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 3,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 20,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "field_anexos_relatorio": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

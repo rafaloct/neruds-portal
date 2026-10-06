@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao_cientifica.field_tipo_producao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_tipo_producao",
+                "node.type.publicacao_cientifica",
+                "taxonomy.vocabulary.tipo_producao"
+            ]
+        },
+        "id": "node.publicacao_cientifica.field_tipo_producao",
+        "field_name": "field_tipo_producao",
+        "entity_type": "node",
+        "bundle": "publicacao_cientifica",
+        "label": "Tipo de Produção",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "tipo_producao": "tipo_producao"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

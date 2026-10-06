@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio.field_proximos_passos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_proximos_passos",
+                "node.type.relatorio"
+            ],
+            "module": [
+                "text"
+            ]
+        },
+        "id": "node.relatorio.field_proximos_passos",
+        "field_name": "field_proximos_passos",
+        "entity_type": "node",
+        "bundle": "relatorio",
+        "label": "Próximos Passos",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "allowed_formats": []
+        },
+        "field_type": "text_long"
+    }
+}

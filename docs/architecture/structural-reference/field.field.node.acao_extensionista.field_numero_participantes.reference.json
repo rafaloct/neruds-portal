@@ -1,0 +1,31 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.acao_extensionista.field_numero_participantes",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_numero_participantes",
+                "node.type.acao_extensionista"
+            ]
+        },
+        "id": "node.acao_extensionista.field_numero_participantes",
+        "field_name": "field_numero_participantes",
+        "entity_type": "node",
+        "bundle": "acao_extensionista",
+        "label": "Número de Participantes",
+        "description": "",
+        "required": null,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "min": null,
+            "max": null,
+            "prefix": "",
+            "suffix": ""
+        },
+        "field_type": "integer"
+    }
+}

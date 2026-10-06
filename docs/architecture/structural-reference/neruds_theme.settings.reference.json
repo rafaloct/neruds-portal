@@ -1,0 +1,23 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "neruds_theme.settings",
+    "data": {
+        "features": {
+            "node_user_picture": true,
+            "comment_user_picture": true,
+            "comment_user_verification": 1,
+            "favicon": 1
+        },
+        "logo": {
+            "use_default": 0,
+            "path": "public://WhatsApp Image 2025-10-17 at 09.23.54.jpeg"
+        },
+        "favicon": {
+            "use_default": 1
+        },
+        "mobile_menu_all_widths": 0,
+        "site_branding_bg_color": "default",
+        "base_primary_color": "#e4901b"
+    }
+}

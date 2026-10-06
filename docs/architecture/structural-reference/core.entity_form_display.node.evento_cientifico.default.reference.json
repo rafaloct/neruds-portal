@@ -1,0 +1,180 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.node.evento_cientifico.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.evento_cientifico.comment",
+                "field.field.node.evento_cientifico.field_areas_tematicas",
+                "field.field.node.evento_cientifico.field_chamada_trabalhos",
+                "field.field.node.evento_cientifico.field_data_evento",
+                "field.field.node.evento_cientifico.field_descricao_evento",
+                "field.field.node.evento_cientifico.field_eixos_tematicos",
+                "field.field.node.evento_cientifico.field_imagem_destaque",
+                "field.field.node.evento_cientifico.field_link_inscricao",
+                "field.field.node.evento_cientifico.field_link_submissao",
+                "field.field.node.evento_cientifico.field_local_evento",
+                "field.field.node.evento_cientifico.field_ods",
+                "field.field.node.evento_cientifico.field_organizadores",
+                "field.field.node.evento_cientifico.field_pdf",
+                "field.field.node.evento_cientifico.field_tags",
+                "image.style.thumbnail",
+                "node.type.evento_cientifico"
+            ],
+            "module": [
+                "datetime",
+                "file",
+                "link",
+                "svg_image",
+                "tagify",
+                "text"
+            ]
+        },
+        "id": "node.evento_cientifico.default",
+        "targetEntityType": "node",
+        "bundle": "evento_cientifico",
+        "mode": "default",
+        "content": {
+            "field_areas_tematicas": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 11,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "field_data_evento": {
+                "type": "datetime_default",
+                "weight": 3,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_descricao_evento": {
+                "type": "text_textarea",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_eixos_tematicos": {
+                "type": "entity_reference_autocomplete_tags",
+                "weight": 10,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": "Digite para buscar Eixos Temáticos..."
+                },
+                "third_party_settings": []
+            },
+            "field_imagem_destaque": {
+                "type": "image_image",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "progress_indicator": "throbber",
+                    "preview_image_style": "thumbnail"
+                },
+                "third_party_settings": []
+            },
+            "field_link_inscricao": {
+                "type": "link_default",
+                "weight": 6,
+                "region": "content",
+                "settings": {
+                    "placeholder_url": "",
+                    "placeholder_title": ""
+                },
+                "third_party_settings": []
+            },
+            "field_local_evento": {
+                "type": "string_textfield",
+                "weight": 4,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_ods": {
+                "type": "options_select",
+                "weight": 60,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_organizadores": {
+                "type": "string_textfield",
+                "weight": 8,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_pdf": {
+                "type": "file_generic",
+                "weight": 7,
+                "region": "content",
+                "settings": {
+                    "progress_indicator": "throbber"
+                },
+                "third_party_settings": []
+            },
+            "status": {
+                "type": "boolean_checkbox",
+                "weight": 99,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "title": {
+                "type": "string_textfield",
+                "weight": 1,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            }
+        },
+        "hidden": {
+            "comment": true,
+            "created": true,
+            "field_chamada_trabalhos": true,
+            "field_link_submissao": true,
+            "field_tags": true,
+            "langcode": true,
+            "moderation_state": true,
+            "path": true,
+            "promote": true,
+            "publish_on": true,
+            "publish_state": true,
+            "sticky": true,
+            "uid": true,
+            "unpublish_on": true,
+            "unpublish_state": true,
+            "url_redirects": true
+        }
+    }
+}

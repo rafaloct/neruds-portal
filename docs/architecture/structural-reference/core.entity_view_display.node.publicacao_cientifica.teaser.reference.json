@@ -1,0 +1,132 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.publicacao_cientifica.teaser",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "field.field.node.publicacao_cientifica.comment",
+                "field.field.node.publicacao_cientifica.field_ano_publicacao",
+                "field.field.node.publicacao_cientifica.field_areas_conhecimento",
+                "field.field.node.publicacao_cientifica.field_autores",
+                "field.field.node.publicacao_cientifica.field_doi",
+                "field.field.node.publicacao_cientifica.field_drive_folder_url",
+                "field.field.node.publicacao_cientifica.field_google_calendar_id",
+                "field.field.node.publicacao_cientifica.field_linha_pesquisa",
+                "field.field.node.publicacao_cientifica.field_linhas_pesquisa",
+                "field.field.node.publicacao_cientifica.field_link_publicacao",
+                "field.field.node.publicacao_cientifica.field_ods",
+                "field.field.node.publicacao_cientifica.field_orcid",
+                "field.field.node.publicacao_cientifica.field_pdf",
+                "field.field.node.publicacao_cientifica.field_pesquisadores_autores",
+                "field.field.node.publicacao_cientifica.field_resumo_publicacao",
+                "field.field.node.publicacao_cientifica.field_revista_veiculo",
+                "field.field.node.publicacao_cientifica.field_tags",
+                "field.field.node.publicacao_cientifica.field_territorio",
+                "field.field.node.publicacao_cientifica.field_tipo_producao",
+                "field.field.node.publicacao_cientifica.field_tipo_publicacao",
+                "field.field.node.publicacao_cientifica.field_titulo_publicacao",
+                "node.type.publicacao_cientifica"
+            ],
+            "module": [
+                "link",
+                "user"
+            ]
+        },
+        "id": "node.publicacao_cientifica.teaser",
+        "targetEntityType": "node",
+        "bundle": "publicacao_cientifica",
+        "mode": "teaser",
+        "content": {
+            "field_ano_publicacao": {
+                "type": "number_integer",
+                "label": "inline",
+                "settings": {
+                    "thousand_separator": "",
+                    "prefix_suffix": true
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_autores": {
+                "type": "string",
+                "label": "inline",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_doi": {
+                "type": "string",
+                "label": "inline",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 20,
+                "region": "content"
+            },
+            "field_link_publicacao": {
+                "type": "link",
+                "label": "hidden",
+                "settings": {
+                    "trim_length": 80,
+                    "url_only": false,
+                    "url_plain": false,
+                    "rel": "nofollow",
+                    "target": "_blank"
+                },
+                "third_party_settings": [],
+                "weight": 25,
+                "region": "content"
+            },
+            "field_pesquisadores_autores": {
+                "type": "entity_reference_label",
+                "label": "inline",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 3,
+                "region": "content"
+            },
+            "field_tipo_producao": {
+                "type": "entity_reference_label",
+                "label": "hidden",
+                "settings": {
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "comment": true,
+            "field_areas_conhecimento": true,
+            "field_drive_folder_url": true,
+            "field_google_calendar_id": true,
+            "field_linha_pesquisa": true,
+            "field_linhas_pesquisa": true,
+            "field_ods": true,
+            "field_orcid": true,
+            "field_pdf": true,
+            "field_resumo_publicacao": true,
+            "field_revista_veiculo": true,
+            "field_tags": true,
+            "field_territorio": true,
+            "field_tipo_publicacao": true,
+            "field_titulo_publicacao": true,
+            "langcode": true,
+            "links": true,
+            "search_api_excerpt": true
+        }
+    }
+}

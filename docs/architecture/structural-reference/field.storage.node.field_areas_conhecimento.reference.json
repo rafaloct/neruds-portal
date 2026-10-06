@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.storage.node.field_areas_conhecimento",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "node",
+                "taxonomy"
+            ]
+        },
+        "id": "node.field_areas_conhecimento",
+        "field_name": "field_areas_conhecimento",
+        "entity_type": "node",
+        "type": "entity_reference",
+        "settings": {
+            "target_type": "taxonomy_term"
+        },
+        "module": "core",
+        "locked": false,
+        "cardinality": -1,
+        "translatable": true,
+        "indexes": [],
+        "persist_with_no_fields": false,
+        "custom_storage": false
+    }
+}

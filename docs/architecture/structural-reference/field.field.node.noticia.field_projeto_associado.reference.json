@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.noticia.field_projeto_associado",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_projeto_associado",
+                "node.type.noticia",
+                "node.type.projeto_pesquisa_extensao"
+            ]
+        },
+        "id": "node.noticia.field_projeto_associado",
+        "field_name": "field_projeto_associado",
+        "entity_type": "node",
+        "bundle": "noticia",
+        "label": "Projeto Associado",
+        "description": "Projetos de pesquisa e extensão associados a esta notícia",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": [
+                    "projeto_pesquisa_extensao"
+                ],
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

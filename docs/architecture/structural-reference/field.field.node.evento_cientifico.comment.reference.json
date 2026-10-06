@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.evento_cientifico.comment",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.comment",
+                "node.type.evento_cientifico"
+            ],
+            "module": [
+                "comment"
+            ]
+        },
+        "id": "node.evento_cientifico.comment",
+        "field_name": "comment",
+        "entity_type": "node",
+        "bundle": "evento_cientifico",
+        "label": "Comentários",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "default_mode": 1,
+            "per_page": 50,
+            "anonymous": 0,
+            "form_location": true,
+            "preview": 0
+        },
+        "field_type": "comment"
+    }
+}

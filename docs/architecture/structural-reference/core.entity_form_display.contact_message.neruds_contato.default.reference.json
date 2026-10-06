@@ -1,0 +1,82 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.contact_message.neruds_contato.default",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "contact.form.neruds_contato",
+                "field.field.contact_message.neruds_contato.field_finalidade"
+            ]
+        },
+        "id": "contact_message.neruds_contato.default",
+        "targetEntityType": "contact_message",
+        "bundle": "neruds_contato",
+        "mode": "default",
+        "content": {
+            "copy": {
+                "weight": 50,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_finalidade": {
+                "type": "options_select",
+                "weight": 3,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "langcode": {
+                "type": "language_select",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "include_locked": true
+                },
+                "third_party_settings": []
+            },
+            "mail": {
+                "weight": -40,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "message": {
+                "type": "string_textarea",
+                "weight": 0,
+                "region": "content",
+                "settings": {
+                    "rows": 12,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "name": {
+                "weight": -50,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "preview": {
+                "weight": 40,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "subject": {
+                "type": "string_textfield",
+                "weight": -10,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            }
+        },
+        "hidden": []
+    }
+}

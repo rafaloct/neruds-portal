@@ -1,0 +1,47 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.media.able_player_caption.able_player_caption_view_mode",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.media.able_player_caption_view_mode",
+                "field.field.media.able_player_caption.ableplayer_caption",
+                "media.type.able_player_caption"
+            ],
+            "module": [
+                "ableplayer"
+            ]
+        },
+        "id": "media.able_player_caption.able_player_caption_view_mode",
+        "targetEntityType": "media",
+        "bundle": "able_player_caption",
+        "mode": "able_player_caption_view_mode",
+        "content": {
+            "ableplayer_caption": {
+                "type": "ableplayer_caption",
+                "label": "above",
+                "settings": {
+                    "controls": true,
+                    "autoplay": false,
+                    "loop": false,
+                    "multiple_file_display_type": "tags"
+                },
+                "third_party_settings": [],
+                "weight": 0,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "created": true,
+            "langcode": true,
+            "name": true,
+            "search_api_excerpt": true,
+            "thumbnail": true,
+            "uid": true
+        }
+    }
+}

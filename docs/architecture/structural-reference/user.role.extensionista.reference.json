@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "user.role.extensionista",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "node.type.noticia",
+                "node.type.relatorio",
+                "workflows.workflow.basic_editorial"
+            ],
+            "module": [
+                "content_moderation",
+                "node",
+                "system"
+            ]
+        },
+        "id": "extensionista",
+        "label": "Extensionista",
+        "weight": 6,
+        "is_admin": false,
+        "permissions": [
+            "access content",
+            "access user profiles",
+            "create noticia content",
+            "create relatorio content",
+            "edit own noticia content",
+            "edit own relatorio content",
+            "use basic_editorial transition create_new_draft",
+            "view own unpublished content"
+        ]
+    }
+}

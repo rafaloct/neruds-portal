@@ -1,0 +1,27 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "neruds_gui.settings",
+    "data": {
+        "features": {
+            "node_user_picture": true,
+            "comment_user_picture": true,
+            "comment_user_verification": 1,
+            "favicon": 1
+        },
+        "logo": {
+            "use_default": 0,
+            "path": "public://Captura de tela 2026-05-21 161359.png"
+        },
+        "favicon": {
+            "use_default": 0,
+            "path": "public://favicon.ico",
+            "mimetype": "image/vnd.microsoft.icon"
+        },
+        "mobile_menu_all_widths": 0,
+        "site_branding_bg_color": "default",
+        "base_primary_color": "#e4901b",
+        "color_scheme": "light",
+        "enable_glass_effects": 1
+    }
+}

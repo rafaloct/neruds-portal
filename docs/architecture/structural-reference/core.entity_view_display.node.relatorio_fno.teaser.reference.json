@@ -1,0 +1,82 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.relatorio_fno.teaser",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.teaser",
+                "field.field.node.relatorio_fno.field_embed_code",
+                "field.field.node.relatorio_fno.field_fno_key_findings",
+                "field.field.node.relatorio_fno.field_fno_methodology",
+                "field.field.node.relatorio_fno.field_fno_report_embed",
+                "field.field.node.relatorio_fno.field_fno_report_url",
+                "field.field.node.relatorio_fno.field_fno_research_period",
+                "field.field.node.relatorio_fno.field_fno_researchers",
+                "field.field.node.relatorio_fno.field_looker_url",
+                "field.field.node.relatorio_fno.field_metodologia",
+                "field.field.node.relatorio_fno.field_periodo_pesquisa",
+                "field.field.node.relatorio_fno.field_pesquisadores",
+                "field.field.node.relatorio_fno.field_principais_descobertas",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "datetime_range",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.relatorio_fno.teaser",
+        "targetEntityType": "node",
+        "bundle": "relatorio_fno",
+        "mode": "teaser",
+        "content": {
+            "field_fno_key_findings": {
+                "type": "text_summary_or_trimmed",
+                "label": "hidden",
+                "settings": {
+                    "trim_length": 600
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_fno_research_period": {
+                "type": "daterange_default",
+                "label": "inline",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "short",
+                    "from_to": "both",
+                    "separator": " a "
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "field_embed_code": true,
+            "field_fno_methodology": true,
+            "field_fno_report_embed": true,
+            "field_fno_report_url": true,
+            "field_fno_researchers": true,
+            "field_looker_url": true,
+            "field_metodologia": true,
+            "field_periodo_pesquisa": true,
+            "field_pesquisadores": true,
+            "field_principais_descobertas": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

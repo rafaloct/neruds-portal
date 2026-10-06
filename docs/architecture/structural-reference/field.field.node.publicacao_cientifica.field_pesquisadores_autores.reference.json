@@ -1,0 +1,38 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao_cientifica.field_pesquisadores_autores",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_pesquisadores_autores",
+                "node.type.perfil_pesquisador",
+                "node.type.publicacao_cientifica"
+            ]
+        },
+        "id": "node.publicacao_cientifica.field_pesquisadores_autores",
+        "field_name": "field_pesquisadores_autores",
+        "entity_type": "node",
+        "bundle": "publicacao_cientifica",
+        "label": "Autores (Pesquisadores)",
+        "description": "Lista de pesquisadores autores desta publicação",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": [
+                    "perfil_pesquisador"
+                ],
+                "sort": {
+                    "field": "title",
+                    "direction": "ASC"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "node.type.publicacao_cientifica",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Publicação Científica",
+        "type": "publicacao_cientifica",
+        "description": "Publicações científicas dos pesquisadores",
+        "help": null,
+        "new_revision": true,
+        "preview_mode": 1,
+        "display_submitted": false
+    }
+}

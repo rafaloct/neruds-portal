@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim_periodico.field_boletim_tipo",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_boletim_tipo",
+                "node.type.boletim_periodico",
+                "taxonomy.vocabulary.boletins_periodicos"
+            ]
+        },
+        "id": "node.boletim_periodico.field_boletim_tipo",
+        "field_name": "field_boletim_tipo",
+        "entity_type": "node",
+        "bundle": "boletim_periodico",
+        "label": "Tipo de Boletim",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": [
+                    "boletins_periodicos"
+                ],
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

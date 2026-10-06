@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao.field_orcid",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_orcid",
+                "node.type.publicacao"
+            ]
+        },
+        "id": "node.publicacao.field_orcid",
+        "field_name": "field_orcid",
+        "entity_type": "node",
+        "bundle": "publicacao",
+        "label": "ORCID",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

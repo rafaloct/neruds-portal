@@ -1,0 +1,51 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.boletim_periodico.field_projeto_associado",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_projeto_associado",
+                "node.type.boletim_periodico",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "ai_translate"
+            ]
+        },
+        "third_party_settings": {
+            "ai_translate": {
+                "entity_reference": {
+                    "translate_references": "default"
+                },
+                "translate_references": "default"
+            }
+        },
+        "id": "node.boletim_periodico.field_projeto_associado",
+        "field_name": "field_projeto_associado",
+        "entity_type": "node",
+        "bundle": "boletim_periodico",
+        "label": "Projeto Associado",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+                "target_bundles": {
+                    "projeto_pesquisa_extensao": "projeto_pesquisa_extensao"
+                },
+                "sort": {
+                    "field": "_none",
+                    "direction": "ASC"
+                },
+                "auto_create": false,
+                "auto_create_bundle": ""
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

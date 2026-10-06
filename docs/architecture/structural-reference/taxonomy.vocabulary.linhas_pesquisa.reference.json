@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.linhas_pesquisa",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Linhas de Pesquisa",
+        "vid": "linhas_pesquisa",
+        "description": "Linhas de pesquisa dos pesquisadores do NERUDS",
+        "weight": 0,
+        "new_revision": false
+    }
+}

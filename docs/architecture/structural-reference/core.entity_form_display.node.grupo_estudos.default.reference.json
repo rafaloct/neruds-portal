@@ -1,0 +1,164 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.node.grupo_estudos.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.grupo_estudos.field_cronograma",
+                "field.field.node.grupo_estudos.field_doi",
+                "field.field.node.grupo_estudos.field_drive_folder_url",
+                "field.field.node.grupo_estudos.field_google_calendar_id",
+                "field.field.node.grupo_estudos.field_lider",
+                "field.field.node.grupo_estudos.field_linha_pesquisa",
+                "field.field.node.grupo_estudos.field_membros",
+                "field.field.node.grupo_estudos.field_ods",
+                "field.field.node.grupo_estudos.field_orcid",
+                "field.field.node.grupo_estudos.field_territorio",
+                "node.type.grupo_estudos"
+            ],
+            "module": [
+                "content_moderation",
+                "datetime_range",
+                "path"
+            ]
+        },
+        "id": "node.grupo_estudos.default",
+        "targetEntityType": "node",
+        "bundle": "grupo_estudos",
+        "mode": "default",
+        "content": {
+            "created": {
+                "type": "datetime_timestamp",
+                "weight": 10,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_cronograma": {
+                "type": "daterange_default",
+                "weight": 1,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_lider": {
+                "type": "entity_reference_autocomplete",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_membros": {
+                "type": "entity_reference_autocomplete",
+                "weight": 3,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "langcode": {
+                "type": "language_select",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "include_locked": true
+                },
+                "third_party_settings": []
+            },
+            "moderation_state": {
+                "type": "moderation_state_default",
+                "weight": 100,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "path": {
+                "type": "path",
+                "weight": 30,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "promote": {
+                "type": "boolean_checkbox",
+                "weight": 15,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "status": {
+                "type": "boolean_checkbox",
+                "weight": 120,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "sticky": {
+                "type": "boolean_checkbox",
+                "weight": 16,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "title": {
+                "type": "string_textfield",
+                "weight": -5,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "uid": {
+                "type": "entity_reference_autocomplete",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "url_redirects": {
+                "weight": 50,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            }
+        },
+        "hidden": {
+            "field_doi": true,
+            "field_drive_folder_url": true,
+            "field_google_calendar_id": true,
+            "field_linha_pesquisa": true,
+            "field_ods": true,
+            "field_orcid": true,
+            "field_territorio": true,
+            "publish_on": true,
+            "publish_state": true,
+            "unpublish_on": true,
+            "unpublish_state": true
+        }
+    }
+}

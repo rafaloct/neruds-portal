@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.contact_message.neruds_contato.field_finalidade",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "contact.form.neruds_contato",
+                "field.storage.contact_message.field_finalidade"
+            ],
+            "module": [
+                "options"
+            ]
+        },
+        "id": "contact_message.neruds_contato.field_finalidade",
+        "field_name": "field_finalidade",
+        "entity_type": "contact_message",
+        "bundle": "neruds_contato",
+        "label": "Finalidade do Contato",
+        "description": "",
+        "required": true,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "list_string"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.status_projeto",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Status do Projeto",
+        "vid": "status_projeto",
+        "description": "Status dos projetos",
+        "weight": 0,
+        "new_revision": false
+    }
+}

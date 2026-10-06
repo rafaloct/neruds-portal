@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.ods",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "ODS - Objetivos de Desenvolvimento Sustentável",
+        "vid": "ods",
+        "description": "Classificação baseada nos 17 Objetivos de Desenvolvimento Sustentável da ONU",
+        "weight": 0,
+        "new_revision": false
+    }
+}

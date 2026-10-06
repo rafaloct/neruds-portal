@@ -1,0 +1,29 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.evento_cientifico.field_data_evento",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_data_evento",
+                "node.type.evento_cientifico"
+            ],
+            "module": [
+                "datetime"
+            ]
+        },
+        "id": "node.evento_cientifico.field_data_evento",
+        "field_name": "field_data_evento",
+        "entity_type": "node",
+        "bundle": "evento_cientifico",
+        "label": "Data do Evento",
+        "description": "",
+        "required": true,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "datetime"
+    }
+}

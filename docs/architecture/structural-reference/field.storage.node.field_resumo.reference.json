@@ -1,0 +1,27 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.storage.node.field_resumo",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "module": [
+                "node",
+                "text"
+            ]
+        },
+        "id": "node.field_resumo",
+        "field_name": "field_resumo",
+        "entity_type": "node",
+        "type": "text_long",
+        "settings": [],
+        "module": "text",
+        "locked": false,
+        "cardinality": 1,
+        "translatable": true,
+        "indexes": [],
+        "persist_with_no_fields": false,
+        "custom_storage": false
+    }
+}

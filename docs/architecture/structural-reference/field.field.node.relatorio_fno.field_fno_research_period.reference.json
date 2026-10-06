@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_fno_research_period",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_fno_research_period",
+                "node.type.relatorio_fno"
+            ]
+        },
+        "id": "node.relatorio_fno.field_fno_research_period",
+        "field_name": "field_fno_research_period",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "Período da Pesquisa",
+        "description": "Período coberto pela pesquisa (ex: 2023-2024)",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

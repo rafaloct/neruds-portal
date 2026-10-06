@@ -1,0 +1,186 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.node.boletim_periodico.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.boletim_periodico.field_ano_publicacao",
+                "field.field.node.boletim_periodico.field_autores_boletim",
+                "field.field.node.boletim_periodico.field_boletim_tipo",
+                "field.field.node.boletim_periodico.field_eixo_tematico_boletim",
+                "field.field.node.boletim_periodico.field_imagem_capa",
+                "field.field.node.boletim_periodico.field_mes_publicacao",
+                "field.field.node.boletim_periodico.field_ods",
+                "field.field.node.boletim_periodico.field_ods_boletim",
+                "field.field.node.boletim_periodico.field_pdf_boletim",
+                "field.field.node.boletim_periodico.field_periodo_publicacao",
+                "field.field.node.boletim_periodico.field_projeto_associado",
+                "field.field.node.boletim_periodico.field_resumo_boletim",
+                "field.field.node.boletim_periodico.field_setor_produtivo",
+                "image.style.thumbnail",
+                "node.type.boletim_periodico"
+            ],
+            "module": [
+                "datetime",
+                "file",
+                "svg_image",
+                "text"
+            ]
+        },
+        "id": "node.boletim_periodico.default",
+        "targetEntityType": "node",
+        "bundle": "boletim_periodico",
+        "mode": "default",
+        "content": {
+            "field_ano_publicacao": {
+                "type": "number",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_autores_boletim": {
+                "type": "entity_reference_autocomplete",
+                "weight": 9,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_boletim_tipo": {
+                "type": "options_select",
+                "weight": 3,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_eixo_tematico_boletim": {
+                "type": "options_buttons",
+                "weight": 14,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_imagem_capa": {
+                "type": "image_image",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "progress_indicator": "throbber",
+                    "preview_image_style": "thumbnail"
+                },
+                "third_party_settings": []
+            },
+            "field_mes_publicacao": {
+                "type": "number",
+                "weight": 6,
+                "region": "content",
+                "settings": {
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_ods": {
+                "type": "options_select",
+                "weight": 60,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_ods_boletim": {
+                "type": "options_buttons",
+                "weight": 13,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_pdf_boletim": {
+                "type": "file_generic",
+                "weight": 8,
+                "region": "content",
+                "settings": {
+                    "progress_indicator": "throbber"
+                },
+                "third_party_settings": []
+            },
+            "field_periodo_publicacao": {
+                "type": "datetime_default",
+                "weight": 4,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_projeto_associado": {
+                "type": "entity_reference_autocomplete",
+                "weight": 10,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_resumo_boletim": {
+                "type": "text_textarea",
+                "weight": 7,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_setor_produtivo": {
+                "type": "options_buttons",
+                "weight": 12,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "status": {
+                "type": "boolean_checkbox",
+                "weight": 99,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "title": {
+                "type": "string_textfield",
+                "weight": 1,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            }
+        },
+        "hidden": {
+            "created": true,
+            "langcode": true,
+            "moderation_state": true,
+            "path": true,
+            "promote": true,
+            "publish_on": true,
+            "publish_state": true,
+            "sticky": true,
+            "uid": true,
+            "unpublish_on": true,
+            "unpublish_state": true,
+            "url_redirects": true
+        }
+    }
+}

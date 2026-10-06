@@ -1,0 +1,38 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_areas_conhecimento",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_areas_conhecimento",
+                "node.type.projeto_pesquisa_extensao",
+                "taxonomy.vocabulary.areas_conhecimento"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_areas_conhecimento",
+        "field_name": "field_areas_conhecimento",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Áreas de Conhecimento",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "areas_conhecimento": "areas_conhecimento"
+                },
+                "sort": {
+                    "field": "_none"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

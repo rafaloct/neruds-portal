@@ -1,0 +1,36 @@
+name: Tarefa do portal
+description: Resultado único com escopo, dependências e evidências.
+title: "[NERUDS] "
+labels: ["agent:backlog"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Resultado esperado
+      description: Qual comportamento ou decisão esta tarefa entrega?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo e caminhos
+      description: Informe o que entra, o que fica fora e os arquivos permitidos.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependências e sobreposição
+      description: Relacione issues/PRs e configurações compartilhadas.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceite e testes focais
+      description: Liste evidências verificáveis do resultado.
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Ambiente e decisões necessárias
+      value: "Ambiente: cópia isolada. Sem produção, merge automático, credenciais ou dados privados."

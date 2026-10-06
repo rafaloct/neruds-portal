@@ -1,0 +1,414 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "views.view.view_boletins_periodicos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.card",
+                "node.type.boletim_periodico"
+            ],
+            "module": [
+                "node",
+                "user"
+            ]
+        },
+        "id": "view_boletins_periodicos",
+        "label": "Boletins e Relatórios",
+        "module": "views",
+        "description": "Exibe boletins e relatórios com filtros por tipo/setor/ODS/eixo/ano/mês.",
+        "tag": "NERUDS",
+        "base_table": "node_field_data",
+        "base_field": "nid",
+        "display": {
+            "default": {
+                "id": "default",
+                "display_title": "Padrão",
+                "display_plugin": "default",
+                "position": null,
+                "display_options": {
+                    "title": "Boletins",
+                    "fields": [],
+                    "pager": {
+                        "type": "mini",
+                        "options": {
+                            "pagination_heading_level": "h2",
+                            "items_per_page": 20
+                        }
+                    },
+                    "exposed_form": {
+                        "type": "basic",
+                        "options": {
+                            "submit_button": "Filtrar",
+                            "reset_button": true,
+                            "reset_button_label": "Limpar",
+                            "exposed_sorts_label": "Ordenar por",
+                            "expose_sort_order": true,
+                            "sort_asc_label": "Crescente",
+                            "sort_desc_label": "Decrescente"
+                        }
+                    },
+                    "access": {
+                        "type": "perm",
+                        "options": {
+                            "perm": "access content"
+                        }
+                    },
+                    "cache": {
+                        "type": "tag"
+                    },
+                    "sorts": {
+                        "field_ano_publicacao": {
+                            "id": "field_ano_publicacao",
+                            "table": "node__field_ano_publicacao",
+                            "field": "field_ano_publicacao_value",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "standard",
+                            "order": "DESC",
+                            "expose": {
+                                "label": ""
+                            },
+                            "exposed": false
+                        }
+                    },
+                    "filters": {
+                        "title": {
+                            "id": "title",
+                            "table": "node_field_data",
+                            "field": "title",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "string",
+                            "operator": "contains",
+                            "value": "",
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "",
+                                "label": "Buscar por título",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "title_op",
+                                "identifier": "title",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "placeholder": "Digite para buscar..."
+                            },
+                            "is_grouped": false
+                        },
+                        "status": {
+                            "id": "status",
+                            "table": "node_field_data",
+                            "field": "status",
+                            "plugin_id": "boolean",
+                            "value": "1"
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "node_field_data",
+                            "field": "type",
+                            "plugin_id": "bundle",
+                            "value": {
+                                "boletim_periodico": "boletim_periodico"
+                            }
+                        },
+                        "field_boletim_tipo_target_id": {
+                            "id": "field_boletim_tipo_target_id",
+                            "table": "node__field_boletim_tipo",
+                            "field": "field_boletim_tipo_target_id",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "taxonomy_index_tid",
+                            "operator": "or",
+                            "value": [],
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_boletim_tipo_target_id_op",
+                                "label": "Tipo de boletim",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "field_boletim_tipo_target_id_op",
+                                "identifier": "tipo_boletim",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "reduce": false
+                            },
+                            "is_grouped": false,
+                            "vid": "boletins_periodicos",
+                            "type": "select",
+                            "hierarchy": false,
+                            "limit": true,
+                            "error_message": true
+                        },
+                        "field_setor_produtivo_target_id": {
+                            "id": "field_setor_produtivo_target_id",
+                            "table": "node__field_setor_produtivo",
+                            "field": "field_setor_produtivo_target_id",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "taxonomy_index_tid",
+                            "operator": "or",
+                            "value": [],
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_setor_produtivo_target_id_op",
+                                "label": "Setor produtivo",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "field_setor_produtivo_target_id_op",
+                                "identifier": "setor_produtivo",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "reduce": false
+                            },
+                            "is_grouped": false,
+                            "vid": "setor_produtivo",
+                            "type": "select",
+                            "hierarchy": false,
+                            "limit": true,
+                            "error_message": true
+                        },
+                        "field_ods_boletim_target_id": {
+                            "id": "field_ods_boletim_target_id",
+                            "table": "node__field_ods_boletim",
+                            "field": "field_ods_boletim_target_id",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "taxonomy_index_tid",
+                            "operator": "or",
+                            "value": [],
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_ods_boletim_target_id_op",
+                                "label": "ODS",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "field_ods_boletim_target_id_op",
+                                "identifier": "ods",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "reduce": false
+                            },
+                            "is_grouped": false,
+                            "vid": "ods_interesse",
+                            "type": "select",
+                            "hierarchy": false,
+                            "limit": true,
+                            "error_message": true
+                        },
+                        "field_eixo_tematico_boletim_target_id": {
+                            "id": "field_eixo_tematico_boletim_target_id",
+                            "table": "node__field_eixo_tematico_boletim",
+                            "field": "field_eixo_tematico_boletim_target_id",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "taxonomy_index_tid",
+                            "operator": "or",
+                            "value": [],
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_eixo_tematico_boletim_target_id_op",
+                                "label": "Eixo temático",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "field_eixo_tematico_boletim_target_id_op",
+                                "identifier": "eixo_tematico",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "reduce": false
+                            },
+                            "is_grouped": false,
+                            "vid": "eixos_tematicos",
+                            "type": "select",
+                            "hierarchy": false,
+                            "limit": true,
+                            "error_message": true
+                        },
+                        "field_ano_publicacao_value": {
+                            "id": "field_ano_publicacao_value",
+                            "table": "node__field_ano_publicacao",
+                            "field": "field_ano_publicacao_value",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "numeric",
+                            "operator": "=",
+                            "value": {
+                                "min": "",
+                                "max": "",
+                                "value": ""
+                            },
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_ano_publicacao_value_op",
+                                "label": "Ano",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "field_ano_publicacao_value_op",
+                                "identifier": "ano",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "placeholder": "Ex.: 2024"
+                            },
+                            "is_grouped": false
+                        },
+                        "field_mes_publicacao_value": {
+                            "id": "field_mes_publicacao_value",
+                            "table": "node__field_mes_publicacao",
+                            "field": "field_mes_publicacao_value",
+                            "relationship": "none",
+                            "group_type": "group",
+                            "admin_label": "",
+                            "plugin_id": "numeric",
+                            "operator": "=",
+                            "value": {
+                                "min": "",
+                                "max": "",
+                                "value": ""
+                            },
+                            "group": 1,
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_mes_publicacao_value_op",
+                                "label": "Mês",
+                                "description": "",
+                                "use_operator": false,
+                                "operator": "field_mes_publicacao_value_op",
+                                "identifier": "mes",
+                                "required": false,
+                                "remember": false,
+                                "multiple": false,
+                                "remember_roles": {
+                                    "authenticated": "authenticated"
+                                },
+                                "placeholder": "1–12"
+                            },
+                            "is_grouped": false
+                        }
+                    },
+                    "style": {
+                        "type": "grid",
+                        "options": {
+                            "columns": 3,
+                            "alignment": "horizontal",
+                            "row_class_custom": "",
+                            "row_class_default": true,
+                            "col_class_custom": "",
+                            "col_class_default": true,
+                            "default_col_count": true
+                        }
+                    },
+                    "row": {
+                        "type": "entity:node",
+                        "options": {
+                            "relationship": "none",
+                            "view_mode": "card"
+                        }
+                    },
+                    "query": {
+                        "type": "views_query",
+                        "options": {
+                            "distinct": true
+                        }
+                    },
+                    "css_class": "view-neruds",
+                    "use_ajax": true,
+                    "display_extenders": [],
+                    "distinct": true
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            },
+            "attachment_1": {
+                "id": "attachment_1",
+                "display_title": "anexo_boletins",
+                "display_plugin": "attachment",
+                "position": 2,
+                "display_options": {
+                    "css_class": "view-neruds",
+                    "display_extenders": []
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            },
+            "page_1": {
+                "id": "page_1",
+                "display_title": "Página",
+                "display_plugin": "page",
+                "position": 1,
+                "display_options": {
+                    "title": "Boletins",
+                    "css_class": "view-neruds",
+                    "display_extenders": [],
+                    "path": "/boletins"
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": []
+                }
+            }
+        }
+    }
+}

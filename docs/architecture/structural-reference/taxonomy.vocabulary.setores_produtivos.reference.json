@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.setores_produtivos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Setores Produtivos",
+        "vid": "setores_produtivos",
+        "description": "Setores da economia relacionados ao conteúdo.",
+        "weight": 0,
+        "new_revision": false
+    }
+}

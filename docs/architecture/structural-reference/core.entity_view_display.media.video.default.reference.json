@@ -1,0 +1,18 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.media.video.default",
+    "data": {
+        "content": {
+            "field_media_video_file": {
+                "type": "ableplayer_video",
+                "settings": {
+                    "controls": false,
+                    "autoplay": false,
+                    "loop": false,
+                    "multiple_file_display_type": "tags"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+name: Repository guards
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-guards:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      COMPOSER_DISABLE_NETWORK: "1"
+      COMPOSER_NO_INTERACTION: "1"
+    steps:
+      # Official tag v7.0.1 verified through the GitHub API on 2026-10-06.
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Check repository without installing dependencies
+        run: python3 scripts/check_repository.py

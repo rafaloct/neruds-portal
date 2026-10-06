@@ -1,0 +1,276 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_form_display.node.perfil_pesquisador.default",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.field.node.perfil_pesquisador.field_areas_conhecimento",
+                "field.field.node.perfil_pesquisador.field_biografia",
+                "field.field.node.perfil_pesquisador.field_eixos_tematicos",
+                "field.field.node.perfil_pesquisador.field_email",
+                "field.field.node.perfil_pesquisador.field_formacao",
+                "field.field.node.perfil_pesquisador.field_foto_perfil",
+                "field.field.node.perfil_pesquisador.field_google_scholar",
+                "field.field.node.perfil_pesquisador.field_instituicao",
+                "field.field.node.perfil_pesquisador.field_lattes",
+                "field.field.node.perfil_pesquisador.field_lattes_id",
+                "field.field.node.perfil_pesquisador.field_linhas_pesquisa",
+                "field.field.node.perfil_pesquisador.field_linkedin",
+                "field.field.node.perfil_pesquisador.field_nome_completo",
+                "field.field.node.perfil_pesquisador.field_ods",
+                "field.field.node.perfil_pesquisador.field_ods_interesse",
+                "field.field.node.perfil_pesquisador.field_orcid",
+                "field.field.node.perfil_pesquisador.field_orcid_id",
+                "field.field.node.perfil_pesquisador.field_producoes_pesquisador",
+                "field.field.node.perfil_pesquisador.field_projetos_pesquisador",
+                "field.field.node.perfil_pesquisador.field_researchgate",
+                "field.field.node.perfil_pesquisador.field_telefone",
+                "field.field.node.perfil_pesquisador.field_tipo_vinculo",
+                "image.style.thumbnail",
+                "node.type.perfil_pesquisador"
+            ],
+            "module": [
+                "field_group",
+                "link",
+                "svg_image",
+                "tagify",
+                "telephone",
+                "text"
+            ]
+        },
+        "third_party_settings": {
+            "field_group": {
+                "group_tabs": {
+                    "children": [],
+                    "label": "Tabs",
+                    "parent_name": "",
+                    "weight": 0,
+                    "format_type": "tabs",
+                    "format_settings": {
+                        "direction": "horizontal"
+                    }
+                },
+                "group_dados_pessoais": {
+                    "children": [],
+                    "label": "Dados Pessoais",
+                    "parent_name": "group_tabs",
+                    "weight": 1,
+                    "format_type": "tab",
+                    "format_settings": {
+                        "formatter": "closed"
+                    }
+                },
+                "group_academico": {
+                    "children": [],
+                    "label": "Acadêmico & Pesquisa",
+                    "parent_name": "group_tabs",
+                    "weight": 2,
+                    "format_type": "tab",
+                    "format_settings": {
+                        "formatter": "closed"
+                    }
+                },
+                "group_contato": {
+                    "children": [],
+                    "label": "Contato & Redes",
+                    "parent_name": "group_tabs",
+                    "weight": 3,
+                    "format_type": "tab",
+                    "format_settings": {
+                        "formatter": "closed"
+                    }
+                }
+            }
+        },
+        "id": "node.perfil_pesquisador.default",
+        "targetEntityType": "node",
+        "bundle": "perfil_pesquisador",
+        "mode": "default",
+        "content": {
+            "field_areas_conhecimento": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 11,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "field_biografia": {
+                "type": "text_textarea",
+                "weight": 4,
+                "region": "content",
+                "settings": {
+                    "rows": 5,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_eixos_tematicos": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 12,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "field_email": {
+                "type": "email_default",
+                "weight": 5,
+                "region": "content",
+                "settings": {
+                    "placeholder": "",
+                    "size": 60
+                },
+                "third_party_settings": []
+            },
+            "field_foto_perfil": {
+                "type": "image_image",
+                "weight": 3,
+                "region": "content",
+                "settings": {
+                    "progress_indicator": "bar",
+                    "preview_image_style": "thumbnail"
+                },
+                "third_party_settings": []
+            },
+            "field_lattes": {
+                "type": "link_default",
+                "weight": 7,
+                "region": "content",
+                "settings": {
+                    "placeholder_url": "",
+                    "placeholder_title": ""
+                },
+                "third_party_settings": []
+            },
+            "field_linhas_pesquisa": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 10,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "field_nome_completo": {
+                "type": "string_textfield",
+                "weight": 2,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_ods": {
+                "type": "options_select",
+                "weight": 60,
+                "region": "content",
+                "settings": [],
+                "third_party_settings": []
+            },
+            "field_ods_interesse": {
+                "type": "tagify_entity_reference_autocomplete_widget",
+                "weight": 13,
+                "region": "content",
+                "settings": {
+                    "match_operator": "CONTAINS",
+                    "match_limit": 10,
+                    "placeholder": "",
+                    "suggestions_dropdown": 1,
+                    "show_entity_id": 0,
+                    "show_info_label": 0,
+                    "info_label": ""
+                },
+                "third_party_settings": []
+            },
+            "field_orcid": {
+                "type": "string_textfield",
+                "weight": 8,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "field_telefone": {
+                "type": "telephone_default",
+                "weight": 6,
+                "region": "content",
+                "settings": {
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            },
+            "status": {
+                "type": "boolean_checkbox",
+                "weight": 99,
+                "region": "content",
+                "settings": {
+                    "display_label": true
+                },
+                "third_party_settings": []
+            },
+            "title": {
+                "type": "string_textfield",
+                "weight": 1,
+                "region": "content",
+                "settings": {
+                    "size": 60,
+                    "placeholder": ""
+                },
+                "third_party_settings": []
+            }
+        },
+        "hidden": {
+            "body": true,
+            "created": true,
+            "field_formacao": true,
+            "field_foto": true,
+            "field_google_scholar": true,
+            "field_instituicao": true,
+            "field_lattes_id": true,
+            "field_linkedin": true,
+            "field_orcid_id": true,
+            "field_producoes_pesquisador": true,
+            "field_projetos_pesquisador": true,
+            "field_researchgate": true,
+            "field_tipo_vinculo": true,
+            "langcode": true,
+            "moderation_state": true,
+            "path": true,
+            "promote": true,
+            "publish_on": true,
+            "publish_state": true,
+            "sticky": true,
+            "uid": true,
+            "unpublish_on": true,
+            "unpublish_state": true,
+            "url_redirects": true
+        }
+    }
+}

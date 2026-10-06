@@ -1,0 +1,112 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.relatorio_fno.full",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.full",
+                "field.field.node.relatorio_fno.field_embed_code",
+                "field.field.node.relatorio_fno.field_fno_key_findings",
+                "field.field.node.relatorio_fno.field_fno_methodology",
+                "field.field.node.relatorio_fno.field_fno_report_embed",
+                "field.field.node.relatorio_fno.field_fno_report_url",
+                "field.field.node.relatorio_fno.field_fno_research_period",
+                "field.field.node.relatorio_fno.field_fno_researchers",
+                "field.field.node.relatorio_fno.field_looker_url",
+                "field.field.node.relatorio_fno.field_metodologia",
+                "field.field.node.relatorio_fno.field_periodo_pesquisa",
+                "field.field.node.relatorio_fno.field_pesquisadores",
+                "field.field.node.relatorio_fno.field_principais_descobertas",
+                "node.type.relatorio_fno"
+            ],
+            "module": [
+                "link",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.relatorio_fno.full",
+        "targetEntityType": "node",
+        "bundle": "relatorio_fno",
+        "mode": "full",
+        "content": {
+            "field_embed_code": {
+                "type": "text_default",
+                "label": "hidden",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_looker_url": {
+                "type": "link",
+                "label": "hidden",
+                "settings": {
+                    "trim_length": 80,
+                    "url_only": false,
+                    "url_plain": false,
+                    "rel": "",
+                    "target": "_blank"
+                },
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_metodologia": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 4,
+                "region": "content"
+            },
+            "field_periodo_pesquisa": {
+                "type": "string",
+                "label": "inline",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 3,
+                "region": "content"
+            },
+            "field_pesquisadores": {
+                "type": "string",
+                "label": "above",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 6,
+                "region": "content"
+            },
+            "field_principais_descobertas": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 5,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "field_fno_key_findings": true,
+            "field_fno_methodology": true,
+            "field_fno_report_embed": true,
+            "field_fno_report_url": true,
+            "field_fno_research_period": true,
+            "field_fno_researchers": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

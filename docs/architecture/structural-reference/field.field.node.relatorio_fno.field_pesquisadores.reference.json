@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio_fno.field_pesquisadores",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_pesquisadores",
+                "node.type.relatorio_fno"
+            ]
+        },
+        "id": "node.relatorio_fno.field_pesquisadores",
+        "field_name": "field_pesquisadores",
+        "entity_type": "node",
+        "bundle": "relatorio_fno",
+        "label": "Pesquisadores",
+        "description": "Nomes dos pesquisadores envolvidos",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

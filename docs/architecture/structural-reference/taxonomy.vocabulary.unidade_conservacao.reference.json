@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.unidade_conservacao",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Unidades de Conservação",
+        "vid": "unidade_conservacao",
+        "description": "UCs relacionadas aos projetos do NERUDS",
+        "weight": 0,
+        "new_revision": false
+    }
+}

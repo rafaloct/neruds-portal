@@ -1,0 +1,39 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao_cientifica.field_ods",
+    "data": {
+        "langcode": "pt-br",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_ods",
+                "node.type.publicacao_cientifica",
+                "taxonomy.vocabulary.ods"
+            ]
+        },
+        "id": "node.publicacao_cientifica.field_ods",
+        "field_name": "field_ods",
+        "entity_type": "node",
+        "bundle": "publicacao_cientifica",
+        "label": "ODS",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "ods": "ods"
+                },
+                "sort": {
+                    "field": "name",
+                    "direction": "ASC"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "views.view.producoes_autores",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.card"
+            ],
+            "module": [
+                "node"
+            ]
+        },
+        "id": "producoes_autores",
+        "label": "Produções por Autor/Pesquisador",
+        "module": "views",
+        "description": "Lista de produções científicas agrupadas por pesquisador autor",
+        "tag": "NERUDS",
+        "base_table": "node_field_data",
+        "base_field": "nid",
+        "display": {
+            "default": {
+                "id": "default",
+                "display_title": "Default",
+                "display_plugin": "default",
+                "position": 0,
+                "display_options": {
+                    "style": {
+                        "type": "grid",
+                        "options": {
+                            "columns": 3,
+                            "alignment": "horizontal",
+                            "row_class_custom": "",
+                            "row_class_default": true,
+                            "col_class_custom": "",
+                            "col_class_default": true,
+                            "default_col_count": true
+                        }
+                    },
+                    "row": {
+                        "type": "entity:node",
+                        "options": {
+                            "relationship": "none",
+                            "view_mode": "card"
+                        }
+                    },
+                    "use_ajax": true,
+                    "display_extenders": []
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view"
+                    ],
+                    "tags": []
+                }
+            }
+        }
+    }
+}

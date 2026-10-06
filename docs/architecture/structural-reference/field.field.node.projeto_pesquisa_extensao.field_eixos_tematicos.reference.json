@@ -1,0 +1,35 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_eixos_tematicos",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_eixos_tematicos",
+                "node.type.projeto_pesquisa_extensao",
+                "taxonomy.vocabulary.eixos_tematicos"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_eixos_tematicos",
+        "field_name": "field_eixos_tematicos",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Eixos Temáticos",
+        "description": "Eixos temáticos relacionados ao projeto",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "eixos_tematicos": "eixos_tematicos"
+                },
+                "auto_create": false
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

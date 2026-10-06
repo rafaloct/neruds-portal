@@ -1,0 +1,34 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.projeto_pesquisa_extensao.field_financiamento",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_financiamento",
+                "node.type.projeto_pesquisa_extensao",
+                "taxonomy.vocabulary.apoiadores_financiadores"
+            ]
+        },
+        "id": "node.projeto_pesquisa_extensao.field_financiamento",
+        "field_name": "field_financiamento",
+        "entity_type": "node",
+        "bundle": "projeto_pesquisa_extensao",
+        "label": "Apoiadores/Financiadores",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+                "target_bundles": {
+                    "apoiadores_financiadores": "apoiadores_financiadores"
+                }
+            }
+        },
+        "field_type": "entity_reference"
+    }
+}

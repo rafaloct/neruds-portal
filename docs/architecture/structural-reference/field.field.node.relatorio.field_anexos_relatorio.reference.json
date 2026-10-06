@@ -1,0 +1,36 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.relatorio.field_anexos_relatorio",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_anexos_relatorio",
+                "node.type.relatorio"
+            ],
+            "module": [
+                "file"
+            ]
+        },
+        "id": "node.relatorio.field_anexos_relatorio",
+        "field_name": "field_anexos_relatorio",
+        "entity_type": "node",
+        "bundle": "relatorio",
+        "label": "Anexos do Relatório",
+        "description": "",
+        "required": false,
+        "translatable": true,
+        "default_value_callback": "",
+        "settings": {
+            "handler": "default:file",
+            "handler_settings": [],
+            "file_directory": "[date:custom:Y]-[date:custom:m]",
+            "file_extensions": "txt",
+            "max_filesize": "",
+            "description_field": false
+        },
+        "field_type": "file"
+    }
+}

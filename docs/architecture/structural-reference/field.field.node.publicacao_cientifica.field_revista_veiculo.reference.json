@@ -1,0 +1,26 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "field.field.node.publicacao_cientifica.field_revista_veiculo",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_revista_veiculo",
+                "node.type.publicacao_cientifica"
+            ]
+        },
+        "id": "node.publicacao_cientifica.field_revista_veiculo",
+        "field_name": "field_revista_veiculo",
+        "entity_type": "node",
+        "bundle": "publicacao_cientifica",
+        "label": "Revista/Veículo",
+        "description": "",
+        "required": false,
+        "translatable": null,
+        "default_value_callback": "",
+        "settings": [],
+        "field_type": "string"
+    }
+}

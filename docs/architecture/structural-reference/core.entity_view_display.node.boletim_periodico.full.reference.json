@@ -1,0 +1,185 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "core.entity_view_display.node.boletim_periodico.full",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "core.entity_view_mode.node.full",
+                "field.field.node.boletim_periodico.field_ano_publicacao",
+                "field.field.node.boletim_periodico.field_autores_boletim",
+                "field.field.node.boletim_periodico.field_boletim_tipo",
+                "field.field.node.boletim_periodico.field_eixo_tematico_boletim",
+                "field.field.node.boletim_periodico.field_imagem_capa",
+                "field.field.node.boletim_periodico.field_mes_publicacao",
+                "field.field.node.boletim_periodico.field_ods",
+                "field.field.node.boletim_periodico.field_ods_boletim",
+                "field.field.node.boletim_periodico.field_pdf_boletim",
+                "field.field.node.boletim_periodico.field_periodo_publicacao",
+                "field.field.node.boletim_periodico.field_projeto_associado",
+                "field.field.node.boletim_periodico.field_resumo_boletim",
+                "field.field.node.boletim_periodico.field_setor_produtivo",
+                "node.type.boletim_periodico"
+            ],
+            "module": [
+                "datetime",
+                "file",
+                "svg_image",
+                "text",
+                "user"
+            ]
+        },
+        "id": "node.boletim_periodico.full",
+        "targetEntityType": "node",
+        "bundle": "boletim_periodico",
+        "mode": "full",
+        "content": {
+            "field_ano_publicacao": {
+                "type": "string",
+                "label": "above",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 10,
+                "region": "content"
+            },
+            "field_boletim_tipo": {
+                "type": "entity_reference_entity_view",
+                "label": "above",
+                "settings": {
+                    "view_mode": "default",
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 3,
+                "region": "content"
+            },
+            "field_eixo_tematico_boletim": {
+                "type": "entity_reference_entity_view",
+                "label": "above",
+                "settings": {
+                    "view_mode": "default",
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 7,
+                "region": "content"
+            },
+            "field_imagem_capa": {
+                "type": "image",
+                "label": "above",
+                "settings": {
+                    "image_link": "",
+                    "image_style": "",
+                    "image_loading": {
+                        "attribute": "lazy"
+                    },
+                    "svg_attributes": {
+                        "width": null,
+                        "height": null
+                    },
+                    "svg_render_as_image": true
+                },
+                "third_party_settings": [],
+                "weight": 0,
+                "region": "content"
+            },
+            "field_mes_publicacao": {
+                "type": "string",
+                "label": "above",
+                "settings": {
+                    "link_to_entity": false
+                },
+                "third_party_settings": [],
+                "weight": 11,
+                "region": "content"
+            },
+            "field_ods": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 50,
+                "region": "content"
+            },
+            "field_ods_boletim": {
+                "type": "entity_reference_entity_view",
+                "label": "above",
+                "settings": {
+                    "view_mode": "default",
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 4,
+                "region": "content"
+            },
+            "field_pdf_boletim": {
+                "type": "file_default",
+                "label": "above",
+                "settings": {
+                    "use_description_as_link_text": true
+                },
+                "third_party_settings": [],
+                "weight": 5,
+                "region": "content"
+            },
+            "field_periodo_publicacao": {
+                "type": "datetime_default",
+                "label": "above",
+                "settings": {
+                    "timezone_override": "",
+                    "format_type": "medium"
+                },
+                "third_party_settings": [],
+                "weight": 2,
+                "region": "content"
+            },
+            "field_projeto_associado": {
+                "type": "entity_reference_entity_view",
+                "label": "above",
+                "settings": {
+                    "view_mode": "default",
+                    "link": false
+                },
+                "third_party_settings": [],
+                "weight": 9,
+                "region": "content"
+            },
+            "field_resumo_boletim": {
+                "type": "text_default",
+                "label": "above",
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 1,
+                "region": "content"
+            },
+            "field_setor_produtivo": {
+                "type": "entity_reference_label",
+                "label": "above",
+                "settings": {
+                    "link": true
+                },
+                "third_party_settings": [],
+                "weight": 12,
+                "region": "content"
+            },
+            "links": {
+                "settings": [],
+                "third_party_settings": [],
+                "weight": 100,
+                "region": "content"
+            }
+        },
+        "hidden": {
+            "addtoany": true,
+            "field_autores_boletim": true,
+            "langcode": true,
+            "search_api_excerpt": true
+        }
+    }
+}

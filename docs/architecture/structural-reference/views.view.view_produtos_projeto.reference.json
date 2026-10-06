@@ -1,0 +1,202 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "views.view.view_produtos_projeto",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "field.storage.node.field_resumo",
+                "field.storage.node.field_status_projeto",
+                "field.storage.node.field_tipo_projeto",
+                "node.type.projeto_pesquisa_extensao"
+            ],
+            "module": [
+                "node",
+                "text",
+                "user"
+            ]
+        },
+        "id": "view_produtos_projeto",
+        "label": "Produtos de Projeto",
+        "module": "views",
+        "description": "Lista outputs de projetos por tipo de produto.",
+        "tag": "NERUDS",
+        "base_table": "node_field_data",
+        "base_field": "nid",
+        "display": {
+            "default": {
+                "id": "default",
+                "display_title": "Padrão",
+                "display_plugin": "default",
+                "position": null,
+                "display_options": {
+                    "fields": {
+                        "title": {
+                            "id": "title",
+                            "table": "node_field_data",
+                            "field": "title",
+                            "entity_type": "node",
+                            "plugin_id": "standard",
+                            "label": "Título do projeto",
+                            "plugin": "field"
+                        },
+                        "field_status_projeto": {
+                            "id": "field_status_projeto",
+                            "table": "node__field_status_projeto",
+                            "field": "field_status_projeto",
+                            "entity_type": "node",
+                            "plugin_id": "standard",
+                            "label": "Status",
+                            "plugin": "field"
+                        },
+                        "field_tipo_projeto": {
+                            "id": "field_tipo_projeto",
+                            "table": "node__field_tipo_projeto",
+                            "field": "field_tipo_projeto",
+                            "entity_type": "node",
+                            "plugin_id": "standard",
+                            "label": "Tipo",
+                            "plugin": "field"
+                        },
+                        "field_resumo": {
+                            "id": "field_resumo",
+                            "table": "node__field_resumo",
+                            "field": "field_resumo",
+                            "entity_type": "node",
+                            "plugin_id": "standard",
+                            "label": "Resumo",
+                            "plugin": "field"
+                        }
+                    },
+                    "pager": {
+                        "type": "mini",
+                        "options": {
+                            "items_per_page": 20
+                        }
+                    },
+                    "exposed_form": {
+                        "type": "basic"
+                    },
+                    "access": {
+                        "type": "perm",
+                        "options": {
+                            "perm": "access content"
+                        }
+                    },
+                    "cache": {
+                        "type": "tag"
+                    },
+                    "sorts": {
+                        "created": {
+                            "id": "created",
+                            "table": "node_field_data",
+                            "field": "created",
+                            "plugin_id": "date",
+                            "order": "DESC"
+                        }
+                    },
+                    "filters": {
+                        "status": {
+                            "id": "status",
+                            "table": "node_field_data",
+                            "field": "status",
+                            "plugin_id": "boolean",
+                            "value": "1"
+                        },
+                        "type": {
+                            "id": "type",
+                            "table": "node_field_data",
+                            "field": "type",
+                            "plugin_id": "bundle",
+                            "value": {
+                                "projeto_pesquisa_extensao": "projeto_pesquisa_extensao"
+                            }
+                        },
+                        "field_status_projeto": {
+                            "id": "field_status_projeto",
+                            "table": "node__field_status_projeto",
+                            "field": "field_status_projeto",
+                            "plugin_id": "entity_reference",
+                            "operator": "or",
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_status_projeto_op",
+                                "label": "field_status_projeto",
+                                "identifier": "field_status_projeto"
+                            }
+                        },
+                        "field_tipo_projeto": {
+                            "id": "field_tipo_projeto",
+                            "table": "node__field_tipo_projeto",
+                            "field": "field_tipo_projeto",
+                            "plugin_id": "entity_reference",
+                            "operator": "or",
+                            "exposed": true,
+                            "expose": {
+                                "operator_id": "field_tipo_projeto_op",
+                                "label": "field_tipo_projeto",
+                                "identifier": "field_tipo_projeto"
+                            }
+                        }
+                    },
+                    "style": {
+                        "type": "grid"
+                    },
+                    "row": {
+                        "type": "fields"
+                    },
+                    "query": {
+                        "type": "views_query"
+                    },
+                    "css_class": "view-neruds",
+                    "display_extenders": [],
+                    "style_options": {
+                        "columns": 3
+                    }
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_content",
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": [
+                        "config:field.storage.node.field_resumo",
+                        "config:field.storage.node.field_status_projeto",
+                        "config:field.storage.node.field_tipo_projeto"
+                    ]
+                }
+            },
+            "block_1": {
+                "id": "block_1",
+                "display_title": "bloco_produtos_projeto",
+                "display_plugin": "block",
+                "position": 1,
+                "display_options": {
+                    "css_class": "view-neruds",
+                    "display_extenders": []
+                },
+                "cache_metadata": {
+                    "max-age": -1,
+                    "contexts": [
+                        "languages:language_content",
+                        "languages:language_interface",
+                        "url.query_args",
+                        "user.node_grants:view",
+                        "user.permissions"
+                    ],
+                    "tags": [
+                        "config:field.storage.node.field_resumo",
+                        "config:field.storage.node.field_status_projeto",
+                        "config:field.storage.node.field_tipo_projeto"
+                    ]
+                }
+            }
+        }
+    }
+}

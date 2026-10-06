@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.municipio",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Município",
+        "vid": "municipio",
+        "description": "Municípios do Tocantins",
+        "weight": 0,
+        "new_revision": false
+    }
+}

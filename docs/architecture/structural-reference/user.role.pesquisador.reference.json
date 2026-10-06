@@ -1,0 +1,37 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "user.role.pesquisador",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": {
+            "config": [
+                "node.type.noticia",
+                "node.type.relatorio"
+            ],
+            "module": [
+                "ai_image_alt_text",
+                "editoria11y",
+                "node",
+                "system"
+            ]
+        },
+        "id": "pesquisador",
+        "label": "Pesquisador",
+        "weight": 4,
+        "is_admin": false,
+        "permissions": [
+            "access content",
+            "access user profiles",
+            "create noticia content",
+            "create relatorio content",
+            "edit own noticia content",
+            "edit own relatorio content",
+            "generate ai alt tags",
+            "mark as hidden in editoria11y",
+            "view editoria11y checker",
+            "view own unpublished content"
+        ]
+    }
+}

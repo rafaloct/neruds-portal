@@ -1,0 +1,15 @@
+{
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "config_name": "taxonomy.vocabulary.produtos_projeto",
+    "data": {
+        "langcode": "en",
+        "status": true,
+        "dependencies": [],
+        "name": "Produtos do Projeto",
+        "vid": "produtos_projeto",
+        "description": "Produtos esperados dos projetos de pesquisa e extensão (cartilhas, boletins, etc.)",
+        "weight": 0,
+        "new_revision": false
+    }
+}
