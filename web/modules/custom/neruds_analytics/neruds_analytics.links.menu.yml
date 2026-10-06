@@ -1,0 +1,6 @@
+neruds_analytics.dashboard:
+  title: 'Analytics NERUDS'
+  route_name: neruds_analytics.dashboard
+  parent: system.admin
+  description: 'Dashboard de analytics do portal NERUDS'
+  weight: 20

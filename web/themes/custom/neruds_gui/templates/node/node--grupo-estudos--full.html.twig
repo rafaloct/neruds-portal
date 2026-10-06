@@ -1,0 +1,90 @@
+{#
+ * NERUDS research community full page.
+ #}
+{% set progress = neruds_group_progress|default(0) %}
+{% set member_count = neruds_group_member_count|default(grupo_membros ? grupo_membros|length : 0) %}
+{% set drive_url = neruds_group_drive_url|default('') %}
+
+<article{{ attributes.addClass(['node', 'node--grupo-estudos', 'node--grupo-estudos--full', 'neruds-community']) }} data-neruds-community>
+  <header class="grupo__header">
+    <div class="grupo__header-meta">
+      <span class="grupo__status-badge grupo__status-badge--{{ grupo_status|default('indefinido') }}">
+        {{ grupo_status_label|default('Status a definir'|t) }}
+      </span>
+    </div>
+    <h1{{ title_attributes.addClass('grupo__title') }}>{{ label }}</h1>
+    <div class="neruds-community__progress">
+      <span class="visually-hidden">{{ 'Progresso anual'|t }}: {{ progress }}%</span>
+      <span class="neruds-community__progress-bar" style="--progress: {{ progress }}%;"></span>
+    </div>
+  </header>
+
+  <div class="neruds-community__stat-grid">
+    <div class="neruds-community__stat"><strong>{{ progress }}%</strong><span>{{ 'Progresso'|t }}</span></div>
+    <div class="neruds-community__stat"><strong>{{ member_count }}</strong><span>{{ 'Membros'|t }}</span></div>
+    <div class="neruds-community__stat"><strong>{{ drive_url ? '1' : '0' }}</strong><span>{{ 'Repositórios'|t }}</span></div>
+    <div class="neruds-community__stat"><strong>{{ grupo_google_cal_url ? '1' : '0' }}</strong><span>{{ 'Agenda'|t }}</span></div>
+  </div>
+
+  <nav class="neruds-community__tabs" role="tablist" aria-label="{{ 'Seções do grupo'|t }}">
+    <button class="neruds-community__tab" type="button" role="tab" id="tab-sobre" aria-controls="panel-sobre" aria-selected="true" data-tab-id="sobre">{{ 'Sobre'|t }}</button>
+    <button class="neruds-community__tab" type="button" role="tab" id="tab-membros" aria-controls="panel-membros" aria-selected="false" data-tab-id="membros">{{ 'Membros'|t }}</button>
+    <button class="neruds-community__tab" type="button" role="tab" id="tab-documentos" aria-controls="panel-documentos" aria-selected="false" data-tab-id="documentos">{{ 'Documentos'|t }}</button>
+    <button class="neruds-community__tab" type="button" role="tab" id="tab-forum" aria-controls="panel-forum" aria-selected="false" data-tab-id="forum">{{ 'Fórum'|t }}</button>
+    <button class="neruds-community__tab" type="button" role="tab" id="tab-eventos" aria-controls="panel-eventos" aria-selected="false" data-tab-id="eventos">{{ 'Eventos'|t }}</button>
+  </nav>
+
+  <section class="neruds-community__panel" role="tabpanel" id="panel-sobre" aria-labelledby="tab-sobre">
+    {% if content.body is defined %}
+      {{ content.body }}
+    {% endif %}
+    {% if grupo_cronograma_label %}
+      <p>{{ grupo_cronograma_label }}</p>
+    {% else %}
+      <p>{{ 'Cronograma'|t }}: {{ grupo_cronograma_inicio }} - {{ grupo_cronograma_fim }}</p>
+    {% endif %}
+  </section>
+
+  <section class="neruds-community__panel" role="tabpanel" id="panel-membros" aria-labelledby="tab-membros" hidden>
+    {% if grupo_lider_nome %}
+      <p><strong>{{ 'Líder'|t }}:</strong> <a href="{{ grupo_lider_url }}">{{ grupo_lider_nome }}</a></p>
+    {% endif %}
+    {% if grupo_membros %}
+      <ul class="grupo__membros-lista" role="list">
+        {% for m in grupo_membros %}
+          <li class="grupo__membro-item">
+            <a href="{{ m.url }}" class="grupo__membro-link">
+              <span class="grupo__avatar grupo__avatar--sm" aria-hidden="true">{{ m.iniciais }}</span>
+              <span class="grupo__membro-nome">{{ m.nome }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>{{ 'Nenhum membro cadastrado ainda.'|t }}</p>
+    {% endif %}
+  </section>
+
+  <section class="neruds-community__panel" role="tabpanel" id="panel-documentos" aria-labelledby="tab-documentos" hidden>
+    {% if drive_url %}
+      <a href="{{ drive_url }}" target="_blank" rel="noopener">{{ 'Abrir pasta pública no Google Drive'|t }}</a>
+      <div class="neruds-community__drive" data-drive-folder="{{ drive_url|e('html_attr') }}" data-drive-endpoint="/neruds/api/drive-folder" aria-live="polite">
+        <p>{{ 'Carregando documentos públicos...'|t }}</p>
+      </div>
+    {% else %}
+      <p>{{ 'Documentos públicos ainda não vinculados ao grupo.'|t }}</p>
+    {% endif %}
+  </section>
+
+  <section class="neruds-community__panel" role="tabpanel" id="panel-forum" aria-labelledby="tab-forum" hidden>
+    <p>{{ 'Fórum será ativado após definição do fluxo de moderação dos grupos.'|t }}</p>
+  </section>
+
+  <section class="neruds-community__panel" role="tabpanel" id="panel-eventos" aria-labelledby="tab-eventos" hidden>
+    {% if grupo_google_cal_url %}
+      <a href="{{ grupo_google_cal_url }}" target="_blank" rel="noopener">{{ 'Adicionar cronograma ao Google Calendar'|t }}</a>
+    {% else %}
+      <p>{{ 'Eventos do grupo serão exibidos pela agenda territorial.'|t }}</p>
+    {% endif %}
+  </section>
+</article>

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * NERUDS ORCID Integration module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function neruds_orcid_theme($existing, $type, $theme, $path) {
+  return [
+    'neruds_orcid_badge' => [
+      'variables' => [
+        'orcid_id' => NULL,
+        'name' => NULL,
+      ],
+      'template' => 'neruds-orcid-badge',
+      'path' => $path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ *
+ * Registers ORCID badge formatter.
+ */
+function neruds_orcid_preprocess_node(&$variables) {
+  $node = $variables['node'];
+
+  // Add ORCID data to researcher profiles
+  if ($node->bundle() === 'perfil_pesquisador' && $node->hasField('field_orcid_id')) {
+    $orcid_id = $node->get('field_orcid_id')->value;
+    if ($orcid_id) {
+      $variables['orcid_id'] = $orcid_id;
+      $variables['orcid_url'] = 'https://orcid.org/' . $orcid_id;
+    }
+  }
+}

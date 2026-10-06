@@ -1,0 +1,14 @@
+<section class="neruds-territorial-timeline" aria-labelledby="neruds-territorial-timeline-title">
+  <div class="neruds-territorial-timeline__header">
+    <h2 id="neruds-territorial-timeline-title">{{ title }}</h2>
+    <a class="neruds-territorial-timeline__export" href="/neruds/api/calendar.ics">Exportar agenda em .ics</a>
+    <div class="neruds-territorial-timeline__filters" role="group" aria-label="Filtros da agenda">
+      <label><input type="checkbox" value="Simposio" checked> Simposio</label>
+      <label><input type="checkbox" value="Visita de campo" checked> Visita de campo</label>
+      <label><input type="checkbox" value="Reuniao" checked> Reuniao</label>
+      <label><input type="checkbox" value="Extensao" checked> Extensao</label>
+    </div>
+  </div>
+  <div class="neruds-territorial-timeline__next" data-neruds-next-event aria-live="polite"></div>
+  <div class="neruds-territorial-timeline__calendar" data-neruds-timeline aria-label="Calendario cientifico territorial"></div>
+</section>

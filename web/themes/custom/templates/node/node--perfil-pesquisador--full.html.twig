@@ -1,0 +1,163 @@
+{#
+/**
+ * @file
+ * Template para exibição completa de Perfil de Pesquisador
+ */
+#}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class) }}>
+  
+  <div class="row">
+    
+    {# Coluna Esquerda: Foto e Info Básica #}
+    <div class="col-md-4 mb-4">
+      
+      {# Foto #}
+      {% if content.field_foto_pesquisador %}
+        <div class="node__photo mb-3">
+          {{ content.field_foto_pesquisador }}
+        </div>
+      {% endif %}
+
+      {# Informações de Contato #}
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Informações</h5>
+          
+          {% if content.field_email_pesquisador %}
+            <div class="mb-2">
+              <i class="bi bi-envelope"></i> 
+              {{ content.field_email_pesquisador }}
+            </div>
+          {% endif %}
+
+          {% if content.field_lattes_link %}
+            <div class="mb-2">
+              <i class="bi bi-file-person"></i>
+              {{ content.field_lattes_link }}
+            </div>
+          {% endif %}
+
+          {% if content.field_orcid %}
+            <div class="mb-2">
+              <i class="bi bi-person-badge"></i>
+              <strong>ORCID:</strong> {{ content.field_orcid }}
+            </div>
+          {% endif %}
+
+          {% if content.field_instituicao_parceira %}
+            <div class="mb-2">
+              <i class="bi bi-building"></i>
+              <strong>Instituição:</strong>
+              <div class="mt-1">
+                {{ content.field_instituicao_parceira }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if content.field_nivel_formacao %}
+            <div class="mb-2">
+              <i class="bi bi-mortarboard"></i>
+              <strong>Formação:</strong>
+              <div class="mt-1">
+                {{ content.field_nivel_formacao }}
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+
+    {# Coluna Direita: Conteúdo Principal #}
+    <div class="col-md-8">
+      
+      {# Título #}
+      {% if not page %}
+        <h2{{ title_attributes.addClass('node__title') }}>
+          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h2>
+      {% else %}
+        <h1 class="node__title mb-4">{{ label }}</h1>
+      {% endif %}
+
+      {# Biografia #}
+      {% if content.field_biografia %}
+        <div class="node__biography mb-4">
+          <h3>Biografia</h3>
+          {{ content.field_biografia }}
+        </div>
+      {% endif %}
+
+      {# Taxonomias #}
+      <div class="node__taxonomies mt-4">
+        
+        {# Linhas de Pesquisa #}
+        {% if content.field_linha_pesquisa %}
+          <div class="taxonomy-group mb-3">
+            <h4 class="taxonomy-group-label">
+              <i class="bi bi-search"></i> Linhas de Pesquisa:
+            </h4>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_linha_pesquisa }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# ODS #}
+        {% if content.field_ods_relacionados %}
+          <div class="taxonomy-group mb-3">
+            <h4 class="taxonomy-group-label">
+              <i class="bi bi-check-circle"></i> ODS Relacionados:
+            </h4>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_ods_relacionados }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Palavras-Chave #}
+        {% if content.field_palavras_chave %}
+          <div class="taxonomy-group mb-3">
+            <h4 class="taxonomy-group-label">
+              <i class="bi bi-tags"></i> Palavras-Chave:
+            </h4>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_palavras_chave }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Projetos Associados #}
+        {% if content.field_projetos_associados %}
+          <div class="taxonomy-group mb-3">
+            <h4 class="taxonomy-group-label">
+              <i class="bi bi-folder"></i> Projetos Associados:
+            </h4>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_projetos_associados }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Microrregião de Atuação #}
+        {% if content.field_microrregiao_atuacao %}
+          <div class="taxonomy-group mb-3">
+            <h4 class="taxonomy-group-label">
+              <i class="bi bi-geo-alt"></i> Área de Atuação:
+            </h4>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_microrregiao_atuacao }}
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</article>
+

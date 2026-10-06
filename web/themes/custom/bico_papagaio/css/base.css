@@ -1,0 +1,472 @@
+/**
+ * @file base.css
+ * BICO DO PAPAGAIO — Base & Tipografia
+ * Reset, fundação tipográfica, elementos base
+ */
+
+/* =========================================================
+   RESET ORGÂNICO
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--terra-800);
+  background-color: var(--terra-50);
+  min-height: 100vh;
+}
+
+/* =========================================================
+   TIPOGRAFIA — HIERARQUIA DECOLONIAL
+   ========================================================= */
+
+/* Títulos — serifada robusta (Bitter/Zilla Slab) */
+h1, h2, h3, h4, h5, h6,
+.heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  color: var(--babacú-dark);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--text-4xl); margin-bottom: var(--space-6); }
+h2 { font-size: var(--text-3xl); margin-bottom: var(--space-5); }
+h3 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+h4 { font-size: var(--text-xl);  margin-bottom: var(--space-3); }
+h5 { font-size: var(--text-lg);  margin-bottom: var(--space-3); }
+h6 { font-size: var(--text-base); margin-bottom: var(--space-2); }
+
+@media (max-width: 768px) {
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+  h3 { font-size: var(--text-xl); }
+}
+
+/* Parágrafos */
+p {
+  margin-bottom: var(--space-4);
+  max-width: var(--max-width-text);
+  line-height: var(--leading-loose);
+}
+
+p:last-child { margin-bottom: 0; }
+
+/* Links */
+a {
+  color: var(--barro);
+  text-decoration: underline;
+  text-decoration-color: var(--palha);
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--barro-dark);
+  text-decoration-color: var(--barro);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--palha);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* =========================================================
+   CITAÇÕES — ESTILO MÁQUINA DE ESCREVER
+   Documentos históricos, relatórios de campo
+   ========================================================= */
+
+blockquote,
+.citation,
+.field--name-field-citacao {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  color: var(--babacú);
+  background: var(--babacú-10);
+  border-left: 3px solid var(--barro);
+  border-right: 1px solid var(--palha-20);
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  position: relative;
+}
+
+blockquote::before {
+  content: '"';
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: var(--palha);
+  position: absolute;
+  top: -0.5rem;
+  left: var(--space-3);
+  line-height: 1;
+  opacity: 0.6;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  font-style: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Código e dados monospace */
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--barro-10);
+  border: 1px solid var(--barro-20);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.4em;
+  color: var(--barro-dark);
+}
+
+pre {
+  padding: var(--space-4);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* =========================================================
+   LISTAS
+   ========================================================= */
+
+ul, ol {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+li {
+  margin-bottom: var(--space-2);
+  line-height: var(--leading-normal);
+}
+
+/* Lista estilo "trama" */
+.list-trama {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-trama li {
+  padding-left: var(--space-6);
+  position: relative;
+}
+
+.list-trama li::before {
+  content: '◈';
+  position: absolute;
+  left: 0;
+  color: var(--palha-dark);
+  font-size: 0.8em;
+  top: 0.2em;
+}
+
+/* =========================================================
+   IMAGENS
+   ========================================================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure {
+  margin: var(--space-6) 0;
+}
+
+figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  margin-top: var(--space-2);
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+/* =========================================================
+   TABELAS
+   ========================================================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-6);
+}
+
+thead {
+  background: var(--babacú);
+  color: var(--branco);
+}
+
+thead th {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-size: var(--text-sm);
+  letter-spacing: 0.03em;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--terra-200);
+  transition: background var(--transition-fast);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--babacú-10);
+}
+
+tbody tr:hover {
+  background: var(--palha-10);
+}
+
+tbody td {
+  padding: var(--space-3) var(--space-4);
+  color: var(--terra-700);
+}
+
+/* =========================================================
+   FORMULÁRIOS
+   ========================================================= */
+
+label {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  color: var(--babacú);
+  display: block;
+  margin-bottom: var(--space-1);
+  letter-spacing: 0.02em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--terra-800);
+  background: var(--branco);
+  border: 2px solid var(--terra-300);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--barro);
+  box-shadow: 0 0 0 3px var(--barro-20);
+}
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.btn,
+button,
+[type="submit"],
+[type="button"] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Botão Barro — primário */
+.btn-barro,
+.btn-primary {
+  background: var(--barro);
+  color: var(--branco);
+  border-color: var(--barro-dark);
+}
+
+.btn-barro:hover,
+.btn-primary:hover {
+  background: var(--barro-dark);
+  color: var(--branco);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-barro);
+}
+
+/* Botão Babaçu — secundário */
+.btn-babacú,
+.btn-secondary {
+  background: var(--babacú);
+  color: var(--branco);
+  border-color: var(--babacú-dark);
+}
+
+.btn-babacú:hover,
+.btn-secondary:hover {
+  background: var(--babacú-dark);
+  color: var(--branco);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-babacú);
+}
+
+/* Botão Palha — outline */
+.btn-palha,
+.btn-outline {
+  background: transparent;
+  color: var(--barro-dark);
+  border-color: var(--barro);
+}
+
+.btn-palha:hover,
+.btn-outline:hover {
+  background: var(--barro);
+  color: var(--branco);
+}
+
+/* Botão Carimbo — estilo xilogravura */
+.btn-carimbo {
+  background: transparent;
+  color: var(--babacú);
+  border: 2px dashed var(--babacú);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.btn-carimbo:hover {
+  background: var(--babacú-10);
+  border-style: solid;
+}
+
+/* =========================================================
+   SEPARADORES / ORNAMENTOS
+   ========================================================= */
+
+hr,
+.separator {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--palha-dark) 20%,
+    var(--barro) 50%,
+    var(--palha-dark) 80%,
+    transparent
+  );
+  margin: var(--space-8) 0;
+}
+
+/* Ornamento "trama" entre seções */
+.divider-trama {
+  text-align: center;
+  margin: var(--space-8) 0;
+  color: var(--palha-dark);
+  font-size: var(--text-xl);
+  letter-spacing: 0.5em;
+  opacity: 0.6;
+}
+
+.divider-trama::before {
+  content: '◈ ◇ ◈ ◇ ◈';
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+.visually-hidden,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--barro);
+  color: var(--branco);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  z-index: 1000;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  color: var(--branco);
+  text-decoration: none;
+}
+
+/* Foco visível */
+:focus-visible {
+  outline: 2px solid var(--palha-dark);
+  outline-offset: 3px;
+}
+
+/* Redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

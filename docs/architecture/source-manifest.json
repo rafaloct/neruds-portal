@@ -1,0 +1,1457 @@
+{
+  "captured_at": "2026-10-06T18:23:59.757394+00:00",
+  "source": "production neruds.org",
+  "source_root": "/var/www/html",
+  "web_root": "web",
+  "scope": "Composer manifests and custom application code; no database/settings/uploads",
+  "files": [
+    {
+      "path": "composer.json",
+      "bytes": 5267,
+      "sha256": "a8104b7cf57eb6b28bf1332d950905738c54b5261c893c1fa99a30f6167c08d1"
+    },
+    {
+      "path": "composer.lock",
+      "bytes": 723678,
+      "sha256": "cc1bfacc83dcb78df2e7fb3bced99eafac0685e778d5d5fc0b626dca92386d14"
+    },
+    {
+      "path": "web/modules/custom/neruds_analytics/neruds_analytics.info.yml",
+      "bytes": 221,
+      "sha256": "141940da18ab5a4f8bf5b4f0cc534dc0a5e48cb7c52bc33acd579c356149e46b"
+    },
+    {
+      "path": "web/modules/custom/neruds_analytics/neruds_analytics.links.menu.yml",
+      "bytes": 190,
+      "sha256": "939706874d9a191e5b6f9294d35393c78a156de47a6bbfa0a6b5744736e1d542"
+    },
+    {
+      "path": "web/modules/custom/neruds_analytics/neruds_analytics.module",
+      "bytes": 372,
+      "sha256": "ca6a569fa1af0bf8682e180ee4a4a5e215db69680de738603cc5770cf4b1b431"
+    },
+    {
+      "path": "web/modules/custom/neruds_analytics/neruds_analytics.routing.yml",
+      "bytes": 265,
+      "sha256": "5a881632aec48c93e59979ef180263339a2bb4410ffc9406f2e685262ec18c03"
+    },
+    {
+      "path": "web/modules/custom/neruds_analytics/src/Controller/AnalyticsDashboardController.php",
+      "bytes": 4472,
+      "sha256": "dd11774e805790c19eb90bd3a9ac684c5d29cbd07b42a7cb5f5c28562e0321e6"
+    },
+    {
+      "path": "web/modules/custom/neruds_analytics/templates/neruds-analytics-dashboard.html.twig",
+      "bytes": 12641,
+      "sha256": "1bb108526e5e36bb7b489f66c0010a8050e89cbab1b86c684dfe0c10f5d9b6af"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/neruds_blocks.info.yml",
+      "bytes": 270,
+      "sha256": "47daa8533c7770b17c983f0ba170ee55ae1ceb69dd6467efb71188f014a2e1e6"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/neruds_blocks.module",
+      "bytes": 1234,
+      "sha256": "a6ce06d01be58832742936ba3060240b0ca5f04408fb3d7ad4b98cff6ce41c5f"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/src/Plugin/Block/CardGridBlock.php",
+      "bytes": 11111,
+      "sha256": "6610da99ddfa8bae4278b0eaf96408e0b45c9a9f5b0c9875e2288d347aa404aa"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/src/Plugin/Block/HeroSectionBlock.php",
+      "bytes": 5828,
+      "sha256": "26ac042017579c3aa64a04d844890ec318ad1d1f3e9c89f7115338c36144b8fc"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/src/Plugin/Block/SearchBarBlock.php",
+      "bytes": 4090,
+      "sha256": "7496d3eb0e472046eb431b1376267bfe7998d69dad3ab681c29aec01b30b695b"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/templates/neruds-card-grid.html.twig",
+      "bytes": 4354,
+      "sha256": "6bff4b2735edc344123e509d25353dd63e9374460e3e9ef5d87c907219a2e45a"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/templates/neruds-hero-section.html.twig",
+      "bytes": 3136,
+      "sha256": "0f0715f54dc261e42434ee4ce7fffaefcf225db4fd18cccf4bbc0ecf1f0cfcea"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/templates/neruds-search-bar.html.twig",
+      "bytes": 6635,
+      "sha256": "36a772863450850544c1e83bab22705f6458666288c431763f104255e50441a8"
+    },
+    {
+      "path": "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.info.yml",
+      "bytes": 249,
+      "sha256": "c36e23b9e7f4bf7dd3540d6d1d29a350ec6377962a408df5fb054704badd6b77"
+    },
+    {
+      "path": "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.module",
+      "bytes": 556,
+      "sha256": "1f8ea6d3e1cccfe81b0120d82f19e33118257e0f02b401ae6c9bf6e84f803a1d"
+    },
+    {
+      "path": "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.permissions.yml",
+      "bytes": 530,
+      "sha256": "8b82ba76067bf94d40f174a06bca4af15aa69076b83fa128447b8dbf58463b7a"
+    },
+    {
+      "path": "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.routing.yml",
+      "bytes": 2010,
+      "sha256": "b0c0041f6240bf2da09e6953b272b93b5fe193d909fbb071d217242de0be0921"
+    },
+    {
+      "path": "web/modules/custom/neruds_extensionista_guard/src/Controller/ControlController.php",
+      "bytes": 1808,
+      "sha256": "6e8d240ebca410a280d30a20a98fd22bdf4b196e9fa17492db75d6ed8024d686"
+    },
+    {
+      "path": "web/modules/custom/neruds_extensionista_guard/src/Controller/IdentityController.php",
+      "bytes": 5666,
+      "sha256": "bdb2a2c69ef2f556e02603cc53b5ad39b982e709aa6160aab904fa0d3efb1a2c"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/README.md",
+      "bytes": 7557,
+      "sha256": "9ac39fac0423dd8cb92d0423fbcb13f15c95e8f9254fe38c5a997a6fa1d70ddc"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/assets/geojson/territories.geojson",
+      "bytes": 1971,
+      "sha256": "1d718cc5ba5e6d3dc07eca0cd49f12192135a6aaefe4f969378fef80e14c5eb0"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/config/install/neruds_google_integration.settings.yml",
+      "bytes": 783,
+      "sha256": "f82568a38c3b0a371e7664a7a915a90161c159ece3d9f1aaae1be47b6d20e818"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/accessibility-preferences.css",
+      "bytes": 2663,
+      "sha256": "1c360b32b5a4e90312bc578778c037bb91be9a013fa2a1bead0944567bce7864"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/dataset-discovery.css",
+      "bytes": 9803,
+      "sha256": "3f1fbc5c171b2c577e0a70f4020ad90cd52d6a94ce5c556a6d396e85b2a9b45f"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/live-dashboard.css",
+      "bytes": 1653,
+      "sha256": "e80c9e7d8c10a6dcd3636053752c0fc09bc04f384c4948f061958016fa23d2c8"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/publication-discovery.css",
+      "bytes": 4022,
+      "sha256": "9acea7f8bd367e0dccb7e4763372dc9c7642849ed178ab26b245075ebe0b4382"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/research-communities.css",
+      "bytes": 2783,
+      "sha256": "67a508a8790765e4c09956c51ca036f0c28856ad77b364f87da6a01c45e4fb33"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/skeleton-screens.css",
+      "bytes": 1636,
+      "sha256": "817527426e89cb3c006d55c7c7d8ff062c55584762ee1f092d9158bd166db18d"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/territorial-news.css",
+      "bytes": 2881,
+      "sha256": "b23823b3616c61ba79bf1ef504e661cbad7a9c25ed001549c9c59fa70d4ef0e4"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/territorial-timeline.css",
+      "bytes": 1210,
+      "sha256": "c8220d390c147f79fbd1683663aa9b48db30a36227f9dceffbdf2f1545617284"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/components/territory-map.css",
+      "bytes": 2421,
+      "sha256": "078459740faf28bd151d841b5ad3aba98abc3d6ee9e273a3d32eddaff2a58725"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/css/google-drive-documents.css",
+      "bytes": 3056,
+      "sha256": "7090082edbd629b0685681188d4150c598e56a3f652feaed75872699d5dcbfb8"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/accessibility-preferences.js",
+      "bytes": 4963,
+      "sha256": "fd4f00f3d6717343f46d88f80b7b1a4044bdc68c7ccbfdf1e8d866bb40721cfd"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/ai-alt-text-fix.js",
+      "bytes": 4221,
+      "sha256": "bbedde8187c5edfd840117cdc25261b62deea672a302bb0bf3b7b9973d1982d9"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/dataset-discovery.js",
+      "bytes": 18196,
+      "sha256": "27d88b4c5836dc29baaa25b1e5656059a54dfee5bc61f53e0c309318f1be3cb6"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/google-drive-documents.js",
+      "bytes": 6101,
+      "sha256": "bbb1740400a563090312fb7c9eb2135ad1513c9453f7c15b7a1b328f12d4df98"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/live-dashboard.js",
+      "bytes": 3286,
+      "sha256": "64b8ab0b4ecbe73fdc929f5b6d47735b69a8137645e22d8caf13bcdb273fc506"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/neruds-chatbot.js",
+      "bytes": 19007,
+      "sha256": "9259012d5b10b7fa14d85b2e43689861033db2456f3ddaf3b2d8c40726a6c202"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/publication-discovery.js",
+      "bytes": 17279,
+      "sha256": "b556b72c7a0a277d8b075e212856926fa0c79c2a794d325a9d25fa6464459901"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/research-communities.js",
+      "bytes": 3105,
+      "sha256": "5a8b37f9900d85b908d588c77e965b02c097800fe5010af5142b03c07c884f2d"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/retry-helper.js",
+      "bytes": 1284,
+      "sha256": "05bc71da1f5fa9188645f72732bafb1aa2ca640955ac95d52ff777de03c52222"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/territorial-news.js",
+      "bytes": 5105,
+      "sha256": "f0f5b3299a5244a1445f01a9cb75268f45daf04d36c8c45c70831bb9dfb423cd"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/territorial-timeline.js",
+      "bytes": 3599,
+      "sha256": "26b3c5929725ccf1df95a694a7c0ea8ba53371af6e2069e65897188f1739ef3e"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/js/territory-map.js",
+      "bytes": 4542,
+      "sha256": "16b0d4b0638c72bd953d97a1354b550cfc313c76ef8bc7ed17d4133d74e6677b"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.info.yml",
+      "bytes": 326,
+      "sha256": "8ce7559291beea6b82981271df9cc54d0788dfa49c04b29d1bc085a4599d43c2"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.install",
+      "bytes": 5082,
+      "sha256": "81e10aa1cd3afc1201c3d6b1321a186c4857fd255d5ed6b44b08d40f9a2c4dca"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.libraries.yml",
+      "bytes": 2888,
+      "sha256": "ae9bf15a64491aa8682f8ee89fc668c7cf2a4112672db083185ddd31444402e4"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.module",
+      "bytes": 7205,
+      "sha256": "d8e2032fa3f3939c2885fa6484db0ef9652a6d19c6b712c23f8720af19b1f6d5"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.routing.yml",
+      "bytes": 6538,
+      "sha256": "3e03617b3193e9a3deb7330adfae23b9f901d5561c8ebdfebd16e6621b22bc15"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.services.yml",
+      "bytes": 897,
+      "sha256": "bd77130c2a288a5cbc9dba3cfd11aaffaf88e6bc277eb74e3504589223f7bbba"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Access/NerudsRateLimitChecker.php",
+      "bytes": 1420,
+      "sha256": "dd97abbc5bf6cd433dca4c628a68bf3e1d1dbc883cee4020b54382bb767c0991"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Controller/FirebaseAuthController.php",
+      "bytes": 556,
+      "sha256": "703bc28b9ed5c4b5d680e16e901e3a644f618075e55641b45b0f3baf7a83c509"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Controller/NerudsApiController.php",
+      "bytes": 9600,
+      "sha256": "fde9449dfb5558b7f0f7d1a95ce8cfabf16dac53c2c5ab69fa791ef06c836d6a"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Controller/NerudsPageController.php",
+      "bytes": 3037,
+      "sha256": "0edf58b7aae3547a64621dcf5e1a003174105edbbebf36d48445a7dfedd2ec13"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Plugin/Block/LiveDashboardBlock.php",
+      "bytes": 1683,
+      "sha256": "395062961af69b862f3eea1e1f4105b27d63c56d771aaca543d67f16b9af80e9"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Plugin/Block/PublicationDiscoveryBlock.php",
+      "bytes": 1200,
+      "sha256": "e7dfcf96b247cc70bcd3c4d5d49abaabf88041871c11e040375fb9765a8a9a17"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Plugin/Block/TerritorialTimelineBlock.php",
+      "bytes": 895,
+      "sha256": "f5276bd59ec30ffd86d88a29db2e41b09bfbdd6eb0f9ba4fe76903ae0e04a53e"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Plugin/Block/TerritoryMapBlock.php",
+      "bytes": 971,
+      "sha256": "de54da7259bdcb57fd3919cc10fc1772919252aea8cdfac9d85976d3496e88b1"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Service/AuditService.php",
+      "bytes": 41994,
+      "sha256": "f3027b41084f74d4a2cc8b2519b39de8e55744accf0ac68b31102d6b3ccf9e65"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/src/Service/PortalDataService.php",
+      "bytes": 57955,
+      "sha256": "a1dfab82e14c2a4c9a2ab5716c213b508568b7df93ac1ca7733ae0f12782d723"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/templates/neruds-dataset-discovery.html.twig",
+      "bytes": 2134,
+      "sha256": "5e0a857008e953fc86f1157ac58f2a2a0d1a0243804d203724edc507e5a60603"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/templates/neruds-live-dashboard.html.twig",
+      "bytes": 918,
+      "sha256": "4deb239e782b564704a28da5bacc6d9287d18008e5f5d1e9be2b2933661ff023"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/templates/neruds-publication-discovery.html.twig",
+      "bytes": 2084,
+      "sha256": "94dc09549b8a1e3eefdc88ac5f40b139ff061483af30b874ed1ac5ac99a6aa62"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/templates/neruds-territorial-timeline.html.twig",
+      "bytes": 1009,
+      "sha256": "4bfb1918bcc6c82d7b886d96086bf867e69d2ea95c8d17cbed38c2aa5215bfbd"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/templates/neruds-territory-map.html.twig",
+      "bytes": 1727,
+      "sha256": "4ffa479f39effc0860198aa430523bbfa7a8d6df068a045376f4f3a995119767"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/README.md",
+      "bytes": 6258,
+      "sha256": "e63f51cf78e5814d01ccf80c49b45eff6b027dfae91c8cecd73ff7ab1d0cdc15"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/neruds_gui_views.info.yml",
+      "bytes": 299,
+      "sha256": "88083ee0bcb9216ffd34577f6fe0daa356d5ba22f8e5efff891004aa95ade7e2"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/neruds_gui_views.module",
+      "bytes": 3970,
+      "sha256": "2e3860b6e66d06777897eec55d7d001c2c587e5ef095931f199777e765b2a408"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/neruds_gui_views.routing.yml",
+      "bytes": 229,
+      "sha256": "2d54d52fe866cdf7d7a49dbbab2fa14d77f4c6e88d8a619656736e623d1d1612"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/src/Controller/ResearchLinesController.php",
+      "bytes": 1825,
+      "sha256": "20732e796f8dd4225ab2f0859b892c8fd5610213f0c525606952884f8bda9e63"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/templates/node-event-teaser.html.twig",
+      "bytes": 7906,
+      "sha256": "418a9f2169b34b7360ef1ce7d029fc8c0201a8e499906c5adf36986a35d585f6"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/templates/node-news-teaser.html.twig",
+      "bytes": 5959,
+      "sha256": "ee6dfda03b90148700ee2a0745f0afb5945e72c354f67dc51ec8aa7066c45d80"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/templates/node-person-teaser.html.twig",
+      "bytes": 4161,
+      "sha256": "1e09a5d15595bd8910cabe81ec24ae629aadb4429bf1744ef645a307c34b93b3"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/templates/node-project-teaser.html.twig",
+      "bytes": 8000,
+      "sha256": "2f3e95df23c650c581aa06ca65b8969e5924acfd4a47485b4b9e23f8bfe423d7"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/templates/views-view--neruds-research.html.twig",
+      "bytes": 11902,
+      "sha256": "f6cd2507d405b4d5a4f8c84c9fb4615d1724900709cba65fa3bb8a9e9ee6a9b7"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/tests/src/Unit/AccessibilityTest.php",
+      "bytes": 8253,
+      "sha256": "a975276795f0a8dfe2b5b05d8cb24d011ec813bdba079108681f6107c890401a"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/README.md",
+      "bytes": 7104,
+      "sha256": "fa715aec06ca735e5ac9acafb84ed3d319f71a6d8f7f98dec57c03178bce49d0"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/neruds_mcp.info.yml",
+      "bytes": 309,
+      "sha256": "3206f215d37e11239ef317258d9a8c04594fa663fbc58027bb0faf7f0b0f984d"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/neruds_mcp.module",
+      "bytes": 911,
+      "sha256": "70851d60dcb1f0571d0a19e3805701a2ea296f91526fed2d3a65ac037f431921"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/neruds_mcp.permissions.yml",
+      "bytes": 523,
+      "sha256": "8b57f6ffcb47cd2d8da335cf84147adefb7db4a82efcf618c241ddfe3345318c"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/neruds_mcp.routing.yml",
+      "bytes": 1598,
+      "sha256": "ebef771a5b7d27e887a2f9989c210af10bfb8a33a1a3f3fe53dbdecd50978ed1"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/neruds_mcp.services.yml",
+      "bytes": 303,
+      "sha256": "4d1098de930016a8b25cbe5d33dc1baa149bd6041ea3cbcd0e5de48e3953e73c"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/src/Controller/MCPController.php",
+      "bytes": 5219,
+      "sha256": "8e71f30b1bfb6819110d6f91ec29149f658cd9dade9e71e8d7d303ae27915ffd"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/src/Service/MCPService.php",
+      "bytes": 7421,
+      "sha256": "aee7d0fd6c1560a64565cbc6c8f23d6fdae74b4d82523dea76a4f62db8ab3f17"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/tests/src/Unit/MCPControllerTest.php",
+      "bytes": 9260,
+      "sha256": "7b959cd606e93683410c50a211940dc74da3f16e3a1790504d693e7274d5c8d8"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/tests/src/Unit/MCPServiceTest.php",
+      "bytes": 12092,
+      "sha256": "305b98ace7f36032a6c86e1b66565686e4f66059ef898898735285f0b03ac0a1"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/neruds_notifications.info.yml",
+      "bytes": 285,
+      "sha256": "9ca675519d4747c6ff26cfc5d4da7042087001712ecb2f123b17a54018fd688b"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/neruds_notifications.install",
+      "bytes": 1585,
+      "sha256": "ba58fe52afe9124e5bdfc699d2727b3bf5c0bd1ee5fc5f718d477cf528484cec"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/neruds_notifications.links.menu.yml",
+      "bytes": 208,
+      "sha256": "8ce2a7607b759ff32ac320e5e968e76fea2e2720da1414edc3d5653ec1519208"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/neruds_notifications.module",
+      "bytes": 10536,
+      "sha256": "8fa8b487942dc0c13e04a96ca66008cbf9583c0315d9d01da3bf2a3972aa72bc"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/neruds_notifications.routing.yml",
+      "bytes": 523,
+      "sha256": "2a64a5ac265d89c2eea5eecbff2a1e9aba02749c901bee4df8a02f8d4233ee66"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/src/Controller/NotificationsController.php",
+      "bytes": 1404,
+      "sha256": "1b873b325d6aa16c84be938e7da9eeeed1a78d1b42dc874a610803c01837e360"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/src/Form/NotificationPreferencesForm.php",
+      "bytes": 6077,
+      "sha256": "a44d123eaa2339635bf6257b9e85b21c811559c2cb3b6f9d2a748da4d3d8bb44"
+    },
+    {
+      "path": "web/modules/custom/neruds_orcid/neruds_orcid.info.yml",
+      "bytes": 253,
+      "sha256": "f9e5a1b64939d9b688b8de3e6fefbffcee219c349dfca680d60c0dbb8b84d8f2"
+    },
+    {
+      "path": "web/modules/custom/neruds_orcid/neruds_orcid.install",
+      "bytes": 2206,
+      "sha256": "daea6fc5880f6d399cd620718480738f6cce5e692e5208a921667768fa0c9108"
+    },
+    {
+      "path": "web/modules/custom/neruds_orcid/neruds_orcid.module",
+      "bytes": 884,
+      "sha256": "50b2ec169911c75c459f43b51f3524a3154e09a905a9dd695bda5e179354aa95"
+    },
+    {
+      "path": "web/modules/custom/neruds_orcid/templates/neruds-orcid-badge.html.twig",
+      "bytes": 1191,
+      "sha256": "9b2f9bc4baacd76d3ea13426ad8536a79afc8ac1c9468704f5d14873020a52dd"
+    },
+    {
+      "path": "web/modules/custom/neruds_related_content/neruds_related_content.info.yml",
+      "bytes": 262,
+      "sha256": "f41642066e4d1585695f62b752bffaf04449d096f7d081cac89fb0380dc61450"
+    },
+    {
+      "path": "web/modules/custom/neruds_related_content/neruds_related_content.module",
+      "bytes": 1178,
+      "sha256": "993ef9b438b7603cdf9021f194b50c2f0808d87981dc2dc4f2eb314c1260cfcd"
+    },
+    {
+      "path": "web/modules/custom/neruds_related_content/src/Plugin/Block/RelatedContentBlock.php",
+      "bytes": 3350,
+      "sha256": "cc5f60cf74c71f29f232a546d0467bd4893374cbf481d0989825130b30e021ef"
+    },
+    {
+      "path": "web/modules/custom/neruds_related_content/templates/neruds-related-content.html.twig",
+      "bytes": 4147,
+      "sha256": "8940dcab58b726cfe4d1173800cd896f2daaccf1187a992f4d7e0b779e3dffda"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/bico_papagaio.info.yml",
+      "bytes": 918,
+      "sha256": "d7ea9cc26607a8db7a1ae0a2f9546e843e308e4aa21f5e3724ce3195f77d0ef4"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/bico_papagaio.libraries.yml",
+      "bytes": 2070,
+      "sha256": "83d7c01c283db8a7a184c728d1bd31c7b2e2fab1acd2088396bdd7aa868afbda"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/bico_papagaio.theme",
+      "bytes": 3579,
+      "sha256": "2c3bb9f3c16e82c71584fb368e016c8daab4ac56a7ef895a9f94d3622cf97f08"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/base.css",
+      "bytes": 10095,
+      "sha256": "500145cadad92e4211a5f1247e4f3e78d1093ef13fee78ed6195c75d2ddcbcf0"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/components.css",
+      "bytes": 21232,
+      "sha256": "7708ae593e23e934baeb0bb5bbc0a7b385ac0ee77be9150fadf5da6553d577f9"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/content-types.css",
+      "bytes": 9364,
+      "sha256": "a414505cb5301598d3932a122545afddda61ecf16cc723e358dc97434b119361"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/glassmorphism.css",
+      "bytes": 8041,
+      "sha256": "0aac89f196ab4df26550b0e9440c44acfe47ecc0d9acbd38606180165766ed60"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/hero.css",
+      "bytes": 5366,
+      "sha256": "9aebd801e22c2e6435fbe51eb236db96b0b7ba09f6827b6a3a138a960ae94e76"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/layout.css",
+      "bytes": 7336,
+      "sha256": "43a1df5da82197837c3e9f984f4a2a0b02f64f184942ed63c7b88ac8be7e6d61"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/node--perfil.css",
+      "bytes": 952,
+      "sha256": "5e730232b8c416c222a0f38c0cd64a511f4d37d070f0239ab8dbc8a6d843f956"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/node--projeto.css",
+      "bytes": 2655,
+      "sha256": "e82c9b901a7ee44dff36154dd2a44b42e7a83fd23955f81853765fc309b80cf1"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/node--publicacao.css",
+      "bytes": 2524,
+      "sha256": "9250f0a97b65e10a1d1827769979a89f585aa3ac316d7382171e1b5a6899dcaf"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/olivero-overrides.css",
+      "bytes": 10473,
+      "sha256": "24e598f2872914893882ecaa7cb07988fd075650091d7dbbe840c3eb2a9a2b82"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/patterns.css",
+      "bytes": 10146,
+      "sha256": "6ed65db0afb8813ad06904625c56c5b9cb3d8557ebe4ce31e6ecb10840b3e9a8"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/print.css",
+      "bytes": 2135,
+      "sha256": "b08b96db55b6e58ca5a45e3595da8037a20a4feb9dc15ee1c21f0ffb2c461e1e"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/css/tokens.css",
+      "bytes": 6515,
+      "sha256": "85f33afb545f75d0e9ade8134f474e9eea4c32c24fef2ec40dc4adc2da772741"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/images/babac\u00fa-ornament.svg",
+      "bytes": 2123,
+      "sha256": "c5fc73767bccf12a03c01825b00cc6e6029a94b59857dcd009025dbfc76fcc6c"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/js/bico.js",
+      "bytes": 5701,
+      "sha256": "8d6a8f284bfd8bbb3cd6c10ed78f286f11f8a6dfa0cab6cc1f0caf251d9a5e9e"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/block/block--hero.html.twig",
+      "bytes": 465,
+      "sha256": "8db6aae91e69e33d41cb2da46fba8ceaf629c72619be09c0bcccb8b5c8eeb837"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/field/field--entity-reference.html.twig",
+      "bytes": 1305,
+      "sha256": "3db6b011a0977f53276b130b09d7848624288ac6f433f8821f5c8bcc19137259"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/node/node--noticia--full.html.twig",
+      "bytes": 3961,
+      "sha256": "b7e62bfb42ecf1d5e48838d3a08c0003ad1ececefd74db662bb5480d65b79d36"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/node/node--perfil-pesquisador--full.html.twig",
+      "bytes": 2681,
+      "sha256": "d48533422d8121efabc5ff182769cbd63b5b15ff4d671db42d5cf4fc46e149f7"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/node/node--projeto-pesquisa-extensao--full.html.twig",
+      "bytes": 5899,
+      "sha256": "3ad0646fb7c7325f8de1e646b4ff5d66cb03373f4d62b833a30ff010c84df6c9"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/node/node--teaser.html.twig",
+      "bytes": 2908,
+      "sha256": "9bb33e34b82e9eed5338f5fb2ea2bf20e4bbae47bc181fb65bbe6b38862da3b8"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/page--front.html.twig",
+      "bytes": 6365,
+      "sha256": "a6a25490af7f7444ae0da5bc31758ffdae772d7cd771fc15691b33a2d50f78b3"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/page.html.twig",
+      "bytes": 6462,
+      "sha256": "af3acd7e2159f7c62d7426483b4d9a6913c6de6e4943f164d7f376b8c28f9c95"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/views/views-view-unformatted--bootstrap-cards.html.twig",
+      "bytes": 350,
+      "sha256": "81a4f727821cf1701cccfdf4689550656384e43e2c9f34df415c565eed6e65fb"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/templates/views/views-view.html.twig",
+      "bytes": 2113,
+      "sha256": "1fd17aa2562e2b1dc5c36d224ba8e02dd80b2d3fd56cb95ef668bd5107fa1130"
+    },
+    {
+      "path": "web/themes/custom/css/custom-enhanced.css",
+      "bytes": 16479,
+      "sha256": "542cd84164b1635193e174837a6693a7208c7cda43dfab1deca8384477fee6a8"
+    },
+    {
+      "path": "web/themes/custom/css/custom.css",
+      "bytes": 9190,
+      "sha256": "2d4cd960b0ac2bfaac3f06d17802b0ffc3c54b15ca9721a09d2af9999f3a42e3"
+    },
+    {
+      "path": "web/themes/custom/css/neruds_forms_tables.css",
+      "bytes": 5385,
+      "sha256": "13e3046ede3e62ae8cb3a978c083c25a81646626b4051cc74c3c16d34c891559"
+    },
+    {
+      "path": "web/themes/custom/css/taxonomy-badges.css",
+      "bytes": 2073,
+      "sha256": "2d0a350b80e5f37f91eeed571ec347b36c6ea77ba531d03d69048a4e1e92041f"
+    },
+    {
+      "path": "web/themes/custom/js/custom.js",
+      "bytes": 3764,
+      "sha256": "4bc5c0759ef86c9ee2066ca12827e97e77f363d1be6be8745d9e37be46287b0f"
+    },
+    {
+      "path": "web/themes/custom/js/neruds_ant_design.js",
+      "bytes": 2214,
+      "sha256": "c9c319c04eae36c8b2c105c028fb52f5ca9cb7b323a15d8de7c387320d018cd4"
+    },
+    {
+      "path": "web/themes/custom/js/responsive-interactions.js",
+      "bytes": 13370,
+      "sha256": "f58afcbc0289d7568f9656a9f039812e516256ad0a115b39f2b70069f9e27bca"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/README.md",
+      "bytes": 10760,
+      "sha256": "14b77bdcd9ea9ba7a223999fd6e56d1f0f43520d01d7d53e0643b89464493082"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/accessibility/focus-visible.css",
+      "bytes": 2737,
+      "sha256": "ea4ab20fb2fe6993d6875306b8633c3b656db5b41931097145e67b8aa1b5db0f"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/accessibility/print.css",
+      "bytes": 928,
+      "sha256": "98c90e1edf7dff4816723e2b432735e49ab045966de2b8fc3ee8fc7a778203b6"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/accessibility/wcag-fixes.css",
+      "bytes": 6613,
+      "sha256": "7a0f93f1d8dda39a6aeb4d3827360f86827cda8f09ce6ecd2ee5f98269083414"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/base/body.css",
+      "bytes": 3370,
+      "sha256": "84d4cde89d13ddba0fb291041404bc1d0d3bdb17c772a0ebfc57029d7fdc8206"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/base/brand-fonts.css",
+      "bytes": 5141,
+      "sha256": "316f4b91c60d167eea156750b960870080fd6978443b2506f6fc187d564798e1"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/base/html.css",
+      "bytes": 1351,
+      "sha256": "5de851c3a55d9ed532b47c61f69e2997426d9019b049795f59e6004e780d308d"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/base/reset.css",
+      "bytes": 821,
+      "sha256": "003c8968debfd1408660bc4c6a2d3a292e1979bf4942fac9c910bfd7adb95c4e"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/academic-listings.css",
+      "bytes": 6707,
+      "sha256": "bf452464dbb7f8ec666e16a20a2d4e50e48fddd294f7454ca5874371a4484409"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/admin-ux.css",
+      "bytes": 1119,
+      "sha256": "827e9c34179769e2a1b8cb8ab3ceeb08ed7b0d5b0dfe56014c95453cf18c51a2"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/buttons.css",
+      "bytes": 4265,
+      "sha256": "4d895b787330ddf90ac5caeb3f8c2dffe8e03bf38414794dc4fd6e940a1451fb"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/card-grid.css",
+      "bytes": 5513,
+      "sha256": "633e7c0fe460f77de1ca685155c58a88854830afc835bcb75030f85edefa8396"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/cards.css",
+      "bytes": 5895,
+      "sha256": "80be98c5c448644f24f17f7d4a6b6bbf20cf34a362966a63f592e0afc86d1f32"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/footer.css",
+      "bytes": 4916,
+      "sha256": "2594ba5e6cf02102ef27519acbe931dfd5429091343810dc74c7cbb9b49060f3"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/forms.css",
+      "bytes": 5189,
+      "sha256": "6ad3a8c380276e5bfd7a2ea366cda4e4c0d3bd6348c6f8207678287c2a8f09eb"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/glass-cards.css",
+      "bytes": 4375,
+      "sha256": "6ffdef7f1da23683378d2cee9e34790c9770478d82dcecaec8002b7826af5ed8"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/header.css",
+      "bytes": 11636,
+      "sha256": "30ddb74d55f1bcdda727282dddac3a75ab147f2d74cb63e15e3410252f206298"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/hero-variants.css",
+      "bytes": 10578,
+      "sha256": "bb7602c8de940e202c33c9d39294dad654990f7fdcbb6dbdd3b1c0b3d2c2b969"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/hero.css",
+      "bytes": 5993,
+      "sha256": "c99540d72fa0881ae4a42e0f7faa3db4b7eda689f68edf134e0aab32f1147737"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/layout.css",
+      "bytes": 4807,
+      "sha256": "d20058431bb3ef1d8c69c08acb0f1ac81e60586b14bf919a30957e053f010af5"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/navigation-brand.css",
+      "bytes": 4471,
+      "sha256": "00f1c4f5f16daf8a3ee90cefb2c47abcc160878112462322cdb82c5aae84fbc0"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/navigation.css",
+      "bytes": 4507,
+      "sha256": "1c75adba13583a801e551386b1a70755fda2b6158f2a0d818fa993f3d82d3912"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/ods-badges.css",
+      "bytes": 4285,
+      "sha256": "c29ebe4b6f2d07eea5aaa639634cb8e38b0179d9aa5625863b90b995926f55b3"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/responsive-fixes.css",
+      "bytes": 6686,
+      "sha256": "6220264b32c55fb78cf84fe8795279d03efbfe6b6984f1580d3ecfa91aaa96a1"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/search-bar.css",
+      "bytes": 4517,
+      "sha256": "89f666cdb95b75bf0d7fd38d4449421c5cb275eea099397ed54a33529395a086"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/search-filters.css",
+      "bytes": 6105,
+      "sha256": "f5c3a9eb27b61f9d1aafb354a60ebc23bb4abe535bb4acc4f1c7ee02496a0165"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/components/views-ux.css",
+      "bytes": 19162,
+      "sha256": "eae6068e563c537aae89b6f3e5481d24141038c88464feac6bfbb8797b296721"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/content-types/article.css",
+      "bytes": 474,
+      "sha256": "10dd4988cde35fe1d77d4f8966abde663bb6583222e99207fc6af00a4f7fbdfa"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/content-types/boletim.css",
+      "bytes": 466,
+      "sha256": "122286d27b72476cfe5a1412e058f292ffa374d40a7a62b727b3cc75f323ef8f"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/content-types/evento.css",
+      "bytes": 456,
+      "sha256": "01ef23fe4feb85e2d042b4d8b34c3bbc651065bf4d0325432799ab6da2a5cdad"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/content-types/grupo-estudos.css",
+      "bytes": 12115,
+      "sha256": "b779df7eb675d154bfdb1bb4e5fb4fc24a2a111ae4f692ce536dded4025d15b4"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/content-types/noticia.css",
+      "bytes": 310,
+      "sha256": "cf397b5382266158e95673dc275e609e2435c648f42b2dbb34d08edb7e7d233e"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/content-types/perfil-pesquisador.css",
+      "bytes": 3898,
+      "sha256": "480d83a4a815060f264bda147c292bf12b03b073192cebc28b88b6b50ba008e7"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/content-types/projeto.css",
+      "bytes": 5785,
+      "sha256": "acf1f8e00cbc8155e34b3a478fe9ab17d0d255f1ec06e21163b4f71de83ebfac"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/pages/about.css",
+      "bytes": 524,
+      "sha256": "c262175ad117a562b656b48aca1a042d0987a4d0f785f8ee7ed5910c7c3f3057"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/pages/busca.css",
+      "bytes": 5763,
+      "sha256": "7f5e0c9449486911a341afe6c43d503b61df3a1737c86945a6eae231139ba26c"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/pages/contato.css",
+      "bytes": 2837,
+      "sha256": "3ae5d9f8f60d64a021bc23ad9306fcc39f5c9b323ae41e05ca3e749389d9cef4"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/pages/desktop-pro.css",
+      "bytes": 15740,
+      "sha256": "78c822740bc7237e4a50fe5c8e86697e73681e39dd50e8f6f4524a3f9f37a637"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/pages/home.css",
+      "bytes": 10222,
+      "sha256": "9a049ecf4dad324d79329a5887e8562a57ecb97ad90cd804fcba3dddadd6c58d"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/pages/sobre.css",
+      "bytes": 4788,
+      "sha256": "7ddc4d08a12d33a5baf96a7ccc0a3915c1ddf87bbac89b21a18c646746274644"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/patterns/decorative-weave.css",
+      "bytes": 4980,
+      "sha256": "1da8ec9217552481653007ff69d7c720332cfeaef0f2629240c1ea503dcdca21"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/tokens/colors.css",
+      "bytes": 3449,
+      "sha256": "e078b6ad25b18cfc9a91c8b32ab25a19f598f22f439fa9be1b7e96e0afe174bc"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/tokens/design-tokens.css",
+      "bytes": 8056,
+      "sha256": "056fd787c1bc9621a6d5c72746ef6e48fd5970b84495d00ff0e2a24ae8b43b7b"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/tokens/effects.css",
+      "bytes": 6324,
+      "sha256": "a9ed4b92fd2eafdc58ad634d773a8847e9f610f6cf1ba2f388a1810ab2a99132"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/tokens/spacing.css",
+      "bytes": 4506,
+      "sha256": "db1df13f8efb4a985c72b187c9380fff56399ed8b795b1990d5af1bdc83a1e4f"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/tokens/typography.css",
+      "bytes": 5571,
+      "sha256": "4fc5595eb427986049ae0d5bee76329aa89045bb582c1abff8265e2e49853f18"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/variants/amazonia/colors.css",
+      "bytes": 598,
+      "sha256": "b662640402b93efac60b5bccb943e8ed7eee8ba9ca73fe35c105531dadca087c"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/variants/amazonia/components.css",
+      "bytes": 637,
+      "sha256": "cd833f04378e1fb7919e531e499db14da8af99810b9b9f0eabe12852354eaaef"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/variants/amazonia/dark-mode.css",
+      "bytes": 323,
+      "sha256": "2d7b0984a15f0c53429246ddba446affac7a2103cd637b42a43e4b37a202ec60"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/css/variants/amazonia/typography.css",
+      "bytes": 434,
+      "sha256": "b547ee6e16e7228b6bdb70f55e09eb73ca5db8599cc0302912ee2679467971db"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/fonts/NatureBeauty.ttf",
+      "bytes": 203604,
+      "sha256": "6bd67a3199eb0f42eabc7711acf89adfe7d95a3dcabe9b220fde87942083f6e6"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/fonts/NatureBeauty.woff",
+      "bytes": 46208,
+      "sha256": "8ddec9d50082e7cd9b80097a689f0964e64f78ebbfd9adfef80f0187d585a061"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/fonts/NatureBeauty.woff2",
+      "bytes": 30388,
+      "sha256": "0b2ff80cf7322704a141181e78c20e165c3462a55dd3577ee8f6da6bd70b3695"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/fonts/Serifa-Blk-BT-Black.ttf",
+      "bytes": 40560,
+      "sha256": "96cad49622f8b561d591c7c4e41ab575fbb64c2b67a2287767609c4c4a4a67e1"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/fonts/Serifa-Blk-BT-Black.woff",
+      "bytes": 27424,
+      "sha256": "00bca2f6f838523f537061cbea3037bb03275700f3f96f2a7c0f432092df0a74"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/fonts/Serifa-Blk-BT-Black.woff2",
+      "bytes": 21616,
+      "sha256": "2f6b21c1d2e4bf71331c2c92405948b02be43d07ba9501a6619a4c0f3bc19d9e"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/js/academic-filters.js",
+      "bytes": 2214,
+      "sha256": "c7b1055d6c951a89b39b0faef183c135dfb1ffca4dffc0ec9df2cf121925e526"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/js/animations.js",
+      "bytes": 1828,
+      "sha256": "17fc1db17b3f5799b8a806be902ab73b516a7f1bfa192beececbe0a187948fc8"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/js/global.js",
+      "bytes": 8769,
+      "sha256": "2859d868faa9b639f01b0ee850132ab3656fc4c46405e878374a4fc0462bf553"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/js/search-bar.js",
+      "bytes": 5353,
+      "sha256": "e4758e709c5174b07d6179e1cce01f57889cbb0365b2fe76a59de74e6e5adfc1"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/logo.svg",
+      "bytes": 609,
+      "sha256": "68d09d117fa1e5c6867fd6f1d759e3961756f398bedff042fed3d47f47cb09c8"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/neruds_gui.info.yml",
+      "bytes": 2501,
+      "sha256": "f6319dd2c2a643d3840233e2e1dc64b9df922b8e46e3bd30e5c6b907d4828e89"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/neruds_gui.libraries.yml",
+      "bytes": 6934,
+      "sha256": "a0241b630333ead02db75720d75cee03ad26eed7c2794a0fbb703ed20530daa3"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/neruds_gui.theme",
+      "bytes": 14063,
+      "sha256": "72cefb7a33ee9eb042da1b780b93f747e7c6c3f5b8156b9f6249ca824f834e6a"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/layout/page--front.html.twig",
+      "bytes": 7537,
+      "sha256": "7fd7fd46b52c672268c8b9ac0e8046ed3f17d40ec8dde13ebe9a5b66ee2ca07e"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/layout/page.html.twig",
+      "bytes": 6139,
+      "sha256": "f06b3deca3c2756d3ced5fafa62fb324b4fcd633b736e039afa15ed9f7b8f27e"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/layout/region.html.twig",
+      "bytes": 207,
+      "sha256": "c2c3d74b4f805d1ec7cc6c17cd3a5e532aed6ad0360a1b34a9c63f48f7a0df9f"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--event--full.html.twig",
+      "bytes": 1475,
+      "sha256": "8781d9a9de8b0c6d40ce84c86b60405372d08f7c271e020e6078442394f5fde6"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--grupo-estudos--full.html.twig",
+      "bytes": 5019,
+      "sha256": "a4a33d2a8c97dc55e395582bc80f6e1a5574b4d6b4072561a16cf592c2b5b418"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--grupo-estudos--teaser.html.twig",
+      "bytes": 1955,
+      "sha256": "df5180916e69a48e03f00a456c21e9d847009c2f446af91bb8079d07d9ef864b"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--news--full.html.twig",
+      "bytes": 2074,
+      "sha256": "00ba6e3b544f9c1820dbf254730c0b15db9b72662af04511b1683b635abe1b9f"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--noticia--card.html.twig",
+      "bytes": 2321,
+      "sha256": "b33f5fc1c366a3126f9a338559f5d000d1d95b9af24ba42a6bf0d452c722ecbf"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--perfil-pesquisador--card.html.twig",
+      "bytes": 899,
+      "sha256": "1063e2f4d4f298858c64fb93f6ede153cb4566f84e0dfe3a3e6108fcda6e6d74"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--person--full.html.twig",
+      "bytes": 3027,
+      "sha256": "e736cbd655c066edab54459748145fb6322bc3ab7688069b41279c8519ccb9b1"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--project--full.html.twig",
+      "bytes": 1207,
+      "sha256": "f70e193a43bd4fe6a5339b96786b0417e023013fc40f092c95e1b9afeaa64012"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--projeto-pesquisa-extensao--full.html.twig",
+      "bytes": 7667,
+      "sha256": "092a62aa9307ccac640d4322971f615a5a18a74159fcf4d100c45d4614ae6f44"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/node/node--publicacao-cientifica--card.html.twig",
+      "bytes": 600,
+      "sha256": "1122298144f0c7f6ee37441b7bb0df0afb56242b0d549158a8ca3d8444f8eecf"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/region/region--footer-top.html.twig",
+      "bytes": 121,
+      "sha256": "26fbe0182a08ca10ccb8612ba77d0ce83550bf0bc1260b2e592d312107fad7c1"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/region/region--header.html.twig",
+      "bytes": 129,
+      "sha256": "f0247e8b4cd5a440b275a72dc53e8bc485d217c686e0b239d61e5f6d76368326"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/templates/region/region--hero.html.twig",
+      "bytes": 110,
+      "sha256": "79c55ef8a08c6fd1dd8de263d0e1d39a842b8ac69ec44338d336d04b4f0e73b7"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/theme-settings.php",
+      "bytes": 3908,
+      "sha256": "03b9eacb9b426e567c249812efd84b1d270cba663d55bb8d69822495f4261ed6"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/config/schema/neruds_theme.schema.yml",
+      "bytes": 242,
+      "sha256": "5032c1625b926564b568637ced362b3968837adb02e657593de6da35cfe30217"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/content-types/evento-cientifico.css",
+      "bytes": 976,
+      "sha256": "62dbf823be3c90f9b211f1ca90e8d5b19bbd93937652c4b8111579af50f292ac"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/content-types/noticia.css",
+      "bytes": 1178,
+      "sha256": "1ccb41241a55702bac404cd4acab71865ff7d6adbfef4d1859d0d71e9e7472a7"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/content-types/perfil-pesquisador.css",
+      "bytes": 2372,
+      "sha256": "59ed63094b20c39a33a41bd3ca10ea2abe8f8ef9f0e86f45c4e5fb88479674fb"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/content-types/projeto-pesquisa-extensao.css",
+      "bytes": 2212,
+      "sha256": "c2bc8b77fde388f56020fbef01065a0481662ab40d2dbfcfd8ef27cf4dfebb6d"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/content-types/publicacao-cientifica.css",
+      "bytes": 1954,
+      "sha256": "6c58b24a5f26df2bdf0c4cde05d263832cc4cf852e7033a5547354ef451481db"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/custom-enhanced.css",
+      "bytes": 27803,
+      "sha256": "a9ad2e05a1ba1a110f71589bb9a78c2bf9b49ec336046a5fd2f2e0212782bcf3"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/custom.css",
+      "bytes": 338,
+      "sha256": "3132001dc72fe138d6bfc328f1cb8b60eab764f97b757bf3b846a7e1bd0a0fe5"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/fno-report-styles.css",
+      "bytes": 10193,
+      "sha256": "e7bcfc0c74cab7b9d14ca35db4c487d1975c220650c4221a27a5a9fb1bae5e00"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/layout.css",
+      "bytes": 6180,
+      "sha256": "d46ec13facfee442b38f7a87673684e5c1b9c11f02895e52753375072f788a5a"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/neruds-menu-search.css",
+      "bytes": 8272,
+      "sha256": "0150b555da5f2f13224a69a705f49356fab8b72385010c03117bab498c737ea8"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/neruds_ant_design_style.css",
+      "bytes": 10919,
+      "sha256": "767d3862f161082b924cdb5a702871824c5e2e6565f900749ff96141026cead6"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/neruds_forms_tables.css",
+      "bytes": 2675,
+      "sha256": "ef78680b2b1324ba3ff7d6ad17e2516ab4629642bdb59b2b658a7cecfc37c2f1"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/node-perfil-pesquisador.css",
+      "bytes": 6743,
+      "sha256": "3cbacfeb0c9a9cfdcc56b7c109a4ca851c00882fef187feca3813909884bbc01"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/css/taxonomy-badges.css",
+      "bytes": 1436,
+      "sha256": "74d759f7f4cff1d15c0ef98e24f5795002d25e0e7001a45f8e4aa3e6628752f3"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/images/fno-logo.svg",
+      "bytes": 1243,
+      "sha256": "ea437c88444138e79f1f0648798d23e51940795491a9cbed3a50f2230877bc31"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/js/custom.js",
+      "bytes": 458,
+      "sha256": "12a415cb93158e1761a05e6b5fb6be50653faef90613a9e382210fa19ac457fb"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/js/links-target-blank.js",
+      "bytes": 2222,
+      "sha256": "7baf4caccaebcbf18d6f5b9ccf208e62b76d050355fb1d30115ae2b130e5e573"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/js/menu-search.js",
+      "bytes": 10831,
+      "sha256": "71b524ac5e38c0a6ff4311369afaf0bbf4891ea786eadf66695a7ed909a3d121"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/js/navigation.js",
+      "bytes": 434,
+      "sha256": "3d3ed50f739ac9c38e0febe5646faa2f92b55b17e88336e52d65c690f248b87c"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/js/responsive-interactions.js",
+      "bytes": 13370,
+      "sha256": "f58afcbc0289d7568f9656a9f039812e516256ad0a115b39f2b70069f9e27bca"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/neruds_theme.info.yml",
+      "bytes": 941,
+      "sha256": "ac10c50615ddc861a3e068b8efe2410d3e3a453815b79ea2d59a746fbfa04976"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/neruds_theme.libraries.yml",
+      "bytes": 3525,
+      "sha256": "7f74f8f67704f4b4ecc9dcce858f34b6d10064528ed17ac1e7d8aee90493717a"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/neruds_theme.theme",
+      "bytes": 10987,
+      "sha256": "017f6cbc87562e9a8952c8e6ff461d8f24b4c74d89b6ca4bb9098895cd9fb096"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/block/block--footer.html.twig",
+      "bytes": 293,
+      "sha256": "99afc7fe3d27ddb40eaebbbf50092f9dfaf8c5266013f92d4a1fcbf6e8f5ec71"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/block/block--system-menu-block.html.twig",
+      "bytes": 950,
+      "sha256": "71c118ccdc457dd2028411129ab6346f06825c44c353d9bfff7a08c4d060cc6c"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/content/node--evento-cientifico.html.twig",
+      "bytes": 4887,
+      "sha256": "1356a4f4c46ee913ee137b35965031672764f9fefe1c6714b47216d51d038369"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/content/node--noticia.html.twig",
+      "bytes": 3019,
+      "sha256": "6a01c17992bd92702dc2d06bd809f93a41e1780852b5c98c77804e55d55400e0"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/content/node--perfil-pesquisador.html.twig",
+      "bytes": 5678,
+      "sha256": "c498a6d63089ad13620cfed72d8a59064840e3b8dc9cdbdbda0e2746f2f6c715"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/content/node--projeto-pesquisa-extensao.html.twig",
+      "bytes": 6370,
+      "sha256": "f91d6f1f2e04c31465a51dd9e10739433d99554e75cf52f5e9901477ba1a79e2"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/content/node--publicacao-cientifica.html.twig",
+      "bytes": 5409,
+      "sha256": "b728854eb1fb7245b4209f68290cb8148b57ababdce8cc2a188f572c9be80b25"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/field/field--entity-reference--taxonomy-term.html.twig",
+      "bytes": 3905,
+      "sha256": "27a20901c226a34a1dc4be541ba90834a1762ae074367187a5ae56a0df9bbf47"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/navigation/menu--main.html.twig",
+      "bytes": 3378,
+      "sha256": "9b7853c6902ba62a7dbb8cbf702414c1641018ad7bcc921b9301c3085c2b74eb"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/node/node--article--full.html.twig",
+      "bytes": 5385,
+      "sha256": "d8a92a50c4460ee050df822bd72195f71a58d9374506bba8f45cf299b06c2a4c"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/node/node--boletim--full.html.twig",
+      "bytes": 19000,
+      "sha256": "d4d2dac8040939b9be02e6b001aa31c4ed4362d7ae1f744295bcd3e5b6117a52"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/node/node--noticia--full.html.twig",
+      "bytes": 5711,
+      "sha256": "08b548fad6a4447f1e00bc55cd11652188d3e5347d91b8ee93adb034bcd0d249"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/node/node--perfil-pesquisador--full.html.twig",
+      "bytes": 11181,
+      "sha256": "9d052586edd2fd6343f7119ea8b8b6edb37bf8e7a6633ee44bf2a0bccc2fdd13"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/node/node--projeto-pesquisa-extensao--full.html.twig",
+      "bytes": 18547,
+      "sha256": "80b3c3847fd0fef1f8078896431f32dd4f3ba0c7da71344c283b776f5e5a6461"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/node/node--relatorio--full.html.twig",
+      "bytes": 7417,
+      "sha256": "0ff6ede62dcf61a56df50b1a855647414bd7da3669ecb3f506617d43a40d737f"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/node--relatorio-fno--full.html.twig",
+      "bytes": 9988,
+      "sha256": "82d9b53c044c28c28d07706d2abf9b1096a02eded5ba57b34b150e9df44c3c07"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/page.html.twig",
+      "bytes": 5512,
+      "sha256": "81dd75435219963ef74ac98fe3bf0f0b7a7609eb0d56e131be637a72db546094"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/region/region--footer-bottom.html.twig",
+      "bytes": 170,
+      "sha256": "54b3f4be1f8a47450e509bb43d56c252aaf38b3fc1fd75fe0ae0295cae09023b"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/region/region--footer-top.html.twig",
+      "bytes": 248,
+      "sha256": "6a8df6176924e8561392637847388cdc242175353ac5b5ec65626f20f148122d"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/region/region--sidebar.html.twig",
+      "bytes": 162,
+      "sha256": "5f53a4655d88bedd6a1a1d2da0bf12510d2ce1abb111030a954e6c753ecf0b32"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/region/region--social-bar.html.twig",
+      "bytes": 168,
+      "sha256": "4c8bce8467593f59b5859fb8c9a29b5816caecabe7a64f000c1fdbaa428dcd62"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/views/views-view--artigos-por-ods.html.twig",
+      "bytes": 1442,
+      "sha256": "d827fee9a8ab42d36bc0718cb3abdf70b7ef6a7c5e14b71921b3266ed6d96df0"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/views/views-view-unformatted--artigos-por-ods.html.twig",
+      "bytes": 331,
+      "sha256": "405995eb24bbfcb9cce8f93e41c48a6ae2f75478b8ebc345322265cf555569e2"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/templates/views/views-view-unformatted--bootstrap-cards.html.twig",
+      "bytes": 10289,
+      "sha256": "b26a430f884133d0b80d83c24cf2c1b8286cc7bafd7efdb9e5fe6c35ba8d1176"
+    },
+    {
+      "path": "web/themes/custom/templates/block/block--footer.html.twig",
+      "bytes": 293,
+      "sha256": "99afc7fe3d27ddb40eaebbbf50092f9dfaf8c5266013f92d4a1fcbf6e8f5ec71"
+    },
+    {
+      "path": "web/themes/custom/templates/block/block--system-menu-block.html.twig",
+      "bytes": 558,
+      "sha256": "8c200fbc7bcdad2b0eef6e7d0536b13a975d2914e58c0f6ae8b05fcb1f79b427"
+    },
+    {
+      "path": "web/themes/custom/templates/components/card.html.twig",
+      "bytes": 568,
+      "sha256": "2a0b9d47fa88dda8e06f7d5b14d87bf4819a3395e976263fe79517fc51b26e6c"
+    },
+    {
+      "path": "web/themes/custom/templates/components/hero-section.html.twig",
+      "bytes": 553,
+      "sha256": "09b828865f9abcaff00168dc8470e428bd3a9497447d7a9f5c7fd2912837cbb9"
+    },
+    {
+      "path": "web/themes/custom/templates/components/stat-card.html.twig",
+      "bytes": 285,
+      "sha256": "99f97642516be64379f922b78bafd45398b6a2cbb24ac2907c09693e29fdec7d"
+    },
+    {
+      "path": "web/themes/custom/templates/field/field--entity-reference--taxonomy-term.html.twig",
+      "bytes": 3905,
+      "sha256": "27a20901c226a34a1dc4be541ba90834a1762ae074367187a5ae56a0df9bbf47"
+    },
+    {
+      "path": "web/themes/custom/templates/navigation/menu--main.html.twig",
+      "bytes": 1290,
+      "sha256": "919ea9b6ad75d3b35552f67dc89c7aeb44428c8a08c8ffebe45e27eba53481bf"
+    },
+    {
+      "path": "web/themes/custom/templates/node/node--article--full.html.twig",
+      "bytes": 5385,
+      "sha256": "d8a92a50c4460ee050df822bd72195f71a58d9374506bba8f45cf299b06c2a4c"
+    },
+    {
+      "path": "web/themes/custom/templates/node/node--noticia--full.html.twig",
+      "bytes": 4305,
+      "sha256": "9cacf62530f6dd988b0481872cfa4e14997e9940b2339692740fde2926aa53b9"
+    },
+    {
+      "path": "web/themes/custom/templates/node/node--perfil-pesquisador--full.html.twig",
+      "bytes": 4737,
+      "sha256": "383eb21cfb5de4a2350af055fe378345aceb15318e8937b210bf276a9fc28bcc"
+    },
+    {
+      "path": "web/themes/custom/templates/node/node--projeto-pesquisa-extensao--full.html.twig",
+      "bytes": 13137,
+      "sha256": "9fb9ee9b9be0de7d181733e0aec7c88eb724b071858464e50292b628f8a8ca59"
+    },
+    {
+      "path": "web/themes/custom/templates/page.html.twig",
+      "bytes": 4172,
+      "sha256": "82606aea7f61121a3f7934c7da5e9598c45f8b2873956ad450eef8500ed29899"
+    },
+    {
+      "path": "web/themes/custom/templates/region/region--footer-bottom.html.twig",
+      "bytes": 170,
+      "sha256": "54b3f4be1f8a47450e509bb43d56c252aaf38b3fc1fd75fe0ae0295cae09023b"
+    },
+    {
+      "path": "web/themes/custom/templates/region/region--footer-top.html.twig",
+      "bytes": 248,
+      "sha256": "6a8df6176924e8561392637847388cdc242175353ac5b5ec65626f20f148122d"
+    },
+    {
+      "path": "web/themes/custom/templates/region/region--sidebar.html.twig",
+      "bytes": 162,
+      "sha256": "5f53a4655d88bedd6a1a1d2da0bf12510d2ce1abb111030a954e6c753ecf0b32"
+    },
+    {
+      "path": "web/themes/custom/templates/region/region--social-bar.html.twig",
+      "bytes": 168,
+      "sha256": "4c8bce8467593f59b5859fb8c9a29b5816caecabe7a64f000c1fdbaa428dcd62"
+    },
+    {
+      "path": "web/themes/custom/templates/views/views-view--artigos-por-ods.html.twig",
+      "bytes": 1442,
+      "sha256": "d827fee9a8ab42d36bc0718cb3abdf70b7ef6a7c5e14b71921b3266ed6d96df0"
+    },
+    {
+      "path": "web/themes/custom/templates/views/views-view--pesquisadores/views-view--pesquisadores--block.html.twig",
+      "bytes": 1020,
+      "sha256": "0fcca1741428fe6b1c67f5aca0b154d83d06fe562663fe8edefb4f378d8b9554"
+    },
+    {
+      "path": "web/themes/custom/templates/views/views-view-unformatted--artigos-por-ods.html.twig",
+      "bytes": 331,
+      "sha256": "405995eb24bbfcb9cce8f93e41c48a6ae2f75478b8ebc345322265cf555569e2"
+    }
+  ],
+  "excluded": [
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.info.yml",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.module",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.permissions.yml",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.routing.yml",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/src/Controller/ControlController.php",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.info.yml",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.module",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.permissions.yml",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.routing.yml",
+    "web/modules/custom/neruds_extensionista_guard.bak-20261006/src/Controller/ControlController.php",
+    "web/modules/custom/neruds_google_integration/src/Service/PortalDataService.php.bak"
+  ]
+}

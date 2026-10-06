@@ -1,0 +1,482 @@
+<div class="neruds-analytics" role="main">
+  <header class="analytics-header">
+    <h1 class="analytics-header__title">
+      Dashboard Analytics — NERUDS
+    </h1>
+    <p class="analytics-header__meta">Gerado em: {{ stats.generated }}</p>
+  </header>
+
+  {# KPI Summary Cards #}
+  <section class="analytics-kpis" aria-label="Indicadores principais">
+    <div class="kpi-card kpi-card--primary">
+      <div class="kpi-card__value">{{ stats.total_all }}</div>
+      <div class="kpi-card__label">Conteúdos Publicados</div>
+    </div>
+
+    <div class="kpi-card kpi-card--secondary">
+      <div class="kpi-card__value">{{ stats.total_researchers }}</div>
+      <div class="kpi-card__label">Pesquisadores</div>
+    </div>
+
+    <div class="kpi-card kpi-card--accent">
+      <div class="kpi-card__value">{{ stats.total_users }}</div>
+      <div class="kpi-card__label">Usuários Registrados</div>
+    </div>
+
+    {% set this_month = 0 %}
+    {% for item in stats.totals %}
+      {% set this_month = this_month + item.month %}
+    {% endfor %}
+    <div class="kpi-card kpi-card--info">
+      <div class="kpi-card__value">{{ this_month }}</div>
+      <div class="kpi-card__label">Publicações este Mês</div>
+    </div>
+  </section>
+
+  {# Content by Type #}
+  <section class="analytics-section" aria-labelledby="content-by-type-title">
+    <h2 id="content-by-type-title" class="analytics-section__title">
+      Conteúdo por Tipo
+    </h2>
+    <div class="analytics-table-wrapper">
+      <table class="analytics-table" role="table">
+        <caption class="visually-hidden">Distribuição de conteúdo por tipo no portal</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tipo de Conteúdo</th>
+            <th scope="col">Total</th>
+            <th scope="col">Este Mês</th>
+            <th scope="col">Distribuição</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in stats.totals %}
+          {% set pct = stats.total_all > 0 ? (item.total / stats.total_all * 100)|round(1) : 0 %}
+          <tr>
+            <td class="analytics-table__type">{{ item.label }}</td>
+            <td class="analytics-table__total">
+              <strong>{{ item.total }}</strong>
+            </td>
+            <td class="analytics-table__month">
+              {% if item.month > 0 %}
+              <span class="badge badge--success">+{{ item.month }}</span>
+              {% else %}
+              <span class="badge badge--neutral">0</span>
+              {% endif %}
+            </td>
+            <td class="analytics-table__bar">
+              <div class="progress-bar" role="progressbar"
+                   aria-valuenow="{{ pct }}"
+                   aria-valuemin="0" aria-valuemax="100"
+                   aria-label="{{ item.label }}: {{ pct }}%">
+                <div class="progress-bar__fill" style="width: {{ pct }}%"></div>
+                <span class="progress-bar__label">{{ pct }}%</span>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {# Monthly Trend #}
+  {% if stats.monthly_data %}
+  <section class="analytics-section" aria-labelledby="monthly-trend-title">
+    <h2 id="monthly-trend-title" class="analytics-section__title">
+      Publicações por Mês (Últimos 6 Meses)
+    </h2>
+    <div class="monthly-chart" role="img" aria-label="Gráfico de publicações por mês">
+      {% set max_count = 1 %}
+      {% for item in stats.monthly_data %}
+        {% if item.count > max_count %}{% set max_count = item.count %}{% endif %}
+      {% endfor %}
+
+      <div class="bar-chart">
+        {% for item in stats.monthly_data %}
+        {% set bar_height = max_count > 0 ? (item.count / max_count * 100)|round : 0 %}
+        <div class="bar-chart__item">
+          <div class="bar-chart__bar-wrapper">
+            <span class="bar-chart__value">{{ item.count }}</span>
+            <div class="bar-chart__bar"
+                 style="height: {{ bar_height }}%"
+                 role="presentation"></div>
+          </div>
+          <div class="bar-chart__label">{{ item.month }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# ODS Distribution #}
+  {% if stats.ods_data %}
+  <section class="analytics-section" aria-labelledby="ods-dist-title">
+    <h2 id="ods-dist-title" class="analytics-section__title">
+      Distribuição por ODS (Top 10)
+    </h2>
+    <ul class="ods-distribution" role="list">
+      {% set max_ods = stats.ods_data|first %}
+      {% for item in stats.ods_data %}
+      {% set pct = max_ods.count > 0 ? (item.count / max_ods.count * 100)|round : 0 %}
+      <li class="ods-distribution__item">
+        <span class="ods-distribution__name">{{ item.name }}</span>
+        <div class="ods-distribution__bar-wrapper">
+          <div class="ods-distribution__bar"
+               style="width: {{ pct }}%"
+               role="progressbar"
+               aria-valuenow="{{ item.count }}"
+               aria-valuemin="0"
+               aria-valuemax="{{ max_ods.count }}"
+               aria-label="{{ item.name }}: {{ item.count }} itens">
+          </div>
+          <span class="ods-distribution__count">{{ item.count }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {# Recent Content #}
+  {% if stats.recent_nodes %}
+  <section class="analytics-section" aria-labelledby="recent-content-title">
+    <h2 id="recent-content-title" class="analytics-section__title">
+      Conteúdo Publicado Recentemente
+    </h2>
+    <ol class="recent-content-list" role="list">
+      {% for node in stats.recent_nodes %}
+      <li class="recent-content-list__item">
+        <span class="recent-content-list__type">{{ node.type }}</span>
+        <a href="{{ path('entity.node.canonical', {'node': node.nid}) }}"
+           class="recent-content-list__title">
+          {{ node.title }}
+        </a>
+        <time class="recent-content-list__date"
+              datetime="{{ node.created|date('Y-m-d') }}">
+          {{ node.created|format_date('short') }}
+        </time>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+</div>
+
+<style>
+.neruds-analytics {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: var(--font-body, 'Outfit', sans-serif);
+}
+
+.analytics-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--color-babasu, #2E4632);
+}
+
+.analytics-header__title {
+  font-family: var(--font-heading, 'Zilla Slab', serif);
+  font-size: 2rem;
+  color: var(--color-babasu, #2E4632);
+  margin: 0 0 0.5rem;
+}
+
+.analytics-header__meta {
+  color: var(--color-text-light, #666);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* KPI Cards */
+.analytics-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+  background: var(--color-surface, #fff);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-top: 4px solid transparent;
+}
+
+.kpi-card--primary { border-top-color: var(--color-babasu, #2E4632); }
+.kpi-card--secondary { border-top-color: var(--color-barro, #A0522D); }
+.kpi-card--accent { border-top-color: var(--color-palha, #E1C16E); }
+.kpi-card--info { border-top-color: #3498DB; }
+
+.kpi-card__value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading, 'Zilla Slab', serif);
+  color: var(--color-text, #1A2818);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-card__label {
+  font-size: 0.875rem;
+  color: var(--color-text-light, #666);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Section */
+.analytics-section {
+  margin-bottom: 2.5rem;
+}
+
+.analytics-section__title {
+  font-family: var(--font-heading, 'Zilla Slab', serif);
+  font-size: 1.5rem;
+  color: var(--color-babasu, #2E4632);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+}
+
+/* Table */
+.analytics-table-wrapper {
+  overflow-x: auto;
+}
+
+.analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.analytics-table thead th {
+  background: var(--color-babasu, #2E4632);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.analytics-table tbody tr:nth-child(even) {
+  background: rgba(46, 70, 50, 0.03);
+}
+
+.analytics-table tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+  vertical-align: middle;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.badge--success {
+  background: rgba(39, 174, 96, 0.15);
+  color: #1e8449;
+}
+
+.badge--neutral {
+  background: rgba(0,0,0,0.06);
+  color: #666;
+}
+
+/* Progress Bar */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.progress-bar__fill {
+  height: 8px;
+  background: var(--color-babasu, #2E4632);
+  border-radius: 4px;
+  min-width: 2px;
+  transition: width 0.5s ease;
+}
+
+.progress-bar__label {
+  font-size: 0.8125rem;
+  color: var(--color-text-light, #666);
+  white-space: nowrap;
+  min-width: 40px;
+}
+
+/* Bar Chart */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  height: 200px;
+  padding: 1rem;
+  background: var(--color-surface, #fff);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.bar-chart__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar-chart__bar-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bar-chart__value {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-babasu, #2E4632);
+  margin-bottom: 4px;
+}
+
+.bar-chart__bar {
+  width: 80%;
+  background: linear-gradient(to top, var(--color-babasu, #2E4632), #4a7a52);
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+}
+
+.bar-chart__label {
+  font-size: 0.75rem;
+  color: var(--color-text-light, #666);
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ODS Distribution */
+.ods-distribution {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ods-distribution__item {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+}
+
+.ods-distribution__name {
+  font-size: 0.875rem;
+  color: var(--color-text, #1A2818);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ods-distribution__bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ods-distribution__bar {
+  height: 16px;
+  background: var(--color-barro, #A0522D);
+  border-radius: 3px;
+  min-width: 4px;
+}
+
+.ods-distribution__count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-light, #666);
+  min-width: 30px;
+}
+
+/* Recent Content */
+.recent-content-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-content-list__item {
+  display: grid;
+  grid-template-columns: 160px 1fr 130px;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+}
+
+.recent-content-list__type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-barro, #A0522D);
+  font-weight: 600;
+}
+
+.recent-content-list__title {
+  color: var(--color-babasu, #2E4632);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recent-content-list__title:hover {
+  text-decoration: underline;
+}
+
+.recent-content-list__title:focus-visible {
+  outline: 3px solid rgba(46,70,50,0.4);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.recent-content-list__date {
+  font-size: 0.8125rem;
+  color: var(--color-text-light, #666);
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .analytics-kpis { grid-template-columns: repeat(2, 1fr); }
+  .recent-content-list__item { grid-template-columns: 1fr; gap: 0.25rem; }
+  .ods-distribution__item { grid-template-columns: 1fr; gap: 0.25rem; }
+  .bar-chart { height: 150px; }
+}
+
+@media (max-width: 480px) {
+  .analytics-kpis { grid-template-columns: 1fr; }
+  .neruds-analytics { padding: 1rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .kpi-card, .analytics-table thead th ~ th,
+  .bar-chart { background: var(--color-surface-dark, #2a2a2a); }
+  .analytics-table thead th { background: #1a3a20; }
+  .kpi-card__value { color: #fff; }
+  .analytics-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.04); }
+}
+</style>

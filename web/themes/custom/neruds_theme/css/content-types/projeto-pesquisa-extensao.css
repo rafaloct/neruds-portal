@@ -1,0 +1,107 @@
+/**
+ * @file
+ * Estilos para Projetos de Pesquisa e Extensão
+ */
+
+.projeto-header {
+    border-bottom: 1px solid var(--neruds-gray-300);
+    background: linear-gradient(to right, var(--neruds-light), #fff);
+}
+
+.projeto-meta {
+    margin-top: 1rem;
+}
+
+.projeto-meta .meta-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.projeto-meta i {
+    color: var(--neruds-primary);
+    margin-right: 0.5rem;
+}
+
+/* Tabs Customization */
+.nav-tabs {
+    border-bottom: 2px solid var(--neruds-gray-200);
+}
+
+.nav-tabs .nav-link {
+    color: var(--neruds-gray-700);
+    font-weight: 600;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 1rem 1.5rem;
+    transition: all 0.2s;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--neruds-primary);
+    border-color: transparent;
+    background-color: var(--neruds-light);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--neruds-primary);
+    border-bottom-color: var(--neruds-primary);
+    background: transparent;
+}
+
+/* Content Sections */
+.tab-content {
+    padding: 2rem 0;
+}
+
+.projeto-content h3 {
+    color: var(--neruds-dark);
+    font-family: var(--font-heading);
+    margin-top: 1.5rem;
+}
+
+/* Sidebar Styling */
+.projeto-sidebar {
+    border: 1px solid var(--neruds-gray-100);
+    box-shadow: var(--shadow-sm);
+    background-color: var(--neruds-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+}
+
+.sidebar-block {
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-block h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--neruds-gray-500);
+    border-bottom: 2px solid var(--neruds-gray-200);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Equipe Grid */
+.equipe-grid .field__item {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    background: var(--neruds-light);
+    border: 1px solid var(--neruds-gray-200);
+    border-radius: var(--radius-md);
+    transition: transform 0.2s;
+}
+
+.equipe-grid .field__item:hover {
+    transform: translateX(4px);
+    border-color: var(--neruds-primary-light);
+}
+
+/* Badges Container in Sidebar */
+.projeto-sidebar .field__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}

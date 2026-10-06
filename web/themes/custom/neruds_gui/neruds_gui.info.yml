@@ -1,0 +1,81 @@
+name: 'NERUDS-GUI — Acadêmico Premium'
+type: theme
+description: 'Tema decolonial premium para o Núcleo de Estudos Rurais, Desigualdades e Sistemas Socioecológicos (NERUDS/UFT). Identidade visual "Trama e Barro" com design system moderno, glassmorphism e micro-interações.'
+package: 'Custom'
+version: '2.0.0'
+core_version_requirement: ^11 || ^12
+
+base theme: olivero
+
+# Regiões de blocos (hierarquia clara)
+regions:
+  # Header
+  header: 'Header — Logo e Identidade'
+  primary_menu: 'Menu Principal'
+  secondary_menu: 'Menu Secundário (Busca, Idioma)'
+
+  # Hero / Manifesto
+  hero: 'Hero — Manifesto e CTA'
+  breadcrumb: 'Trilha de Navegação'
+
+  # Conteúdo Principal
+  highlighted: 'Mensagens de Destaque'
+  content_above: 'Acima do Conteúdo'
+  content: 'Conteúdo Principal'
+  sidebar: 'Barra Lateral'
+  content_below: 'Abaixo do Conteúdo'
+
+  # Rodapé
+  social_bar: 'Barra Social'
+  footer_top: 'Rodapé Superior — Informações'
+  footer_bottom: 'Rodapé Inferior — Copyright'
+
+# Bibliotecas globais carregadas automaticamente
+libraries:
+  - neruds_gui/design-system
+  - neruds_gui/bootstrap5
+  - neruds_gui/fonts
+  - neruds_gui/global-styles
+  - neruds_gui/animations
+
+# Dependências
+dependencies:
+  - olivero
+
+# Suprimir CSS/JS do Olivero que conflitam com nosso layout
+libraries-override:
+  # Suprimir toda a biblioteca de navegação primária do Olivero
+  olivero/navigation-primary:
+    css:
+      component:
+        css/components/navigation/nav-primary.css: false
+        css/components/navigation/nav-primary-button.css: false
+        css/components/navigation/nav-primary-wide.css: false
+    js:
+      js/navigation.js: false
+      js/second-level-navigation.js: false
+      js/nav-resize.js: false
+
+  # Suprimir CSS de header/site-header do Olivero (usamos o nosso)
+  olivero/global-styling:
+    css:
+      component:
+        css/components/site-header.css: false
+        css/components/header-navigation.css: false
+        css/components/header-site-branding.css: false
+        css/components/header-buttons-mobile.css: false
+        css/components/header-sticky-toggle.css: false
+        css/components/navigation/nav-button-mobile.css: false
+
+  # Suprimir busca wide/narrow do Olivero — substituída pelo overlay NERUDS
+  olivero/search-wide:
+    css:
+      component:
+        css/components/header-search-wide.css: false
+    js:
+      js/search.js: false
+
+# Configurações de tema (via admin UI)
+settings:
+  color_scheme: 'light'
+  enable_glass_effects: true

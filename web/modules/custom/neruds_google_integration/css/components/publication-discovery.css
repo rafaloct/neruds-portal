@@ -1,0 +1,201 @@
+.neruds-publication-discovery {
+  background: #fff;
+  color: #18231b;
+  padding: clamp(1.25rem, 3vw, 3rem);
+}
+
+.neruds-publication-discovery__header {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(12rem, 1fr) minmax(18rem, 2fr);
+  margin-bottom: 1rem;
+}
+
+.neruds-publication-discovery__controls {
+  display: grid;
+  gap: .6rem;
+}
+
+.neruds-publication-discovery__source {
+  background: #f2f5ef;
+  border: 1px solid #dbe3d4;
+  border-radius: 8px;
+  display: inline-flex;
+  gap: .3rem;
+  max-width: max-content;
+  padding: .25rem;
+}
+
+.neruds-publication-discovery__source button {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: #2c5530;
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.1;
+  padding: .45rem .7rem;
+}
+
+.neruds-publication-discovery__source button.is-active {
+  background: #2c5530;
+  color: #fff;
+}
+
+.neruds-publication-discovery__source-status {
+  color: #606062;
+  font-size: .85rem;
+  margin: 0;
+}
+
+.neruds-publication-discovery__search {
+  display: flex;
+  gap: .5rem;
+}
+
+.neruds-publication-discovery__search input {
+  border: 1px solid #cbd6c8;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 0;
+  padding: .75rem .9rem;
+}
+
+.neruds-publication-discovery__search button,
+.neruds-publication-discovery__actions button {
+  background: #2c5530;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  padding: .75rem 1rem;
+}
+
+.neruds-publication-discovery__body {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(13rem, 3fr) minmax(0, 9fr);
+}
+
+.neruds-publication-discovery__summary {
+  margin-bottom: 1.25rem;
+}
+
+.neruds-publication-discovery__summary-grid {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.neruds-publication-discovery__metric {
+  background:
+    radial-gradient(circle at 1rem 1rem, rgba(245, 130, 42, .16), transparent 3.75rem),
+    #fffdf8;
+  border: 1px solid #eadfce;
+  border-radius: 8px;
+  padding: .85rem;
+}
+
+.neruds-publication-discovery__metric strong {
+  color: #2c5530;
+  display: block;
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+  line-height: 1;
+  margin-bottom: .35rem;
+}
+
+.neruds-publication-discovery__metric span,
+.neruds-publication-discovery__summary-caption {
+  color: #606062;
+  font-size: .88rem;
+}
+
+.neruds-publication-discovery__summary-caption {
+  margin: .65rem 0 0;
+}
+
+.neruds-publication-discovery__facets {
+  align-self: start;
+  background: #f8faf6;
+  border: 1px solid #e0e6dc;
+  border-radius: 8px;
+  display: grid;
+  gap: .5rem;
+  padding: 1rem;
+}
+
+.neruds-publication-discovery__facets a {
+  color: #2c5530;
+  text-decoration: none;
+}
+
+.neruds-publication-discovery__facet-group {
+  border-top: 1px solid #e0e6dc;
+  padding-top: .75rem;
+}
+
+.neruds-publication-discovery__facet-group h4 {
+  color: #606062;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  margin: 0 0 .5rem;
+  text-transform: uppercase;
+}
+
+.neruds-publication-discovery__facet-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.neruds-publication-discovery__facet-list a {
+  background: rgba(245, 130, 42, .1);
+  border: 1px solid rgba(245, 130, 42, .22);
+  border-radius: 999px;
+  color: #74430f;
+  font-size: .78rem;
+  line-height: 1.2;
+  padding: .3rem .55rem;
+}
+
+.neruds-publication-discovery__results {
+  display: grid;
+  gap: .85rem;
+}
+
+.neruds-publication-discovery__cse {
+  grid-column: 1 / -1;
+}
+
+.neruds-publication-discovery__card {
+  border: 1px solid #dfe5dc;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(21, 45, 24, .08);
+  padding: 1rem;
+}
+
+.neruds-publication-discovery__card h3 {
+  font-size: 1.08rem;
+  margin: 0 0 .5rem;
+}
+
+.neruds-publication-discovery__meta {
+  color: #606062;
+  font-size: .82rem;
+  margin: 0 0 .5rem;
+}
+
+.neruds-publication-discovery__actions {
+  display: flex;
+  gap: .75rem;
+  margin-top: .75rem;
+}
+
+@media (max-width: 760px) {
+  .neruds-publication-discovery__header,
+  .neruds-publication-discovery__body,
+  .neruds-publication-discovery__summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

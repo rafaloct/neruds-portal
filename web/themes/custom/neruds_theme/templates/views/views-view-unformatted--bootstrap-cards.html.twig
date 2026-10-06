@@ -1,0 +1,296 @@
+{#
+/**
+ * @file
+ * Template para Views em formato de cards Bootstrap
+ * Responsivo e otimizado para diferentes tipos de conteúdo
+ */
+#}
+
+{%
+  set classes = [
+    'views-view-unformatted',
+    'bootstrap-cards-view',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="row g-4">
+    {% for row in rows %}
+      {%
+        set row_classes = [
+          'views-row',
+          'col-12',
+          'col-sm-6',
+          'col-lg-4',
+          'col-xl-3',
+        ]
+      %}
+      
+      <div{{ row.attributes.addClass(row_classes) }}>
+        <div class="card h-100 neruds-card shadow-sm">
+          
+          {# Card Image (se disponível) #}
+          {% if row.content['#node'] %}
+            {% set node = row.content['#node'] %}
+            
+            {# Imagem para diferentes tipos de conteúdo #}
+            {% if node.field_imagem_destaque.0 %}
+              <div class="card-img-top-wrapper">
+                <img src="{{ node.field_imagem_destaque.0.entity.uri.value|image_style('medium') }}" 
+                     class="card-img-top" 
+                     alt="{{ node.title.value }}"
+                     loading="lazy">
+              </div>
+            {% elseif node.field_imagem_capa.0 %}
+              <div class="card-img-top-wrapper">
+                <img src="{{ node.field_imagem_capa.0.entity.uri.value|image_style('medium') }}" 
+                     class="card-img-top" 
+                     alt="{{ node.title.value }}"
+                     loading="lazy">
+              </div>
+            {% elseif node.field_foto_pesquisador.0 %}
+              <div class="card-img-top-wrapper">
+                <img src="{{ node.field_foto_pesquisador.0.entity.uri.value|image_style('medium') }}" 
+                     class="card-img-top" 
+                     alt="{{ node.title.value }}"
+                     loading="lazy">
+              </div>
+            {% else %}
+              {# Placeholder baseado no tipo de conteúdo #}
+              <div class="card-img-placeholder d-flex align-items-center justify-content-center">
+                {% if node.bundle == 'perfil_pesquisador' %}
+                  <i class="bi bi-person-circle display-4 text-muted"></i>
+                {% elseif node.bundle == 'projeto_pesquisa_extensao' %}
+                  <i class="bi bi-folder display-4 text-muted"></i>
+                {% elseif node.bundle == 'boletim' %}
+                  <i class="bi bi-newspaper display-4 text-muted"></i>
+                {% elseif node.bundle == 'relatorio' %}
+                  <i class="bi bi-file-earmark-text display-4 text-muted"></i>
+                {% elseif node.bundle == 'noticia' %}
+                  <i class="bi bi-megaphone display-4 text-muted"></i>
+                {% else %}
+                  <i class="bi bi-file-text display-4 text-muted"></i>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {# Badge do tipo de conteúdo #}
+            <div class="card-type-badge">
+              {% if node.bundle == 'perfil_pesquisador' %}
+                <span class="badge bg-primary">
+                  <i class="bi bi-person"></i> Pesquisador
+                </span>
+              {% elseif node.bundle == 'projeto_pesquisa_extensao' %}
+                <span class="badge bg-success">
+                  <i class="bi bi-folder"></i> Projeto
+                </span>
+              {% elseif node.bundle == 'boletim' %}
+                <span class="badge bg-info">
+                  <i class="bi bi-newspaper"></i> Boletim
+                </span>
+              {% elseif node.bundle == 'relatorio' %}
+                <span class="badge bg-warning">
+                  <i class="bi bi-file-earmark-text"></i> Relatório
+                </span>
+              {% elseif node.bundle == 'noticia' %}
+                <span class="badge bg-danger">
+                  <i class="bi bi-megaphone"></i> Notícia
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="card-body d-flex flex-column">
+            
+            {# Título #}
+            <h5 class="card-title">
+              {% if node %}
+                <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" class="text-decoration-none">
+                  {{ node.title.value|length > 60 ? node.title.value|slice(0, 60) ~ '...' : node.title.value }}
+                </a>
+              {% else %}
+                {{ row.content }}
+              {% endif %}
+            </h5>
+
+            {# Resumo/Descrição #}
+            {% if node %}
+              <div class="card-text flex-grow-1">
+                {% if node.field_resumo.0 %}
+                  <p class="text-muted">{{ node.field_resumo.0.value|striptags|slice(0, 120) }}...</p>
+                {% elseif node.field_biografia.0 %}
+                  <p class="text-muted">{{ node.field_biografia.0.value|striptags|slice(0, 120) }}...</p>
+                {% elseif node.field_descricao_projeto.0 %}
+                  <p class="text-muted">{{ node.field_descricao_projeto.0.value|striptags|slice(0, 120) }}...</p>
+                {% elseif node.body.0 %}
+                  <p class="text-muted">{{ node.body.0.value|striptags|slice(0, 120) }}...</p>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {# Taxonomias principais #}
+            {% if node %}
+              <div class="card-taxonomies mb-3">
+                
+                {# ODS (máximo 3) #}
+                {% if node.field_ods_relacionados %}
+                  <div class="taxonomy-mini-badges mb-2">
+                    {% for delta in 0..2 %}
+                      {% if node.field_ods_relacionados[delta] %}
+                        {% set ods_term = node.field_ods_relacionados[delta].entity %}
+                        {% if ods_term.name.value matches '/ODS\\s*(\\d+)/i' %}
+                          {% set ods_num = ods_term.name.value|preg_replace('/.*ODS\\s*(\\d+).*/i', '$1') %}
+                          <span class="badge badge-ods badge-ods-{{ ods_num }} me-1">
+                            ODS {{ ods_num }}
+                          </span>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                {# Eixos Temáticos (máximo 2) #}
+                {% if node.field_eixo_tematico %}
+                  <div class="taxonomy-mini-badges">
+                    {% for delta in 0..1 %}
+                      {% if node.field_eixo_tematico[delta] %}
+                        {% set eixo_term = node.field_eixo_tematico[delta].entity %}
+                        <span class="badge badge-eixo me-1">
+                          {{ eixo_term.name.value|slice(0, 15) }}{% if eixo_term.name.value|length > 15 %}...{% endif %}
+                        </span>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+              </div>
+            {% endif %}
+
+            {# Metadados #}
+            {% if node %}
+              <div class="card-meta text-muted small mt-auto">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>
+                    <i class="bi bi-calendar"></i>
+                    {{ node.created.value|date('d/m/Y') }}
+                  </span>
+                  
+                  {# Status específico por tipo #}
+                  {% if node.bundle == 'projeto_pesquisa_extensao' and node.field_status_projeto.0 %}
+                    <span class="badge bg-secondary">
+                      {{ node.field_status_projeto.0.entity.name.value }}
+                    </span>
+                  {% elseif node.bundle == 'relatorio' and node.field_tipo_relatorio.0 %}
+                    <span class="badge bg-secondary">
+                      {{ node.field_tipo_relatorio.0.value }}
+                    </span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+
+          {# Card Footer com ações #}
+          <div class="card-footer bg-transparent border-top-0">
+            <div class="d-flex justify-content-between align-items-center">
+              {% if node %}
+                <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" 
+                   class="btn btn-outline-primary btn-sm">
+                  <i class="bi bi-eye"></i> Ver mais
+                </a>
+              {% endif %}
+              
+              <div class="card-actions">
+                <button class="btn btn-outline-secondary btn-sm" 
+                        onclick="navigator.share({title: '{{ node ? node.title.value : '' }}', url: '{{ node ? url('<current>') : '' }}'})">
+                  <i class="bi bi-share"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.bootstrap-cards-view .neruds-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bootstrap-cards-view .neruds-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-top-wrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.neruds-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-img-placeholder {
+  height: 200px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.card-type-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.card-title a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.card-title a:hover {
+  color: var(--neruds-primary) !important;
+}
+
+.taxonomy-mini-badges .badge {
+  font-size: 0.7rem;
+  padding: 0.25em 0.5em;
+}
+
+.card-meta {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .bootstrap-cards-view .col-12 {
+    margin-bottom: 1rem;
+  }
+  
+  .card-img-top-wrapper {
+    height: 150px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bootstrap-cards-view .row {
+    --bs-gutter-x: 2rem;
+  }
+}
+</style>

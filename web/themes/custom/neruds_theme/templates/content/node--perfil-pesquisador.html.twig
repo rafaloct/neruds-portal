@@ -1,0 +1,170 @@
+{#
+/**
+ * @file
+ * Template para exibição de Perfil do Pesquisador
+ * 
+ * Available variables:
+ * - content: Campos renderizados do node
+ * - node: Object do node completo
+ */
+#}
+
+{{ attach_library('neruds_theme/perfil-pesquisador') }}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'perfil-pesquisador') }}>
+  
+  {# Hero Section com Foto e Dados Principais #}
+  <div class="perfil-header bg-light py-4 mb-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center">
+          {% if content.field_foto_perfil %}
+            <div class="perfil-foto mb-3">
+              {{ content.field_foto_perfil }}
+            </div>
+          {% else %}
+            <div class="perfil-foto-placeholder mb-3">
+              <i class="bi bi-person-circle" style="font-size: 150px; color: var(--neruds-secondary);"></i>
+            </div>
+          {% endif %}
+        </div>
+        
+        <div class="col-md-9">
+          <h1 class="perfil-nome display-5 fw-bold mb-2">
+            {% if content.field_nome_completo %}
+              {{ content.field_nome_completo }}
+            {% else %}
+              {{ label }}
+            {% endif %}
+          </h1>
+          
+          {# Contatos e Links Acadêmicos #}
+          <div class="perfil-contatos mb-3">
+            {% if content.field_email %}
+              <div class="contato-item">
+                <i class="bi bi-envelope-fill text-primary"></i>
+                {{ content.field_email }}
+              </div>
+            {% endif %}
+            
+            {% if content.field_telefone %}
+              <div class="contato-item">
+                <i class="bi bi-telephone-fill text-primary"></i>
+                {{ content.field_telefone }}
+              </div>
+            {% endif %}
+          </div>
+          
+          {# Links Externos #}
+          <div class="perfil-links-externos">
+            {% if content.field_lattes %}
+              <a href="{{ node.field_lattes.0.uri }}" target="_blank" class="btn btn-outline-primary btn-sm me-2">
+                <i class="bi bi-link-45deg"></i> Lattes
+              </a>
+            {% endif %}
+            
+            {% if content.field_orcid %}
+              <a href="https://orcid.org/{{ node.field_orcid.0.value }}" target="_blank" class="btn btn-outline-success btn-sm">
+                <i class="bi bi-shield-check"></i> ORCID
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {# Conteúdo Principal #}
+  <div class="container perfil-content">
+    <div class="row">
+      
+      {# Coluna Principal - Biografia e Informações #}
+      <div class="col-lg-8">
+        
+        {# Biografia #}
+        {% if content.field_biografia %}
+          <section class="perfil-section mb-4">
+            <h2 class="section-title">
+              <i class="bi bi-person-lines-fill text-primary"></i> Biografia
+            </h2>
+            <div class="biografia-text">
+              {{ content.field_biografia }}
+            </div>
+          </section>
+        {% endif %}
+        
+        {# Projetos de Pesquisa #}
+        {% if content.field_projetos_pesquisador %}
+          <section class="perfil-section mb-4">
+            <h2 class="section-title">
+              <i class="bi bi-folder-fill text-primary"></i> Projetos de Pesquisa e Extensão
+            </h2>
+            <div class="projetos-list">
+              {{ content.field_projetos_pesquisador }}
+            </div>
+          </section>
+        {% endif %}
+        
+        {# Publicações Científicas #}
+        {% if content.field_producoes_pesquisador %}
+          <section class="perfil-section mb-4">
+            <h2 class="section-title">
+              <i class="bi bi-journal-text text-primary"></i> Produções Científicas
+            </h2>
+            <div class="producoes-list">
+              {{ content.field_producoes_pesquisador }}
+            </div>
+          </section>
+        {% endif %}
+        
+      </div>
+      
+      {# Sidebar - Áreas e Interesses #}
+      <div class="col-lg-4">
+        
+        {# Áreas de Conhecimento #}
+        {% if content.field_areas_conhecimento %}
+          <div class="perfil-sidebar-section mb-4">
+            <h3 class="sidebar-title">Áreas de Conhecimento</h3>
+            <div class="taxonomy-badges-container">
+              {{ content.field_areas_conhecimento }}
+            </div>
+          </div>
+        {% endif %}
+        
+        {# Linhas de Pesquisa #}
+        {% if content.field_linhas_pesquisa %}
+          <div class="perfil-sidebar-section mb-4">
+            <h3 class="sidebar-title">Linhas de Pesquisa</h3>
+            <div class="taxonomy-badges-container">
+              {{ content.field_linhas_pesquisa }}
+            </div>
+          </div>
+        {% endif %}
+        
+        {# Eixos Temáticos #}
+        {% if content.field_eixos_tematicos %}
+          <div class="perfil-sidebar-section mb-4">
+            <h3 class="sidebar-title">Eixos Temáticos</h3>
+            <div class="taxonomy-badges-container">
+              {{ content.field_eixos_tematicos }}
+            </div>
+          </div>
+        {% endif %}
+        
+        {# ODS de Interesse #}
+        {% if content.field_ods_interesse %}
+          <div class="perfil-sidebar-section mb-4">
+            <h3 class="sidebar-title">ODS de Interesse</h3>
+            <div class="taxonomy-badges-container">
+              {{ content.field_ods_interesse }}
+            </div>
+          </div>
+        {% endif %}
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</article>

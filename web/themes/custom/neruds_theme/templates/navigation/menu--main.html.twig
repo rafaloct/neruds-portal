@@ -1,0 +1,101 @@
+{#
+/**
+ * @file
+ * Template para menu principal otimizado com barra de pesquisa
+ * Seguindo as melhores práticas do Drupal 11
+ * @see https://www.drupal.org/docs/develop/theming-drupal
+ *
+ * Variáveis disponíveis:
+ * - items: Lista de itens do menu
+ * - attributes: Atributos HTML do wrapper
+ * - menu_name: Nome do menu
+ */
+#}
+
+{% import _self as menus %}
+
+{%
+  set classes = [
+    'navbar-nav',
+    'ms-auto',
+    'neruds-navbar-nav',
+  ]
+%}
+
+<div class="neruds-menu-wrapper">
+  {# Barra de Pesquisa #}
+  <div class="neruds-search-wrapper">
+    <form action="/search" method="get" class="neruds-search-form" id="neruds-search-form">
+      <div class="search-input-wrapper">
+        <input 
+          type="search" 
+          name="keys" 
+          placeholder="Buscar no portal..." 
+          class="form-control neruds-search-input"
+          id="neruds-search-input"
+          aria-label="Buscar no portal"
+          aria-autocomplete="list"
+          aria-expanded="false"
+          autocomplete="off"
+          role="combobox"
+        />
+        <span class="search-shortcut-hint" aria-hidden="true">
+          <kbd>Ctrl</kbd>+<kbd>K</kbd>
+        </span>
+        <button type="submit" class="btn neruds-search-btn" aria-label="Pesquisar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      {# Container para sugestões de autocomplete #}
+      <div class="neruds-search-suggestions" id="neruds-search-suggestions" role="listbox" aria-label="Sugestões de busca">
+        {# Sugestões serão inseridas via JavaScript #}
+      </div>
+    </form>
+  </div>
+
+  {# Menu de Navegação #}
+  {{ menus.menu_links(items, attributes.addClass(classes), 0) }}
+</div>
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes }}>
+    {% else %}
+      <ul class="dropdown-menu neruds-dropdown-menu">
+    {% endif %}
+    {% for item in items %}
+      {%
+        set item_classes = [
+          'nav-item',
+          item.is_expanded ? 'dropdown',
+          item.in_active_trail ? 'active',
+        ]
+      %}
+      <li{{ item.attributes.addClass(item_classes) }}>
+        {% set link_classes = [
+          item.is_expanded ? 'nav-link dropdown-toggle neruds-nav-link',
+          not item.is_expanded ? 'nav-link neruds-nav-link',
+          item.in_active_trail ? 'active',
+        ] %}
+        <a href="{{ item.url }}" 
+           class="{{ link_classes|join(' ') }}"
+           {% if item.is_expanded %}data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
+          {{ item.title }}
+          {% if item.is_expanded %}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="dropdown-icon">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          {% endif %}
+        </a>
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

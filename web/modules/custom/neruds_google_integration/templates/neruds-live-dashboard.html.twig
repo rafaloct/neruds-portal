@@ -1,0 +1,12 @@
+<section class="neruds-live-dashboard" aria-labelledby="neruds-live-dashboard-title" data-neruds-live-dashboard>
+  <h2 id="neruds-live-dashboard-title" class="neruds-live-dashboard__title">{{ title }}</h2>
+  <div class="neruds-live-dashboard__grid" aria-live="polite">
+    {% for metric in metrics %}
+      <a class="neruds-live-dashboard__card" href="{{ metric.href }}" style="--metric-color: {{ metric.color }};" data-metric-id="{{ metric.id }}" aria-label="{{ metric.label }}: {{ metric.value }}. Abrir detalhamento.">
+        <span class="neruds-live-dashboard__value" data-count-to="{{ metric.value }}">0</span>
+        <span class="neruds-live-dashboard__label">{{ metric.label }}</span>
+        <span class="neruds-live-dashboard__sparkline" data-sparkline="{{ metric.sparkline|join(',') }}" role="img" aria-label="Tendencia mensal de {{ metric.label }}"></span>
+      </a>
+    {% endfor %}
+  </div>
+</section>

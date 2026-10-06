@@ -1,0 +1,304 @@
+/* ============================================
+   PERFIL DE PESQUISADOR - Ant Design Style
+   ============================================ */
+
+.node-perfil-pesquisador--full {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--neruds-spacing-xl);
+}
+
+.pesquisador-perfil-card {
+  background: var(--neruds-background-color-card);
+  border-radius: 8px;
+  box-shadow: var(--neruds-box-shadow-md);
+  overflow: hidden;
+}
+
+/* Header Section */
+.pesquisador-header-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c2f 100%);
+  color: white !important;
+  padding: var(--neruds-spacing-xl);
+  position: relative;
+}
+
+.pesquisador-header-section * {
+  color: inherit;
+}
+
+.pesquisador-header-content {
+  display: flex;
+  gap: var(--neruds-spacing-lg);
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  color: white !important;
+}
+
+.pesquisador-foto-wrapper {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--neruds-box-shadow-md);
+  background: white;
+  transition: var(--neruds-transition-ease-out);
+}
+
+.pesquisador-foto-wrapper:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.pesquisador-foto-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pesquisador-foto-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pesquisador-foto-icon {
+  color: rgba(255, 255, 255, 0.7);
+  width: 80px;
+  height: 80px;
+}
+
+.pesquisador-info-header {
+  flex: 1;
+  padding-top: var(--neruds-spacing-md);
+}
+
+.pesquisador-nome {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--neruds-spacing-md);
+  color: white !important;
+}
+
+.pesquisador-links-externos {
+  display: flex;
+  gap: var(--neruds-spacing-md);
+  flex-wrap: wrap;
+}
+
+.link-neruds {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neruds-spacing-xs);
+  padding: var(--neruds-spacing-xs) var(--neruds-spacing-md);
+  background: rgba(255, 255, 255, 0.2);
+  color: white !important;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: var(--neruds-transition-ease-out);
+  font-size: 0.9rem;
+}
+
+.link-neruds:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: white !important;
+  text-decoration: none;
+}
+
+.link-neruds svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+
+/* Content Section */
+.pesquisador-content-section {
+  padding: var(--neruds-spacing-xl);
+}
+
+.pesquisador-secao {
+  margin-bottom: var(--neruds-spacing-xl);
+}
+
+.pesquisador-secao-titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--neruds-text-primary);
+  margin-bottom: var(--neruds-spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--neruds-spacing-sm);
+  padding-bottom: var(--neruds-spacing-sm);
+  border-bottom: 2px solid var(--neruds-border-color);
+  transition: var(--neruds-transition-ease-out);
+}
+
+/* Hover apenas para títulos que NÃO são ODS */
+.pesquisador-secao:not(.pesquisador-ods-section) .pesquisador-secao-titulo:hover {
+  color: var(--neruds-primary-color);
+  border-bottom-color: var(--neruds-primary-color);
+}
+
+.pesquisador-secao-titulo svg {
+  width: 20px;
+  height: 20px;
+  color: var(--neruds-primary-color);
+  transition: var(--neruds-transition-ease-out);
+}
+
+/* Hover SVG apenas para seções que NÃO são ODS */
+.pesquisador-secao:not(.pesquisador-ods-section) .pesquisador-secao-titulo:hover svg {
+  transform: scale(1.1);
+}
+
+.pesquisador-biografia {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--neruds-text-secondary);
+}
+
+/* Info Grid */
+.pesquisador-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--neruds-spacing-lg);
+  margin-bottom: var(--neruds-spacing-xl);
+}
+
+.pesquisador-taxonomia-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--neruds-spacing-sm);
+}
+
+.pesquisador-taxonomia-tags a,
+.pesquisador-taxonomia-tags .field__item {
+  display: inline-block;
+  padding: var(--neruds-spacing-xs) var(--neruds-spacing-md);
+  background: var(--neruds-background-color-light);
+  color: var(--neruds-text-primary);
+  border-radius: 16px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--neruds-border-color);
+  transition: var(--neruds-transition-ease-out);
+}
+
+.pesquisador-taxonomia-tags a:hover {
+  background: var(--neruds-primary-color);
+  color: white;
+  border-color: var(--neruds-primary-color);
+}
+
+.pesquisador-ods-tags a {
+  background: #e6f7ff;
+  border-color: #91d5ff;
+  color: #0050b3;
+}
+
+.pesquisador-ods-tags a:hover {
+  background: #1890ff;
+  color: white;
+  border-color: #1890ff;
+}
+
+/* Projetos e Produções */
+.pesquisador-relacionados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--neruds-spacing-lg);
+  margin-top: var(--neruds-spacing-xl);
+}
+
+.pesquisador-projetos-lista,
+.pesquisador-producoes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neruds-spacing-md);
+}
+
+.pesquisador-projetos-lista a,
+.pesquisador-producoes-lista a {
+  display: block;
+  padding: var(--neruds-spacing-md);
+  background: var(--neruds-background-color-light);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--neruds-text-primary);
+  border: 1px solid var(--neruds-border-color);
+  transition: var(--neruds-transition-ease-out);
+}
+
+.pesquisador-projetos-lista a:hover,
+.pesquisador-producoes-lista a:hover {
+  background: white;
+  box-shadow: var(--neruds-box-shadow-sm);
+  border-color: var(--neruds-primary-color);
+  transform: translateY(-2px);
+}
+
+/* Contato */
+.pesquisador-contato-section {
+  background: var(--neruds-background-color-light);
+  padding: var(--neruds-spacing-lg);
+  border-radius: 6px;
+  margin-top: var(--neruds-spacing-xl);
+}
+
+.pesquisador-contato-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--neruds-spacing-sm);
+}
+
+.pesquisador-contato-item {
+  display: flex;
+  gap: var(--neruds-spacing-sm);
+  align-items: center;
+}
+
+.pesquisador-contato-item strong {
+  color: var(--neruds-text-primary);
+  min-width: 80px;
+}
+
+.pesquisador-contato-item a {
+  color: var(--neruds-primary-color);
+  text-decoration: none;
+}
+
+.pesquisador-contato-item a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pesquisador-header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pesquisador-foto-wrapper {
+    margin: 0 auto;
+  }
+
+  .pesquisador-nome {
+    font-size: 1.8rem;
+  }
+
+  .pesquisador-info-grid,
+  .pesquisador-relacionados-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .node-perfil-pesquisador--full {
+    padding: var(--neruds-spacing-md);
+  }
+}
+

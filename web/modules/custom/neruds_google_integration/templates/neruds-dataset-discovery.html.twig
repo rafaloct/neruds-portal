@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Dataset discovery page shell populated by dataset-discovery.js.
+ */
+#}
+<section class="neruds-dataset-discovery" data-neruds-dataset-discovery>
+  <header class="neruds-dataset-discovery__header">
+    <div>
+      <p class="neruds-dataset-discovery__eyebrow">{{ 'Dados anonimizados'|t }}</p>
+      <h1>{{ title|default('Descoberta de Datasets'|t) }}</h1>
+      <p class="neruds-dataset-discovery__summary">
+        {{ 'Conjuntos derivados do BigQuery para pesquisa territorial, com colunas publicas e amostras anonimizadas por projeto, fonte e tabela.'|t }}
+      </p>
+    </div>
+    <div class="neruds-dataset-discovery__radar" aria-hidden="true"></div>
+  </header>
+
+  <form class="neruds-dataset-discovery__filters" data-dataset-filters>
+    <div class="neruds-dataset-discovery__field">
+      <label for="neruds-dataset-query">{{ 'Buscar datasets'|t }}</label>
+      <input id="neruds-dataset-query" type="search" name="q" autocomplete="off" placeholder="{{ 'FNO, Anaua, tabela...'|t }}">
+    </div>
+    <div class="neruds-dataset-discovery__field">
+      <label for="neruds-dataset-project">{{ 'Projeto'|t }}</label>
+      <select id="neruds-dataset-project" name="project">
+        <option value="">{{ 'Todos'|t }}</option>
+      </select>
+    </div>
+    <div class="neruds-dataset-discovery__field">
+      <label for="neruds-dataset-sigilo">{{ 'Sigilo'|t }}</label>
+      <select id="neruds-dataset-sigilo" name="sigilo">
+        <option value="">{{ 'Todos'|t }}</option>
+      </select>
+    </div>
+    <button type="submit">{{ 'Filtrar'|t }}</button>
+    <button type="button" class="neruds-dataset-discovery__button--secondary" data-dataset-reset>{{ 'Limpar'|t }}</button>
+  </form>
+
+  <div class="neruds-dataset-discovery__status" data-dataset-status role="status" aria-live="polite">
+    {{ 'Carregando datasets com amostras anonimizadas...'|t }}
+  </div>
+
+  <div class="neruds-dataset-discovery__summary-grid" data-dataset-summary></div>
+  <div class="neruds-dataset-discovery__grid" data-dataset-results></div>
+  <div class="neruds-dataset-discovery__pagination" data-dataset-pagination></div>
+</section>

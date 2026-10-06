@@ -1,0 +1,63 @@
+.neruds-territorial-timeline {
+  background: #f6f4ef;
+  color: #1b241c;
+  padding: clamp(1.25rem, 3vw, 3rem);
+}
+
+.neruds-territorial-timeline__header {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.neruds-territorial-timeline__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+.neruds-territorial-timeline__export,
+.neruds-territorial-timeline__google {
+  background: #2c5530;
+  border-radius: 8px;
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
+  padding: .55rem .8rem;
+  text-decoration: none;
+}
+
+.neruds-territorial-timeline__google {
+  background: #1e88e5;
+  margin-left: .75rem;
+}
+
+.neruds-territorial-timeline__next {
+  background: #fff;
+  border-left: 4px solid #e74c3c;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  min-height: 3rem;
+  padding: .85rem 1rem;
+}
+
+.neruds-territorial-timeline__calendar {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(46, 35, 16, .1);
+  padding: 1rem;
+}
+
+.fc .fc-button-primary {
+  background: #2c5530;
+  border-color: #2c5530;
+}
+
+@media (max-width: 720px) {
+  .neruds-territorial-timeline__header {
+    align-items: start;
+    display: block;
+  }
+}

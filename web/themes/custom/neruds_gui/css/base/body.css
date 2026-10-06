@@ -1,0 +1,155 @@
+/**
+ * @file body.css
+ * Estilos do elemento BODY
+ * Tipografia, cores e fundo globais
+ */
+
+body {
+  /* Tipografia base */
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: 0;
+
+  /* Cores (Brand Manual: Tonal Stratification) */
+  color: var(--color-babasu-dark);
+  background-color: var(--color-gray-300); /* Cinza Claro #DCDDDF */
+
+  /* Layout */
+  min-height: 100vh;
+  width: 100%;
+
+  /* Suavização de fonte */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Renderização otimizada */
+  text-rendering: optimizeLegibility;
+
+  /* Overflow */
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  /* Transição de tema (light/dark) */
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
+/* =====================================================
+   DARK MODE
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-gray-100);
+  }
+}
+
+/* =====================================================
+   LAYOUT DO DRUPAL
+   — O Drupal insere .dialog-off-canvas-main-canvas entre
+     body e #page-wrapper, quebrando a cadeia flex.
+     Propagamos o flex para todos os wrappers.
+   ===================================================== */
+
+
+
+/* Page wrapper principal e reset do wrapper do Drupal */
+
+.dialog-off-canvas-main-canvas {
+  overflow: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+#page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* #page contém header + main (não o footer) */
+#page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#drupal-modal {
+  z-index: var(--z-modal);
+}
+
+#drupal-off-canvas {
+  z-index: var(--z-fixed);
+}
+
+/* =====================================================
+   ACESSIBILIDADE - SKIP LINK
+   ===================================================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-babasu);
+  color: white;
+  padding: var(--space-3) var(--space-4);
+  text-decoration: none;
+  z-index: 100;
+  font-weight: var(--font-weight-semibold);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* =====================================================
+   SELEÇÃO DE TEXTO
+   ===================================================== */
+
+::selection {
+  background-color: var(--color-babasu);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-babasu);
+  color: var(--color-white);
+}
+
+/* =====================================================
+   SCROLLBAR CUSTOMIZADO (webkit browsers)
+   ===================================================== */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-babasu);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-babasu-light);
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+
+main {
+  flex: 1;
+  width: 100%;
+}
+
+#main-content {
+  outline: none;
+}

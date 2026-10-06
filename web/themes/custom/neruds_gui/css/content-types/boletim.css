@@ -1,0 +1,24 @@
+/**
+ * @file boletim.css
+ * Boletim periódico
+ */
+
+.node--boletim {
+  background: var(--color-paper);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-palha);
+}
+
+.node--boletim__cover {
+  width: 150px;
+  height: auto;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.node--boletim__edition {
+  font-size: var(--font-size-sm);
+  color: var(--color-barro);
+  font-weight: var(--font-weight-bold);
+}

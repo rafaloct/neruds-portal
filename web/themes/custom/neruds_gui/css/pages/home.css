@@ -1,0 +1,411 @@
+/**
+ * @file home.css
+ * Homepage — Layout em blocos inteligente
+ * NERUDS-GUI
+ */
+
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-babasu-dark,#2c2c2e) 0%, var(--color-babasu,#606062) 60%, var(--color-barro-dark,#c45e10) 100%);
+  color: #fff;
+  overflow: hidden;
+  padding: 3.5rem 0;
+}
+
+.hero-section__bg {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 70% 50%, rgba(225,193,110,.1) 0%, transparent 60%),
+                    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E1C16E' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-section__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .hero-section__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 4rem;
+  }
+}
+
+.hero-section__eyebrow {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-palha,#E1C16E);
+  opacity: .9;
+}
+
+.hero-section h1,
+.hero-section__title,
+.hero-section__title * {
+  font-family: var(--font-serif,'Georgia',serif);
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  margin: .5rem 0 1rem;
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.hero-section__title--accent { color: var(--color-palha,#E1C16E); }
+
+.hero-section__tagline {
+  font-size: 1rem;
+  color: rgba(255,255,255,.8);
+  max-width: 560px;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.hero-section__ctas {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .625rem 1.25rem;
+  border-radius: .5rem;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 200ms ease;
+  white-space: nowrap;
+}
+
+.btn--lg { padding: .75rem 1.75rem; font-size: 1rem; }
+.btn--sm { padding: .375rem .875rem; font-size: .8rem; }
+
+.btn--primary {
+  background: var(--color-palha,#E1C16E);
+  color: #111827; /* Solves WCAG contrast issue */
+  border-color: var(--color-palha,#E1C16E);
+}
+.btn--primary:hover {
+  background: #d4b360;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(225,193,110,.4);
+}
+
+.btn--outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,.5);
+}
+.btn--outline:hover {
+  background: rgba(255,255,255,.1);
+  border-color: #fff;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-babasu,#606062);
+  border-color: transparent;
+}
+.btn--ghost:hover {
+  background: rgba(46,70,50,.08);
+  color: var(--color-barro,#F58535);
+}
+
+/* =====================================================
+   MAIN — FRONT PAGE
+   ===================================================== */
+
+.site-main--front {
+  padding: 2.5rem 0 3rem;
+}
+
+.home-section {
+  margin-bottom: 2.5rem;
+}
+
+
+.home-section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.home-section__title {
+  font-family: var(--font-serif,'Georgia',serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-babasu,#606062);
+  padding-bottom: .5rem;
+  border-bottom: 3px solid var(--color-palha,#E1C16E);
+}
+
+/* ── 3-column grid ────────────────────────────────── */
+.home-section__grid--3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .home-section__grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 640px) {
+  .home-section__grid--3col {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ── Panel card ───────────────────────────────────── */
+.home-panel {
+  background: #fff;
+  border: 1px solid var(--color-gray-200,#E5E7EB);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.home-panel:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  transform: translateY(-3px);
+}
+
+.home-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-gray-100,#F3F4F6);
+  background: var(--color-gray-50,#F9FAFB);
+}
+
+.home-panel__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-babasu,#606062);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0;
+}
+
+.home-panel__icon { font-size: 1.125rem; }
+
+.home-panel__more {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--color-babasu,#606062); /* Accessible gray by default */
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transition-base, 250ms ease-in-out);
+}
+.home-panel__more:hover {
+  color: var(--color-barro,#F58535); /* Orange on hover */
+  text-decoration: underline;
+}
+
+.home-panel__content {
+  padding: .75rem;
+  flex: 1;
+}
+
+
+.home-panel__empty {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--color-babasu,#606062); /* Accessible dark gray */
+  font-size: .875rem;
+}
+
+/* =====================================================
+   DRUPAL SPECIFICITY RESETS
+   Elimina as margens massivas injetadas pelo 
+   tema base (Olivero) e wrappers do Views/Blocks
+   ===================================================== */
+.home-section .block,
+.home-section .views-element-container,
+.home-section .view,
+.home-section .view-content,
+.home-section .item-list,
+.home-section .node {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.home-panel__content .block,
+.home-panel__content .view {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Override Drupal node teaser and card styles inside panels */
+.home-panel__content .node,
+.home-panel__content .node--view-mode-teaser,
+.home-panel__content .node--view-mode-card {
+  padding: .75rem .5rem;
+  border-bottom: 1px solid var(--color-gray-100,#F3F4F6);
+  display: flex;
+  flex-direction: column;
+  background: transparent !important;
+}
+.home-panel__content .node:last-child,
+.home-panel__content .node--view-mode-teaser:last-child,
+.home-panel__content .node--view-mode-card:last-child { 
+  border-bottom: none; 
+}
+
+/* Reverse order so that Title comes first, Metadata later */
+.home-panel__content .node__title {
+  order: 1;
+  font-size: .95rem;
+  font-weight: 600;
+  margin: 0 0 .35rem 0;
+  line-height: 1.4;
+}
+.home-panel__content .node__title a {
+  color: var(--color-babasu,#606062);
+  text-decoration: none;
+}
+.home-panel__content .node__title a:hover { 
+  color: var(--color-barro,#F58535); 
+  text-decoration: underline; 
+}
+
+/* Metadata */
+.home-panel__content .node__meta,
+.home-panel__content .node__submitted { 
+  order: 2;
+  font-size: .75rem; 
+  color: var(--color-gray-400,#9CA3AF); 
+  margin-bottom: 0; 
+}
+
+/* Date */
+.home-panel__content .field--type-datetime { 
+  order: 3;
+  font-size: .75rem; 
+  color: var(--color-barro,#F58535); 
+  margin-top: .15rem; 
+  font-weight: 500;
+}
+
+/* Views ul reset inside panels */
+.home-panel__content .item-list ul,
+.home-panel__content ul { list-style:none; margin:0; padding:0; }
+
+/* ── Publications list — pub-list-home ────────────── */
+.pub-list-home {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pub-list-home ul,
+.pub-list-home .item-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pub-list-home .views-row,
+.pub-list-home .item-list > li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-gray-100,#F3F4F6);
+  margin: 0 !important;
+}
+
+.pub-list-home .views-row:last-child,
+.pub-list-home li:last-child {
+  border-bottom: none;
+}
+
+.pub-list-home .node__title a,
+.pub-list-home .field--name-title a {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--color-babasu,#606062);
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.pub-list-home .node__title a:hover,
+.pub-list-home .field--name-title a:hover {
+  color: var(--color-barro,#F58535);
+  text-decoration: underline;
+}
+
+.pub-list-home .pub-meta,
+.pub-list-home .node__submitted,
+.pub-list-home .field--name-field-autores,
+.pub-list-home .field--name-field-ano-publicacao {
+  font-size: .8rem;
+  color: var(--color-babasu-light,#767676); /* Accessible gray */
+  margin-top: .25rem;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+/* Footer styles moved to components/footer.css */
+.home-intro {
+  background: #fff;
+  color: #292929;
+  border-top: 4px solid #f58535;
+  border-bottom: 1px solid #dcdddf;
+  padding: 32px 0;
+}
+
+.home-intro__text { max-width: 850px; }
+.home-intro h1 { font-size: 48px; margin: 8px 0; letter-spacing: 0; }
+.home-intro__institution { color: #606062; margin: 0; }
+.home-intro__name { font-size: 24px; line-height: 1.35; }
+.home-intro__links { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.home-intro__links a:not(.btn) { color: #a44400; }
+.home-editorial { display: grid; gap: 32px; }
+.home-news, .home-events, .home-groups { min-width: 0; }
+.home-editorial .home-panel__content { padding: 16px 0; overflow: visible; }
+
+@media (max-width: 600px) {
+  .home-intro h1 { font-size: 36px; }
+  .home-intro__name { font-size: 20px; }
+}

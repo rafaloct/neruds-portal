@@ -1,0 +1,231 @@
+/**
+ * @file hero.css
+ * BICO DO PAPAGAIO — Hero Section
+ * Babaçual com Névoa do Araguaia
+ */
+
+/* =========================================================
+   HERO REGION — imagem de fundo com tratamento quente
+   ========================================================= */
+
+#hero,
+.layout-hero,
+.region-hero {
+  position: relative;
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg,
+      rgba(28, 16, 8, 0.70) 0%,
+      rgba(46, 70, 50, 0.50) 40%,
+      rgba(160, 82, 45, 0.40) 100%
+    ),
+    var(--babacú-dark);
+}
+
+/* Imagem de fundo via CSS personalizado */
+.hero--com-imagem {
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+}
+
+/* Sobreposição quente — tratamento de cor babaçual */
+#hero::before,
+.region-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      rgba(28, 16, 8, 0.65) 0%,
+      rgba(46, 70, 50, 0.40) 50%,
+      rgba(160, 82, 45, 0.30) 100%
+    );
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* Trama sobre o hero */
+#hero::after,
+.region-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(28, 16, 8, 0.06) 0px,
+      rgba(28, 16, 8, 0.06) 1px,
+      transparent 1px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(225, 193, 110, 0.04) 0px,
+      rgba(225, 193, 110, 0.04) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  background-size: 18px 18px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Conteúdo do hero acima das overlays */
+#hero .layout-container,
+.region-hero .layout-container,
+#hero > *,
+.region-hero > * {
+  position: relative;
+  z-index: 3;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+/* =========================================================
+   HERO GLASS CARD — Manifesto do grupo
+   ========================================================= */
+
+.block--hero .hero-glass-card,
+.hero-content-card {
+  background: rgba(251, 246, 240, 0.82);
+  backdrop-filter: blur(16px) sepia(0.12) saturate(0.95);
+  -webkit-backdrop-filter: blur(16px) sepia(0.12) saturate(0.95);
+  border: 1px solid rgba(225, 193, 110, 0.35);
+  border-top: 4px solid var(--barro);
+  box-shadow:
+    0 20px 60px rgba(28, 16, 8, 0.3),
+    0 4px 16px rgba(28, 16, 8, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10) var(--space-12);
+  max-width: 640px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .block--hero .hero-glass-card,
+  .hero-content-card {
+    padding: var(--space-6) var(--space-5);
+    max-width: 100%;
+  }
+}
+
+/* Padrão trama interno */
+.block--hero .hero-glass-card::before,
+.hero-content-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(160, 82, 45, 0.035) 0px,
+    rgba(160, 82, 45, 0.035) 1px,
+    transparent 1px,
+    transparent 18px
+  );
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+/* Cantoneira decorativa */
+.block--hero .hero-glass-card::after,
+.hero-content-card::after {
+  content: '';
+  position: absolute;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  width: 36px;
+  height: 36px;
+  border-right: 2px solid rgba(225, 193, 110, 0.4);
+  border-bottom: 2px solid rgba(225, 193, 110, 0.4);
+}
+
+/* Tipografia dentro do hero card */
+.block--hero .hero-glass-card h1,
+.block--hero .hero-glass-card h2,
+.hero-content-card h1,
+.hero-content-card h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--babacú-dark);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .block--hero .hero-glass-card h1,
+  .hero-content-card h1 {
+    font-size: var(--text-2xl);
+  }
+}
+
+.block--hero .hero-glass-card p,
+.hero-content-card p {
+  font-size: var(--text-lg);
+  color: var(--terra-700);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-5);
+}
+
+/* Manifesto em monospace */
+.block--hero .hero-glass-card .hero-manifesto,
+.hero-content-card .hero-manifesto {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--barro);
+  border-top: 1px dashed rgba(160, 82, 45, 0.3);
+  padding-top: var(--space-4);
+  margin-top: var(--space-4);
+  line-height: var(--leading-loose);
+  letter-spacing: 0.03em;
+}
+
+/* Badges de território no hero */
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+/* Barra de busca no hero */
+.hero-search {
+  margin-top: var(--space-6);
+  max-width: 460px;
+}
+
+/* =========================================================
+   HERO — variações
+   ========================================================= */
+
+/* Hero reduzido para páginas internas */
+.hero--small {
+  min-height: 30vh;
+}
+
+.hero--small .block--hero .hero-glass-card,
+.hero--small .hero-content-card {
+  padding: var(--space-6) var(--space-8);
+}
+
+.hero--small .block--hero h1 {
+  font-size: var(--text-2xl);
+}
+
+/* Hero para front page */
+.hero--front {
+  min-height: 85vh;
+}
+
+/* Paralax sutil no scroll */
+@media (prefers-reduced-motion: no-preference) {
+  .hero--parallax {
+    background-attachment: fixed;
+  }
+}

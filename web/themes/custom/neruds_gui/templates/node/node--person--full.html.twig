@@ -1,0 +1,88 @@
+{#
+ * @file
+ * NERUDS Theme - Person (Perfil Pesquisador) Redesign Premium
+ #}
+
+{%
+  set classes = [
+    'node',
+    'node--' ~ node.bundle|clean_class,
+    'node--' ~ node.bundle|clean_class ~ '--full',
+    'premium-layout'
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {# Profile Header Section #}
+  <div class="node--person__header-wrapper">
+    <div class="node--person__avatar">
+      {% if node.field_featured_image.0 %}
+        {{ content.field_featured_image }}
+      {% else %}
+        <div class="avatar-placeholder">{{ label|first }}</div>
+      {% endif %}
+    </div>
+
+    <div class="node--person__info">
+      <h1 class="node--person__title">{{ label }}</h1>
+      {% if node.field_person__role_job_title.value %}
+        <p class="node--person__role">{{ node.field_person__role_job_title.value }}</p>
+      {% endif %}
+
+      <div class="node--person__social-icons">
+        {# Social Icons placeholders - In a real setup these would be fields #}
+        <a href="#" class="node--person__social-link" title="Lattes"><img src="/core/misc/icons/787878/world.svg" width="20" height="20" alt="Lattes"></a>
+        <a href="#" class="node--person__social-link" title="ORCID"><img src="/core/misc/icons/787878/world.svg" width="20" height="20" alt="ORCID"></a>
+        <a href="#" class="node--person__social-link" title="ResearchGate"><img src="/core/misc/icons/787878/world.svg" width="20" height="20" alt="RG"></a>
+      </div>
+    </div>
+  </div>
+
+  {# Tabbed Navigation #}
+  <div class="node--person__tabs-nav">
+    <div class="node--person__tab-link active">Sobre</div>
+    <div class="node--person__tab-link">Publicações</div>
+    <div class="node--person__tab-link">Projetos</div>
+    <div class="node--person__tab-link">Grupos</div>
+  </div>
+
+  {# Main Content Area #}
+  <div class="node--person__content-wrapper">
+    <div class="node--person__main">
+      <div class="node--person__bio">
+        <h3>Biografia Acadêmica</h3>
+        {{ content.field_description }}
+        
+        <div class="mt-4">
+          {{ content.field_content }}
+        </div>
+      </div>
+    </div>
+
+    {# Sidebar with Info #}
+    <aside class="node--person__sidebar">
+      <div class="node--person__sidebar-block">
+        <h4>Informações</h4>
+        
+        {% if node.field_person__email.value %}
+          <p><strong>E-mail</strong> <a href="mailto:{{ node.field_person__email.value }}">{{ node.field_person__email.value }}</a></p>
+        {% endif %}
+
+        {% if node.field_person__phone_number.value %}
+          <p><strong>Telefone</strong> {{ node.field_person__phone_number.value }}</p>
+        {% endif %}
+      </div>
+
+      <div class="node--person__sidebar-block">
+        <h4>Palavras-chave</h4>
+        <div class="tags-cloud">
+           <span class="badge bg-light text-dark">Amazônia</span>
+           <span class="badge bg-light text-dark">Cerrado</span>
+           <span class="badge bg-light text-dark">Agroecologia</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+</article>

@@ -1,0 +1,99 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Views wrapper padrão
+ * Template decolonial para todas as views
+ */
+#}
+
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {% if title %}
+    <div class="view__title-wrapper">
+      {{ title }}
+    </div>
+  {% endif %}
+  {{ title_suffix }}
+
+  {# Header da view #}
+  {% if header %}
+    <div class="view-header">
+      {{ header }}
+    </div>
+  {% endif %}
+
+  {# Filtros expostos — formulário de busca #}
+  {% if exposed %}
+    <div class="view-filters">
+      <div class="filter-section">
+        <div class="filter-section__title">Filtrar</div>
+        {{ exposed }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Attachment antes #}
+  {% if attachment_before %}
+    <div class="attachment attachment-before">
+      {{ attachment_before }}
+    </div>
+  {% endif %}
+
+  {# Conteúdo principal #}
+  {% if rows %}
+    <div class="view-content">
+      {{ rows }}
+    </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      <div class="nevoa-palha" style="padding: var(--space-8); text-align:center; border-radius:var(--radius-xl);">
+        <span style="font-family:var(--font-mono); font-size:var(--text-xl); opacity:0.4; display:block; margin-bottom:var(--space-3);">◈</span>
+        {{ empty }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Paginação #}
+  {% if pager %}
+    <div class="view-pager pager">
+      {{ pager }}
+    </div>
+  {% endif %}
+
+  {# Attachment depois #}
+  {% if attachment_after %}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+
+  {# Link "Ver mais" #}
+  {% if more %}
+    <div class="view-more" style="text-align:center; margin-top:var(--space-8);">
+      {{ more }}
+    </div>
+  {% endif %}
+
+  {# Footer da view #}
+  {% if footer %}
+    <div class="view-footer">
+      {{ footer }}
+    </div>
+  {% endif %}
+
+  {% if feed_icons %}
+    <div class="feed-icons">{{ feed_icons }}</div>
+  {% endif %}
+
+</div>

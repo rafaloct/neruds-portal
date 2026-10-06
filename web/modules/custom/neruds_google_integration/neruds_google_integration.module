@@ -1,0 +1,228 @@
+<?php
+
+/**
+ * @file
+ * Theme hooks for NERUDS territorial portal components.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function neruds_google_integration_theme(): array {
+  return [
+    'neruds_territory_map' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+      ],
+    ],
+    'neruds_live_dashboard' => [
+      'variables' => [
+        'title' => NULL,
+        'metrics' => [],
+      ],
+    ],
+    'neruds_territorial_timeline' => [
+      'variables' => [
+        'title' => NULL,
+      ],
+    ],
+    'neruds_publication_discovery' => [
+      'variables' => [
+        'title' => NULL,
+      ],
+    ],
+    'neruds_dataset_discovery' => [
+      'variables' => [
+        'title' => NULL,
+      ],
+    ],
+    'neruds_audit_widget' => [
+      'variables' => [
+        'audit_id' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_permission().
+ */
+function neruds_google_integration_permission(): array {
+  return [
+    'bypass neruds forum moderation' => [
+      'title' => t('Bypass NERUDS forum moderation'),
+      'description' => t('Publish new group forum comments without moderation queue.'),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function neruds_google_integration_library_info_alter(array &$libraries, string $extension): void {
+  if ($extension !== 'ai_image_alt_text' || empty($libraries['alt_text'])) {
+    return;
+  }
+
+  $module_path = \Drupal::service('extension.list.module')->getPath('neruds_google_integration');
+  $libraries['alt_text']['js']['/' . $module_path . '/js/ai-alt-text-fix.js'] = [];
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function neruds_google_integration_page_attachments(array &$attachments): void {
+  $attachments['#attached']['library'][] = 'neruds_google_integration/accessibility_preferences';
+  $attachments['#attached']['drupalSettings']['nerudsAccessibility'] = [
+    'vlibrasEnabled' => _neruds_google_integration_vlibras_enabled(),
+  ];
+
+  $measurement_id = _neruds_google_integration_ga4_measurement_id();
+  if ($measurement_id === '') {
+    return;
+  }
+
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'script',
+      '#attributes' => [
+        'async' => 'async',
+        'src' => 'https://www.googletagmanager.com/gtag/js?id=' . rawurlencode($measurement_id),
+      ],
+    ],
+    'neruds_google_integration_gtag_src',
+  ];
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'script',
+      '#value' => "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', '" . addslashes($measurement_id) . "', { anonymize_ip: true });",
+    ],
+    'neruds_google_integration_gtag_config',
+  ];
+}
+
+function _neruds_google_integration_vlibras_enabled(): bool {
+  $value = getenv('NERUDS_ENABLE_VLIBRAS');
+  return !($value === '0' || $value === 'false' || $value === 'no' || $value === 'off');
+}
+
+function _neruds_google_integration_ga4_measurement_id(): string {
+  $environment = _neruds_google_integration_environment();
+  if ($environment === 'stag') {
+    $stag = _neruds_google_integration_env_or_config('NERUDS_GA4_MEASUREMENT_ID_STAG', 'ga4_measurement_id_stag');
+    if ($stag !== '') return $stag;
+  }
+  $prod = _neruds_google_integration_env_or_config('NERUDS_GA4_MEASUREMENT_ID_PROD', 'ga4_measurement_id_prod');
+  return $prod !== '' ? $prod : _neruds_google_integration_env_or_config('NERUDS_GA4_MEASUREMENT_ID', 'ga4_measurement_id');
+}
+
+function _neruds_google_integration_env_or_config(string $env_name, string $config_name): string {
+  $value = getenv($env_name);
+  if (is_string($value) && $value !== '') return $value;
+  return (string) (\Drupal::config('neruds_google_integration.settings')->get($config_name) ?: '');
+}
+
+function _neruds_google_integration_environment(): string {
+  $explicit = getenv('NERUDS_ENVIRONMENT');
+  if (is_string($explicit) && in_array($explicit, ['prod', 'production', 'stag', 'staging', 'homolog'], TRUE)) {
+    return in_array($explicit, ['prod', 'production'], TRUE) ? 'prod' : 'stag';
+  }
+  $host = $_SERVER['HTTP_HOST'] ?? '';
+  return (str_contains($host, 'homolog') || str_contains($host, 'staging')) ? 'stag' : 'prod';
+}
+
+function neruds_google_integration_preprocess_node(array &$variables): void {
+  $node = $variables['node'] ?? NULL;
+  if (!$node instanceof \Drupal\node\NodeInterface) {
+    return;
+  }
+
+  if ($node->bundle() === 'grupo_estudos') {
+    $variables['#attached']['library'][] = 'neruds_google_integration/google_drive_documents';
+    $variables['#attached']['library'][] = 'neruds_google_integration/research_communities';
+    $variables['neruds_forum_moderated'] = TRUE;
+
+    if ($node->hasField('field_drive_folder_url') && !$node->get('field_drive_folder_url')->isEmpty()) {
+      $variables['neruds_group_drive_url'] = $node->get('field_drive_folder_url')->value;
+    }
+    return;
+  }
+
+  if ($node->bundle() === 'noticia') {
+    $variables['#attached']['library'][] = 'neruds_google_integration/territorial_news';
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function neruds_google_integration_entity_presave(\Drupal\Core\Entity\EntityInterface $entity): void {
+  if ($entity instanceof \Drupal\comment\CommentInterface) {
+    _neruds_google_integration_enforce_group_forum_moderation($entity);
+  }
+}
+
+/**
+ * Implements hook_comment_presave().
+ */
+function neruds_google_integration_comment_presave(\Drupal\comment\CommentInterface $comment): void {
+  _neruds_google_integration_enforce_group_forum_moderation($comment, FALSE);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function neruds_google_integration_entity_insert(\Drupal\Core\Entity\EntityInterface $entity): void {
+  if ($entity instanceof \Drupal\comment\CommentInterface) {
+    _neruds_google_integration_enforce_group_forum_moderation($entity, TRUE);
+  }
+}
+
+/**
+ * Forces moderation queue for non-privileged group forum comments.
+ */
+function _neruds_google_integration_enforce_group_forum_moderation(\Drupal\comment\CommentInterface $comment, bool $persistAfterSave = FALSE): void {
+  static $updating = [];
+  $id = (string) ($comment->id() ?? spl_object_id($comment));
+  if (isset($updating[$id])) {
+    return;
+  }
+
+  if (!$comment->isNew()) {
+    if (!$persistAfterSave) {
+      return;
+    }
+  }
+
+  if ($comment->getCommentedEntityTypeId() !== 'node') {
+    return;
+  }
+
+  $commented_id = (int) $comment->getCommentedEntityId();
+  if ($commented_id <= 0) {
+    return;
+  }
+
+  $commented = \Drupal::entityTypeManager()->getStorage('node')->load($commented_id);
+  if (!$commented instanceof \Drupal\node\NodeInterface || $commented->bundle() !== 'grupo_estudos') {
+    return;
+  }
+
+  $account = \Drupal::currentUser();
+  if ($account->hasPermission('administer comments') || $account->hasPermission('bypass neruds forum moderation')) {
+    return;
+  }
+
+  $changed = FALSE;
+  if ((int) $comment->get('status')->value !== 0) {
+    $comment->set('status', 0);
+    $changed = TRUE;
+  }
+
+  if ($persistAfterSave && $changed) {
+    $updating[$id] = TRUE;
+    $comment->save();
+    unset($updating[$id]);
+  }
+}

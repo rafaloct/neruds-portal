@@ -1,0 +1,315 @@
+<?php
+
+/**
+ * @file
+ * Theme functions e hooks para NERUDS Theme
+ * Seguindo as melhores práticas do Drupal 11
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates.
+ */
+function neruds_theme_preprocess_page(array &$variables) {
+  // Adicionar classes ao body baseado no path
+  $path = \Drupal::service('path.current')->getPath();
+  $path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($path);
+  
+  // Extrair tipo de conteúdo da URL
+  if (preg_match('/\/([a-z-]+)/', $path_alias, $matches)) {
+    $page_type = $matches[1];
+    $variables['attributes']['class'][] = 'page--' . str_replace('-', '_', $page_type);
+  }
+  
+  // Adicionar informações do site
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node templates.
+ */
+function neruds_theme_preprocess_node(array &$variables) {
+  $node = $variables['node'];
+  
+  // Adicionar classes específicas por tipo de conteúdo
+  $variables['attributes']['class'][] = 'node--' . $node->bundle();
+  $variables['attributes']['class'][] = 'node--' . $node->bundle() . '--' . $variables['view_mode'];
+  
+  // Adicionar informações específicas para pesquisadores
+  if ($node->bundle() === 'perfil_pesquisador') {
+    // Verificar se tem foto
+    if ($node->hasField('field_foto_perfil') && !$node->get('field_foto_perfil')->isEmpty()) {
+      $variables['has_photo'] = TRUE;
+    } else {
+      $variables['has_photo'] = FALSE;
+    }
+    
+    // Adicionar contagem de projetos e produções
+    if ($node->hasField('field_projetos_pesquisador') && !$node->get('field_projetos_pesquisador')->isEmpty()) {
+      $variables['projects_count'] = $node->get('field_projetos_pesquisador')->count();
+    }
+    
+    if ($node->hasField('field_producoes_pesquisador') && !$node->get('field_producoes_pesquisador')->isEmpty()) {
+      $variables['productions_count'] = $node->get('field_producoes_pesquisador')->count();
+    }
+  }
+  
+  // Buscar boletins e notícias associados para projetos de pesquisa/extensão
+  if ($node->bundle() === 'projeto_pesquisa_extensao') {
+    // Verificar view mode - buscar boletins e notícias apenas no modo 'full'
+    $view_mode = isset($variables['view_mode']) ? $variables['view_mode'] : 'default';
+    
+    if ($view_mode === 'full' || $view_mode === 'default') {
+      try {
+        // Buscar boletins associados
+        $boletins_ids = \Drupal::entityQuery('node')
+          ->accessCheck(FALSE)
+          ->condition('type', 'boletim_periodico')
+          ->condition('field_projeto_associado', $node->id())
+          ->condition('status', 1)
+          ->sort('created', 'DESC')
+          ->range(0, 10) // Limitar a 10 boletins mais recentes
+          ->execute();
+        
+        if (!empty($boletins_ids)) {
+          $boletins = \Drupal::entityTypeManager()
+            ->getStorage('node')
+            ->loadMultiple($boletins_ids);
+          
+          $variables['boletins_associados'] = [];
+          foreach ($boletins as $boletim) {
+            // Verificar se o boletim está realmente publicado
+            if ($boletim->isPublished()) {
+              $variables['boletins_associados'][] = $boletim;
+            }
+          }
+        } else {
+          $variables['boletins_associados'] = [];
+        }
+        
+        // Buscar notícias associadas
+        $noticias_ids = \Drupal::entityQuery('node')
+          ->accessCheck(FALSE)
+          ->condition('type', 'noticia')
+          ->condition('field_projeto_associado', $node->id())
+          ->condition('status', 1)
+          ->sort('created', 'DESC')
+          ->range(0, 10) // Limitar a 10 notícias mais recentes
+          ->execute();
+        
+        if (!empty($noticias_ids)) {
+          $noticias = \Drupal::entityTypeManager()
+            ->getStorage('node')
+            ->loadMultiple($noticias_ids);
+          
+          $variables['noticias_associadas'] = [];
+          foreach ($noticias as $noticia) {
+            // Verificar se a notícia está realmente publicada
+            if ($noticia->isPublished()) {
+              $variables['noticias_associadas'][] = $noticia;
+            }
+          }
+        } else {
+          $variables['noticias_associadas'] = [];
+        }
+      } catch (\Exception $e) {
+        // Em caso de erro, definir como array vazio
+        $variables['boletins_associados'] = [];
+        $variables['noticias_associadas'] = [];
+        \Drupal::logger('neruds_theme')->error('Erro ao buscar conteúdo associado: @message', ['@message' => $e->getMessage()]);
+      }
+    } else {
+      // Para outros view modes, definir como vazio
+      $variables['boletins_associados'] = [];
+      $variables['noticias_associadas'] = [];
+    }
+  } else {
+    // Para outros tipos de conteúdo, definir como vazio
+    $variables['boletins_associados'] = [];
+    $variables['noticias_associadas'] = [];
+  }
+  
+  // Para boletins, ocultar o campo field_autores_boletim do render array padrão
+  // para que possamos renderizar apenas o nome no template
+  if ($node->bundle() === 'boletim_periodico' && isset($variables['content']['field_autores_boletim'])) {
+    // Ocultar o campo padrão - será renderizado manualmente no template
+    $variables['content']['field_autores_boletim']['#access'] = FALSE;
+  }
+  
+  // Garantir que todos os campos de link abram em nova aba
+  foreach ($variables['content'] as $field_name => &$field_content) {
+    if (isset($field_content['#field_type']) && $field_content['#field_type'] === 'link') {
+      // Se o campo já tem configurações, atualizar
+      if (isset($field_content['#formatter']) && $field_content['#formatter'] === 'link') {
+        if (!isset($field_content['#settings'])) {
+          $field_content['#settings'] = [];
+        }
+        $field_content['#settings']['target'] = '_blank';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ * Garante que todos os links renderizados abram em nova aba
+ */
+function neruds_theme_preprocess_field(array &$variables) {
+  // Se for um campo do tipo link, garantir target="_blank"
+  if (isset($variables['element']['#field_type']) && $variables['element']['#field_type'] === 'link') {
+    // Adicionar atributo target="_blank" e rel="noopener" aos links
+    foreach ($variables['items'] as &$item) {
+      if (isset($item['content']['#type']) && $item['content']['#type'] === 'link') {
+        $item['content']['#attributes']['target'] = '_blank';
+        $item['content']['#attributes']['rel'] = 'noopener noreferrer';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ * Adiciona JavaScript para garantir que links em páginas abram em nova aba
+ */
+function neruds_theme_page_attachments_alter(array &$attachments) {
+  // Adicionar JavaScript para processar links em campos de texto
+  $attachments['#attached']['library'][] = 'neruds_theme/links_target_blank';
+  
+  // Adicionar JavaScript inline para garantir target="_blank" em todos os links externos
+  $attachments['#attached']['drupalSettings']['neruds_theme']['links_target_blank'] = TRUE;
+  
+  // Manter metadados existentes do NERUDS
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'theme-color',
+        'content' => '#52c41a',
+      ],
+    ],
+    'theme-color',
+  ];
+}
+
+/**
+ * Implements hook_library_info_build().
+ */
+function neruds_theme_library_info_build() {
+  $libraries = [];
+  
+  $libraries['links_target_blank'] = [
+    'js' => [
+      'js/links-target-blank.js' => [
+        'weight' => 100,
+      ],
+    ],
+  ];
+  
+  return $libraries;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for block templates.
+ */
+function neruds_theme_preprocess_block(array &$variables) {
+  // Adicionar classes específicas por região
+  if (isset($variables['elements']['#id'])) {
+    $block_id = $variables['elements']['#id'];
+    $variables['attributes']['class'][] = 'block--' . str_replace('_', '-', $block_id);
+  }
+  
+  // Adicionar classe para blocos de menu
+  if (isset($variables['plugin_id']) && strpos($variables['plugin_id'], 'menu') !== FALSE) {
+    $variables['attributes']['class'][] = 'block-menu';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu templates.
+ */
+function neruds_theme_preprocess_menu(array &$variables) {
+  // Adicionar classes específicas ao menu
+  if (isset($variables['menu_name'])) {
+    $variables['attributes']['class'][] = 'menu--' . str_replace('_', '-', $variables['menu_name']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views templates.
+ */
+function neruds_theme_preprocess_views_view(array &$variables) {
+  // Adicionar classes específicas por view
+  if (isset($variables['view'])) {
+    $view_id = $variables['view']->id();
+    $variables['attributes']['class'][] = 'view--' . str_replace('_', '-', $view_id);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for form templates.
+ */
+function neruds_theme_preprocess_form(array &$variables) {
+  // Adicionar classes Ant Design aos formulários
+  $variables['attributes']['class'][] = 'neruds-form';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for page templates.
+ */
+function neruds_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  // Adicionar sugestões baseadas no path
+  $path = \Drupal::service('path.current')->getPath();
+  $path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($path);
+  
+  // Sugestão baseada no primeiro segmento do path
+  if ($path_alias && $path_alias !== '/') {
+    $args = explode('/', trim($path_alias, '/'));
+    if (!empty($args[0])) {
+      $suggestions[] = 'page__' . str_replace('-', '_', $args[0]);
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for node templates.
+ */
+function neruds_theme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  $node = $variables['elements']['#node'];
+  
+  // Adicionar sugestão baseada em view mode e bundle
+  if (isset($variables['elements']['#view_mode'])) {
+    $view_mode = $variables['elements']['#view_mode'];
+    $suggestions[] = 'node__' . $node->bundle() . '__' . $view_mode;
+  }
+}
+
+
+/**
+ * Implements hook_js_alter().
+ */
+function neruds_theme_js_alter(&$javascript, $assets) {
+  // Otimizar carregamento de JavaScript
+  foreach ($javascript as $key => &$script) {
+    // Adicionar defer a scripts não críticos
+    if (strpos($key, 'bootstrap') !== FALSE || strpos($key, 'custom') !== FALSE) {
+      if (!isset($script['attributes'])) {
+        $script['attributes'] = [];
+      }
+      if (!isset($script['attributes']['defer'])) {
+        $script['attributes']['defer'] = TRUE;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function neruds_theme_css_alter(&$css, $assets, $library) {
+  // Otimizar carregamento de CSS
+  // CSS crítico será carregado inline no head
+  // CSS não crítico será carregado de forma assíncrona
+}
+

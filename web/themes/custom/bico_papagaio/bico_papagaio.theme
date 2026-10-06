@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * @file
+ * Bico do Papagaio — Theme Functions
+ * Estética da Trama e do Barro — NERUDS/UFT
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function bico_papagaio_preprocess_page(array &$variables): void {
+  $config = \Drupal::config('system.site');
+  $variables['site_name']   = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+  $variables['has_sidebar']    = !empty($variables['page']['sidebar']);
+  $variables['has_social_bar'] = !empty($variables['page']['social_bar']);
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function bico_papagaio_preprocess_node(array &$variables): void {
+  $node   = $variables['node'];
+  $bundle = $node->bundle();
+
+  // Tipo de conteúdo legível
+  $tipo_labels = [
+    'noticia'                    => 'Notícia',
+    'projeto_pesquisa'           => 'Projeto de Pesquisa',
+    'projeto_pesquisa_extensao'  => 'Projeto de Pesquisa/Extensão',
+    'publicacao_cientifica'      => 'Publicação Científica',
+    'perfil_pesquisador'         => 'Pesquisador(a)',
+    'evento_cientifico'          => 'Evento Científico',
+    'boletim'                    => 'Boletim',
+    'relatorio'                  => 'Relatório',
+    'relatorio_fno'              => 'Relatório FNO',
+    'page'                       => 'Página',
+    'article'                    => 'Artigo',
+  ];
+  $variables['tipo_label'] = $tipo_labels[$bundle]
+    ?? ucfirst(str_replace('_', ' ', $bundle));
+
+  // Iniciais para avatar de pesquisador
+  if ($bundle === 'perfil_pesquisador') {
+    $nome     = $node->getTitle();
+    $palavras = explode(' ', trim($nome));
+    $iniciais = '';
+    foreach (array_slice($palavras, 0, 2) as $palavra) {
+      if (!empty($palavra)) {
+        $iniciais .= mb_strtoupper(mb_substr($palavra, 0, 1));
+      }
+    }
+    $variables['iniciais'] = $iniciais ?: '?';
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function bico_papagaio_preprocess_html(array &$variables): void {
+  // html_attributes pode ser um array ou objeto Attribute dependendo da versão
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    if (is_array($variables['html_attributes'])) {
+      $variables['html_attributes']['class'][] = 'is-front-page';
+    } elseif (method_exists($variables['html_attributes'], 'addClass')) {
+      $variables['html_attributes']->addClass('is-front-page');
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function bico_papagaio_theme_suggestions_page_alter(array &$suggestions, array $variables): void {
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $suggestions[] = 'page__front';
+  }
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    $suggestions[] = 'page__node__' . $node->bundle();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_node_alter().
+ */
+function bico_papagaio_theme_suggestions_node_alter(array &$suggestions, array $variables): void {
+  if (empty($variables['elements']['#node'])) {
+    return;
+  }
+  $node      = $variables['elements']['#node'];
+  $view_mode = $variables['elements']['#view_mode'];
+  $suggestions[] = 'node__' . $node->bundle() . '__' . $view_mode;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bico_papagaio_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if ($form_id === 'search_block_form') {
+    $form['keys']['#attributes']['placeholder'] = t('Buscar no território...');
+  }
+}

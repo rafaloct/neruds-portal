@@ -1,0 +1,167 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\block\Entity\Block;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ */
+function neruds_google_integration_install(): void {
+  _neruds_google_integration_create_vocabularies();
+  _neruds_google_integration_create_common_fields();
+  _neruds_google_integration_place_blocks();
+}
+
+/**
+ * Creates base territorial vocabularies when absent.
+ */
+function _neruds_google_integration_create_vocabularies(): void {
+  $vocabularies = [
+    'territorios' => 'Territorios',
+    'ods' => 'Objetivos de Desenvolvimento Sustentavel',
+    'linhas_pesquisa' => 'Linhas de Pesquisa',
+  ];
+  foreach ($vocabularies as $vid => $label) {
+    if (!Vocabulary::load($vid)) {
+      Vocabulary::create([
+        'vid' => $vid,
+        'name' => $label,
+      ])->save();
+    }
+  }
+}
+
+/**
+ * Adds cross-cutting fields to known NERUDS content bundles if they exist.
+ */
+function _neruds_google_integration_create_common_fields(): void {
+  $bundle_info = \Drupal::service('entity_type.bundle.info')->getBundleInfo('node');
+  $bundles = array_intersect(array_keys($bundle_info), [
+    'article',
+    'noticia',
+    'projeto',
+    'project',
+    'publicacao',
+    'publicacao_cientifica',
+    'reference',
+    'evento',
+    'event',
+    'grupo_estudo',
+    'grupo_estudos',
+  ]);
+
+  $entity_reference_fields = [
+    'field_territorio' => ['Territorio', 'taxonomy_term', 'territorios'],
+    'field_ods' => ['ODS', 'taxonomy_term', 'ods'],
+    'field_linha_pesquisa' => ['Linha de Pesquisa', 'taxonomy_term', 'linhas_pesquisa'],
+  ];
+
+  foreach ($entity_reference_fields as $field_name => [$label, $target_type, $target_bundle]) {
+    if (!FieldStorageConfig::loadByName('node', $field_name)) {
+      FieldStorageConfig::create([
+        'field_name' => $field_name,
+        'entity_type' => 'node',
+        'type' => 'entity_reference',
+        'cardinality' => FieldStorageConfig::CARDINALITY_UNLIMITED,
+        'settings' => ['target_type' => $target_type],
+      ])->save();
+    }
+    foreach ($bundles as $bundle) {
+      if (!FieldConfig::loadByName('node', $bundle, $field_name)) {
+        FieldConfig::create([
+          'field_name' => $field_name,
+          'entity_type' => 'node',
+          'bundle' => $bundle,
+          'label' => $label,
+          'settings' => [
+            'handler' => 'default:taxonomy_term',
+            'handler_settings' => [
+              'target_bundles' => [$target_bundle => $target_bundle],
+            ],
+          ],
+        ])->save();
+      }
+    }
+  }
+
+  $string_fields = [
+    'field_doi' => 'DOI',
+    'field_orcid' => 'ORCID',
+    'field_google_calendar_id' => 'Google Calendar ID',
+    'field_drive_folder_url' => 'Pasta publica no Google Drive',
+  ];
+  foreach ($string_fields as $field_name => $label) {
+    if (!FieldStorageConfig::loadByName('node', $field_name)) {
+      FieldStorageConfig::create([
+        'field_name' => $field_name,
+        'entity_type' => 'node',
+        'type' => str_ends_with($field_name, '_url') ? 'uri' : 'string',
+        'cardinality' => 1,
+      ])->save();
+    }
+    foreach ($bundles as $bundle) {
+      if (!FieldConfig::loadByName('node', $bundle, $field_name)) {
+        FieldConfig::create([
+          'field_name' => $field_name,
+          'entity_type' => 'node',
+          'bundle' => $bundle,
+          'label' => $label,
+        ])->save();
+      }
+    }
+  }
+}
+
+/**
+ * Adds Google/territorial fields to the active study-group bundle.
+ */
+function neruds_google_integration_update_10001(): void {
+  _neruds_google_integration_create_common_fields();
+}
+
+/**
+ * Grants forum moderation bypass to privileged administrator role.
+ */
+function neruds_google_integration_update_10002(): void {
+  $role = Role::load('administrator');
+  if ($role && !$role->hasPermission('bypass neruds forum moderation')) {
+    $role->grantPermission('bypass neruds forum moderation');
+    $role->save();
+  }
+}
+
+/**
+ * Places high-impact blocks in common theme regions when available.
+ */
+function _neruds_google_integration_place_blocks(): void {
+  $theme = \Drupal::config('system.theme')->get('default') ?: 'olivero';
+  $definitions = [
+    'neruds_live_dashboard' => ['plugin' => 'neruds_live_dashboard', 'region' => 'content', 'weight' => -20],
+    'neruds_territory_map' => ['plugin' => 'neruds_territory_map', 'region' => 'content', 'weight' => -19],
+    'neruds_territorial_timeline' => ['plugin' => 'neruds_territorial_timeline', 'region' => 'content', 'weight' => 20],
+  ];
+  foreach ($definitions as $id => $definition) {
+    if (Block::load($id)) {
+      continue;
+    }
+    Block::create([
+      'id' => $id,
+      'theme' => $theme,
+      'region' => $definition['region'],
+      'plugin' => $definition['plugin'],
+      'weight' => $definition['weight'],
+      'visibility' => [
+        'request_path' => [
+          'id' => 'request_path',
+          'negate' => FALSE,
+          'pages' => '<front>',
+        ],
+      ],
+    ])->save();
+  }
+}

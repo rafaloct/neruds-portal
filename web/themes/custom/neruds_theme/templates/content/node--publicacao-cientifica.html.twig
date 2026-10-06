@@ -1,0 +1,140 @@
+{#
+/**
+ * @file
+ * Template para exibição de Publicação Científica
+ */
+#}
+
+{{ attach_library('neruds_theme/publicacao-cientifica') }}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'publicacao-cientifica') }}>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4 p-lg-5">
+          
+          {# Header com Tipo e Ano #}
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="publicacao-badges">
+              {% if content.field_tipo_publicacao %}
+                <span class="badge bg-primary text-uppercase ls-1">{{ content.field_tipo_publicacao|render|striptags }}</span>
+              {% endif %}
+            </div>
+            {% if content.field_ano_publicacao %}
+              <div class="publicacao-ano text-muted fw-bold fs-5">
+                {{ content.field_ano_publicacao }}
+              </div>
+            {% endif %}
+          </div>
+
+          {# Título #}
+          <h1 class="display-6 fw-bold text-dark mb-4">{{ label }}</h1>
+
+          {# Autores #}
+          <div class="publicacao-autores mb-4 text-secondary">
+            <i class="bi bi-people-fill me-2"></i>
+            {% if content.field_autores %}
+              <span class="fw-medium">{{ content.field_autores|render|striptags }}</span>
+            {% endif %}
+            
+            {% if content.field_pesquisadores_autores|render|trim is not empty %}
+              {% if content.field_autores %}<span class="mx-2">•</span>{% endif %}
+              <span class="pesquisadores-vinculados">
+                {{ content.field_pesquisadores_autores }}
+              </span>
+            {% endif %}
+          </div>
+
+          {# Dados de Publicação (Revista, DOI) #}
+          <div class="publicacao-meta bg-light p-3 rounded-3 mb-4">
+            <div class="row g-3">
+              {% if content.field_revista_veiculo %}
+                <div class="col-md-6">
+                  <div class="d-flex align-items-top">
+                    <i class="bi bi-journal-check text-primary fs-4 me-3"></i>
+                    <div>
+                      <small class="text-uppercase text-muted fw-bold d-block">Veículo / Revista</small>
+                      <span class="fw-medium">{{ content.field_revista_veiculo }}</span>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if content.field_doi %}
+                <div class="col-md-6">
+                  <div class="d-flex align-items-top">
+                    <i class="bi bi-link-45deg text-primary fs-4 me-3"></i>
+                    <div>
+                      <small class="text-uppercase text-muted fw-bold d-block">DOI</small>
+                      <a href="https://doi.org/{{ content.field_doi.0.value }}" target="_blank" class="text-break">
+                        {{ content.field_doi.0.value }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          {# Resumo #}
+          {% if content.field_resumo_publicacao %}
+            <div class="publicacao-resumo mb-5">
+              <h3 class="h5 border-bottom pb-2 mb-3 text-dark">Resumo</h3>
+              <div class="text-justify text-muted">
+                {{ content.field_resumo_publicacao }}
+              </div>
+            </div>
+          {% endif %}
+
+          {# Ações (PDF e Link) #}
+          <div class="d-flex flex-wrap gap-3 mb-5">
+            {% if content.field_pdf|render|trim is not empty %}
+              <div class="btn-download-wrapper">
+                {{ content.field_pdf }}
+              </div>
+            {% endif %}
+
+            {% if content.field_link_publicacao %}
+              <a href="{{ content.field_link_publicacao.0.url }}" target="_blank" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-box-arrow-up-right me-2"></i> Acessar Online
+              </a>
+            {% endif %}
+          </div>
+
+          {# Taxonomias (Footer do Card) #}
+          {% if content.field_areas_conhecimento or content.field_linhas_pesquisa or content.field_tags %}
+            <div class="border-top pt-4 mt-4">
+              <div class="row g-4">
+                {% if content.field_areas_conhecimento %}
+                  <div class="col-md-6">
+                    <h4 class="h6 text-muted text-uppercase mb-2">Áreas de Conhecimento</h4>
+                    {{ content.field_areas_conhecimento }}
+                  </div>
+                {% endif %}
+
+                {% if content.field_linhas_pesquisa %}
+                  <div class="col-md-6">
+                    <h4 class="h6 text-muted text-uppercase mb-2">Linhas de Pesquisa</h4>
+                    {{ content.field_linhas_pesquisa }}
+                  </div>
+                {% endif %}
+                
+                 {% if content.field_tags %}
+                  <div class="col-12">
+                    <h4 class="h6 text-muted text-uppercase mb-2">Tags</h4>
+                    {{ content.field_tags }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</article>

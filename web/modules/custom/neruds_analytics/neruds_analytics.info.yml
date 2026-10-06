@@ -1,0 +1,8 @@
+name: 'NERUDS Analytics Dashboard'
+type: module
+description: 'Provides an analytics dashboard for the NERUDS research portal'
+core_version_requirement: ^11
+package: 'NERUDS'
+version: '1.0.0'
+dependencies:
+  - drupal:node

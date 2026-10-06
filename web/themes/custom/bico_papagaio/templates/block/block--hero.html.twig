@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Hero Block
+ * Glassmorphism "Névoa do Araguaia" sobre babaçual
+ */
+#}
+
+<div{{ attributes.addClass('hero-block') }}>
+
+  {# Card manifesto com Glassmorphism — Névoa do Araguaia #}
+  <div class="hero-glass-card">
+
+    {{ title_prefix }}
+    {% if label %}
+      <h1 class="hero-title">{{ label }}</h1>
+    {% endif %}
+    {{ title_suffix }}
+
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+
+  </div>
+
+</div>

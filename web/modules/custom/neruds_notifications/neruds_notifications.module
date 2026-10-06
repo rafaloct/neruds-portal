@@ -1,0 +1,333 @@
+<?php
+
+/**
+ * @file
+ * NERUDS Notifications module.
+ *
+ * Sends email notifications to researchers about new content
+ * matching their ODS/category preferences.
+ */
+
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\comment\CommentInterface;
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Send notifications when new research content is published.
+ */
+function neruds_notifications_node_insert(NodeInterface $node) {
+  if (!$node->isPublished()) {
+    return;
+  }
+
+  $notifiable_types = [
+    'noticia', 'publicacao_cientifica', 'publicacao',
+    'projeto_pesquisa_extensao', 'evento_cientifico',
+  ];
+
+  if (!in_array($node->bundle(), $notifiable_types)) {
+    return;
+  }
+
+  // Queue notifications (don't slow down node save)
+  \Drupal::queue('neruds_notification_queue')->createItem([
+    'type' => 'new_content',
+    'nid' => $node->id(),
+    'node_type' => $node->bundle(),
+    'title' => $node->getTitle(),
+    'ods' => _neruds_notifications_get_term_ids($node, 'field_ods'),
+  ]);
+}
+
+/**
+ * Implements hook_comment_insert().
+ *
+ * Notify content author when a comment is posted.
+ */
+function neruds_notifications_comment_insert(CommentInterface $comment) {
+  $node = $comment->getCommentedEntity();
+  if (!$node || !$node->isPublished()) {
+    return;
+  }
+
+  // Don't notify author of their own comment
+  $author_uid = $node->getOwnerId();
+  $commenter_uid = $comment->getOwnerId();
+  if ($author_uid == $commenter_uid || $author_uid == 0) {
+    return;
+  }
+
+  $author = \Drupal::entityTypeManager()->getStorage('user')->load($author_uid);
+  if (!$author || !$author->getEmail()) {
+    return;
+  }
+
+  // Check if author wants comment notifications
+  $prefs = _neruds_notifications_get_prefs($author_uid);
+  if (!$prefs || empty($prefs->notify_comments)) {
+    return;
+  }
+
+  $params = [
+    'subject' => t('Novo comentário em sua publicação: @title', ['@title' => $node->getTitle()]),
+    'body' => _neruds_notifications_comment_body($comment, $node, $author, $prefs),
+  ];
+
+  \Drupal::service('plugin.manager.mail')->mail(
+    'neruds_notifications',
+    'comment_notify',
+    $author->getEmail(),
+    $author->getPreferredLangcode(),
+    $params,
+    NULL,
+    TRUE
+  );
+}
+
+/**
+ * Implements hook_mail().
+ */
+function neruds_notifications_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'new_content_notify':
+    case 'comment_notify':
+    case 'digest':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8';
+      break;
+  }
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Process notification queue.
+ */
+function neruds_notifications_cron() {
+  $queue = \Drupal::queue('neruds_notification_queue');
+  $end = time() + 30; // Process for max 30 seconds
+  $limit = 50;
+  $count = 0;
+
+  while (time() < $end && $count < $limit && ($item = $queue->claimItem())) {
+    try {
+      _neruds_notifications_process_item($item->data);
+      $queue->deleteItem($item);
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('neruds_notifications')->error('Error processing notification: @msg', ['@msg' => $e->getMessage()]);
+      $queue->releaseItem($item);
+    }
+    $count++;
+  }
+}
+
+/**
+ * Process a single notification queue item.
+ */
+function _neruds_notifications_process_item(array $data) {
+  if ($data['type'] !== 'new_content') {
+    return;
+  }
+
+  $node = \Drupal::entityTypeManager()->getStorage('node')->load($data['nid']);
+  if (!$node) {
+    return;
+  }
+
+  // Find users interested in this content's ODS
+  $interested_users = _neruds_notifications_find_interested_users($data);
+  if (empty($interested_users)) {
+    return;
+  }
+
+  $lang = \Drupal::languageManager()->getDefaultLanguage()->getId();
+  $mail_manager = \Drupal::service('plugin.manager.mail');
+
+  foreach ($interested_users as $uid) {
+    $user = \Drupal::entityTypeManager()->getStorage('user')->load($uid);
+    if (!$user || !$user->getEmail()) {
+      continue;
+    }
+
+    $prefs = _neruds_notifications_get_prefs($uid);
+    $unsubscribe_url = Url::fromRoute('neruds_notifications.unsubscribe', ['token' => $prefs->token ?? ''], ['absolute' => TRUE])->toString();
+
+    $params = [
+      'subject' => t('Nova publicação NERUDS: @title', ['@title' => $data['title']]),
+      'body' => _neruds_notifications_new_content_body($node, $user, $unsubscribe_url),
+    ];
+
+    $mail_manager->mail(
+      'neruds_notifications',
+      'new_content_notify',
+      $user->getEmail(),
+      $user->getPreferredLangcode(),
+      $params,
+      NULL,
+      TRUE
+    );
+  }
+}
+
+/**
+ * Find users interested in new content based on ODS filter.
+ */
+function _neruds_notifications_find_interested_users(array $data) {
+  $db = \Drupal::database();
+  $ods_ids = $data['ods'] ?? [];
+
+  // Get users who want new content notifications and match ODS
+  $query = $db->select('neruds_notification_prefs', 'n')
+    ->fields('n', ['uid', 'ods_filter', 'content_types'])
+    ->condition('n.notify_new_content', 1);
+
+  $rows = $query->execute()->fetchAll();
+  $matched_uids = [];
+
+  foreach ($rows as $row) {
+    $user_ods = $row->ods_filter ? unserialize($row->ods_filter) : [];
+    $user_types = $row->content_types ? unserialize($row->content_types) : [];
+
+    // Match if no ODS filter (all) OR ODS intersects
+    $ods_match = empty($user_ods) || !empty(array_intersect($ods_ids, $user_ods));
+    $type_match = empty($user_types) || in_array($data['node_type'], $user_types);
+
+    if ($ods_match && $type_match) {
+      $matched_uids[] = $row->uid;
+    }
+  }
+
+  return $matched_uids;
+}
+
+/**
+ * Get user notification preferences.
+ */
+function _neruds_notifications_get_prefs($uid) {
+  return \Drupal::database()->select('neruds_notification_prefs', 'n')
+    ->fields('n')
+    ->condition('n.uid', $uid)
+    ->execute()
+    ->fetchObject();
+}
+
+/**
+ * Create default preferences for user.
+ */
+function _neruds_notifications_create_prefs($uid) {
+  $token = bin2hex(random_bytes(32));
+  \Drupal::database()->merge('neruds_notification_prefs')
+    ->key('uid', $uid)
+    ->fields([
+      'notify_new_content' => 1,
+      'notify_comments' => 1,
+      'notify_digest' => 'weekly',
+      'token' => $token,
+      'created' => time(),
+      'updated' => time(),
+    ])
+    ->execute();
+  return _neruds_notifications_get_prefs($uid);
+}
+
+/**
+ * Get term IDs from a node field.
+ */
+function _neruds_notifications_get_term_ids(NodeInterface $node, $field_name) {
+  if (!$node->hasField($field_name)) {
+    return [];
+  }
+  return array_column($node->get($field_name)->getValue(), 'target_id');
+}
+
+/**
+ * Build HTML body for new content notification.
+ */
+function _neruds_notifications_new_content_body(NodeInterface $node, $user, $unsubscribe_url) {
+  $site_name = \Drupal::config('system.site')->get('name');
+  $node_url = $node->toUrl('canonical', ['absolute' => TRUE])->toString();
+  $prefs_url = Url::fromRoute('neruds_notifications.preferences', ['user' => $user->id()], ['absolute' => TRUE])->toString();
+  $excerpt = strip_tags($node->get('body')->value ?? '');
+  $excerpt = mb_substr($excerpt, 0, 300) . (mb_strlen($excerpt) > 300 ? '...' : '');
+
+  return "
+<div style='font-family: Outfit, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #FAF9F6;'>
+  <div style='background: #2E4632; padding: 24px; text-align: center;'>
+    <h1 style='color: #fff; margin: 0; font-size: 22px;'>{$site_name}</h1>
+    <p style='color: rgba(255,255,255,0.8); margin: 8px 0 0; font-size: 14px;'>Nova Publicação</p>
+  </div>
+
+  <div style='padding: 32px 24px;'>
+    <p style='color: #555; margin: 0 0 16px;'>Olá, {$user->getDisplayName()}!</p>
+
+    <p style='color: #333; margin: 0 0 24px;'>
+      Uma nova publicação foi adicionada ao NERUDS que pode ser de seu interesse:
+    </p>
+
+    <div style='background: #fff; border-left: 4px solid #2E4632; border-radius: 4px; padding: 20px; margin: 0 0 24px;'>
+      <h2 style='color: #2E4632; margin: 0 0 12px; font-size: 18px;'>{$node->getTitle()}</h2>
+      <p style='color: #666; margin: 0 0 16px; line-height: 1.6;'>{$excerpt}</p>
+      <a href='{$node_url}'
+         style='display: inline-block; background: #2E4632; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;'>
+        Leia Mais →
+      </a>
+    </div>
+  </div>
+
+  <div style='background: #f0f0f0; padding: 16px 24px; text-align: center; font-size: 12px; color: #888;'>
+    <p style='margin: 0 0 8px;'>
+      <a href='{$prefs_url}' style='color: #2E4632;'>Gerenciar preferências de notificação</a>
+      &nbsp;|&nbsp;
+      <a href='{$unsubscribe_url}' style='color: #999;'>Cancelar todas as inscrições</a>
+    </p>
+    <p style='margin: 0;'>{$site_name} — Portal de Pesquisa NERUDS</p>
+  </div>
+</div>
+";
+}
+
+/**
+ * Build HTML body for comment notification.
+ */
+function _neruds_notifications_comment_body(CommentInterface $comment, $node, $user, $prefs) {
+  $site_name = \Drupal::config('system.site')->get('name');
+  $node_url = $node->toUrl('canonical', ['absolute' => TRUE])->toString() . '#comment-' . $comment->id();
+  $commenter = $comment->getOwner()->getDisplayName();
+  $comment_text = strip_tags($comment->get('comment_body')->value ?? '');
+  $comment_text = mb_substr($comment_text, 0, 400);
+
+  return "
+<div style='font-family: Outfit, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #FAF9F6;'>
+  <div style='background: #A0522D; padding: 24px; text-align: center;'>
+    <h1 style='color: #fff; margin: 0; font-size: 22px;'>{$site_name}</h1>
+    <p style='color: rgba(255,255,255,0.8); margin: 8px 0 0; font-size: 14px;'>Novo Comentário</p>
+  </div>
+
+  <div style='padding: 32px 24px;'>
+    <p style='color: #555; margin: 0 0 16px;'>Olá, {$user->getDisplayName()}!</p>
+
+    <p style='color: #333; margin: 0 0 24px;'>
+      <strong>{$commenter}</strong> comentou na sua publicação:
+      <em>\"{$node->getTitle()}\"</em>
+    </p>
+
+    <blockquote style='background: #fff; border-left: 4px solid #A0522D; margin: 0 0 24px; padding: 16px 20px; border-radius: 4px; color: #444; line-height: 1.6;'>
+      {$comment_text}
+    </blockquote>
+
+    <a href='{$node_url}'
+       style='display: inline-block; background: #A0522D; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;'>
+      Ver Comentário →
+    </a>
+  </div>
+
+  <div style='background: #f0f0f0; padding: 16px 24px; text-align: center; font-size: 12px; color: #888;'>
+    <p style='margin: 0;'>{$site_name} — Portal de Pesquisa NERUDS</p>
+  </div>
+</div>
+";
+}

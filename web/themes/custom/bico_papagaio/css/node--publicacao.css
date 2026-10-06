@@ -1,0 +1,100 @@
+/**
+ * @file node--publicacao.css
+ * Estilos específicos para Publicação Científica
+ * Arquivo Vivo de Resistência — uso intensivo de monospace
+ */
+
+/* Tipo de publicação */
+.field--name-field-tipo-publicacao .field__item {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sedimento-dark);
+  border: 1px solid var(--sedimento-20);
+  padding: 0.2em 0.6em;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* DOI — formatação */
+.field--name-field-doi a,
+.field--name-field-doi-publicacao a {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--sedimento-dark);
+  word-break: break-all;
+  letter-spacing: 0.03em;
+}
+
+/* Autores */
+.field--name-field-autores-publicacao {
+  font-style: italic;
+  color: var(--terra-600);
+  margin-bottom: var(--space-3);
+}
+
+/* Revista/Periódico */
+.field--name-field-revista,
+.field--name-field-periodico {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--babacú);
+  font-weight: 500;
+}
+
+/* Ano */
+.field--name-field-ano-publicacao {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--terra-500);
+  letter-spacing: 0.05em;
+}
+
+/* Abstract */
+.field--name-field-abstract,
+.field--name-field-resumo-publicacao {
+  background: var(--sedimento-10);
+  border-left: 3px solid var(--sedimento);
+  padding: var(--space-4) var(--space-5);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-loose);
+  color: var(--terra-700);
+  position: relative;
+}
+
+.field--name-field-abstract::before,
+.field--name-field-resumo-publicacao::before {
+  content: 'RESUMO';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  color: var(--sedimento-dark);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+/* Link para PDF / arquivo */
+.field--name-field-pdf-publicacao a,
+.field--name-field-arquivo-publicacao a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--barro);
+  border: 2px solid var(--barro);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: all var(--transition-fast);
+}
+
+.field--name-field-pdf-publicacao a:hover,
+.field--name-field-arquivo-publicacao a:hover {
+  background: var(--barro);
+  color: var(--branco);
+}

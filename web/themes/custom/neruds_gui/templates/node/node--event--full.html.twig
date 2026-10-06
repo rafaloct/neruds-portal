@@ -1,0 +1,62 @@
+{#
+ * @file
+ * NERUDS Theme - Event (Evento) Full View
+ #}
+
+{%
+  set classes = [
+    'node',
+    'node--' ~ node.bundle|clean_class,
+    'node--' ~ node.bundle|clean_class ~ '--full'
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  <h1{{ title_attributes.addClass('node--event__title') }}>{{ label }}</h1>
+
+  {# Event Meta - Data, Local #}
+  <div class="node--event__meta">
+    {% if node.field_event__date.0 %}
+      <div class="node--event__date">
+        📅 {{ node.field_event__date.0.start_date|date('d/m/Y') }}
+        à {{ node.field_event__date.0.start_date|date('H:i') }}
+      </div>
+    {% endif %}
+
+    {% if node.field_event__location_name.value %}
+      <div class="node--event__location">
+        📍 {{ node.field_event__location_name.value }}
+      </div>
+    {% endif %}
+  </div>
+
+  {# Featured Image #}
+  {% if node.field_featured_image.0 %}
+    <div class="node--event__image">
+      {{ content.field_featured_image }}
+    </div>
+  {% endif %}
+
+  {# Description #}
+  {% if node.field_description.0 %}
+    <div class="node--event__excerpt">
+      {{ content.field_description }}
+    </div>
+  {% endif %}
+
+  {# Main Content #}
+  <div class="node--event__content">
+    {{ content.field_content }}
+  </div>
+
+  {# Event Actions #}
+  <div class="node--event__actions">
+    {% if node.field_event__link.0 %}
+      <a href="{{ node.field_event__link.0.uri }}" class="btn btn--primary">
+        Saiba mais
+      </a>
+    {% endif %}
+  </div>
+
+</article>

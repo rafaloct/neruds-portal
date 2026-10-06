@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Template para exibição de Notícia
+ */
+#}
+
+{{ attach_library('neruds_theme/noticia') }}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'noticia-artigo') }}>
+
+  {# Hero Image Section #}
+  {% if content.field_imagem_destaque|render|trim is not empty %}
+    <div class="noticia-hero mb-4">
+      <div class="container">
+        <div class="hero-image-wrapper rounded-3 overflow-hidden shadow-sm">
+          {{ content.field_imagem_destaque }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        
+        {# Header da Notícia #}
+        <header class="noticia-header mb-4">
+          <div class="d-flex align-items-center flex-wrap gap-2 text-muted mb-3 fs-6">
+            {% if content.field_data_noticia %}
+              <div class="noticia-data">
+                <i class="bi bi-calendar3 me-1"></i>
+                {{ content.field_data_noticia }}
+              </div>
+            {% endif %}
+            
+            {% if content.field_areas_tematicas %}
+              <div class="noticia-categoria">
+                 <span class="mx-2">•</span>
+                 {{ content.field_areas_tematicas }}
+              </div>
+            {% endif %}
+          </div>
+
+          <h1 class="display-5 fw-bold text-dark mb-4">{{ label }}</h1>
+        </header>
+
+        {# Corpo da Notícia #}
+        <div class="noticia-body mb-5">
+           {# Se for uma notícia com link externo #}
+           {% if content.field_link_noticia|render|trim is not empty %}
+             <div class="alert alert-light border shadow-sm p-4 mb-4">
+               <h4 class="h5 mb-3">Esta é uma notícia externa</h4>
+               <p class="mb-3">Disponível originalmente em:</p>
+               {{ content.field_link_noticia }}
+             </div>
+           {% endif %}
+
+           {{ content.body }}
+        </div>
+
+        {# Anexos #}
+        {% if content.field_pdf|render|trim is not empty %}
+          <div class="noticia-anexos bg-light p-4 rounded-3 mb-5">
+            <h3 class="h5 mb-3">Documentos Relacionados</h3>
+            {{ content.field_pdf }}
+          </div>
+        {% endif %}
+
+        {# Footer da Notícia (Tags e Projetos) #}
+        <footer class="noticia-footer border-top pt-4">
+          {% if content.field_tags %}
+            <div class="mb-3">
+              <strong class="text-uppercase text-muted fs-7 me-2">Tags:</strong>
+              <div class="d-inline-block">
+                {{ content.field_tags }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if content.field_projeto_associado %}
+            <div class="mt-4">
+              <h4 class="h6 text-muted text-uppercase mb-3">Projeto Relacionado</h4>
+              {{ content.field_projeto_associado }}
+            </div>
+          {% endif %}
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+</article>

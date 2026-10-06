@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * NERUDS Related Content module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function neruds_related_content_theme($existing, $type, $theme, $path) {
+  return [
+    'neruds_related_content' => [
+      'variables' => [
+        'current_node' => NULL,
+        'related_nodes' => [],
+      ],
+      'template' => 'neruds-related-content',
+      'path' => $path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * Attach related content block to node full view displays.
+ */
+function neruds_related_content_node_view(array &$build, $node, $display, $view_mode) {
+  if ($view_mode !== 'full') {
+    return;
+  }
+
+  $supported_types = ['noticia', 'publicacao_cientifica', 'projeto_pesquisa_extensao', 'evento_cientifico', 'publicacao'];
+  if (!in_array($node->bundle(), $supported_types)) {
+    return;
+  }
+
+  // Add related content to build array
+  $block_manager = \Drupal::service('plugin.manager.block');
+  $block = $block_manager->createInstance('neruds_related_content', []);
+  $block_build = $block->build();
+
+  if (!empty($block_build)) {
+    $build['related_content'] = $block_build;
+    $build['related_content']['#weight'] = 90;
+  }
+}

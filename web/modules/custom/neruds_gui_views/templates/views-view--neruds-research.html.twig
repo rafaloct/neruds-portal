@@ -1,0 +1,492 @@
+{#
+/**
+ * @file
+ * NERUDS Research Main View Template — Academic Portal Layout
+ *
+ * Available variables:
+ * - view: The view object
+ * - rows: The rendered view rows
+ * - exposed_form: Exposed filters
+ * - footer: Footer region
+ */
+#}
+
+<section class="neruds-research-view research-view">
+
+  {# Hero Section with Search #}
+  <div class="research-view__hero">
+    <div class="research-view__hero-content">
+      <h1 class="research-view__heading">Arquivo Vivo de Resistência</h1>
+      <p class="research-view__subheading">
+        Explore publicações, projetos e eventos do NERUDS alinhados aos Objetivos de Desenvolvimento Sustentável
+      </p>
+    </div>
+
+    {# Advanced Search Bar #}
+    <div class="research-view__search-wrapper">
+      <form class="research-search-form" method="get" action="/pesquisa">
+        <div class="search-input-wrapper">
+          <input
+            type="search"
+            class="research-search-input"
+            name="q"
+            placeholder="Busque por título, autor, tema, ODS..."
+            aria-label="Buscar pesquisa"
+          >
+          <button type="submit" class="search-btn" aria-label="Buscar">
+            🔍
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {# Filter Sidebar + Content Grid #}
+  <div class="research-view__layout">
+
+    {# Sidebar Filters #}
+    <aside class="research-view__sidebar">
+      <div class="research-filters">
+        <h2 class="filters-title">Refine sua Busca</h2>
+
+        {# Exposed Filters #}
+        {% if exposed_form %}
+          <div class="filters-form">
+            {{ exposed_form }}
+          </div>
+        {% endif %}
+
+        {# ODS Filter Facets #}
+        <div class="filter-group">
+          <h3 class="filter-group__title">ODS</h3>
+          <div class="ods-filter-list">
+            <a href="?ods=1" class="ods-filter-item" style="border-left-color: #E5243B;">
+              <span class="ods-dot" style="background: #E5243B;"></span>
+              <span>Erradicar a Pobreza</span>
+            </a>
+            <a href="?ods=2" class="ods-filter-item" style="border-left-color: #DDB731;">
+              <span class="ods-dot" style="background: #DDB731;"></span>
+              <span>Fome Zero</span>
+            </a>
+            <a href="?ods=3" class="ods-filter-item" style="border-left-color: #4C9F38;">
+              <span class="ods-dot" style="background: #4C9F38;"></span>
+              <span>Saúde e Bem-estar</span>
+            </a>
+            <a href="?ods=13" class="ods-filter-item" style="border-left-color: #407D52;">
+              <span class="ods-dot" style="background: #407D52;"></span>
+              <span>Ação Climática</span>
+            </a>
+            <a href="?ods=15" class="ods-filter-item" style="border-left-color: #56C596;">
+              <span class="ods-dot" style="background: #56C596;"></span>
+              <span>Vida na Terra</span>
+            </a>
+          </div>
+        </div>
+
+        {# Research Categories #}
+        <div class="filter-group">
+          <h3 class="filter-group__title">Áreas de Pesquisa</h3>
+          <div class="category-filter-list">
+            <a href="?categoria=1" class="category-filter-item">Sistemas Socioecológicos</a>
+            <a href="?categoria=2" class="category-filter-item">Desigualdades Rurais</a>
+            <a href="?categoria=3" class="category-filter-item">Biodiversidade</a>
+            <a href="?categoria=4" class="category-filter-item">Políticas Públicas</a>
+            <a href="?categoria=5" class="category-filter-item">Desenvolvimento Sustentável</a>
+          </div>
+        </div>
+
+        {# Content Type Filter #}
+        <div class="filter-group">
+          <h3 class="filter-group__title">Tipo de Conteúdo</h3>
+          <div class="type-filter-list">
+            <label class="filter-checkbox">
+              <input type="checkbox" name="type" value="news">
+              <span>Notícias</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="type" value="event">
+              <span>Eventos</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="type" value="project">
+              <span>Projetos</span>
+            </label>
+          </div>
+        </div>
+
+        {# Clear Filters #}
+        <a href="/pesquisa" class="btn btn-secondary btn-block btn-sm" style="margin-top: 20px;">
+          Limpar Filtros
+        </a>
+      </div>
+    </aside>
+
+    {# Main Content Area #}
+    <main class="research-view__content">
+
+      {# Results Header #}
+      <div class="results-header">
+        <h2 class="results-title">
+          Resultados da Busca
+          {% if view.current_display == 'news' %}
+            (Notícias)
+          {% elseif view.current_display == 'events' %}
+            (Eventos)
+          {% elseif view.current_display == 'projects' %}
+            (Projetos)
+          {% endif %}
+        </h2>
+        <div class="results-info">
+          {{ view.total_rows }} resultado(s) encontrado(s)
+        </div>
+      </div>
+
+      {# Content Grid #}
+      {% if rows %}
+        <div class="research-grid">
+          {{ rows }}
+        </div>
+
+        {# Pagination #}
+        {% if view.pager %}
+          <div class="research-pagination">
+            {{ view.pager }}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="research-empty">
+          <div class="empty-icon">📭</div>
+          <h3>Nenhum resultado encontrado</h3>
+          <p>Tente ajustar seus filtros ou faça uma nova busca</p>
+          <a href="/pesquisa" class="btn btn-primary">Voltar para Pesquisa</a>
+        </div>
+      {% endif %}
+
+    </main>
+  </div>
+
+</section>
+
+<style>
+  .neruds-research-view {
+    background: linear-gradient(to bottom, var(--color-white), var(--color-gray-50));
+    padding: 40px 0;
+  }
+
+  /* Hero Section */
+  .research-view__hero {
+    background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-barro) 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .research-view__heading {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 15px;
+  }
+
+  .research-view__subheading {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+  }
+
+  /* Search Bar */
+  .research-view__search-wrapper {
+    max-width: 600px;
+    margin: 30px auto 0;
+  }
+
+  .research-search-form {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    padding: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .research-search-input {
+    flex: 1;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    background: transparent;
+    color: var(--color-gray-900);
+  }
+
+  .research-search-input::placeholder {
+    color: var(--color-gray-500);
+  }
+
+  .search-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 12px 20px;
+    transition: transform var(--transition-base);
+  }
+
+  .search-btn:hover {
+    transform: scale(1.1);
+  }
+
+  /* Layout */
+  .research-view__layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+  }
+
+  /* Sidebar */
+  .research-view__sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+  }
+
+  .research-filters {
+    background: white;
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .filters-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin: 0 0 20px;
+  }
+
+  .filter-group {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  .filter-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .filter-group__title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-gray-700);
+    margin: 0 0 12px;
+  }
+
+  .ods-filter-list,
+  .category-filter-list,
+  .type-filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ods-filter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    border-left: 4px solid;
+    background: var(--color-gray-50);
+    text-decoration: none;
+    color: var(--color-gray-700);
+    transition: all var(--transition-base);
+  }
+
+  .ods-filter-item:hover {
+    background: var(--color-gray-100);
+    transform: translateX(4px);
+  }
+
+  .ods-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .category-filter-item {
+    display: block;
+    padding: 8px 12px;
+    background: var(--color-gray-50);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--color-gray-700);
+    font-size: 0.9rem;
+    transition: all var(--transition-base);
+  }
+
+  .category-filter-item:hover {
+    background: var(--color-babasu);
+    color: white;
+  }
+
+  .filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 0;
+  }
+
+  .filter-checkbox input {
+    cursor: pointer;
+  }
+
+  /* Main Content */
+  .research-view__content {
+    min-height: 400px;
+  }
+
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--color-babasu);
+  }
+
+  .results-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin: 0;
+  }
+
+  .results-info {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+  }
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .research-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+  }
+
+  /* Empty State */
+  .research-empty {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+
+  .research-empty h3 {
+    font-size: 1.3rem;
+    color: var(--color-gray-900);
+    margin: 0 0 10px;
+  }
+
+  .research-empty p {
+    color: var(--color-gray-600);
+    margin: 0 0 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .research-view__layout {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .research-view__sidebar {
+      position: static;
+    }
+
+    .research-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .research-view__hero {
+      padding: 40px 20px;
+    }
+
+    .research-view__heading {
+      font-size: 1.8rem;
+    }
+
+    .research-view__subheading {
+      font-size: 1rem;
+    }
+
+    .results-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .research-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .neruds-research-view {
+      background: linear-gradient(to bottom, var(--color-gray-900), var(--color-gray-800));
+    }
+
+    .research-filters {
+      background: var(--color-gray-800);
+      color: var(--color-white);
+    }
+
+    .filters-title,
+    .filter-group__title {
+      color: var(--color-white);
+    }
+
+    .ods-filter-item,
+    .category-filter-item {
+      background: var(--color-gray-700);
+      color: var(--color-gray-300);
+    }
+
+    .research-search-input {
+      color: var(--color-white);
+      background: transparent;
+    }
+
+    .results-title {
+      color: var(--color-white);
+    }
+  }
+</style>

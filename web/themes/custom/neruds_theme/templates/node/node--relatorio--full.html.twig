@@ -1,0 +1,219 @@
+{#
+/**
+ * @file
+ * Template para exibição completa de Relatório
+ * Baseado em Bootstrap 5 com taxonomias NERUDS
+ */
+#}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'neruds-card') }}>
+  
+  {% if not page %}
+    <h2{{ title_attributes.addClass('node__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% else %}
+    <h1 class="node__title mb-4">{{ label }}</h1>
+  {% endif %}
+
+  {# Header com informações principais #}
+  <div class="node__header mb-4">
+    <div class="row">
+      <div class="col-md-6">
+        {% if content.field_tipo_relatorio %}
+          <div class="mb-2">
+            <i class="bi bi-file-earmark-text"></i>
+            <strong>Tipo:</strong>
+            {{ content.field_tipo_relatorio }}
+          </div>
+        {% endif %}
+        
+        {% if content.field_periodo_relatorio %}
+          <div class="mb-2">
+            <i class="bi bi-calendar-range"></i>
+            <strong>Período:</strong>
+            {{ content.field_periodo_relatorio }}
+          </div>
+        {% endif %}
+      </div>
+      
+      <div class="col-md-6">
+        {% if content.field_projeto_vinculado %}
+          <div class="mb-2">
+            <i class="bi bi-folder"></i>
+            <strong>Projeto:</strong>
+            {{ content.field_projeto_vinculado }}
+          </div>
+        {% endif %}
+        
+        {% if display_submitted %}
+          <div class="mb-2">
+            <i class="bi bi-person"></i>
+            <strong>Autor:</strong>
+            <span class="text-muted">{{ node.owner.entity.name.value }}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# Arquivo do Relatório #}
+  {% if content.field_arquivo_relatorio %}
+    <div class="node__file-download mb-4">
+      <div class="alert alert-info d-flex align-items-center">
+        <i class="bi bi-download me-2"></i>
+        <div>
+          <strong>Arquivo do Relatório:</strong>
+          {{ content.field_arquivo_relatorio }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {# Resumo Executivo #}
+  {% if content.field_resumo_executivo %}
+    <div class="node__summary mb-4">
+      <h3><i class="bi bi-file-text"></i> Resumo Executivo</h3>
+      <div class="p-3 bg-light rounded">
+        {{ content.field_resumo_executivo }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Conteúdo Principal em Abas #}
+  <div class="node__content-tabs mb-4">
+    <ul class="nav nav-tabs" id="relatorioTabs" role="tablist">
+      {% if content.field_objetivos_alcancados %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="objetivos-tab" data-bs-toggle="tab" data-bs-target="#objetivos" type="button" role="tab">
+            <i class="bi bi-target"></i> Objetivos
+          </button>
+        </li>
+      {% endif %}
+      {% if content.field_resultados_obtidos %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="resultados-tab" data-bs-toggle="tab" data-bs-target="#resultados" type="button" role="tab">
+            <i class="bi bi-graph-up"></i> Resultados
+          </button>
+        </li>
+      {% endif %}
+      {% if content.field_dificuldades_encontradas %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="dificuldades-tab" data-bs-toggle="tab" data-bs-target="#dificuldades" type="button" role="tab">
+            <i class="bi bi-exclamation-triangle"></i> Dificuldades
+          </button>
+        </li>
+      {% endif %}
+      {% if content.field_proximos_passos %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="proximos-tab" data-bs-toggle="tab" data-bs-target="#proximos" type="button" role="tab">
+            <i class="bi bi-arrow-right-circle"></i> Próximos Passos
+          </button>
+        </li>
+      {% endif %}
+    </ul>
+    
+    <div class="tab-content mt-3" id="relatorioTabsContent">
+      {% if content.field_objetivos_alcancados %}
+        <div class="tab-pane fade show active" id="objetivos" role="tabpanel">
+          {{ content.field_objetivos_alcancados }}
+        </div>
+      {% endif %}
+      {% if content.field_resultados_obtidos %}
+        <div class="tab-pane fade" id="resultados" role="tabpanel">
+          {{ content.field_resultados_obtidos }}
+        </div>
+      {% endif %}
+      {% if content.field_dificuldades_encontradas %}
+        <div class="tab-pane fade" id="dificuldades" role="tabpanel">
+          {{ content.field_dificuldades_encontradas }}
+        </div>
+      {% endif %}
+      {% if content.field_proximos_passos %}
+        <div class="tab-pane fade" id="proximos" role="tabpanel">
+          {{ content.field_proximos_passos }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {# Anexos #}
+  {% if content.field_anexos_relatorio %}
+    <div class="node__attachments mb-4">
+      <h3><i class="bi bi-paperclip"></i> Anexos</h3>
+      <div class="row g-3">
+        {{ content.field_anexos_relatorio }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Taxonomias #}
+  <div class="node__taxonomies mt-4 pt-4 border-top">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="mb-3"><i class="bi bi-tags"></i> Classificações</h4>
+        
+        {# ODS #}
+        {% if content.field_ods %}
+          <div class="taxonomy-group mb-3">
+            <span class="taxonomy-group-label">
+              <i class="bi bi-check-circle text-primary"></i> ODS Relacionados:
+            </span>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_ods }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Eixos Temáticos #}
+        {% if content.field_eixo_tematico %}
+          <div class="taxonomy-group mb-3">
+            <span class="taxonomy-group-label">
+              <i class="bi bi-diagram-3 text-success"></i> Eixos Temáticos:
+            </span>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_eixo_tematico }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Linhas de Pesquisa #}
+        {% if content.field_linha_pesquisa %}
+          <div class="taxonomy-group mb-3">
+            <span class="taxonomy-group-label">
+              <i class="bi bi-search text-info"></i> Linhas de Pesquisa:
+            </span>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_linha_pesquisa }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Palavras-Chave #}
+        {% if content.field_palavras_chave %}
+          <div class="taxonomy-group mb-3">
+            <span class="taxonomy-group-label">
+              <i class="bi bi-tags text-secondary"></i> Palavras-Chave:
+            </span>
+            <div class="taxonomy-badges-wrapper">
+              {{ content.field_palavras_chave }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# Metadados do Sistema #}
+  <div class="node__meta mt-4 pt-3 border-top text-muted small">
+    <div class="row">
+      <div class="col-md-6">
+        <i class="bi bi-calendar-plus"></i> Criado em: {{ node.createdtime|date('d/m/Y H:i') }}
+      </div>
+      <div class="col-md-6 text-md-end">
+        <i class="bi bi-pencil-square"></i> Atualizado em: {{ node.changedtime|date('d/m/Y H:i') }}
+      </div>
+    </div>
+  </div>
+
+</article>

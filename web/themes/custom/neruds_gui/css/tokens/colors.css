@@ -1,0 +1,165 @@
+/**
+ * @file colors.css
+ * Paleta de Cores NERUDS — Trama e Barro
+ * Definições de uso prático para componentes
+ */
+
+/* =====================================================
+   PRIMÁRIO — Verde Babaçu
+   ===================================================== */
+
+.color-primary {
+  color: var(--color-babasu);
+}
+
+.bg-primary {
+  background-color: var(--color-babasu);
+  color: var(--color-white);
+}
+
+.border-primary {
+  border-color: var(--color-babasu);
+}
+
+.link-primary {
+  color: var(--color-babasu);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.link-primary:hover,
+.link-primary:focus {
+  color: var(--color-babasu-light);
+  text-decoration: underline;
+}
+
+/* =====================================================
+   SECUNDÁRIO — Barro/Terracota
+   ===================================================== */
+
+.color-secondary {
+  color: var(--color-barro);
+}
+
+.bg-secondary {
+  background-color: var(--color-barro);
+  color: var(--color-white);
+}
+
+.border-secondary {
+  border-color: var(--color-barro);
+}
+
+/* =====================================================
+   DESTAQUE — Palha/Ouro Velho
+   ===================================================== */
+
+.color-accent {
+  color: var(--color-palha);
+}
+
+.bg-accent {
+  background-color: var(--color-palha);
+  color: var(--color-babasu-dark);
+}
+
+.border-accent {
+  border-color: var(--color-palha);
+}
+
+/* =====================================================
+   FUNDO — Off-white/Papel
+   ===================================================== */
+
+.bg-paper {
+  background-color: var(--color-paper);
+}
+
+.bg-paper-light {
+  background-color: var(--color-gray-50);
+}
+
+.bg-paper-dark {
+  background-color: var(--color-gray-900);
+}
+
+/* =====================================================
+   ESTADOS
+   ===================================================== */
+
+.color-success {
+  color: var(--color-success);
+}
+
+.bg-success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.color-warning {
+  color: var(--color-warning);
+}
+
+.bg-warning {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+}
+
+.color-error {
+  color: var(--color-error);
+}
+
+.bg-error {
+  background-color: var(--color-error);
+  color: var(--color-white);
+}
+
+.color-info {
+  color: var(--color-info);
+}
+
+.bg-info {
+  background-color: var(--color-info);
+  color: var(--color-white);
+}
+
+/* =====================================================
+   GRADIENTES — Combinações Harmônicas
+   ===================================================== */
+
+.gradient-primary-to-secondary {
+  background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-barro) 100%);
+  color: var(--color-white);
+}
+
+.gradient-accent-to-primary {
+  background: linear-gradient(135deg, var(--color-palha) 0%, var(--color-babasu) 100%);
+  color: var(--color-babasu-dark);
+}
+
+.gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    var(--color-paper) 0%,
+    var(--color-gray-50) 100%
+  );
+}
+
+/* =====================================================
+   OPACIDADE — Variações de transparência
+   ===================================================== */
+
+.bg-primary-light {
+  background-color: rgba(46, 70, 50, 0.1);
+  color: var(--color-babasu-dark);
+}
+
+.bg-secondary-light {
+  background-color: rgba(160, 82, 45, 0.1);
+  color: var(--color-barro-dark);
+}
+
+.bg-accent-light {
+  background-color: rgba(225, 193, 110, 0.1);
+  color: var(--color-palha);
+}

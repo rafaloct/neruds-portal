@@ -1,0 +1,129 @@
+.neruds-territory-map {
+  --neruds-green: #2c5530;
+  --neruds-leaf: #4a7c59;
+  --neruds-earth: #8b6914;
+  --neruds-water: #1e88e5;
+  background: #f7f8f4;
+  color: #1d2a20;
+  padding: clamp(1.5rem, 4vw, 4rem);
+}
+
+.neruds-territory-map__header {
+  align-items: end;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.neruds-territory-map__title {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.neruds-territory-map__summary {
+  margin: .4rem 0 0;
+  max-width: 62ch;
+}
+
+.neruds-territory-map__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.neruds-territory-map__filter {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--neruds-green), white 70%);
+  border-radius: 8px;
+  color: var(--neruds-green);
+  cursor: pointer;
+  padding: .45rem .7rem;
+}
+
+.neruds-territory-map__filter.is-active {
+  background: var(--neruds-green);
+  color: #fff;
+}
+
+.neruds-territory-map__layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr);
+}
+
+.neruds-territory-map__canvas {
+  border: 1px solid #d8decf;
+  border-radius: 8px;
+  grid-column: 1;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.neruds-territory-map__keyboard-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  grid-column: 1;
+}
+
+.neruds-territory-map__territory-button {
+  background: #fff;
+  border: 1px solid #c9d4c9;
+  border-radius: 8px;
+  color: var(--neruds-green);
+  cursor: pointer;
+  font: inherit;
+  padding: .45rem .7rem;
+}
+
+.neruds-territory-map__sidebar {
+  background: #fff;
+  border-left: 4px solid var(--neruds-earth);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(24, 46, 28, .12);
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  padding: 1rem;
+}
+
+.neruds-territory-map__sidebar dl {
+  display: grid;
+  gap: .65rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.neruds-territory-map__sidebar dt {
+  color: #536257;
+  font-size: .78rem;
+}
+
+.neruds-territory-map__sidebar dd {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .neruds-territory-map__header,
+  .neruds-territory-map__layout {
+    display: block;
+  }
+
+  .neruds-territory-map__filters {
+    margin-top: 1rem;
+  }
+
+  .neruds-territory-map__canvas {
+    min-height: 360px;
+  }
+
+  .neruds-territory-map__keyboard-list {
+    margin-top: .75rem;
+  }
+
+  .neruds-territory-map__sidebar {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,140 @@
+territory_map:
+  css:
+    theme:
+      css/components/territory-map.css: {}
+  js:
+    https://unpkg.com/leaflet@1.9.4/dist/leaflet.js:
+      type: external
+      minified: true
+      attributes:
+        integrity: 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='
+        crossorigin: ''
+    js/territory-map.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+live_dashboard:
+  css:
+    theme:
+      css/components/live-dashboard.css: {}
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js:
+      type: external
+      minified: true
+    js/live-dashboard.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+territorial_timeline:
+  css:
+    theme:
+      https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css:
+        type: external
+      css/components/territorial-timeline.css: {}
+  js:
+    https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js:
+      type: external
+      minified: true
+    js/territorial-timeline.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+retry_helper:
+  js:
+    js/retry-helper.js: {}
+
+skeleton_screens:
+  css:
+    theme:
+      css/components/skeleton-screens.css: {}
+
+publication_discovery:
+  css:
+    theme:
+      css/components/publication-discovery.css: {}
+  js:
+    js/publication-discovery.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+    - neruds_google_integration/skeleton_screens
+    - neruds_google_integration/retry_helper
+
+dataset_discovery:
+  css:
+    theme:
+      css/components/dataset-discovery.css: {}
+  js:
+    js/dataset-discovery.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+    - neruds_google_integration/skeleton_screens
+    - neruds_google_integration/retry_helper
+
+territorial_news:
+  css:
+    theme:
+      css/components/territorial-news.css: {}
+  js:
+    js/territorial-news.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+research_communities:
+  css:
+    theme:
+      css/components/research-communities.css: {}
+  js:
+    js/research-communities.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+google_drive_documents:
+  css:
+    theme:
+      css/google-drive-documents.css: {}
+  js:
+    js/google-drive-documents.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+accessibility_preferences:
+  css:
+    theme:
+      css/components/accessibility-preferences.css: {}
+  js:
+    js/accessibility-preferences.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+audit_widget:
+  css:
+    theme:
+      css/components/audit-widget.css: {}
+  js:
+    js/audit-widget.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+chatbot:
+  js:
+    js/neruds-chatbot.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

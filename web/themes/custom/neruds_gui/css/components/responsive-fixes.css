@@ -1,0 +1,283 @@
+/**
+ * @file responsive-fixes.css
+ * Correções críticas de responsividade — NERUDS-GUI
+ * Baseado em auditoria completa do layout
+ * Prioridade: breakpoints 320px, 480px, 768px
+ */
+
+/* ============================================================
+   1. FORMS — inputs sem width:100% (CRÍTICO)
+   ============================================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Drupal específicos */
+.form-item input,
+.form-item select,
+.form-item textarea,
+.views-exposed-form input,
+.views-exposed-form select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   2. HEADER — breakpoint 320px (CRÍTICO)
+   ============================================================ */
+
+@media (max-width: 360px) {
+  .site-header__inner {
+    gap: 0.4rem !important;
+    padding: 0 0.5rem;
+    min-height: 64px !important;
+  }
+
+  .site-branding__logo img {
+    height: 32px !important;
+  }
+
+  .site-branding__name a {
+    font-size: 0.85rem !important;
+  }
+
+  /* Ocultar nome da marca em telas muito pequenas se sobrar */
+  @media (max-width: 320px) {
+    .site-branding__name {
+      display: none;
+    }
+  }
+}
+
+/* ============================================================
+   3. HERO — breakpoint 768px-1023px (CRÍTICO)
+   ============================================================ */
+
+/* Garante hero responsivo em tablets (gap entre desktop e mobile) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-section__inner {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem !important;
+    text-align: center;
+  }
+
+  .hero-section__title,
+  .hero-section__title * {
+    font-size: clamp(1.75rem, 5vw, 2.8rem) !important;
+  }
+
+  .hero-section__ctas {
+    justify-content: center;
+  }
+}
+
+/* Mobile hero */
+@media (max-width: 639px) {
+  .hero-section__inner {
+    padding: 2rem 1rem !important;
+    text-align: center;
+  }
+
+  .hero-section__title,
+  .hero-section__title * {
+    font-size: clamp(1.5rem, 7vw, 2rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero-section__tagline {
+    font-size: 1rem !important;
+  }
+
+  .hero-section__ctas {
+    flex-direction: column !important;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-section__ctas a,
+  .hero-section__ctas button {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    padding: 1.5rem 0 !important;
+  }
+  .hero-section__title {
+    font-size: clamp(1.25rem, 4vw, 1.8rem) !important;
+  }
+}
+
+/* ============================================================
+   4. FOOTER — grid minmax muito conservador em 320px (MÉDIO)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  footer .footer-grid,
+  footer [class*="grid"],
+  footer .layout-container,
+  .region-footer-top {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem;
+  }
+}
+
+/* ============================================================
+   5. CARDS — image height em 480px (MÉDIO)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .card .card__image img,
+  .card .field--type-image img,
+  .views-view-grid article:not(.academic-person) .field--type-image img {
+    aspect-ratio: 16/9 !important;
+    height: auto !important;
+    max-height: 200px;
+  }
+
+  /* Pesquisador: foto quadrada menor */
+  .view-view-pesquisadores-por-linha .field--name-field-foto-perfil img {
+    max-height: 160px;
+  }
+}
+
+/* ============================================================
+   6. BREADCRUMB — overflow em 320px (MÉDIO)
+   ============================================================ */
+
+.breadcrumb,
+nav[aria-label="Breadcrumb"],
+ol.breadcrumb {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 2px;
+}
+
+.breadcrumb::-webkit-scrollbar { display: none; }
+
+.breadcrumb li {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   7. FONT-SIZE BASE — não reduzir em telas grandes (CRÍTICO)
+   ============================================================ */
+
+/* Garante mínimo de 16px para body text em qualquer breakpoint */
+body {
+  font-size: max(16px, 1rem);
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 1rem; /* Não aumentar acima de 16px base */
+  }
+}
+
+/* ============================================================
+   8. TOUCH TARGETS — mínimo 44px (WCAG 2.5.5)
+   ============================================================ */
+
+.primary-nav a,
+header nav a,
+.pager a,
+.pager__item a {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botões e links em geral */
+button,
+[role="button"],
+.btn,
+.button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   9. CARD GRID — responsividade global corrigida
+   ============================================================ */
+
+/* Garante que views grid nunca estoura o viewport */
+.views-view-grid,
+.view-content .views-view-grid {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Células flexíveis */
+@media (max-width: 639px) {
+  .views-view-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 899px) {
+  .views-view-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   10. NOTIFICAÇÕES / DROPDOWNS — min-width em 320px (MÉDIO)
+   ============================================================ */
+
+.messages,
+.alert,
+[class*="notification"] {
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0 !important;
+}
+
+/* ============================================================
+   11. IMAGENS GLOBAIS — sempre responsivas
+   ============================================================ */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   12. WIDTH SAFETY WITHOUT HIDING NAVIGATION
+   ============================================================ */
+
+.layout-container,
+main,
+.region,
+.block {
+  max-width: 100%;
+  min-width: 0;
+}

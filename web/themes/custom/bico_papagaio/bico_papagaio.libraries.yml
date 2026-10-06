@@ -1,0 +1,82 @@
+# ==========================================================================
+# Bico do Papagaio — Libraries
+# Estética da Trama e do Barro
+# ==========================================================================
+
+# Bootstrap 5
+bootstrap:
+  css:
+    theme:
+      'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css':
+        type: external
+        minified: true
+      'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css':
+        type: external
+        minified: true
+  js:
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js':
+      type: external
+      minified: true
+      attributes:
+        defer: true
+
+# Google Fonts — Entre a Máquina e o Manuscrito
+fonts:
+  css:
+    theme:
+      'https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap':
+        type: external
+        preprocess: false
+
+# Biblioteca principal global
+global:
+  css:
+    theme:
+      css/tokens.css: { weight: -20 }
+      css/base.css: { weight: -15 }
+      css/layout.css: { weight: -10 }
+      css/patterns.css: { weight: -8 }
+      css/components.css: { weight: -5 }
+      css/glassmorphism.css: {}
+      css/content-types.css: {}
+      css/olivero-overrides.css: { weight: 10 }
+      css/print.css:
+        media: print
+  js:
+    js/bico.js:
+      attributes:
+        defer: true
+  dependencies:
+    - bico_papagaio/bootstrap
+    - bico_papagaio/fonts
+    - core/drupal
+
+# Hero com glassmorphism
+hero:
+  css:
+    theme:
+      css/hero.css: {}
+  dependencies:
+    - bico_papagaio/global
+
+# Tipos de conteúdo
+perfil-pesquisador:
+  css:
+    theme:
+      css/node--perfil.css: {}
+  dependencies:
+    - bico_papagaio/global
+
+projeto:
+  css:
+    theme:
+      css/node--projeto.css: {}
+  dependencies:
+    - bico_papagaio/global
+
+publicacao:
+  css:
+    theme:
+      css/node--publicacao.css: {}
+  dependencies:
+    - bico_papagaio/global

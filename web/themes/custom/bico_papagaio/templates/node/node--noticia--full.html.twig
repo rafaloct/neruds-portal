@@ -1,0 +1,121 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Notícia (Full)
+ * Template decolonial
+ */
+#}
+
+<article{{ attributes.addClass('node--full', 'node--noticia') }}>
+
+  <header class="node__header">
+    <div class="node__tipo">{{ tipo_label|default('Notícia') }}</div>
+
+    {% if not page %}
+      <h2 class="node__title">
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {% else %}
+      <h1 class="node__title">{{ label }}</h1>
+    {% endif %}
+
+    <div class="node__meta">
+      <span class="node__meta-item">
+        {% if content.field_data_noticia %}
+          {{ content.field_data_noticia }}
+        {% else %}
+          {{ node.createdtime|date('d/m/Y') }}
+        {% endif %}
+      </span>
+      {% if content.field_local_noticia %}
+        <span class="node__meta-item">◈ {{ content.field_local_noticia }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  {# Imagem de destaque #}
+  {% if content.field_imagem_destaque_noticia %}
+    <figure class="node__featured-image" style="margin-bottom: var(--space-8);">
+      {{ content.field_imagem_destaque_noticia }}
+    </figure>
+  {% endif %}
+
+  {# Resumo / Chamada #}
+  {% if content.field_resumo_noticia %}
+    <div class="node__lead">
+      {{ content.field_resumo_noticia }}
+    </div>
+  {% endif %}
+
+  {# Corpo da notícia #}
+  <div{{ content_attributes.addClass('node__body') }}>
+    {{ content|without(
+      'field_resumo_noticia',
+      'field_imagem_destaque_noticia',
+      'field_data_noticia',
+      'field_local_noticia',
+      'field_galeria_imagens_noticia',
+      'field_ods_noticia',
+      'field_palavras_chave_noticia',
+      'field_eixo_tematico_noticia',
+      'field_linha_pesquisa_noticia',
+      'field_projeto_noticia',
+      'field_setor_produtivo_noticia',
+      'field_microrregiao_noticia',
+      'field_municipio_noticia',
+      'field_autores_noticia',
+      'field_link_noticia',
+      'field_projeto_associado'
+    ) }}
+  </div>
+
+  {# Galeria #}
+  {% if content.field_galeria_imagens_noticia %}
+    <section style="margin-top: var(--space-8);">
+      <h3 class="section-ornament" style="font-size:var(--text-sm); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:var(--babacú);">Galeria</h3>
+      <div class="row g-3">
+        {{ content.field_galeria_imagens_noticia }}
+      </div>
+    </section>
+  {% endif %}
+
+  {# Taxonomias #}
+  <footer class="node__taxonomy">
+
+    {% if content.field_ods_noticia %}
+      <div style="width:100%; margin-bottom: var(--space-2);">
+        <span style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--terra-500); text-transform:uppercase; letter-spacing:0.08em; margin-right:var(--space-2);">ODS:</span>
+        {{ content.field_ods_noticia }}
+      </div>
+    {% endif %}
+
+    {% if content.field_eixo_tematico_noticia %}
+      <div style="width:100%; margin-bottom: var(--space-2);">
+        <span style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--terra-500); text-transform:uppercase; letter-spacing:0.08em; margin-right:var(--space-2);">Eixo:</span>
+        {{ content.field_eixo_tematico_noticia }}
+      </div>
+    {% endif %}
+
+    {% if content.field_microrregiao_noticia %}
+      {{ content.field_microrregiao_noticia }}
+    {% endif %}
+
+    {% if content.field_municipio_noticia %}
+      {{ content.field_municipio_noticia }}
+    {% endif %}
+
+    {% if content.field_projeto_associado %}
+      {{ content.field_projeto_associado }}
+    {% endif %}
+
+  </footer>
+
+  {# Link externo #}
+  {% if content.field_link_noticia %}
+    <div style="margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px dashed var(--terra-200);">
+      <span style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--terra-500); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:var(--space-2);">◈ Fonte:</span>
+      {{ content.field_link_noticia }}
+    </div>
+  {% endif %}
+
+</article>

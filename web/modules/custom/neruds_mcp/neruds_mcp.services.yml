@@ -1,0 +1,12 @@
+services:
+  neruds_mcp.service:
+    class: Drupal\neruds_mcp\Service\MCPService
+    arguments:
+      - '@entity_type.manager'
+      - '@logger.factory'
+      - '@config.factory'
+
+  neruds_mcp.controller:
+    class: Drupal\neruds_mcp\Controller\MCPController
+    arguments:
+      - '@neruds_mcp.service'

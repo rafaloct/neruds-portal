@@ -1,0 +1,150 @@
+<?php
+
+/**
+ * @file
+ * NERUDS GUI — Views & Academic Layouts Module.
+ *
+ * Provides professional Twig templates for displaying NERUDS academic content
+ * (News, Events, Projects, Researchers) with modern design patterns.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function neruds_gui_views_theme($existing, $type, $theme, $path) {
+  return [
+    'node__news__teaser' => [
+      'template' => 'node-news-teaser',
+      'path' => $path . '/templates',
+      'variables' => [
+        'node' => NULL,
+        'title' => NULL,
+        'teaser' => NULL,
+        'url' => NULL,
+      ],
+    ],
+    'node__event__teaser' => [
+      'template' => 'node-event-teaser',
+      'path' => $path . '/templates',
+      'variables' => [
+        'node' => NULL,
+        'title' => NULL,
+        'teaser' => NULL,
+        'url' => NULL,
+      ],
+    ],
+    'node__project__teaser' => [
+      'template' => 'node-project-teaser',
+      'path' => $path . '/templates',
+      'variables' => [
+        'node' => NULL,
+        'title' => NULL,
+        'teaser' => NULL,
+        'url' => NULL,
+      ],
+    ],
+    'node__person__teaser' => [
+      'template' => 'node-person-teaser',
+      'path' => $path . '/templates',
+      'variables' => [
+        'node' => NULL,
+        'title' => NULL,
+        'url' => NULL,
+      ],
+    ],
+    'views_view__neruds_research' => [
+      'template' => 'views-view--neruds-research',
+      'path' => $path . '/templates',
+      'variables' => [
+        'view' => NULL,
+        'rows' => NULL,
+        'exposed_form' => NULL,
+        'footer' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_node().
+ *
+ * Prepare node variables for cleaner Twig templates.
+ */
+function neruds_gui_views_preprocess_node(&$variables) {
+  $node = $variables['node'];
+
+  // Add commonly used fields
+  if ($node->hasField('field_ods')) {
+    $variables['ods'] = $node->get('field_ods')->getValue();
+  }
+
+  if ($node->hasField('field_research_categories')) {
+    $variables['categories'] = $node->get('field_research_categories')->getValue();
+  }
+
+  // Add author name for easier access
+  $variables['author_name'] = $node->getOwner()->getDisplayName();
+
+  // Add formatted date
+  $variables['published_date'] = \Drupal::service('date.formatter')
+    ->format($node->getCreatedTime(), 'long');
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ *
+ * Customize view rendering.
+ */
+function neruds_gui_views_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+
+  // Add custom data to research views
+  if (strpos($view->id(), 'neruds') === 0) {
+    // Add total results count
+    $variables['total_results'] = $view->total_rows ?? 0;
+
+    // Add current display info
+    $variables['current_display'] = $view->current_display;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Enhance forms for better UX.
+ */
+function neruds_gui_views_form_alter(&$form, &$form_state, $form_id) {
+  // Add academic-focused hints to node forms
+  if (strpos($form_id, 'node_') === 0 && strpos($form_id, '_form') !== false) {
+    // Add help text for ODS field
+    if (isset($form['field_ods'])) {
+      $form['field_ods']['#description'] = t(
+        'Select all applicable UN Sustainable Development Goals (ODS) for this content.'
+      );
+    }
+
+    // Add help text for categories
+    if (isset($form['field_research_categories'])) {
+      $form['field_research_categories']['#description'] = t(
+        'Categorize this research by topic area for better discovery.'
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function neruds_gui_views_install() {
+  \Drupal::messenger()->addStatus(
+    t('NERUDS GUI Views module installed. Templates are available for News, Events, and Projects.')
+  );
+  \Drupal::logger('neruds_gui_views')->notice('NERUDS GUI Views module installed.');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function neruds_gui_views_uninstall() {
+  \Drupal::logger('neruds_gui_views')->notice('NERUDS GUI Views module uninstalled.');
+}

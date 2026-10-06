@@ -1,0 +1,253 @@
+{#
+/**
+ * @file
+ * Template para exibição completa de Relatórios FNO
+ * Projeto NERUDS/UFT - Integração de relatórios de pesquisa FNO
+ */
+#}
+
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'fno-report-page'
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+  
+  {# Header da página do relatório #}
+  <div class="fno-report-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="fno-header-content">
+            <div class="fno-logo-section">
+              <img src="/themes/custom/neruds_theme/images/fno-logo.svg" alt="FNO - Fundo Constitucional do Norte" class="fno-logo">
+              <div class="fno-title-section">
+                <h1 class="fno-main-title">{{ label }}</h1>
+                <p class="fno-subtitle">Pesquisa do Fundo Constitucional de Financiamento do Norte</p>
+                {% if content.field_fno_research_period %}
+                  <div class="fno-period">
+                    <i class="fas fa-calendar-alt"></i>
+                    {{ content.field_fno_research_period }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            
+            {# Breadcrumb personalizado #}
+            <nav aria-label="breadcrumb" class="fno-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="/pesquisa">Pesquisa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Relatório FNO</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Seção principal do relatório #}
+  <div class="fno-report-main">
+    <div class="container-fluid">
+      <div class="row">
+        
+        {# Sidebar com informações do relatório #}
+        <div class="col-lg-3 fno-sidebar">
+          <div class="fno-info-panel">
+            <h3>Informações da Pesquisa</h3>
+            
+            {% if content.field_fno_researchers %}
+              <div class="fno-info-section">
+                <h4><i class="fas fa-users"></i> Pesquisadores</h4>
+                {{ content.field_fno_researchers }}
+              </div>
+            {% endif %}
+            
+            {% if content.field_fno_methodology %}
+              <div class="fno-info-section">
+                <h4><i class="fas fa-microscope"></i> Metodologia</h4>
+                {{ content.field_fno_methodology }}
+              </div>
+            {% endif %}
+            
+            {% if content.field_fno_key_findings %}
+              <div class="fno-info-section">
+                <h4><i class="fas fa-chart-line"></i> Principais Resultados</h4>
+                {{ content.field_fno_key_findings }}
+              </div>
+            {% endif %}
+            
+            {% if content.field_fno_report_url %}
+              <div class="fno-info-section">
+                <h4><i class="fas fa-external-link-alt"></i> Acesso Direto</h4>
+                {{ content.field_fno_report_url }}
+              </div>
+            {% endif %}
+            
+            {# Informações adicionais #}
+            <div class="fno-info-section fno-about">
+              <h4><i class="fas fa-info-circle"></i> Sobre o FNO</h4>
+              <p>O Fundo Constitucional de Financiamento do Norte (FNO) é um instrumento de política regional que tem como objetivo contribuir para o desenvolvimento econômico e social da Região Norte.</p>
+              <a href="/sobre-fno" class="btn btn-outline-primary btn-sm">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+        
+        {# Área principal do relatório #}
+        <div class="col-lg-9 fno-content">
+          <div class="fno-report-container">
+            
+            {# Controles do relatório #}
+            <div class="fno-report-controls">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="fno-view-options">
+                  <button class="btn btn-sm btn-outline-secondary active" id="embedded-view">
+                    <i class="fas fa-desktop"></i> Visualização Integrada
+                  </button>
+                  <a href="{{ node.field_fno_report_url.0.uri }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-external-link-alt"></i> Abrir em Nova Aba
+                  </a>
+                </div>
+                <div class="fno-report-actions">
+                  <button class="btn btn-sm btn-outline-secondary" id="fullscreen-toggle">
+                    <i class="fas fa-expand"></i> Tela Cheia
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary" id="refresh-report">
+                    <i class="fas fa-sync-alt"></i> Atualizar
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {# Container do iframe responsivo #}
+            <div class="fno-iframe-container" id="report-container">
+              <div class="fno-loading-overlay" id="loading-overlay">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="sr-only">Carregando relatório...</span>
+                </div>
+                <p>Carregando relatório FNO...</p>
+              </div>
+              
+              {% if content.field_fno_report_embed %}
+                {# Se há código de embed personalizado, usar ele #}
+                <div class="fno-custom-embed">
+                  {{ content.field_fno_report_embed|raw }}
+                </div>
+              {% elseif node.field_fno_report_url.0.uri %}
+                {# Caso contrário, criar iframe padrão #}
+                <iframe 
+                  id="fno-report-iframe"
+                  src="{{ node.field_fno_report_url.0.uri }}"
+                  frameborder="0" 
+                  style="border:0" 
+                  allowfullscreen 
+                  sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+                  class="fno-report-iframe">
+                </iframe>
+              {% endif %}
+            </div>
+            
+            {# Mensagem de fallback #}
+            <div class="fno-fallback-message" id="fallback-message" style="display: none;">
+              <div class="alert alert-warning">
+                <h4><i class="fas fa-exclamation-triangle"></i> Problema ao carregar o relatório</h4>
+                <p>Se o relatório não carregar corretamente, você pode:</p>
+                <ul>
+                  <li><a href="{{ node.field_fno_report_url.0.uri }}" target="_blank">Abrir o relatório em uma nova aba</a></li>
+                  <li>Verificar sua conexão com a internet</li>
+                  <li>Tentar novamente em alguns minutos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {# Footer com informações adicionais #}
+  <div class="fno-report-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="fno-footer-content">
+            <div class="fno-credits">
+              <p><strong>Núcleo de Estudos Rurais e Urbanos para o Desenvolvimento Sustentável (NERUDS)</strong></p>
+              <p>Universidade Federal do Tocantins - Campus de Araguaína</p>
+              <p>Em parceria com o Fundo Constitucional de Financiamento do Norte (FNO)</p>
+            </div>
+            <div class="fno-meta">
+              <p>Publicado em: {{ node.created.value|date('d/m/Y') }}</p>
+              {% if node.changed.value != node.created.value %}
+                <p>Atualizado em: {{ node.changed.value|date('d/m/Y') }}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</article>
+
+{# JavaScript para funcionalidades interativas #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const iframe = document.getElementById('fno-report-iframe');
+  const loadingOverlay = document.getElementById('loading-overlay');
+  const fallbackMessage = document.getElementById('fallback-message');
+  const fullscreenToggle = document.getElementById('fullscreen-toggle');
+  const refreshButton = document.getElementById('refresh-report');
+  const reportContainer = document.getElementById('report-container');
+  
+  // Controle de carregamento
+  if (iframe) {
+    iframe.addEventListener('load', function() {
+      loadingOverlay.style.display = 'none';
+    });
+    
+    iframe.addEventListener('error', function() {
+      loadingOverlay.style.display = 'none';
+      fallbackMessage.style.display = 'block';
+    });
+    
+    // Timeout para mostrar fallback se demorar muito
+    setTimeout(function() {
+      if (loadingOverlay.style.display !== 'none') {
+        loadingOverlay.style.display = 'none';
+        fallbackMessage.style.display = 'block';
+      }
+    }, 15000);
+  }
+  
+  // Controle de tela cheia
+  if (fullscreenToggle) {
+    fullscreenToggle.addEventListener('click', function() {
+      if (reportContainer.requestFullscreen) {
+        reportContainer.requestFullscreen();
+      } else if (reportContainer.webkitRequestFullscreen) {
+        reportContainer.webkitRequestFullscreen();
+      } else if (reportContainer.msRequestFullscreen) {
+        reportContainer.msRequestFullscreen();
+      }
+    });
+  }
+  
+  // Atualizar relatório
+  if (refreshButton && iframe) {
+    refreshButton.addEventListener('click', function() {
+      loadingOverlay.style.display = 'flex';
+      fallbackMessage.style.display = 'none';
+      iframe.src = iframe.src;
+    });
+  }
+});
+</script>

@@ -1,0 +1,185 @@
+{#
+/**
+ * @file page--front.html.twig
+ * NERUDS-GUI — Homepage com layout em blocos inteligente
+ */
+#}
+
+<div id="page-wrapper" class="page-wrapper page-wrapper--front">
+  <div id="page" class="page">
+
+
+    {# ── HEADER ──────────────────────────────────────────────────────── #}
+    <header id="header" class="site-header site-header--transparent" role="banner">
+      <div class="site-header__inner layout-container">
+
+        <div class="site-header__brand">
+          {% if page.header %}{{ page.header }}{% endif %}
+        </div>
+
+        <button class="nav-toggle" aria-controls="primary-nav"
+                aria-expanded="false" aria-label="{{ 'Abrir menu'|t }}">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <nav id="primary-nav" class="primary-nav" role="navigation"
+             aria-label="{{ 'Menu principal'|t }}" data-state="closed">
+          {% if page.primary_menu %}{{ page.primary_menu }}{% endif %}
+        </nav>
+
+        <a class="site-header__search-link" href="/busca" aria-label="{{ 'Abrir busca do site'|t }}">
+          <svg class="site-header__search-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>{{ 'Busca'|t }}</span>
+        </a>
+
+        {# Secondary actions: account, language #}
+        <div class="site-header__actions">
+          {% if page.secondary_menu %}{{ page.secondary_menu }}{% endif %}
+        </div>
+
+      </div>
+    </header>
+
+    {# ── HERO — MANIFESTO ─────────────────────────────────────────────── #}
+    <section class="home-intro" aria-label="{{ 'Apresentação NERUDS'|t }}">
+      <div class="layout-container">
+
+        <div class="home-intro__text">
+          <p class="home-intro__institution">{{ 'Universidade Federal do Tocantins'|t }}</p>
+          <h1>NERUDS</h1>
+          <p class="home-intro__name">{{ 'Núcleo de Estudos Rurais, Desigualdades e Sistemas Socioecológicos'|t }}</p>
+          <p>
+            {{ 'Pesquisa aplicada, extensão territorial e produção de conhecimento com e para as comunidades do Cerrado e da Amazônia.'|t }}
+          </p>
+          <div class="home-intro__links">
+            <a href="/pesquisadores" class="btn btn--primary btn--lg">
+              {{ 'Conheça os Pesquisadores'|t }}
+            </a>
+            <a href="/projetos">
+              {{ 'Ver Projetos'|t }}
+            </a>
+            <a href="/contato">{{ 'Contato'|t }}</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {# ── HIGHLIGHTED MESSAGES ─────────────────────────────────────────── #}
+    {% if page.highlighted %}
+      <div class="region-highlighted" role="alert">
+        <div class="layout-container">{{ page.highlighted }}</div>
+      </div>
+    {% endif %}
+
+    {# ── CONTEÚDO PRINCIPAL ───────────────────────────────────────────── #}
+    <main id="main-content" class="site-main site-main--front" role="main" tabindex="-1">
+      <div class="layout-container">
+
+        {# ── Linha 1: Notícias | Eventos | Grupos de Estudos ──────────── #}
+        <section class="home-section" aria-label="{{ 'Em destaque'|t }}">
+          <div class="home-editorial">
+
+            {# Últimas Notícias #}
+            <div class="home-news">
+              <header class="home-panel__header">
+                <h2 class="home-panel__title">
+                  {{ 'Últimas Notícias'|t }}
+                </h2>
+                <a href="/noticias" class="home-panel__more">{{ 'Ver todas'|t }} &rarr;</a>
+              </header>
+              <div class="home-panel__content">
+                {% if views.noticias %}
+                  {{ views.noticias }}
+                {% else %}
+                  <p class="home-panel__empty">{{ 'Em breve novidades.'|t }}</p>
+                {% endif %}
+              </div>
+            </div>
+
+            {# Eventos #}
+            {% if has_home_events %}
+            <div class="home-events">
+              <header class="home-panel__header">
+                <h2 class="home-panel__title">
+                  {{ 'Agenda Científica'|t }}
+                </h2>
+                <a href="/eventos" class="home-panel__more">{{ 'Ver agenda'|t }} &rarr;</a>
+              </header>
+              <div class="home-panel__content">
+                {% if views.eventos %}
+                  {{ views.eventos }}
+                {% else %}
+                  <p class="home-panel__empty">{{ 'Nenhum evento próximo.'|t }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+
+            {# Grupos de Estudos #}
+            <div class="home-groups">
+              <header class="home-panel__header">
+                <h2 class="home-panel__title">
+                  {{ 'Grupos de Estudos'|t }}
+                </h2>
+                <a href="/grupos-de-estudos" class="home-panel__more">{{ 'Ver todos'|t }} &rarr;</a>
+              </header>
+              <div class="home-panel__content">
+                {% if views.grupos %}
+                  {{ views.grupos }}
+                {% else %}
+                  <p class="home-panel__empty">{{ 'Nenhum grupo ativo.'|t }}</p>
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {# ── Linha 2: Publicações Recentes ────────────────────────────── #}
+        <section class="home-section home-section--publications" aria-label="{{ 'Publicações'|t }}">
+          <div class="home-section__header">
+            <h2 class="home-section__title">{{ 'Publicações Científicas'|t }}</h2>
+            <a href="/publicacoes" class="btn btn--ghost btn--sm">{{ 'Acervo completo'|t }} &rarr;</a>
+          </div>
+          <div class="pub-list-home">
+            {% if views.publicacoes %}
+              {{ views.publicacoes }}
+            {% else %}
+              <p class="home-panel__empty">{{ 'Nenhuma publicação disponível ainda.'|t }}</p>
+            {% endif %}
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    {% if page.social_bar %}
+      <section class="region-social-bar">
+        <div class="layout-container">{{ page.social_bar }}</div>
+      </section>
+    {% endif %}
+
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="layout-container">
+      {% if page.footer_top %}
+        <div class="site-footer__top">{{ page.footer_top }}</div>
+      {% endif %}
+      <div class="site-footer__bottom">
+        {% if page.footer_bottom %}{{ page.footer_bottom }}{% endif %}
+        <p class="site-footer__copy">
+          &copy; {{ "now"|date("Y") }} <strong>{{ site_name }}</strong> &mdash;
+          {{ 'Núcleo de Estudos Rurais, Desigualdades e Sistemas Socioecológicos'|t }}
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>

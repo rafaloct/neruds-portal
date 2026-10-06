@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Template não formatado para listagem de artigos por ODS
+ * Cards Bootstrap
+ */
+#}
+
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+      'col-md-6 col-lg-4 mb-4',
+    ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {{ row.content }}
+  </div>
+{% endfor %}
+

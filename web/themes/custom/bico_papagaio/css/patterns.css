@@ -1,0 +1,335 @@
+/**
+ * @file patterns.css
+ * BICO DO PAPAGAIO — Padrões Gráficos Decoloniais
+ *
+ * A TRAMA (The Weave):
+ * Padrões inspirados no trançado da palha do babaçu.
+ * Simboliza a rede de saberes e a união dos movimentos sociais.
+ *
+ * XILOGRAVURA CONTEMPORÂNEA:
+ * Elementos visuais com textura de traço manual e carimbo.
+ */
+
+/* =========================================================
+   PADRÃO TRAMA BABAÇU — SVG inline via CSS
+   Geometria do trançado de palha
+   ========================================================= */
+
+.bg-trama {
+  background-color: var(--terra-50);
+  background-image:
+    /* Diagonal direita */
+    repeating-linear-gradient(
+      45deg,
+      var(--trama-color-1) 0px,
+      var(--trama-color-1) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    /* Diagonal esquerda */
+    repeating-linear-gradient(
+      -45deg,
+      var(--trama-color-2) 0px,
+      var(--trama-color-2) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  background-size: var(--trama-size) var(--trama-size);
+}
+
+/* Trama mais pronunciada para seções de destaque */
+.bg-trama-bold {
+  background-color: var(--babacú-10);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(160, 82, 45, 0.12) 0px,
+      rgba(160, 82, 45, 0.12) 1.5px,
+      transparent 1.5px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(46, 70, 50, 0.1) 0px,
+      rgba(46, 70, 50, 0.1) 1.5px,
+      transparent 1.5px,
+      transparent 14px
+    );
+  background-size: 20px 20px;
+}
+
+/* Trama de fundo escuro (babacú) */
+.bg-trama-dark {
+  background-color: var(--babacú);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(225, 193, 110, 0.1) 0px,
+      rgba(225, 193, 110, 0.1) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(251, 246, 240, 0.08) 0px,
+      rgba(251, 246, 240, 0.08) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  background-size: var(--trama-size) var(--trama-size);
+}
+
+/* =========================================================
+   TEXTURA BARRO — Granulado de cerâmica
+   ========================================================= */
+
+.bg-barro-texture {
+  background-color: var(--barro);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply' result='blend'/%3E%3CfeComposite in='blend' in2='SourceGraphic' operator='in'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   BORDA TRAMA — moldura de trançado
+   ========================================================= */
+
+.border-trama {
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.border-trama::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--barro) 0px,
+    var(--barro) 4px,
+    var(--palha) 4px,
+    var(--palha) 8px
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* =========================================================
+   CARIMBO / STAMP — xilogravura contemporânea
+   Representa elementos como carimbo artesanal
+   ========================================================= */
+
+.stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border: 2px solid currentColor;
+  border-radius: var(--radius-sm);
+  position: relative;
+  transform: rotate(-1.5deg);
+  opacity: 0.9;
+}
+
+.stamp::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+  opacity: 0.4;
+}
+
+.stamp-barro  { color: var(--barro);         background: var(--barro-10); }
+.stamp-babacú { color: var(--babacú);        background: var(--babacú-10); }
+.stamp-palha  { color: var(--palha-xdark);   background: var(--palha-20); }
+.stamp-sedimento { color: var(--sedimento-dark); background: var(--sedimento-10); }
+
+/* =========================================================
+   ORNAMENTO DE SEÇÃO — traço xilogravura
+   ========================================================= */
+
+.section-ornament {
+  position: relative;
+  padding-top: var(--space-6);
+}
+
+.section-ornament::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--barro),
+    var(--palha-dark)
+  );
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-full);
+}
+
+.section-ornament--center::before {
+  margin: 0 auto var(--space-4);
+}
+
+/* =========================================================
+   FUNDO HERO — textura de terra com gradiente
+   ========================================================= */
+
+.bg-hero-terra {
+  background:
+    radial-gradient(ellipse at top left, rgba(160, 82, 45, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(46, 70, 50, 0.4) 0%, transparent 60%),
+    linear-gradient(135deg, var(--babacú-dark) 0%, var(--terra-800) 50%, var(--barro-dark) 100%);
+}
+
+/* Overlay de trama sobre imagem */
+.overlay-trama {
+  position: relative;
+}
+
+.overlay-trama::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(28, 16, 8, 0.06) 0px,
+      rgba(28, 16, 8, 0.06) 1px,
+      transparent 1px,
+      transparent 10px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(28, 16, 8, 0.04) 0px,
+      rgba(28, 16, 8, 0.04) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  background-size: 14px 14px;
+  pointer-events: none;
+}
+
+/* =========================================================
+   ÍCONE BABAÇU — decorativo em CSS
+   ========================================================= */
+
+.icon-babacú {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E4632' stroke-width='1.5'%3E%3Cellipse cx='12' cy='18' rx='4' ry='5'/%3E%3Cpath d='M12 13 C8 10 4 6 6 2'/%3E%3Cpath d='M12 13 C16 10 20 6 18 2'/%3E%3Cpath d='M12 13 C9 8 10 3 12 2'/%3E%3Cpath d='M12 13 C15 8 14 3 12 2'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+
+/* =========================================================
+   TAXONOMY BADGES — estilo carimbo decolonial
+   ========================================================= */
+
+.badge-decolonial {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2em 0.7em;
+  border-radius: 2px;
+  border: 1.5px solid currentColor;
+  position: relative;
+}
+
+.badge-decolonial::before {
+  content: '◈ ';
+  opacity: 0.6;
+  font-size: 0.7em;
+}
+
+.badge-eixo    { color: var(--babacú);        background: var(--babacú-10); }
+.badge-projeto { color: var(--sedimento-dark); background: var(--sedimento-10); }
+.badge-ods     { color: var(--barro-dark);    background: var(--barro-10); }
+.badge-territorio { color: var(--palha-xdark); background: var(--palha-20); }
+.badge-pesquisador { color: var(--babacú-dark); background: var(--babacú-10); }
+
+/* Mapeamento por nome de campo Drupal */
+.badge-ods-noticia,
+.badge-ods-projeto,
+.badge-ods-publicacao          { color: var(--barro-dark);        background: var(--barro-10); }
+.badge-eixo-tematico-noticia,
+.badge-eixo-tematico-projeto   { color: var(--babacú);            background: var(--babacú-10); }
+.badge-linha-pesquisa,
+.badge-linha-pesquisa-noticia,
+.badge-linha-pesquisa-projeto  { color: var(--sedimento-dark);    background: var(--sedimento-10); }
+.badge-microrregiao,
+.badge-microrregiao-noticia,
+.badge-microrregiao-projeto    { color: var(--palha-xdark);       background: var(--palha-20); }
+.badge-municipio,
+.badge-municipio-noticia,
+.badge-municipio-projeto       { color: var(--palha-xdark);       background: var(--palha-10); }
+.badge-setor-produtivo,
+.badge-setor-produtivo-projeto { color: var(--barro-light);       background: var(--barro-10); }
+.badge-area-conhecimento       { color: var(--babacú-light);      background: var(--babacú-10); }
+.badge-equipe-pesquisadores,
+.badge-coordenador             { color: var(--babacú-dark);       background: var(--babacú-10); }
+.badge-projeto-associado       { color: var(--sedimento-dark);    background: var(--sedimento-10); }
+.badge-tipo-publicacao         { color: var(--sedimento-dark);    background: var(--sedimento-10); }
+.badge-palavras-chave,
+.badge-palavras-chave-noticia  { color: var(--terra-600);         background: var(--terra-100); }
+
+/* =========================================================
+   LINHA DO TEMPO — estilo registro de campo
+   ========================================================= */
+
+.timeline {
+  position: relative;
+  padding-left: var(--space-8);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: var(--space-3);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--barro) 0px,
+    var(--barro) 6px,
+    transparent 6px,
+    transparent 10px
+  );
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-6);
+}
+
+.timeline-item::before {
+  content: '◈';
+  position: absolute;
+  left: calc(-1 * var(--space-8) + var(--space-2));
+  top: 0.2em;
+  color: var(--barro);
+  font-size: var(--text-sm);
+  background: var(--terra-50);
+  padding: 0 2px;
+}
+
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}

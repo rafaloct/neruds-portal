@@ -1,0 +1,203 @@
+/**
+ * @file glass-cards.css
+ * Cards com Glassmorphism — "Nevoa"
+ * Blur 12px, Saturação 140%, borda barro
+ */
+
+.glass,
+.card--glass {
+  background: rgba(250, 249, 246, 0.7);
+  backdrop-filter: var(--glass-effect);
+  border: var(--border-width-thin) solid rgba(160, 82, 45, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass:hover,
+.card--glass:hover {
+  background: rgba(250, 249, 246, 0.85);
+  border-color: var(--color-barro);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(46, 70, 50, 0.15);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .glass,
+  .card--glass {
+    background: rgba(31, 38, 135, 0.2);
+    border-color: rgba(160, 82, 45, 0.4);
+  }
+
+  .glass:hover,
+  .card--glass:hover {
+    background: rgba(31, 38, 135, 0.3);
+  }
+}
+
+/* =====================================================
+   GLASS CARD VARIANTS
+   ===================================================== */
+
+.glass--sm {
+  padding: var(--space-4);
+}
+
+.glass--lg {
+  padding: var(--space-8);
+}
+
+.glass--no-border {
+  border: none;
+}
+
+/* =====================================================
+   GLASS CARD HEADER
+   ===================================================== */
+
+.glass__header {
+  border-bottom: 1px solid rgba(160, 82, 45, 0.2);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.glass__header h2,
+.glass__header h3 {
+  margin: 0;
+  color: var(--color-babasu);
+  font-family: var(--font-serif);
+}
+
+/* =====================================================
+   GLASS CARD BODY
+   ===================================================== */
+
+.glass__body {
+  flex: 1;
+}
+
+/* =====================================================
+   GLASS CARD FOOTER
+   ===================================================== */
+
+.glass__footer {
+  border-top: 1px solid rgba(160, 82, 45, 0.2);
+  padding-top: var(--space-4);
+  margin-top: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* =====================================================
+   GLASS MODAL / DIALOG
+   ===================================================== */
+
+.glass-modal,
+.modal.glass {
+  background: rgba(250, 249, 246, 0.95);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(160, 82, 45, 0.4);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-modal,
+  .modal.glass {
+    background: rgba(31, 38, 135, 0.4);
+  }
+}
+
+/* =====================================================
+   GLASS NOTIFICATION
+   ===================================================== */
+
+.glass-notification {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  left: var(--space-4);        /* Mobile: ocupa toda largura com margem */
+  max-width: 420px;
+  background: rgba(250, 249, 246, 0.9);
+  backdrop-filter: var(--glass-effect);
+  border: 1px solid rgba(160, 82, 45, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-glass);
+  animation: slideInRight 0.3s ease-out;
+  z-index: var(--z-notification);
+}
+
+@media (min-width: 481px) {
+  .glass-notification {
+    left: auto;
+    min-width: 300px;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =====================================================
+   STACKED GLASS CARDS
+   ===================================================== */
+
+.glass-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.glass-stack > .glass {
+  animation: fadeIn 0.6s ease-out backwards;
+}
+
+.glass-stack > .glass:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.glass-stack > .glass:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.glass-stack > .glass:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   GLASS GRID
+   ===================================================== */
+
+.glass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .glass-grid {
+    grid-template-columns: 1fr;
+  }
+}

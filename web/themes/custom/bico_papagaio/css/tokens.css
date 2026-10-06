@@ -1,0 +1,191 @@
+/**
+ * @file tokens.css
+ * BICO DO PAPAGAIO — Design Tokens
+ * Estética da Trama e do Barro
+ *
+ * Paleta: "O Encontro das Águas e da Terra"
+ * Tipografia: "Entre a Máquina e o Manuscrito"
+ */
+
+:root {
+
+  /* =========================================================
+     PALETA: O ENCONTRO DAS ÁGUAS E DA TERRA
+     ========================================================= */
+
+  /* Terracota / Barro — solo do Tocantins, cerâmica artesanal */
+  --barro:         #A0522D;
+  --barro-light:   #C4714A;
+  --barro-dark:    #7A3B1E;
+  --barro-xlight:  #F0DDD0;
+  --barro-50:      rgba(160, 82, 45, 0.5);
+  --barro-20:      rgba(160, 82, 45, 0.2);
+  --barro-10:      rgba(160, 82, 45, 0.1);
+
+  /* Verde Babaçu — matas de transição, palmeirais */
+  --babacú:        #2E4632;
+  --babacú-light:  #3D6142;
+  --babacú-dark:   #1C2D1F;
+  --babacú-xlight: #D4E8D4;
+  --babacú-50:     rgba(46, 70, 50, 0.5);
+  --babacú-20:     rgba(46, 70, 50, 0.2);
+  --babacú-10:     rgba(46, 70, 50, 0.08);
+
+  /* Palha / Ouro Velho — artesanato de palha, sol forte */
+  --palha:         #E1C16E;
+  --palha-light:   #EDD494;
+  --palha-dark:    #B8943A;
+  --palha-xdark:   #8A6A1A;
+  --palha-50:      rgba(225, 193, 110, 0.5);
+  --palha-20:      rgba(225, 193, 110, 0.2);
+  --palha-10:      rgba(225, 193, 110, 0.1);
+
+  /* Azul Sedimento — encontro dos rios Araguaia e Tocantins */
+  --sedimento:        #4682B4;
+  --sedimento-light:  #6EA3CB;
+  --sedimento-dark:   #2B5F8F;
+  --sedimento-xdark:  #1A3D5C;
+  --sedimento-50:     rgba(70, 130, 180, 0.5);
+  --sedimento-20:     rgba(70, 130, 180, 0.2);
+  --sedimento-10:     rgba(70, 130, 180, 0.1);
+
+  /* Neutros Orgânicos — terra, sombra, luz */
+  --terra-900:  #1C1008;
+  --terra-800:  #2E1A0A;
+  --terra-700:  #4A2C12;
+  --terra-600:  #6B4220;
+  --terra-500:  #8C5E35;
+  --terra-400:  #B8845A;
+  --terra-300:  #D4AA88;
+  --terra-200:  #EBD4BE;
+  --terra-100:  #F5EBE0;
+  --terra-50:   #FBF6F0;
+  --branco:     #FFFDF9;
+
+  /* Cores semânticas (mantendo acessibilidade) */
+  --sucesso:  #2D6A4F;
+  --aviso:    #B8943A;
+  --erro:     #8B2500;
+  --info:     var(--sedimento-dark);
+
+  /* =========================================================
+     TIPOGRAFIA: ENTRE A MÁQUINA E O MANUSCRITO
+     ========================================================= */
+
+  /* Títulos — serifada robusta, firmeza e história */
+  --font-heading: 'Bitter', 'Zilla Slab', 'Georgia', 'Times New Roman', serif;
+
+  /* Corpo — humanista e legível */
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* UI — elementos de interface */
+  --font-ui: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+
+  /* Mono — documentos históricos, dados de campo, citações */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Escala tipográfica */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+
+  /* Altura de linha */
+  --leading-tight:  1.25;
+  --leading-snug:   1.375;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* =========================================================
+     ESPAÇAMENTO
+     ========================================================= */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* =========================================================
+     BORDAS E RAIOS
+     ========================================================= */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* Bordas estilo "carimbo artesanal" */
+  --border-stamp: 2px solid var(--barro);
+  --border-trama: 2px dashed var(--palha-dark);
+  --border-field: 1px solid var(--terra-300);
+
+  /* =========================================================
+     SOMBRAS ORGÂNICAS
+     ========================================================= */
+  --shadow-sm:   0 1px 3px rgba(28, 16, 8, 0.15), 0 1px 2px rgba(28, 16, 8, 0.1);
+  --shadow-md:   0 4px 12px rgba(28, 16, 8, 0.15), 0 2px 6px rgba(28, 16, 8, 0.1);
+  --shadow-lg:   0 10px 30px rgba(28, 16, 8, 0.2), 0 4px 12px rgba(28, 16, 8, 0.12);
+  --shadow-xl:   0 20px 50px rgba(28, 16, 8, 0.25);
+  --shadow-barro: 0 4px 15px rgba(160, 82, 45, 0.3);
+  --shadow-babacú: 0 4px 15px rgba(46, 70, 50, 0.3);
+
+  /* =========================================================
+     GLASSMORPHISM — NÉVOA DO ARAGUAIA
+     Bruma da manhã sobre os rios, tonalidade sépia/esverdeada
+     ========================================================= */
+  --glass-bg:      rgba(251, 246, 240, 0.75);
+  --glass-bg-dark: rgba(28, 16, 8, 0.6);
+  --glass-blur:    blur(12px);
+  --glass-blur-sm: blur(6px);
+  --glass-border:  1px solid rgba(225, 193, 110, 0.3);
+  --glass-border-dark: 1px solid rgba(46, 70, 50, 0.4);
+  --glass-tint:    sepia(0.15) saturate(0.9);
+
+  /* =========================================================
+     TRANSIÇÕES
+     ========================================================= */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+  --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* =========================================================
+     LAYOUT
+     ========================================================= */
+  --max-width: 1200px;
+  --max-width-text: 72ch;
+  --header-height: 4.5rem;
+
+  /* =========================================================
+     PADRÃO DA TRAMA — Babaçu Weave
+     Referência ao trançado da palha de babaçu
+     ========================================================= */
+  --trama-color-1: rgba(160, 82, 45, 0.08);
+  --trama-color-2: rgba(46, 70, 50, 0.06);
+  --trama-color-3: rgba(225, 193, 110, 0.05);
+  --trama-size: 24px;
+
+}
+
+/* Modo escuro — opcional para leitura noturna */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-bg:      rgba(28, 16, 8, 0.72);
+    --glass-bg-dark: rgba(46, 70, 50, 0.65);
+    --glass-tint:    sepia(0.2) saturate(0.8) brightness(0.9);
+  }
+}

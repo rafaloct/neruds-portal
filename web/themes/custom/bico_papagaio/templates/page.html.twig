@@ -1,0 +1,181 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Template de Página
+ * Estética da Trama e do Barro
+ * Tema decolonial NERUDS/UFT — Norte do Tocantins
+ */
+#}
+<div id="page-wrapper" class="page-wrapper bg-trama">
+  <div id="page" class="page">
+
+    {# Skip link acessibilidade #}
+    <a href="#main-content" class="skip-link">
+      {{ 'Ir para o conteúdo principal'|t }}
+    </a>
+
+    {# =====================================================
+       HEADER — Baluarte do Território
+       ===================================================== #}
+    {% if page.header or page.primary_menu %}
+      <header id="header" class="site-header" role="banner">
+        <div class="layout-container">
+          <div class="layout layout--header">
+
+            {# Logo / Identidade #}
+            {% if page.header %}
+              <div class="layout__region layout__region--header">
+                {{ page.header }}
+              </div>
+            {% endif %}
+
+            {# Navegação Principal #}
+            {% if page.primary_menu %}
+              <div class="layout__region layout__region--navigation">
+                <nav class="navbar navbar-expand-lg navbar-neruds"
+                     role="navigation"
+                     aria-labelledby="primary-menu-label">
+                  <h2 id="primary-menu-label" class="visually-hidden">{{ 'Menu principal'|t }}</h2>
+                  <button class="navbar-toggler"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#primaryMenu"
+                          aria-controls="primaryMenu"
+                          aria-expanded="false"
+                          aria-label="{{ 'Abrir menu'|t }}">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="primaryMenu">
+                    {{ page.primary_menu }}
+                  </div>
+                </nav>
+              </div>
+            {% endif %}
+
+            {# Menu Secundário (busca, idioma) #}
+            {% if page.secondary_menu %}
+              <div class="layout__region layout__region--secondary-menu">
+                {{ page.secondary_menu }}
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </header>
+    {% endif %}
+
+    {# =====================================================
+       HERO — Babaçual com Manifesto do Grupo
+       ===================================================== #}
+    {% if page.hero %}
+      <section id="hero" class="region-hero overlay-trama" role="banner" aria-label="{{ 'Seção de destaque'|t }}">
+        <div class="layout-container">
+          {{ page.hero }}
+        </div>
+      </section>
+    {% endif %}
+
+    {# =====================================================
+       HIGHLIGHTED — Mensagens e Destaque
+       ===================================================== #}
+    {% if page.highlighted %}
+      <div id="highlighted" class="layout-highlighted" role="complementary" aria-label="{{ 'Conteúdo destacado'|t }}">
+        <div class="layout-container">
+          {{ page.highlighted }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# =====================================================
+       BREADCRUMB — Trilha do Território
+       ===================================================== #}
+    {% if page.breadcrumb %}
+      <nav id="breadcrumb" class="layout-breadcrumb" aria-label="{{ 'Você está em'|t }}">
+        <div class="layout-container">
+          {{ page.breadcrumb }}
+        </div>
+      </nav>
+    {% endif %}
+
+    {# =====================================================
+       CONTEÚDO PRINCIPAL — Área do Saber
+       ===================================================== #}
+    <main id="main-content" role="main" class="layout-content">
+      <div class="layout-container">
+        <div class="layout layout--content{% if page.sidebar %} has-sidebar{% endif %}{% if page.social_bar %} has-social-bar{% endif %}">
+
+          {# Barra Social (esquerda) #}
+          {% if page.social_bar %}
+            <aside class="layout__region layout__region--social-bar"
+                   role="complementary"
+                   aria-label="{{ 'Redes sociais'|t }}">
+              {{ page.social_bar }}
+            </aside>
+          {% endif %}
+
+          {# Coluna de Conteúdo #}
+          <div class="layout__region layout__region--content">
+
+            {% if page.content_above %}
+              <div class="layout__region--content-above">
+                {{ page.content_above }}
+              </div>
+            {% endif %}
+
+            <div class="layout__region--content-main">
+              {{ page.content }}
+            </div>
+
+            {% if page.content_below %}
+              <div class="layout__region--content-below">
+                {{ page.content_below }}
+              </div>
+            {% endif %}
+
+          </div>
+
+          {# Barra Lateral Direita #}
+          {% if page.sidebar %}
+            <aside class="layout__region layout__region--sidebar"
+                   role="complementary"
+                   aria-label="{{ 'Conteúdo relacionado'|t }}">
+              {{ page.sidebar }}
+            </aside>
+          {% endif %}
+
+        </div>
+      </div>
+    </main>
+
+    {# =====================================================
+       FOOTER — Raízes do Bico do Papagaio
+       ===================================================== #}
+    {% if page.footer_top or page.footer_bottom %}
+      <footer class="layout-footer" role="contentinfo">
+
+        {% if page.footer_top %}
+          <div class="layout__region--footer-top">
+            <div class="layout-container">
+              {{ page.footer_top }}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if page.footer_bottom %}
+          <div class="layout__region--footer-bottom">
+            <div class="layout-container">
+              <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+                {{ page.footer_bottom }}
+                <span style="opacity:0.5; font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.08em; white-space:nowrap;">
+                  ◈ NERUDS/UFT — BICO DO PAPAGAIO, NORTE DO TOCANTINS ◈
+                </span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      </footer>
+    {% endif %}
+
+  </div>
+</div>

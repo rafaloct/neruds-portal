@@ -1,0 +1,165 @@
+{#
+/**
+ * @file
+ * Template de página principal do tema NERUDS
+ * Seguindo as melhores práticas do Drupal 11
+ * @see https://www.drupal.org/docs/develop/theming-drupal
+ */
+#}
+{{ attach_library('neruds_theme/menu-search') }}
+{{ attach_library('neruds_theme/custom') }}
+
+{#
+  Variáveis disponíveis:
+  - page: Array de regiões renderizáveis
+  - attributes: Atributos HTML do wrapper principal
+  - site_name: Nome do site
+  - site_slogan: Slogan do site
+#}
+<div id="page-wrapper"{{ attributes.addClass('page-wrapper') }}>
+  <div id="page" class="page">
+    
+    {# Skip link para acessibilidade #}
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      {{ 'Skip to main content'|t }}
+    </a>
+    
+    {# Header #}
+    {% if page.header or page.primary_menu %}
+      <header id="header" class="site-header" role="banner"{{ header_attributes }}>
+        <div class="layout-container">
+          <div class="layout layout--header">
+            
+            {# Logo e Site Name #}
+            {% if page.header %}
+              <div class="layout__region layout__region--header">
+                {{ page.header }}
+              </div>
+            {% endif %}
+            
+            {# Navigation #}
+            {% if page.primary_menu %}
+              <div class="layout__region layout__region--navigation">
+                <nav class="navbar navbar-expand-lg navbar-dark navbar-neruds" role="navigation" aria-labelledby="primary-menu-label">
+                  <h2 id="primary-menu-label" class="visually-hidden">{{ 'Primary menu'|t }}</h2>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryMenu" aria-controls="primaryMenu" aria-expanded="false" aria-label="{{ 'Toggle navigation'|t }}">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="visually-hidden">{{ 'Toggle navigation'|t }}</span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="primaryMenu">
+                    {{ page.primary_menu }}
+                  </div>
+                </nav>
+              </div>
+            {% endif %}
+            
+            {# Secondary Menu #}
+            {% if page.secondary_menu %}
+              <div class="layout__region layout__region--secondary-menu">
+                {{ page.secondary_menu }}
+              </div>
+            {% endif %}
+            
+          </div>
+        </div>
+      </header>
+    {% endif %}
+
+    {# Hero Section (Full Width) #}
+    {% if page.hero %}
+      <section id="hero" class="layout-hero" role="banner" aria-label="{{ 'Hero section'|t }}">
+        <div class="layout-container">
+          {{ page.hero }}
+        </div>
+      </section>
+    {% endif %}
+
+    {# Highlighted (Messages, Tabs) #}
+    {% if page.highlighted %}
+      <div id="highlighted" class="layout-highlighted" role="complementary" aria-label="{{ 'Highlighted'|t }}">
+        <div class="layout-container">
+          {{ page.highlighted }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Breadcrumb #}
+    {% if page.breadcrumb %}
+      <div id="breadcrumb" class="layout-breadcrumb" role="navigation" aria-label="{{ 'Breadcrumb'|t }}">
+        <div class="layout-container">
+          {{ page.breadcrumb }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Main Content Area #}
+    <main id="main-content" role="main" class="layout-content">
+      <div class="layout-container">
+        <div class="layout layout--content">
+          
+          {# Social Bar (Left Sidebar) #}
+          {% if page.social_bar %}
+            <aside class="layout__region layout__region--social-bar" role="complementary" aria-label="{{ 'Social bar'|t }}">
+              {{ page.social_bar }}
+            </aside>
+          {% endif %}
+
+          {# Content Column #}
+          <div class="layout__region layout__region--content" role="article">
+            
+            {# Content Above #}
+            {% if page.content_above %}
+              <div class="layout__region layout__region--content-above">
+                {{ page.content_above }}
+              </div>
+            {% endif %}
+
+            {# Main Content #}
+            <div class="layout__region layout__region--content-main">
+              {{ page.content }}
+            </div>
+
+            {# Content Below #}
+            {% if page.content_below %}
+              <div class="layout__region layout__region--content-below">
+                {{ page.content_below }}
+              </div>
+            {% endif %}
+
+          </div>
+
+          {# Right Sidebar #}
+          {% if page.sidebar %}
+            <aside class="layout__region layout__region--sidebar" role="complementary" aria-label="{{ 'Sidebar'|t }}">
+              {{ page.sidebar }}
+            </aside>
+          {% endif %}
+
+        </div>
+      </div>
+    </main>
+
+    {# Footer #}
+    {% if page.footer_top or page.footer_bottom %}
+      <footer class="layout-footer" role="contentinfo">
+        {% if page.footer_top %}
+          <div class="layout__region layout__region--footer-top">
+            <div class="layout-container">
+              {{ page.footer_top }}
+            </div>
+          </div>
+        {% endif %}
+        
+        {% if page.footer_bottom %}
+          <div class="layout__region layout__region--footer-bottom">
+            <div class="layout-container">
+              {{ page.footer_bottom }}
+            </div>
+          </div>
+        {% endif %}
+      </footer>
+    {% endif %}
+
+  </div>
+</div>
+

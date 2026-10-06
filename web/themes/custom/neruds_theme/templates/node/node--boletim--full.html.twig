@@ -1,0 +1,656 @@
+{#
+/**
+ * @file
+ * Template para exibição completa de Boletim Periódico
+ * Baseado em Bootstrap 5 com taxonomias NERUDS
+ */
+#}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'neruds-card', 'boletim-card') }}>
+  
+  {% if not page %}
+    <h2{{ title_attributes.addClass('node__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% else %}
+    <h1 class="node__title mb-4">{{ label }}</h1>
+  {% endif %}
+
+  <div class="row">
+    {# Coluna Esquerda: Capa e Downloads #}
+    <div class="col-lg-4 col-md-5 mb-4">
+      
+      {# Imagem de Capa #}
+      {% if content.field_imagem_capa %}
+        <div class="boletim__cover mb-3">
+          {{ content.field_imagem_capa }}
+        </div>
+      {% endif %}
+
+      {# Card de Informações #}
+      <div class="card boletim__info-card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-info-circle me-2"></i> Informações
+          </h5>
+        </div>
+        <div class="card-body">
+          
+          {% if content.field_boletim_tipo %}
+            <div class="boletim__info-item mb-3">
+              <i class="bi bi-bookmark-fill text-primary me-2"></i>
+              <strong class="text-muted">Tipo:</strong>
+              <span class="ms-2">{{ content.field_boletim_tipo }}</span>
+            </div>
+          {% endif %}
+
+          {% if content.field_periodo_publicacao %}
+            <div class="boletim__info-item mb-3">
+              <i class="bi bi-calendar-event-fill text-info me-2"></i>
+              <strong class="text-muted">Período:</strong>
+              <span class="ms-2">{{ content.field_periodo_publicacao }}</span>
+            </div>
+          {% endif %}
+
+          {% if content.field_ano_publicacao %}
+            <div class="boletim__info-item mb-3">
+              <i class="bi bi-calendar-fill text-success me-2"></i>
+              <strong class="text-muted">Ano:</strong>
+              <span class="ms-2">{{ content.field_ano_publicacao }}</span>
+            </div>
+          {% endif %}
+
+          {% if content.field_mes_publicacao %}
+            <div class="boletim__info-item mb-3">
+              <i class="bi bi-calendar-month-fill text-warning me-2"></i>
+              <strong class="text-muted">Mês:</strong>
+              <span class="ms-2">{{ content.field_mes_publicacao }}</span>
+            </div>
+          {% endif %}
+
+          {# Autores - Renderizar apenas nomes como links #}
+          {% if node.hasField('field_autores_boletim') and not node.get('field_autores_boletim').isEmpty() %}
+            <div class="boletim__info-item mb-3">
+              <i class="bi bi-people-fill text-danger me-2"></i>
+              <strong class="text-muted d-block mb-1">Autores:</strong>
+              <div class="ms-4">
+                {% for item in node.get('field_autores_boletim') %}
+                  {% if item.entity %}
+                    <div class="mb-2">
+                      <a href="{{ path('entity.node.canonical', {'node': item.entity.id}) }}" 
+                         class="text-decoration-none">
+                        <i class="bi bi-person-circle me-1"></i>{{ item.entity.label }}
+                      </a>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+      {# Downloads #}
+      {% if content.field_pdf_boletim %}
+        <div class="card mt-3 boletim__download-card">
+          <div class="card-header bg-success text-white">
+            <h6 class="card-title mb-0">
+              <i class="bi bi-download me-2"></i> Downloads
+            </h6>
+          </div>
+          <div class="card-body">
+            <div class="boletim__pdf-download">
+              {{ content.field_pdf_boletim }}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+
+    {# Coluna Direita: Conteúdo Principal #}
+    <div class="col-lg-8 col-md-7">
+      
+      {# Resumo #}
+      {% if content.field_resumo_boletim %}
+        <div class="boletim__summary mb-4">
+          <h3 class="boletim__section-title">
+            <i class="bi bi-file-text-fill text-primary me-2"></i> Resumo
+          </h3>
+          <div class="boletim__resumo-content">
+            {{ content.field_resumo_boletim }}
+          </div>
+        </div>
+      {% endif %}
+
+      {# Conteúdo HTML (se disponível) #}
+      {% if content.field_conteudo_html %}
+        <div class="boletim__content mb-4">
+          <h3 class="boletim__section-title">
+            <i class="bi bi-newspaper text-info me-2"></i> Conteúdo
+          </h3>
+          <div class="boletim__content-wrapper">
+            {{ content.field_conteudo_html }}
+          </div>
+        </div>
+      {% endif %}
+
+      {# Projeto Associado #}
+      {% if content.field_projeto_associado %}
+        <div class="boletim__project mb-4">
+          <h4 class="boletim__section-title">
+            <i class="bi bi-folder-fill text-success me-2"></i> Projeto Associado
+          </h4>
+          <div class="boletim__project-links">
+            {{ content.field_projeto_associado }}
+          </div>
+        </div>
+      {% endif %}
+
+      {# Taxonomias #}
+      <div class="boletim__taxonomies mt-4">
+        <h4 class="boletim__section-title mb-4">
+          <i class="bi bi-tags-fill text-warning me-2"></i> Classificações
+        </h4>
+        
+        <div class="row">
+          <div class="col-md-12">
+            
+            {# ODS #}
+            {% if content.field_ods_boletim %}
+              <div class="boletim__taxonomy-group mb-4">
+                <span class="boletim__taxonomy-label">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i> ODS Relacionados:
+                </span>
+                <div class="boletim__taxonomy-badges mt-2">
+                  {{ content.field_ods_boletim }}
+                </div>
+              </div>
+            {% endif %}
+
+            {# Eixos Temáticos #}
+            {% if content.field_eixo_tematico_boletim %}
+              <div class="boletim__taxonomy-group mb-4">
+                <span class="boletim__taxonomy-label">
+                  <i class="bi bi-diagram-3-fill text-success me-2"></i> Eixos Temáticos:
+                </span>
+                <div class="boletim__taxonomy-badges mt-2">
+                  {{ content.field_eixo_tematico_boletim }}
+                </div>
+              </div>
+            {% endif %}
+
+            {# Setores Produtivos #}
+            {% if content.field_setor_produtivo %}
+              <div class="boletim__taxonomy-group mb-4">
+                <span class="boletim__taxonomy-label">
+                  <i class="bi bi-building-fill text-info me-2"></i> Setores Produtivos:
+                </span>
+                <div class="boletim__taxonomy-badges mt-2">
+                  {{ content.field_setor_produtivo }}
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+      {# Estatísticas do Boletim #}
+      <div class="boletim__stats mt-4 pt-3 border-top">
+        <div class="row text-center">
+          <div class="col-md-3">
+            <div class="stat-item">
+              <i class="bi bi-eye text-primary fs-4"></i>
+              <div class="stat-number">{{ node.totalcount|default('0') }}</div>
+              <div class="stat-label">Visualizações</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-item">
+              <i class="bi bi-download text-success fs-4"></i>
+              <div class="stat-number">-</div>
+              <div class="stat-label">Downloads</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-item">
+              <i class="bi bi-share text-info fs-4"></i>
+              <div class="stat-number">-</div>
+              <div class="stat-label">Compartilhamentos</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-item">
+              <i class="bi bi-bookmark text-warning fs-4"></i>
+              <div class="stat-number">-</div>
+              <div class="stat-label">Favoritos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {# Informações dos Autores (Projetos e Produções) - Movido para o final #}
+  {% if node.hasField('field_autores_boletim') and not node.get('field_autores_boletim').isEmpty() %}
+    <div class="boletim__authors-details mt-5 pt-4 border-top">
+      <h3 class="boletim__section-title mb-4">
+        <i class="bi bi-person-badge text-primary me-2"></i> Informações dos Autores
+      </h3>
+      
+      {% for item in node.get('field_autores_boletim') %}
+        {% if item.entity %}
+          {% set autor = item.entity %}
+          <div class="boletim__author-card card mb-4">
+            <div class="card-header bg-light">
+              <h4 class="mb-0">
+                <a href="{{ path('entity.node.canonical', {'node': autor.id}) }}" 
+                   class="text-decoration-none">
+                  <i class="bi bi-person-circle me-2"></i>{{ autor.label }}
+                </a>
+              </h4>
+            </div>
+            <div class="card-body">
+              {# Renderizar apenas informações básicas do autor, sem projetos/produções no meio #}
+              {% if autor.hasField('field_biografia') and not autor.get('field_biografia').isEmpty() %}
+                <div class="mb-3">
+                  <strong>Biografia:</strong>
+                  <p class="mt-2">{{ autor.get('field_biografia').value|striptags|truncate(200, true) }}</p>
+                  <a href="{{ path('entity.node.canonical', {'node': autor.id}) }}" 
+                     class="btn btn-sm btn-outline-primary">
+                    Ver perfil completo
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {# Metadados do Sistema #}
+  <div class="boletim__meta mt-4 pt-3 border-top text-muted small">
+    <div class="row">
+      <div class="col-md-4">
+        <i class="bi bi-calendar-plus"></i> Criado: {{ node.createdtime|date('d/m/Y') }}
+      </div>
+      <div class="col-md-4">
+        <i class="bi bi-pencil-square"></i> Atualizado: {{ node.changedtime|date('d/m/Y') }}
+      </div>
+      <div class="col-md-4 text-md-end">
+        {% if display_submitted %}
+          <i class="bi bi-person"></i> Por: {{ node.owner.entity.name.value }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# Botões de Ação #}
+  <div class="boletim__actions mt-5 pt-4 border-top">
+    <div class="d-flex flex-wrap justify-content-center gap-2" role="group">
+      <button type="button" class="btn btn-outline-primary boletim__action-btn" onclick="window.print()">
+        <i class="bi bi-printer me-2"></i> Imprimir
+      </button>
+      <button type="button" class="btn btn-outline-success boletim__action-btn" onclick="if(navigator.share){navigator.share({title: '{{ label }}', url: window.location.href}).catch(() => {});} else {alert('Compartilhe: ' + window.location.href);}">
+        <i class="bi bi-share me-2"></i> Compartilhar
+      </button>
+      <button type="button" class="btn btn-outline-secondary boletim__action-btn" onclick="window.history.back()">
+        <i class="bi bi-arrow-left me-2"></i> Voltar
+      </button>
+    </div>
+  </div>
+
+</article>
+
+<style>
+/* Card Principal */
+.boletim-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Capa do Boletim */
+.boletim__cover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boletim__cover:hover {
+  transform: translateY(-2px);
+}
+
+.boletim__cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.boletim__cover:hover img {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards de Informação */
+.boletim__info-card,
+.boletim__download-card {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.boletim__info-card:hover,
+.boletim__download-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.boletim__info-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.boletim__info-item:last-child {
+  border-bottom: none;
+}
+
+.boletim__info-item:hover {
+  background-color: #f8f9fa;
+  padding-left: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Download PDF */
+.boletim__pdf-download {
+  padding: 0.5rem 0;
+}
+
+.boletim__pdf-download a,
+.boletim__pdf-download .file a,
+.boletim__pdf-download .file__link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.875rem 1.5rem !important;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3) !important;
+  width: 100% !important;
+  justify-content: center !important;
+  border: none !important;
+}
+
+/* Adicionar ícone de PDF antes do link */
+.boletim__pdf-download a:not([class*="bi-"])::before,
+.boletim__pdf-download .file a:not([class*="bi-"])::before,
+.boletim__pdf-download .file__link:not([class*="bi-"])::before {
+  content: "\f1c1" !important;
+  font-family: "bootstrap-icons" !important;
+  font-size: 1.5rem !important;
+  font-weight: normal !important;
+  display: inline-block !important;
+  margin-right: 0.5rem !important;
+}
+
+/* Se já tiver ícone, garantir espaçamento */
+.boletim__pdf-download a[class*="bi-"],
+.boletim__pdf-download .file a[class*="bi-"] {
+  gap: 0.75rem !important;
+}
+
+.boletim__pdf-download a:hover,
+.boletim__pdf-download .file a:hover,
+.boletim__pdf-download .file__link:hover {
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4) !important;
+  color: #fff !important;
+}
+
+/* Garantir que o wrapper do arquivo também tenha estilo */
+.boletim__pdf-download .file {
+  width: 100%;
+  display: block;
+}
+
+/* Seções */
+.boletim__section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.boletim__resumo-content {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #0d6efd;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #495057;
+}
+
+.boletim__content-wrapper {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: #fff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.boletim__content-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.boletim__content-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.boletim__content-wrapper::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.boletim__content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Taxonomias */
+.boletim__taxonomy-group {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid #0d6efd;
+}
+
+.boletim__taxonomy-label {
+  font-weight: 600;
+  color: #495057;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.boletim__taxonomy-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.boletim__taxonomy-badges a,
+.boletim__taxonomy-badges .badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  color: #495057;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.boletim__taxonomy-badges a:hover {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
+}
+
+/* Estatísticas */
+.boletim__stats {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.stat-item {
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0.5rem 0;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Botões de Ação */
+.boletim__action-btn {
+  min-width: 140px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-width: 2px;
+}
+
+.boletim__action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.boletim__action-btn:active {
+  transform: translateY(0);
+}
+
+/* Metadados */
+.boletim__meta {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .boletim-card {
+    padding: 1rem;
+  }
+  
+  .boletim__stats .row {
+    text-align: center;
+  }
+  
+  .stat-item {
+    margin-bottom: 1.5rem;
+  }
+  
+  .boletim__section-title {
+    font-size: 1.25rem;
+  }
+  
+  .boletim__actions .d-flex {
+    flex-direction: column;
+  }
+  
+  .boletim__action-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .boletim__info-item {
+    font-size: 0.9rem;
+  }
+}
+
+/* Acessibilidade */
+.boletim__pdf-download a:focus,
+.boletim__action-btn:focus {
+  outline: 3px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.boletim-card {
+  animation: fadeIn 0.5s ease-out;
+}
+</style>
+
+<script>
+(function() {
+  // Adicionar ícone de PDF aos links de download
+  document.addEventListener('DOMContentLoaded', function() {
+    const pdfDownloads = document.querySelectorAll('.boletim__pdf-download a, .boletim__pdf-download .file a, .boletim__pdf-download .file__link');
+    
+    pdfDownloads.forEach(function(link) {
+      // Verificar se já tem ícone
+      if (!link.querySelector('.bi-file-pdf-fill') && !link.querySelector('.bi-file-pdf')) {
+        // Criar ícone de PDF
+        const icon = document.createElement('i');
+        icon.className = 'bi bi-file-pdf-fill me-2';
+        icon.setAttribute('aria-hidden', 'true');
+        
+        // Inserir ícone no início do link
+        if (link.firstChild) {
+          link.insertBefore(icon, link.firstChild);
+        } else {
+          link.appendChild(icon);
+        }
+      }
+    });
+  });
+})();
+</script>

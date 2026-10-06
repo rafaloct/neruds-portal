@@ -1,0 +1,138 @@
+{#
+/**
+ * @file
+ * Template para exibição de Evento Científico
+ */
+#}
+
+{{ attach_library('neruds_theme/evento-cientifico') }}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'evento-cientifico') }}>
+
+  {# Banner do Evento #}
+  {% if content.field_imagem_destaque|render|trim is not empty %}
+    <div class="evento-banner mb-4">
+      <div class="container">
+        <div class="banner-wrapper rounded-3 overflow-hidden shadow">
+          {{ content.field_imagem_destaque }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="container">
+    <div class="row">
+      {# Coluna Principal #}
+      <div class="col-lg-8">
+        
+        <header class="evento-header mb-4">
+          <h1 class="display-5 fw-bold text-dark mb-2">{{ label }}</h1>
+          
+          {# Tags/Áreas #}
+          {% if content.field_areas_tematicas %}
+            <div class="evento-areas mb-3">
+              {{ content.field_areas_tematicas }}
+            </div>
+          {% endif %}
+        </header>
+
+        {# Descrição #}
+        <div class="evento-descricao mb-5">
+           <h3 class="h4 mb-3 border-bottom pb-2">Sobre o Evento</h3>
+           {{ content.field_descricao_evento }}
+        </div>
+
+        {# Organizadores #}
+        {% if content.field_organizadores %}
+          <div class="evento-organizadores mb-5">
+            <h3 class="h5 mb-3">Organização</h3>
+            <div class="bg-light p-3 rounded-3">
+              {{ content.field_organizadores }}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Anexos #}
+        {% if content.field_pdf|render|trim is not empty %}
+          <div class="evento-anexos mb-5">
+            <h3 class="h5 mb-3">Documentos/Programação</h3>
+            {{ content.field_pdf }}
+          </div>
+        {% endif %}
+
+      </div>
+
+      {# Sidebar com Info Key #}
+      <div class="col-lg-4">
+        <div class="evento-sidebar card border-0 shadow-sm sticky-top" style="top: 100px; z-index: 90;">
+          <div class="card-body p-4">
+            
+            {# Data #}
+            {% if content.field_data_evento %}
+              <div class="sidebar-item mb-4">
+                <div class="d-flex">
+                  <div class="icon-wrapper me-3 text-primary">
+                    <i class="bi bi-calendar-event fs-3"></i>
+                  </div>
+                  <div>
+                    <h4 class="h6 text-uppercase text-muted mb-1">Data</h4>
+                    <div class="fs-5 fw-bold">{{ content.field_data_evento }}</div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+            {# Local #}
+            {% if content.field_local_evento %}
+              <div class="sidebar-item mb-4">
+                <div class="d-flex">
+                  <div class="icon-wrapper me-3 text-primary">
+                    <i class="bi bi-geo-alt fs-3"></i>
+                  </div>
+                  <div>
+                    <h4 class="h6 text-uppercase text-muted mb-1">Local</h4>
+                    <div class="fw-medium">{{ content.field_local_evento }}</div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+            {# Inscrição / Submissão #}
+            <div class="d-grid gap-3 mt-4">
+              {% if content.field_link_inscricao|render|trim is not empty %}
+                <a href="{{ content.field_link_inscricao.0.url }}" target="_blank" class="btn btn-primary btn-lg">
+                  <i class="bi bi-ticket-perforated me-2"></i> Inscrever-se
+                </a>
+              {% endif %}
+
+              {% if content.field_link_submissao|render|trim is not empty %}
+                {% if content.field_chamada_trabalhos.0.value == '1' %}
+                  <a href="{{ content.field_link_submissao.0.url }}" target="_blank" class="btn btn-outline-primary btn-lg">
+                    <i class="bi bi-file-earmark-arrow-up me-2"></i> Submeter Trabalho
+                  </a>
+                  <div class="text-center text-success small fw-bold">
+                    <i class="bi bi-check-circle-fill me-1"></i> Chamada Aberta
+                  </div>
+                {% else %}
+                   <button class="btn btn-secondary btn-lg" disabled>
+                     <i class="bi bi-x-circle me-2"></i> Submissões Encerradas
+                   </button>
+                {% endif %}
+              {% endif %}
+            </div>
+
+            {# Eixos #}
+            {% if content.field_eixos_tematicos %}
+              <div class="mt-4 pt-4 border-top">
+                <h4 class="h6 text-uppercase text-muted mb-2">Eixos Temáticos</h4>
+                {{ content.field_eixos_tematicos }}
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</article>

@@ -1,0 +1,42 @@
+/**
+ * @file admin-ux.css
+ * Melhorias visuais para o painel de administração
+ * Ajuda visuais para o operador do NERUDS
+ */
+
+/* Só aplica em contexto de admin (/node/add, /node/*/edit) */
+body.path-node-add,
+body.path-node--edit-form,
+body[class*="page-node-add"],
+body[class*="page-node-edit"] {
+
+  /* Destaque visual para campos de imagem/upload */
+  .image-widget,
+  .js-form-type-managed-file,
+  .field--widget-image-image,
+  .field--widget-file-generic {
+    background: rgba(245, 133, 53, 0.04);
+    border: 1.5px dashed rgba(245, 133, 53, 0.4);
+    border-radius: 0.6rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Label de campo de imagem em laranja */
+  .field--widget-image-image > label,
+  .field--widget-file-generic > label {
+    color: #F58535;
+    font-weight: 700;
+  }
+
+  /* Hint de drag-and-drop visível */
+  .image-widget .image-widget-data::before,
+  .field--widget-image-image .image-widget-data::before {
+    content: "📎 Arraste uma imagem ou clique em 'Enviar'";
+    display: block;
+    font-size: 0.82rem;
+    color: #606062;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+}

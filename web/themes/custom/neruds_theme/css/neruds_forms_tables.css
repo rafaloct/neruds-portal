@@ -1,0 +1,102 @@
+/* ============================================
+   FORMS - Ant Design Style
+   ============================================ */
+
+.form-neruds .form-item {
+  margin-bottom: var(--neruds-spacing-md);
+}
+
+.form-neruds label {
+  display: block;
+  font-weight: 500;
+  color: var(--neruds-text-primary);
+  margin-bottom: var(--neruds-spacing-xs);
+  font-size: var(--neruds-font-size-base);
+}
+
+.form-neruds input[type="text"],
+.form-neruds input[type="email"],
+.form-neruds input[type="password"],
+.form-neruds input[type="number"],
+.form-neruds input[type="date"],
+.form-neruds input[type="search"],
+.form-neruds textarea,
+.form-neruds select {
+  width: 100%;
+  padding: var(--neruds-spacing-sm) var(--neruds-spacing-md);
+  font-size: var(--neruds-font-size-base);
+  line-height: 1.5715;
+  color: var(--neruds-text-primary);
+  background-color: var(--neruds-bg-base);
+  border: 1px solid var(--neruds-border-color);
+  border-radius: var(--neruds-border-radius);
+  transition: var(--neruds-transition);
+  box-sizing: border-box;
+}
+
+.form-neruds input:focus,
+.form-neruds textarea:focus,
+.form-neruds select:focus {
+  outline: none;
+  border-color: var(--neruds-primary);
+  box-shadow: 0 0 0 2px var(--neruds-primary-light);
+}
+
+/* ============================================
+   TABLES - Ant Design Style
+   ============================================ */
+
+.table-neruds {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--neruds-bg-base);
+  border-radius: var(--neruds-border-radius);
+  overflow: hidden;
+  box-shadow: var(--neruds-shadow-1);
+}
+
+.table-neruds thead {
+  background: var(--neruds-bg-container);
+}
+
+.table-neruds th {
+  padding: var(--neruds-spacing-md) var(--neruds-spacing-lg);
+  text-align: left;
+  font-weight: 500;
+  color: var(--neruds-text-primary);
+  border-bottom: 1px solid var(--neruds-border-color);
+}
+
+.table-neruds td {
+  padding: var(--neruds-spacing-md) var(--neruds-spacing-lg);
+  border-bottom: 1px solid var(--neruds-border-color);
+  color: var(--neruds-text-secondary);
+}
+
+.table-neruds tbody tr {
+  transition: var(--neruds-transition);
+}
+
+.table-neruds tbody tr:hover {
+  background: var(--neruds-bg-container);
+}
+
+/* ============================================
+   VIEWS SPECIFIC - Ant Design Style
+   ============================================ */
+
+.view-neruds {
+  margin-bottom: var(--neruds-spacing-xl);
+}
+
+.view-neruds .view-header {
+  margin-bottom: var(--neruds-spacing-lg);
+}
+
+.view-neruds .view-filters {
+  background: var(--neruds-bg-container);
+  padding: var(--neruds-spacing-lg);
+  border-radius: var(--neruds-border-radius);
+  margin-bottom: var(--neruds-spacing-lg);
+  border: 1px solid var(--neruds-border-color);
+}

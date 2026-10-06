@@ -1,0 +1,244 @@
+/**
+ * @file typography.css
+ * Sistema de Tipografia NERUDS-GUI
+ * Escala harmônica com Zilla Slab, Outfit e JetBrains Mono
+ */
+
+/* =====================================================
+   TÍTULOS — Zilla Slab (Serifa robusta)
+   ===================================================== */
+
+h1, .h1 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
+  color: var(--color-babasu-dark); /* Using Cinza Escuro #606062 */
+  margin-bottom: var(--space-4);
+}
+
+h2, .h2 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.015em;
+  color: var(--color-babasu-dark);
+  margin-bottom: var(--space-3);
+}
+
+h3, .h3 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-babasu);
+  margin-bottom: var(--space-3);
+}
+
+h4, .h4 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-babasu);
+  margin-bottom: var(--space-2);
+}
+
+h5, .h5 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  color: var(--color-barro);
+  margin-bottom: var(--space-2);
+}
+
+h6, .h6 {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  color: var(--color-gray-700);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =====================================================
+   CORPO — Outfit (Sans-serif moderna)
+   ===================================================== */
+
+body,
+p, .p {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-babasu-dark); /* Using Cinza Escuro #606062 */
+}
+
+.p-large {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+}
+
+.p-small {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.lead {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-600);
+  line-height: var(--line-height-relaxed);
+}
+
+/* =====================================================
+   DADOS / META — JetBrains Mono (Monoespaciada)
+   ===================================================== */
+
+code,
+pre,
+.code,
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-700);
+}
+
+code {
+  background-color: var(--color-gray-100);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-100);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  line-height: var(--line-height-normal);
+}
+
+/* =====================================================
+   LABELS & HELPERS
+   ===================================================== */
+
+label,
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--color-gray-700);
+}
+
+.label-accent {
+  color: var(--color-barro);
+}
+
+.label-info {
+  color: var(--color-info);
+}
+
+/* =====================================================
+   SMALL TEXT / META
+   ===================================================== */
+
+small,
+.small {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  font-weight: var(--font-weight-regular);
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* =====================================================
+   ÊNFASE
+   ===================================================== */
+
+strong, b {
+  font-weight: var(--font-weight-semibold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background-color: var(--color-accent);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* =====================================================
+   LISTAS
+   ===================================================== */
+
+ul, ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-relaxed);
+}
+
+/* =====================================================
+   LINKS
+   ===================================================== */
+
+a {
+  color: var(--color-babasu);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-barro);
+}
+
+a:focus-visible {
+  outline: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* =====================================================
+   TIPOGRAFIA RESPONSIVA
+   ===================================================== */
+
+@media (max-width: 768px) {
+  h1, .h1 {
+    font-size: var(--font-size-4xl);
+  }
+
+  h2, .h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h3, .h3 {
+    font-size: var(--font-size-2xl);
+  }
+
+  body, p, .p {
+    font-size: var(--font-size-base);
+  }
+
+  .lead {
+    font-size: var(--font-size-lg);
+  }
+}

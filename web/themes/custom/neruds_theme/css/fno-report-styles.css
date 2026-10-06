@@ -1,0 +1,525 @@
+/**
+ * Estilos para Relatórios FNO - NERUDS/UFT
+ * Integração responsiva de relatórios do Looker Studio
+ */
+
+/* ==========================================================================
+   Variáveis CSS para o tema FNO
+   ========================================================================== */
+:root {
+  --fno-primary: #1e3a8a;
+  --fno-secondary: #059669;
+  --fno-accent: #f59e0b;
+  --fno-light: #f8fafc;
+  --fno-dark: #1e293b;
+  --fno-border: #e2e8f0;
+  --fno-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --fno-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --fno-transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   Layout principal da página FNO
+   ========================================================================== */
+.fno-report-page {
+  background: linear-gradient(135deg, var(--fno-light) 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+/* Header do relatório FNO */
+.fno-report-header {
+  background: linear-gradient(135deg, var(--fno-primary) 0%, #1e40af 100%);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 0;
+  box-shadow: var(--fno-shadow-lg);
+}
+
+.fno-header-content {
+  position: relative;
+}
+
+.fno-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.fno-logo {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: var(--fno-shadow);
+}
+
+.fno-title-section h1.fno-main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.fno-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0.5rem 0;
+  font-weight: 300;
+}
+
+.fno-period {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Breadcrumb personalizado */
+.fno-breadcrumb {
+  margin-top: 1rem;
+}
+
+.fno-breadcrumb .breadcrumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+}
+
+.fno-breadcrumb .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: var(--fno-transition);
+}
+
+.fno-breadcrumb .breadcrumb-item a:hover {
+  color: white;
+}
+
+.fno-breadcrumb .breadcrumb-item.active {
+  color: white;
+}
+
+/* ==========================================================================
+   Área principal do relatório
+   ========================================================================== */
+.fno-report-main {
+  padding: 2rem 0;
+  min-height: calc(100vh - 200px);
+}
+
+/* Sidebar com informações */
+.fno-sidebar {
+  padding-right: 2rem;
+}
+
+.fno-info-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--fno-shadow);
+  border: 1px solid var(--fno-border);
+  position: sticky;
+  top: 2rem;
+}
+
+.fno-info-panel h3 {
+  color: var(--fno-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--fno-border);
+}
+
+.fno-info-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.fno-info-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.fno-info-section h4 {
+  color: var(--fno-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fno-info-section h4 i {
+  color: var(--fno-secondary);
+  width: 16px;
+}
+
+.fno-info-section p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.fno-about {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #bae6fd;
+}
+
+/* Área de conteúdo principal */
+.fno-content {
+  padding-left: 2rem;
+}
+
+.fno-report-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--fno-shadow-lg);
+  border: 1px solid var(--fno-border);
+}
+
+/* Controles do relatório */
+.fno-report-controls {
+  background: #f8fafc;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--fno-border);
+}
+
+.fno-view-options .btn,
+.fno-report-actions .btn {
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: var(--fno-transition);
+}
+
+.fno-view-options .btn.active {
+  background: var(--fno-primary);
+  border-color: var(--fno-primary);
+  color: white;
+}
+
+.fno-view-options .btn:hover,
+.fno-report-actions .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--fno-shadow);
+}
+
+/* ==========================================================================
+   Container do iframe responsivo
+   ========================================================================== */
+.fno-iframe-container {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fno-report-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+}
+
+.fno-custom-embed {
+  width: 100%;
+  height: 100%;
+}
+
+.fno-custom-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Overlay de carregamento */
+.fno-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 250, 252, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.fno-loading-overlay .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.fno-loading-overlay p {
+  color: var(--fno-dark);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Mensagem de fallback */
+.fno-fallback-message {
+  padding: 2rem;
+}
+
+.fno-fallback-message .alert {
+  border-radius: 8px;
+  border: none;
+  box-shadow: var(--fno-shadow);
+}
+
+.fno-fallback-message h4 {
+  color: #d97706;
+  font-weight: 600;
+}
+
+.fno-fallback-message ul {
+  margin-bottom: 0;
+}
+
+.fno-fallback-message a {
+  color: var(--fno-primary);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Footer do relatório
+   ========================================================================== */
+.fno-report-footer {
+  background: var(--fno-dark);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.fno-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.fno-credits p {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.fno-credits p:first-child {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--fno-accent);
+}
+
+.fno-meta {
+  text-align: right;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.fno-meta p {
+  margin-bottom: 0.25rem;
+}
+
+/* ==========================================================================
+   Responsividade
+   ========================================================================== */
+@media (max-width: 1199.98px) {
+  .fno-sidebar {
+    padding-right: 1rem;
+  }
+  
+  .fno-content {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .fno-sidebar {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .fno-content {
+    padding-left: 0;
+  }
+  
+  .fno-info-panel {
+    position: static;
+  }
+  
+  .fno-iframe-container {
+    height: 600px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .fno-report-header {
+    padding: 1.5rem 0;
+  }
+  
+  .fno-logo-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .fno-title-section h1.fno-main-title {
+    font-size: 2rem;
+  }
+  
+  .fno-report-controls {
+    padding: 1rem;
+  }
+  
+  .fno-view-options,
+  .fno-report-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .fno-view-options .btn,
+  .fno-report-actions .btn {
+    margin-right: 0;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .fno-iframe-container {
+    height: 500px;
+  }
+  
+  .fno-footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .fno-meta {
+    text-align: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .fno-report-main {
+    padding: 1rem 0;
+  }
+  
+  .fno-title-section h1.fno-main-title {
+    font-size: 1.75rem;
+  }
+  
+  .fno-iframe-container {
+    height: 400px;
+  }
+  
+  .fno-info-panel {
+    padding: 1rem;
+  }
+  
+  .fno-report-controls {
+    padding: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   Modo tela cheia
+   ========================================================================== */
+.fno-iframe-container:fullscreen {
+  background: white;
+}
+
+.fno-iframe-container:fullscreen .fno-loading-overlay {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* ==========================================================================
+   Animações e transições
+   ========================================================================== */
+.fno-info-section {
+  transition: var(--fno-transition);
+}
+
+.fno-info-section:hover {
+  transform: translateX(5px);
+}
+
+.fno-report-container {
+  transition: var(--fno-transition);
+}
+
+.fno-report-container:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Animação de fade-in para o conteúdo */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fno-report-page {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ==========================================================================
+   Melhorias de acessibilidade
+   ========================================================================== */
+.fno-report-iframe:focus {
+  outline: 3px solid var(--fno-accent);
+  outline-offset: 2px;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Modo de alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --fno-border: #000000;
+    --fno-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+  
+  .fno-info-panel {
+    border: 2px solid var(--fno-dark);
+  }
+  
+  .fno-report-container {
+    border: 2px solid var(--fno-dark);
+  }
+}
+
+/* Redução de movimento para usuários sensíveis */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

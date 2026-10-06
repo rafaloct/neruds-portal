@@ -1,0 +1,401 @@
+/**
+ * @file content-types.css
+ * BICO DO PAPAGAIO — Estilos por Tipo de Conteúdo
+ * Notícia, Projeto, Publicação, Perfil, Evento, Boletim
+ */
+
+/* =========================================================
+   NODE — FULL PAGE (estilos compartilhados)
+   ========================================================= */
+
+.node--full {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.node__header {
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 2px solid var(--terra-200);
+  position: relative;
+}
+
+.node__header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--barro), var(--palha-dark));
+}
+
+.node__tipo {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--barro);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.node__tipo::before {
+  content: '◈';
+  color: var(--palha-dark);
+}
+
+.node__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--babacú-dark);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+.node__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  letter-spacing: 0.04em;
+}
+
+.node__meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.node__lead {
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--terra-600);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-6);
+  font-style: italic;
+}
+
+.node__body {
+  font-size: var(--text-base);
+  line-height: var(--leading-loose);
+  color: var(--terra-800);
+}
+
+.node__body h2,
+.node__body h3,
+.node__body h4 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.node__body h2 { color: var(--babacú-dark); }
+.node__body h3 { color: var(--barro-dark); }
+.node__body h4 { color: var(--babacú); }
+
+.node__body p { margin-bottom: var(--space-5); }
+
+.node__taxonomy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--terra-200);
+}
+
+/* =========================================================
+   NOTÍCIA
+   ========================================================= */
+
+.node--noticia .node__tipo { color: var(--sedimento); }
+.node--noticia .node__header::after {
+  background: linear-gradient(to right, var(--sedimento), var(--palha-dark));
+}
+
+.node--noticia .node__imagem-hero {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--shadow-lg);
+}
+
+/* =========================================================
+   PROJETO DE PESQUISA
+   ========================================================= */
+
+.node--projeto .node__tipo { color: var(--babacú); }
+.node--projeto .node__header::after {
+  background: linear-gradient(to right, var(--babacú), var(--palha-dark));
+}
+
+/* Ficha técnica do projeto — estilo relatório de campo */
+.projeto-ficha {
+  background: var(--terra-100);
+  border: 1px solid var(--terra-200);
+  border-left: 4px solid var(--babacú);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.projeto-ficha__titulo {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--babacú);
+  margin-bottom: var(--space-4);
+  font-weight: 600;
+}
+
+.projeto-ficha__titulo::before {
+  content: '◈ ';
+  color: var(--barro);
+}
+
+.projeto-ficha dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+}
+
+.projeto-ficha dt {
+  font-weight: 600;
+  color: var(--terra-600);
+  white-space: nowrap;
+}
+
+.projeto-ficha dt::after { content: ':'; }
+
+.projeto-ficha dd {
+  color: var(--terra-800);
+  margin: 0;
+}
+
+/* =========================================================
+   PUBLICAÇÃO CIENTÍFICA
+   ========================================================= */
+
+.node--publicacao .node__tipo { color: var(--sedimento-dark); }
+.node--publicacao .node__header::after {
+  background: linear-gradient(to right, var(--sedimento), var(--barro));
+}
+
+/* Referência bibliográfica — monospace destaque */
+.publicacao-referencia {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--sedimento-10);
+  border: 1px solid var(--sedimento-20);
+  border-left: 4px solid var(--sedimento);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-loose);
+  color: var(--terra-700);
+}
+
+.publicacao-referencia::before {
+  content: 'CITAÇÃO';
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--sedimento-dark);
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}
+
+/* DOI / ISSN badges */
+.publicacao-ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.id-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid currentColor;
+  letter-spacing: 0.05em;
+}
+
+.id-badge--doi { color: var(--sedimento-dark); }
+.id-badge--issn { color: var(--babacú); }
+.id-badge--isbn { color: var(--barro); }
+
+/* =========================================================
+   PERFIL PESQUISADOR
+   ========================================================= */
+
+.node--perfil .node__tipo { color: var(--babacú); }
+
+.perfil-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+  padding: var(--space-8);
+  background: var(--terra-100);
+  border-radius: var(--radius-xl);
+}
+
+@media (max-width: 768px) {
+  .perfil-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.perfil-foto {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--palha);
+  box-shadow: 0 0 0 3px var(--barro-20), var(--shadow-lg);
+}
+
+.perfil-foto--avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--babacú);
+  border: 4px solid var(--palha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  color: var(--palha-light);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.perfil-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.perfil-nome {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--babacú-dark);
+  margin-bottom: var(--space-2);
+}
+
+.perfil-titulo {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--terra-500);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+}
+
+.perfil-lattes {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--barro);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border: 1px dashed var(--barro);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.perfil-lattes:hover {
+  background: var(--barro);
+  color: var(--branco);
+  border-style: solid;
+}
+
+/* =========================================================
+   EVENTO CIENTÍFICO
+   ========================================================= */
+
+.node--evento .node__tipo { color: var(--palha-xdark); }
+.node--evento .node__header::after {
+  background: linear-gradient(to right, var(--palha-dark), var(--barro));
+}
+
+.evento-data-destaque {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--barro);
+  color: var(--branco);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  min-width: 70px;
+  text-align: center;
+  margin-right: var(--space-4);
+}
+
+.evento-data-destaque__dia {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.evento-data-destaque__mes {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   BOLETIM
+   ========================================================= */
+
+.node--boletim .node__tipo { color: var(--barro); }
+
+.boletim-numero {
+  font-family: var(--font-mono);
+  font-size: 6rem;
+  font-weight: 700;
+  color: var(--palha-20);
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* =========================================================
+   RELATÓRIO FNO
+   ========================================================= */
+
+.node--relatorio .node__tipo { color: var(--sedimento); }
+
+.relatorio-ficha {
+  background: var(--sedimento-10);
+  border: 1px solid var(--sedimento-20);
+  border-top: 3px solid var(--sedimento);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+}

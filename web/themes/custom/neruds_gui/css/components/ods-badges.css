@@ -1,0 +1,162 @@
+/**
+ * @file ods-badges.css
+ * Badges de ODS (Objetivos de Desenvolvimento Sustentável)
+ * 17 cores + padrões
+ */
+
+.badge,
+.ods-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+  transition: all var(--transition-base);
+}
+
+.badge:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+/* =====================================================
+   ODS 1-17 COLORS
+   ===================================================== */
+
+.ods-1 { background: #E5243B; color: white; }  /* Eliminação da pobreza */
+.ods-2 { background: #DDA839; color: white; }  /* Fome zero */
+.ods-3 { background: #4C9F38; color: white; }  /* Saúde e bem-estar */
+.ods-4 { background: #C6192B; color: white; }  /* Educação de qualidade */
+.ods-5 { background: #DD3E39; color: white; }  /* Igualdade de gênero */
+.ods-6 { background: #26BDE2; color: white; }  /* Água limpa */
+.ods-7 { background: #FCCC0A; color: #222; }   /* Energia renovável */
+.ods-8 { background: #A21942; color: white; }  /* Trabalho digno */
+.ods-9 { background: #DD1C3B; color: white; }  /* Indústria e inovação */
+.ods-10 { background: #DD1C3B; color: white; } /* Redução de desigualdades */
+.ods-11 { background: #FD6925; color: white; } /* Cidades e comunidades */
+.ods-12 { background: #BF8B2E; color: white; } /* Consumo responsável */
+.ods-13 { background: #3F7E44; color: white; } /* Ação climática */
+.ods-14 { background: #0A97D9; color: white; } /* Vida na água */
+.ods-15 { background: #56C596; color: white; } /* Vida terrestre */
+.ods-16 { background: #00689D; color: white; } /* Paz e justiça */
+.ods-17 { background: #DD1C3B; color: white; } /* Parcerias */
+
+/* =====================================================
+   STATUS BADGES
+   ===================================================== */
+
+.badge--success {
+  background: var(--color-success);
+  color: var(--color-white);
+}
+
+.badge--warning {
+  background: var(--color-warning);
+  color: var(--color-white);
+}
+
+.badge--error,
+.badge--danger {
+  background: var(--color-error);
+  color: var(--color-white);
+}
+
+.badge--info {
+  background: var(--color-info);
+  color: var(--color-white);
+}
+
+/* =====================================================
+   CATEGORIA BADGES
+   ===================================================== */
+
+.badge--primary {
+  background: var(--color-babasu);
+  color: var(--color-white);
+}
+
+.badge--secondary {
+  background: var(--color-barro);
+  color: var(--color-white);
+}
+
+.badge--accent {
+  background: var(--color-palha);
+  color: var(--color-babasu-dark);
+}
+
+.badge--neutral {
+  background: var(--color-gray-300);
+  color: var(--color-gray-900);
+}
+
+/* =====================================================
+   VARIANTES DE BADGE
+   ===================================================== */
+
+.badge--sm {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.badge--lg {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-base);
+}
+
+.badge--outline {
+  background: transparent;
+  border: 1px solid;
+  border-color: inherit;
+}
+
+.badge--ghost {
+  background: transparent;
+  color: var(--color-babasu);
+}
+
+/* =====================================================
+   BADGE COM ÍCONE
+   ===================================================== */
+
+.badge__icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+}
+
+/* =====================================================
+   BADGE LIST / GROUP
+   ===================================================== */
+
+.badge-list,
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.badge-list--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* =====================================================
+   BADGE COUNT / PILL
+   ===================================================== */
+
+.badge-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  background: var(--color-error);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}

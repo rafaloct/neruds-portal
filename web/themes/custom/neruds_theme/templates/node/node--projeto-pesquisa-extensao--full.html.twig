@@ -1,0 +1,559 @@
+{#
+/**
+ * @file
+ * Template para exibição completa de Projeto de Pesquisa/Extensão
+ */
+#}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class) }}>
+  
+  {% if not page %}
+    <h2{{ title_attributes.addClass('node__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+
+  {# Header com Status e Período #}
+  <div class="node__header mb-4">
+    <div class="row">
+      <div class="col-md-6">
+        {% if content.field_status_projeto %}
+          <div class="mb-2">
+            <strong>Status:</strong>
+            {{ content.field_status_projeto }}
+          </div>
+        {% endif %}
+        
+        {% if content.field_ano_inicio or content.field_ano_fim %}
+          <div class="mb-2">
+            <i class="bi bi-calendar-range"></i>
+            <strong>Período:</strong>
+            {% if content.field_ano_inicio %}{{ content.field_ano_inicio }}{% endif %}
+            {% if content.field_ano_fim %} - {{ content.field_ano_fim }}{% endif %}
+          </div>
+        {% endif %}
+
+        {% if content.field_coordenador %}
+          <div class="mb-2">
+            <i class="bi bi-person-check"></i>
+            <strong>Coordenador:</strong>
+            {{ content.field_coordenador }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# Descrição do Projeto #}
+  {% if content.field_descricao_projeto %}
+    <div class="node__description mb-4">
+      {{ content.field_descricao_projeto }}
+    </div>
+  {% endif %}
+
+  {# Imagens do Projeto #}
+  {% if content.field_imagens_projeto %}
+    <div class="node__images mb-4">
+      <div class="row g-3">
+        {{ content.field_imagens_projeto }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Taxonomias #}
+  <div class="node__taxonomies mt-4 pt-4 border-top">
+    
+    {# ODS #}
+    {% if content.field_ods_projeto %}
+      <div class="taxonomy-group mb-3">
+        <h4 class="taxonomy-group-label">
+          <i class="bi bi-check-circle"></i> ODS Relacionados:
+        </h4>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_ods_projeto }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Eixo Temático #}
+    {% if content.field_eixo_tematico_projeto %}
+      <div class="taxonomy-group mb-3">
+        <h4 class="taxonomy-group-label">
+          <i class="bi bi-diagram-3"></i> Eixo Temático:
+        </h4>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_eixo_tematico_projeto }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Linha de Pesquisa #}
+    {% if content.field_linha_pesquisa_projeto %}
+      <div class="taxonomy-group mb-3">
+        <h4 class="taxonomy-group-label">
+          <i class="bi bi-search"></i> Linha de Pesquisa:
+        </h4>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_linha_pesquisa_projeto }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Setor Produtivo #}
+    {% if content.field_setor_produtivo_projeto %}
+      <div class="taxonomy-group mb-3">
+        <h4 class="taxonomy-group-label">
+          <i class="bi bi-briefcase"></i> Setor Produtivo:
+        </h4>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_setor_produtivo_projeto }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Localização #}
+    {% if content.field_microrregiao_projeto or content.field_municipio_projeto %}
+      <div class="taxonomy-group mb-3">
+        <h4 class="taxonomy-group-label">
+          <i class="bi bi-geo-alt"></i> Localização:
+        </h4>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_microrregiao_projeto }}
+          {{ content.field_municipio_projeto }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Equipe de Pesquisadores #}
+    {% if content.field_equipe_pesquisadores %}
+      <div class="taxonomy-group mb-3">
+        <h4 class="taxonomy-group-label">
+          <i class="bi bi-people"></i> Equipe de Pesquisadores:
+        </h4>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_equipe_pesquisadores }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Instituições Parceiras #}
+    {% if content.field_instituicoes_parceiras %}
+      <div class="taxonomy-group mb-3">
+        <h4 class="taxonomy-group-label">
+          <i class="bi bi-building"></i> Instituições Parceiras:
+        </h4>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_instituicoes_parceiras }}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {# Relatórios #}
+  {% if content.field_relatorios_projeto %}
+    <div class="node__reports mt-4 pt-4 border-top">
+      <h4>Relatórios do Projeto</h4>
+      {{ content.field_relatorios_projeto }}
+    </div>
+  {% endif %}
+
+  {# Boletins Associados #}
+  {% set boletins_count = (boletins_associados is defined and boletins_associados is not empty) ? boletins_associados|length : 0 %}
+  {% if boletins_count > 0 %}
+    <div class="projeto__boletins mt-5 pt-4 border-top">
+      <h3 class="projeto__section-title">
+        <i class="bi bi-newspaper-fill text-primary me-2"></i> Boletins Associados
+        <span class="badge bg-primary ms-2">{{ boletins_count }}</span>
+      </h3>
+      <p class="text-muted mb-4">Boletins periódicos associados a este projeto</p>
+      
+      <div class="row g-4 mt-3">
+        {% for boletim in boletins_associados %}
+          {% if boletim %}
+          <div class="col-md-6 col-lg-4">
+            <div class="card projeto__boletim-card h-100">
+              {# Imagem de Capa #}
+              {% if boletim.hasField('field_imagem_capa') and not boletim.get('field_imagem_capa').isEmpty() %}
+                {% set imagem_field = boletim.get('field_imagem_capa') %}
+                {% if imagem_field.entity and imagem_field.entity.uri.value %}
+                  {% set imagem_capa = imagem_field.entity %}
+                  <a href="{{ path('entity.node.canonical', {'node': boletim.id}) }}">
+                    <img src="{{ file_url(imagem_capa.uri.value) }}" 
+                         alt="{{ boletim.label }}" 
+                         class="card-img-top projeto__boletim-cover">
+                  </a>
+                {% else %}
+                  <div class="projeto__boletim-placeholder">
+                    <i class="bi bi-file-pdf-fill"></i>
+                  </div>
+                {% endif %}
+              {% else %}
+                <div class="projeto__boletim-placeholder">
+                  <i class="bi bi-file-pdf-fill"></i>
+                </div>
+              {% endif %}
+              
+              <div class="card-body d-flex flex-column">
+                {# Título #}
+                <h5 class="card-title projeto__boletim-title">
+                  <a href="{{ path('entity.node.canonical', {'node': boletim.id}) }}" 
+                     class="text-decoration-none">
+                    {{ boletim.label }}
+                  </a>
+                </h5>
+                
+                {# Informações #}
+                <div class="projeto__boletim-info mb-3">
+                  {% if boletim.hasField('field_periodo_publicacao') and not boletim.get('field_periodo_publicacao').isEmpty() %}
+                    {% set periodo = boletim.get('field_periodo_publicacao').value %}
+                    {% if periodo %}
+                      <div class="mb-2">
+                        <i class="bi bi-calendar-event text-muted me-1"></i>
+                        <small class="text-muted">
+                          {% if periodo is iterable %}
+                            {{ periodo|date('d/m/Y') }}
+                          {% else %}
+                            {{ periodo }}
+                          {% endif %}
+                        </small>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  
+                  {% if boletim.hasField('field_boletim_tipo') and not boletim.get('field_boletim_tipo').isEmpty() %}
+                    {% set tipo_entity = boletim.get('field_boletim_tipo').entity %}
+                    {% if tipo_entity %}
+                      <div class="mb-2">
+                        <i class="bi bi-bookmark text-muted me-1"></i>
+                        <small class="text-muted">{{ tipo_entity.label }}</small>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  
+                  {% if boletim.hasField('field_ano_publicacao') and not boletim.get('field_ano_publicacao').isEmpty() %}
+                    <div class="mb-2">
+                      <i class="bi bi-calendar text-muted me-1"></i>
+                      <small class="text-muted">Ano: {{ boletim.get('field_ano_publicacao').value }}</small>
+                    </div>
+                  {% endif %}
+                </div>
+                
+                {# Resumo (se disponível) #}
+                {% if boletim.hasField('field_resumo_boletim') and not boletim.get('field_resumo_boletim').isEmpty() %}
+                  {% set resumo = boletim.get('field_resumo_boletim').value %}
+                  {% if resumo %}
+                    <p class="card-text projeto__boletim-resumo flex-grow-1">
+                      {{ resumo|striptags|truncate(120, true) }}
+                    </p>
+                  {% endif %}
+                {% endif %}
+                
+                {# Links de Ação #}
+                <div class="mt-auto">
+                  <div class="d-grid gap-2">
+                    <a href="{{ path('entity.node.canonical', {'node': boletim.id}) }}" 
+                       class="btn btn-outline-primary btn-sm">
+                      <i class="bi bi-eye me-1"></i> Ver Boletim
+                    </a>
+                    
+                    {% if boletim.hasField('field_pdf_boletim') and not boletim.get('field_pdf_boletim').isEmpty() %}
+                      {% set pdf_field = boletim.get('field_pdf_boletim') %}
+                      {% if pdf_field.entity %}
+                        {% set pdf_file = pdf_field.entity %}
+                        {% if pdf_file.uri.value %}
+                          <a href="{{ file_url(pdf_file.uri.value) }}" 
+                             class="btn btn-outline-danger btn-sm" 
+                             target="_blank"
+                             download>
+                            <i class="bi bi-file-pdf-fill me-1"></i> Baixar PDF
+                          </a>
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Notícias Associadas #}
+  {% set noticias_count = noticias_associadas is defined ? noticias_associadas|length : 0 %}
+  {% if noticias_associadas is defined and noticias_associadas is not empty and noticias_associadas|length > 0 %}
+    <div class="projeto__noticias mt-5 pt-4 border-top">
+      <h3 class="projeto__section-title">
+        <i class="bi bi-newspaper text-info me-2"></i> Notícias Relacionadas
+        <span class="badge bg-info ms-2">{{ noticias_count }}</span>
+      </h3>
+      <p class="text-muted mb-4">Notícias associadas a este projeto</p>
+
+      <div class="row g-4 mt-3">
+        {% for noticia in noticias_associadas %}
+          {% if noticia %}
+          <div class="col-md-6 col-lg-4">
+            <div class="card projeto__noticia-card h-100">
+              {# Imagem de Destaque #}
+              {% if noticia.hasField('field_imagem_destaque_noticia') and not noticia.get('field_imagem_destaque_noticia').isEmpty() %}
+                {% set imagem_field = noticia.get('field_imagem_destaque_noticia') %}
+                {% if imagem_field.entity and imagem_field.entity.uri.value %}
+                  {% set imagem_destaque = imagem_field.entity %}
+                  <a href="{{ path('entity.node.canonical', {'node': noticia.id}) }}">
+                    <img src="{{ file_url(imagem_destaque.uri.value) }}"
+                         alt="{{ noticia.label }}"
+                         class="card-img-top projeto__noticia-cover">
+                  </a>
+                {% endif %}
+              {% endif %}
+
+              <div class="card-body d-flex flex-column">
+                {# Título #}
+                <h5 class="card-title projeto__noticia-title">
+                  <a href="{{ path('entity.node.canonical', {'node': noticia.id}) }}"
+                     class="text-decoration-none">
+                    {{ noticia.label }}
+                  </a>
+                </h5>
+
+                {# Data #}
+                <div class="projeto__noticia-info mb-3">
+                  {% if noticia.hasField('field_data_noticia') and not noticia.get('field_data_noticia').isEmpty() %}
+                    {% set data = noticia.get('field_data_noticia').value %}
+                    {% if data %}
+                      <div class="mb-2">
+                        <i class="bi bi-calendar-event text-muted me-1"></i>
+                        <small class="text-muted">
+                          {% if data is iterable %}
+                            {{ data|date('d/m/Y') }}
+                          {% else %}
+                            {{ data }}
+                          {% endif %}
+                        </small>
+                      </div>
+                    {% endif %}
+                  {% else %}
+                    <div class="mb-2">
+                      <i class="bi bi-calendar text-muted me-1"></i>
+                      <small class="text-muted">{{ noticia.createdtime|date('d/m/Y') }}</small>
+                    </div>
+                  {% endif %}
+                </div>
+
+                {# Resumo (se disponível) #}
+                {% if noticia.hasField('field_resumo_noticia') and not noticia.get('field_resumo_noticia').isEmpty() %}
+                  {% set resumo = noticia.get('field_resumo_noticia').value %}
+                  {% if resumo %}
+                    <p class="card-text projeto__noticia-resumo flex-grow-1">
+                      {{ resumo|striptags|truncate(120, true) }}
+                    </p>
+                  {% endif %}
+                {% endif %}
+
+                {# Link de Ação #}
+                <div class="mt-auto">
+                  <div class="d-grid">
+                    <a href="{{ path('entity.node.canonical', {'node': noticia.id}) }}"
+                       class="btn btn-outline-info btn-sm">
+                      <i class="bi bi-arrow-right-circle me-1"></i> Ler Notícia
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+</article>
+
+<style>
+/* Estilos para seção de boletins */
+.projeto__section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #0d6efd;
+}
+
+.projeto__boletim-card {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.projeto__boletim-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.projeto__boletim-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projeto__boletim-card:hover .projeto__boletim-cover {
+  transform: scale(1.05);
+}
+
+.projeto__boletim-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 4rem;
+}
+
+.projeto__boletim-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.projeto__boletim-title a {
+  color: #2c3e50;
+  transition: color 0.2s ease;
+}
+
+.projeto__boletim-title a:hover {
+  color: #0d6efd;
+}
+
+.projeto__boletim-info {
+  font-size: 0.875rem;
+}
+
+.projeto__boletim-resumo {
+  font-size: 0.9rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.projeto__boletim-card .btn {
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.projeto__boletim-card .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .projeto__section-title {
+    font-size: 1.5rem;
+  }
+  
+  .projeto__boletim-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .projeto__boletim-cover {
+    height: 180px;
+  }
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projeto__boletim-card {
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.projeto__boletim-card:nth-child(1) { animation-delay: 0.1s; }
+.projeto__boletim-card:nth-child(2) { animation-delay: 0.2s; }
+.projeto__boletim-card:nth-child(3) { animation-delay: 0.3s; }
+.projeto__boletim-card:nth-child(4) { animation-delay: 0.4s; }
+.projeto__boletim-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* Estilos para seção de notícias */
+.projeto__noticia-card {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.projeto__noticia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.projeto__noticia-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projeto__noticia-card:hover .projeto__noticia-cover {
+  transform: scale(1.05);
+}
+
+.projeto__noticia-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.projeto__noticia-title a {
+  color: #2c3e50;
+  transition: color 0.2s ease;
+}
+
+.projeto__noticia-title a:hover {
+  color: #0d6efd;
+}
+
+.projeto__noticia-info {
+  font-size: 0.85rem;
+}
+
+.projeto__noticia-resumo {
+  font-size: 0.9rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.projeto__noticia-card:nth-child(1) { animation-delay: 0.1s; }
+.projeto__noticia-card:nth-child(2) { animation-delay: 0.2s; }
+.projeto__noticia-card:nth-child(3) { animation-delay: 0.3s; }
+.projeto__noticia-card:nth-child(4) { animation-delay: 0.4s; }
+.projeto__noticia-card:nth-child(5) { animation-delay: 0.5s; }
+</style>
+

@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Template para região Sidebar
+ */
+#}
+
+{% if content %}
+  <aside{{ attributes.addClass('sidebar') }}>
+    {{ content }}
+  </aside>
+{% endif %}
+

@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * NERUDS Blocks — Hero Section, Card Grid e Search Bar reutilizáveis.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function neruds_blocks_theme($existing, $type, $theme, $path) {
+  return [
+    'neruds_hero_section' => [
+      'variables' => [
+        'variant' => 'centered',
+        'title' => '',
+        'subtitle' => '',
+        'description' => '',
+        'cta_text' => '',
+        'cta_url' => '',
+        'cta_secondary_text' => '',
+        'cta_secondary_url' => '',
+        'image_url' => '',
+        'image_alt' => '',
+        'stats' => [],
+        'eyebrow' => '',
+      ],
+      'template' => 'neruds-hero-section',
+    ],
+    'neruds_card_grid' => [
+      'variables' => [
+        'title' => '',
+        'subtitle' => '',
+        'columns' => 3,
+        'card_variant' => 'default',
+        'items' => [],
+        'view_all_url' => '',
+        'view_all_text' => '',
+        'enable_animation' => TRUE,
+      ],
+      'template' => 'neruds-card-grid',
+    ],
+    'neruds_search_bar' => [
+      'variables' => [
+        'style' => 'inline',
+        'placeholder' => '',
+        'search_action' => '/busca',
+        'categories' => [],
+      ],
+      'template' => 'neruds-search-bar',
+    ],
+  ];
+}

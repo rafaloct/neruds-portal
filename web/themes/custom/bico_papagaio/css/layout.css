@@ -1,0 +1,354 @@
+/**
+ * @file layout.css
+ * BICO DO PAPAGAIO — Sistema de Layout
+ */
+
+/* =========================================================
+   CONTÊINERES
+   ========================================================= */
+
+.layout-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .layout-container {
+    padding: 0 var(--space-8);
+  }
+}
+
+@media (min-width: 1200px) {
+  .layout-container {
+    padding: 0 var(--space-6);
+  }
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--babacú-dark);
+  border-bottom: 3px solid var(--barro);
+  box-shadow: 0 2px 20px rgba(28, 16, 8, 0.3);
+  min-height: var(--header-height);
+}
+
+/* Linha ornamental no topo do header */
+.site-header::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--barro) 0%,
+    var(--palha) 25%,
+    var(--barro) 50%,
+    var(--palha) 75%,
+    var(--barro) 100%
+  );
+}
+
+.layout--header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) 0;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 992px) {
+  .layout--header {
+    flex-wrap: nowrap;
+  }
+}
+
+.layout__region--header {
+  flex: 0 0 auto;
+}
+
+.layout__region--navigation {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.layout-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+/* =========================================================
+   CONTENT AREA
+   ========================================================= */
+
+.layout-content {
+  padding: var(--space-12) 0;
+}
+
+.layout--content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+/* Layout com sidebar */
+@media (min-width: 992px) {
+  .layout--content.has-sidebar {
+    grid-template-columns: 1fr 300px;
+  }
+
+  .layout--content.has-social-bar {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .layout--content.has-both {
+    grid-template-columns: 60px 1fr 280px;
+  }
+}
+
+.layout__region--content-main {
+  min-width: 0; /* Previne overflow em flex/grid */
+}
+
+/* =========================================================
+   SECTIONS DECOLONIAIS
+   ========================================================= */
+
+/* Seção com fundo barro */
+.section-barro {
+  background: var(--barro);
+  color: var(--branco);
+  padding: var(--space-16) 0;
+}
+
+.section-barro h1,
+.section-barro h2,
+.section-barro h3,
+.section-barro h4 {
+  color: var(--palha-light);
+}
+
+.section-barro p,
+.section-barro li {
+  color: var(--barro-xlight);
+}
+
+/* Seção com fundo babaçu */
+.section-babacú {
+  background: var(--babacú);
+  color: var(--branco);
+  padding: var(--space-16) 0;
+}
+
+.section-babacú h1,
+.section-babacú h2,
+.section-babacú h3,
+.section-babacú h4 {
+  color: var(--palha-light);
+}
+
+/* Seção com fundo terra claro */
+.section-terra {
+  background: var(--terra-100);
+  padding: var(--space-16) 0;
+}
+
+/* Seção com trama */
+.section-trama {
+  padding: var(--space-16) 0;
+}
+
+/* =========================================================
+   DESTACADO / HIGHLIGHTED
+   ========================================================= */
+
+.layout-highlighted {
+  background: var(--palha-20);
+  border-left: 4px solid var(--palha-dark);
+  padding: var(--space-4) 0;
+}
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.layout-breadcrumb {
+  background: var(--babacú-10);
+  border-bottom: 1px solid var(--babacú-20);
+  padding: var(--space-2) 0;
+}
+
+/* =========================================================
+   BARRA LATERAL
+   ========================================================= */
+
+.layout__region--sidebar {
+  border-left: 2px solid var(--terra-200);
+  padding-left: var(--space-6);
+}
+
+@media (max-width: 991px) {
+  .layout__region--sidebar {
+    border-left: none;
+    border-top: 2px solid var(--terra-200);
+    padding-left: 0;
+    padding-top: var(--space-6);
+  }
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.layout-footer {
+  background: var(--babacú-dark);
+  color: var(--terra-200);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Trama no footer */
+.layout-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(225, 193, 110, 0.04) 0px,
+      rgba(225, 193, 110, 0.04) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(251, 246, 240, 0.03) 0px,
+      rgba(251, 246, 240, 0.03) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+
+/* Linha ornamental no topo do footer */
+.layout-footer::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--barro-dark),
+    var(--palha-dark) 50%,
+    var(--barro-dark)
+  );
+}
+
+.layout__region--footer-top {
+  position: relative;
+  padding: var(--space-16) 0 var(--space-8);
+}
+
+.layout__region--footer-bottom {
+  position: relative;
+  border-top: 1px solid rgba(225, 193, 110, 0.15);
+  padding: var(--space-4) 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-400);
+  letter-spacing: 0.05em;
+}
+
+.layout-footer h2,
+.layout-footer h3,
+.layout-footer h4 {
+  color: var(--palha-light);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.layout-footer a {
+  color: var(--terra-300);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.layout-footer a:hover {
+  color: var(--palha-light);
+}
+
+/* =========================================================
+   GRADE DE CARDS
+   ========================================================= */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.card-grid--compact {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.card-grid--wide {
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: var(--space-8);
+}
+
+/* =========================================================
+   OVERRIDES OLIVERO
+   ========================================================= */
+
+/* Remover estilos padrão do Olivero que conflitem */
+#page-wrapper {
+  background: var(--terra-50);
+}
+
+/* Logo */
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+}
+
+.site-branding__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--palha-light);
+  line-height: var(--leading-tight);
+  text-decoration: none;
+}
+
+.site-branding__name:hover {
+  color: var(--palha);
+}
+
+.site-branding__slogan {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--babacú-xlight);
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}

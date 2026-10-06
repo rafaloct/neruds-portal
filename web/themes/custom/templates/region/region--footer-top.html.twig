@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Template para região Footer Top
+ */
+#}
+
+{% if content %}
+  <div{{ attributes.addClass('footer-top') }}>
+    <div class="container">
+      <div class="row g-4">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+{% endif %}
+

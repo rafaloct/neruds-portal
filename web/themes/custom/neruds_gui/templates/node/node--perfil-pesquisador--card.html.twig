@@ -1,0 +1,15 @@
+<article{{ attributes.addClass('node', 'node--type-perfil-pesquisador', 'node--view-mode-card', 'academic-person') }}>
+  {{ content.field_foto_perfil }}
+  <div class="academic-person__body">
+    {{ title_prefix }}
+    <h2{{ title_attributes.addClass('node__title') }}><a href="{{ url }}" rel="bookmark">{{ label }}</a></h2>
+    {{ title_suffix }}
+    {{ content.field_nome_completo }}
+    {% set biography = content.field_biografia|render %}
+    {% if biography|striptags|trim %}
+      <details class="academic-person__bio"><summary>{{ 'Biografia'|t }}<span class="visually-hidden">: {{ label }}</span></summary>{{ biography }}</details>
+    {% endif %}
+    {{ content|without('field_foto_perfil', 'field_nome_completo', 'field_biografia', 'links') }}
+    <a class="academic-card__link" href="{{ url }}">{{ 'Ver perfil'|t }}<span class="visually-hidden">: {{ label }}</span></a>
+  </div>
+</article>

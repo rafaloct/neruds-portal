@@ -1,0 +1,461 @@
+/**
+ * @file hero-variants.css
+ * Hero Section Block — 4 layout variants
+ * Extends the base hero.css with block-specific styles.
+ *
+ * Variants:
+ *  - centered: Full-width bg, centered text, stats below
+ *  - split: 50/50 image + text, side by side
+ *  - overlay: Full image bg with dark overlay + bottom text
+ *  - gradient: Rich gradient with stats emphasis
+ */
+
+/* =====================================================
+   HERO BLOCK — BASE (shared across all variants)
+   ===================================================== */
+
+.hero-block {
+  position: relative;
+  overflow: hidden;
+  color: var(--color-white);
+}
+
+.hero-block__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Decorative circle blurs (shared) */
+.hero-block__bg::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 400px;
+  height: 400px;
+  background: rgba(225, 193, 110, 0.1);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.hero-block__bg::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: -20px;
+  width: 300px;
+  height: 300px;
+  background: rgba(160, 82, 45, 0.12);
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+.hero-block__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width-container, 1280px);
+  margin: 0 auto;
+}
+
+/* =====================================================
+   TEXT CONTENT (shared)
+   ===================================================== */
+
+.hero-block__eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-palha);
+  margin-bottom: var(--space-3);
+}
+
+.hero-block__title {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-4);
+  color: var(--color-white);
+}
+
+.hero-block__title-accent {
+  display: block;
+  color: var(--color-palha);
+}
+
+.hero-block__description {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-6);
+  max-width: 640px;
+}
+
+.hero-block__ctas {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.hero-block__ctas .btn--primary {
+  background: var(--color-white);
+  color: var(--color-babasu);
+  border-color: var(--color-white);
+}
+
+.hero-block__ctas .btn--primary:hover {
+  background: var(--color-palha);
+  border-color: var(--color-palha);
+  color: var(--color-babasu-dark);
+}
+
+.hero-block__ctas .btn--outline {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+}
+
+.hero-block__ctas .btn--outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-white);
+}
+
+/* =====================================================
+   STATS BAR (shared)
+   ===================================================== */
+
+.hero-block__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: var(--space-4);
+}
+
+.hero-block__stat {
+  text-align: center;
+}
+
+.hero-block__stat-number {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-1);
+}
+
+.hero-block__stat-label {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =====================================================
+   VARIANT 1: CENTERED
+   Full-width background, text centered, stats below
+   ===================================================== */
+
+.hero-block--centered {
+  background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-babasu-dark, #1a2e1e) 100%);
+  padding: var(--space-16, 128px) var(--space-4);
+  text-align: center;
+}
+
+.hero-block--centered .hero-block__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-block--centered .hero-block__content {
+  max-width: 800px;
+}
+
+.hero-block--centered .hero-block__description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-block--centered .hero-block__ctas {
+  justify-content: center;
+}
+
+.hero-block--centered .hero-block__stats {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* =====================================================
+   VARIANT 2: SPLIT
+   50/50 image + text, side by side
+   ===================================================== */
+
+.hero-block--split {
+  background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-babasu-dark, #1a2e1e) 100%);
+  padding: var(--space-16, 128px) var(--space-4);
+}
+
+.hero-block--split .hero-block__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hero-block--split .hero-block__content {
+  animation: heroSlideInLeft 0.8s ease-out;
+}
+
+.hero-block--split .hero-block__visual {
+  position: relative;
+  animation: heroSlideInRight 0.8s ease-out;
+}
+
+.hero-block--split .hero-block__visual-bg {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 260px;
+  height: 260px;
+  background: rgba(225, 193, 110, 0.2);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.hero-block--split .hero-block__image {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================================
+   VARIANT 3: OVERLAY
+   Full image background with dark overlay + bottom text
+   ===================================================== */
+
+.hero-block--overlay {
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+}
+
+.hero-block--overlay .hero-block__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-block--overlay .hero-block__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-block--overlay .hero-block__backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.hero-block--overlay .hero-block__inner {
+  width: 100%;
+  padding: var(--space-8) var(--space-4);
+  padding-top: var(--space-16, 128px);
+}
+
+.hero-block--overlay .hero-block__title {
+  font-size: var(--font-size-4xl);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-block--overlay .hero-block__description {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================================
+   VARIANT 4: GRADIENT
+   Rich gradient with emphasis on stats/icons
+   ===================================================== */
+
+.hero-block--gradient {
+  background: linear-gradient(
+    160deg,
+    var(--color-babasu) 0%,
+    #1e3a24 30%,
+    var(--color-barro) 100%
+  );
+  padding: var(--space-16, 128px) var(--space-4);
+  text-align: center;
+}
+
+.hero-block--gradient .hero-block__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-block--gradient .hero-block__content {
+  max-width: 800px;
+}
+
+.hero-block--gradient .hero-block__description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-block--gradient .hero-block__ctas {
+  justify-content: center;
+}
+
+.hero-block--gradient .hero-block__stats {
+  width: 100%;
+  max-width: 700px;
+  border-top-color: rgba(225, 193, 110, 0.3);
+}
+
+.hero-block--gradient .hero-block__stat {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-3);
+  transition: all var(--transition-base);
+}
+
+.hero-block--gradient .hero-block__stat:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.hero-block--gradient .hero-block__stat-number {
+  color: var(--color-palha);
+}
+
+/* Decorative weave pattern overlay for gradient */
+.hero-block--gradient .hero-block__bg::before {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 35px,
+    rgba(255, 255, 255, 0.03) 35px,
+    rgba(255, 255, 255, 0.03) 70px
+  );
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  filter: none;
+  border-radius: 0;
+}
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
+@keyframes heroSlideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes heroSlideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .hero-block__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-block__description {
+    font-size: var(--font-size-base);
+  }
+
+  /* Split: stack vertically on mobile */
+  .hero-block--split .hero-block__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .hero-block--split .hero-block__visual {
+    order: -1;
+  }
+
+  .hero-block--split .hero-block__image {
+    max-height: 300px;
+  }
+
+  /* Overlay: reduce min-height */
+  .hero-block--overlay {
+    min-height: 400px;
+  }
+
+  .hero-block--overlay .hero-block__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  /* Stats: 2 columns on mobile */
+  .hero-block__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-block__stat-number {
+    font-size: var(--font-size-2xl);
+  }
+
+  /* Reduce padding on all variants */
+  .hero-block--centered,
+  .hero-block--split,
+  .hero-block--gradient {
+    padding: var(--space-8) var(--space-4);
+  }
+}
+
+/* =====================================================
+   DARK MODE ADJUSTMENTS
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+  .hero-block--centered,
+  .hero-block--split {
+    background: linear-gradient(135deg, #0d1f12 0%, #111111 100%);
+  }
+
+  .hero-block--gradient {
+    background: linear-gradient(160deg, #0d1f12 0%, #1a1a1a 30%, #3d2214 100%);
+  }
+}
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-block--split .hero-block__content,
+  .hero-block--split .hero-block__visual {
+    animation: none;
+  }
+
+  .hero-block--gradient .hero-block__stat:hover {
+    transform: none;
+  }
+}

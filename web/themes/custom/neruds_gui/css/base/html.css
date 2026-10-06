@@ -1,0 +1,62 @@
+/**
+ * @file html.css
+ * Estilos do elemento HTML
+ * Configuração de variáveis e propriedades raiz
+ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
+
+  /* Configuração de viewport */
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  /* Text sizing */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+
+  /* Cursor padrão */
+  cursor: default;
+}
+
+/* =====================================================
+   Modo Escuro (Dark Mode)
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* =====================================================
+   Modo Claro (Light Mode)
+   ===================================================== */
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}
+
+/* =====================================================
+   Reduzir Movimento (Accessibility)
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

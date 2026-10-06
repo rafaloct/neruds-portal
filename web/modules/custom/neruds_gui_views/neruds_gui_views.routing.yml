@@ -1,0 +1,7 @@
+neruds_gui_views.research_lines:
+  path: '/linhas-de-pesquisa'
+  defaults:
+    _controller: '\Drupal\neruds_gui_views\Controller\ResearchLinesController::page'
+    _title: 'Linhas de Pesquisa'
+  requirements:
+    _access: 'TRUE'

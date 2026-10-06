@@ -1,0 +1,286 @@
+# ========================================================================
+# NERUDS-GUI Theme Libraries
+# Design System Premium com Glassmorphism e Micro-animações
+# ========================================================================
+
+# 1. Design System — Tokens de Design
+design-system:
+  css:
+    theme:
+      css/tokens/design-tokens.css: { weight: -20 }
+      css/tokens/colors.css: { weight: -19 }
+      css/tokens/typography.css: { weight: -18 }
+      css/tokens/spacing.css: { weight: -17 }
+      css/tokens/effects.css: { weight: -16 }
+  dependencies:
+    - core/drupal
+
+# 2. Bootstrap 5.3 (CDN)
+bootstrap5:
+  css:
+    theme:
+      'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css':
+        type: external
+        minified: true
+  js:
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js':
+      type: external
+      minified: true
+      attributes:
+        defer: true
+
+# 3. Tipografias Premium
+fonts:
+  css:
+    theme:
+      # Zilla Slab — Títulos
+      'https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&display=swap':
+        type: external
+        preprocess: false
+        attributes:
+          media: all
+      # Outfit — Body text
+      'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap':
+        type: external
+        preprocess: false
+        attributes:
+          media: all
+      # JetBrains Mono — Dados/Meta
+      'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap':
+        type: external
+        preprocess: false
+        attributes:
+          media: all
+
+# 4. Estilos Globais
+global-styles:
+  css:
+    theme:
+      css/base/reset.css: {}
+      css/base/html.css: {}
+      css/base/body.css: {}
+      css/base/brand-fonts.css: { weight: -25 }
+      css/accessibility/wcag-fixes.css: { weight: 30 }
+      css/components/layout.css: { weight: -10 }
+      css/components/header.css: {}
+      css/components/hero.css: {}
+      css/components/navigation.css: {}
+      css/components/cards.css: {}
+      css/components/buttons.css: {}
+      css/components/forms.css: {}
+      css/components/footer.css: {}
+      css/components/views-ux.css: { weight: 10 }
+      css/components/responsive-fixes.css: { weight: 15 }
+      css/pages/desktop-pro.css: { weight: 20 }
+      css/pages/sobre.css: {}
+      css/components/academic-listings.css: { weight: 40 }
+  js:
+    js/academic-filters.js: {}
+    js/global.js:
+      attributes:
+        defer: true
+  dependencies:
+    - neruds_gui/design-system
+    - neruds_gui/bootstrap5
+    - neruds_gui/fonts
+    - core/drupal
+    - core/jquery
+    - core/once
+
+# 5. Animações e Micro-interações (Framer Motion equivalent)
+animations:
+  js:
+    js/animations.js:
+      attributes:
+        defer: true
+  dependencies:
+    - core/drupal
+
+# ========================================================================
+# BIBLIOTECAS DE PÁGINA
+# ========================================================================
+
+# Home / Front Page
+home:
+  css:
+    theme:
+      css/pages/home.css: { weight: 5 }
+  dependencies:
+    - neruds_gui/global-styles
+
+# Search Results Page
+busca:
+  css:
+    theme:
+      css/pages/busca.css: { weight: 5 }
+  dependencies:
+    - neruds_gui/global-styles
+
+# About — Missão, Visão, ODS
+about:
+  css:
+    theme:
+      css/pages/about.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# ========================================================================
+# BIBLIOTECAS DE TIPO DE CONTEÚDO
+# ========================================================================
+
+# Artigos Científicos
+article:
+  css:
+    theme:
+      css/content-types/article.css: {}
+  js:
+    js/content-types/article.js:
+      attributes:
+        defer: true
+  dependencies:
+    - neruds_gui/global-styles
+    - core/drupal
+
+# Perfil de Pesquisador
+perfil-pesquisador:
+  css:
+    theme:
+      css/content-types/perfil-pesquisador.css: {}
+  js:
+    js/content-types/perfil-pesquisador.js:
+      attributes:
+        defer: true
+  dependencies:
+    - neruds_gui/global-styles
+
+# Grupo de Estudos
+grupo-estudos:
+  css:
+    theme:
+      css/content-types/grupo-estudos.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Projeto de Pesquisa/Extensão
+projeto:
+  css:
+    theme:
+      css/content-types/projeto.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Notícia
+noticia:
+  css:
+    theme:
+      css/content-types/noticia.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Evento Científico
+evento:
+  css:
+    theme:
+      css/content-types/evento.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Boletim Periódico
+boletim:
+  css:
+    theme:
+      css/content-types/boletim.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# ========================================================================
+# COMPONENTES ESPECIALIZADOS
+# ========================================================================
+
+# Badges ODS
+ods-badges:
+  css:
+    theme:
+      css/components/ods-badges.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Hero Section Block Variants (centered, split, overlay, gradient)
+hero-variants:
+  css:
+    theme:
+      css/components/hero-variants.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Card Grid Block (responsive grid layout)
+card-grid:
+  css:
+    theme:
+      css/components/card-grid.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Search Bar Block (inline, hero, overlay styles)
+search-bar:
+  css:
+    theme:
+      css/components/search-bar.css: {}
+  js:
+    js/search-bar.js:
+      attributes:
+        defer: true
+  dependencies:
+    - neruds_gui/global-styles
+    - core/drupal
+
+# Glassmorphism Cards
+glass-cards:
+  css:
+    theme:
+      css/components/glass-cards.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Decorative Weave (Pattern background)
+decorative-weave:
+  css:
+    theme:
+      css/patterns/decorative-weave.css: {}
+  dependencies:
+    - neruds_gui/global-styles
+
+# Search & Filter
+search-filters:
+  css:
+    theme:
+      css/components/search-filters.css: {}
+  js:
+    js/search-filters.js:
+      attributes:
+        defer: true
+  dependencies:
+    - neruds_gui/global-styles
+
+# Accessibility & Print
+accessibility:
+  css:
+    theme:
+      css/accessibility/focus-visible.css: {}
+      css/accessibility/print.css: { media: print }
+  dependencies:
+    - neruds_gui/global-styles
+
+# ========================================================================
+# VARIANTES DE TEMA (AI-GENERATED)
+# ========================================================================
+
+amazonia-variant:
+  css:
+    theme:
+      css/variants/amazonia/colors.css: { weight: 10 }
+      css/variants/amazonia/typography.css: { weight: 11 }
+      css/variants/amazonia/components.css: { weight: 12 }
+      css/variants/amazonia/dark-mode.css: { weight: 13 }
+  dependencies:
+    - neruds_gui/global-styles

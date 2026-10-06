@@ -1,0 +1,63 @@
+# MCP API Routes — NERUDS
+# Base: /api/mcp/
+
+# Node Operations
+neruds_mcp.create_node:
+  path: '/api/mcp/nodes'
+  defaults:
+    _controller: '\Drupal\neruds_mcp\Controller\MCPController::createNode'
+  methods: [POST]
+  requirements:
+    _permission: 'access mcp api'
+
+neruds_mcp.get_node:
+  path: '/api/mcp/nodes/{nid}'
+  defaults:
+    _controller: '\Drupal\neruds_mcp\Controller\MCPController::getNode'
+  methods: [GET]
+  requirements:
+    _permission: 'access mcp api'
+    nid: '\d+'
+
+neruds_mcp.update_node:
+  path: '/api/mcp/nodes/{nid}'
+  defaults:
+    _controller: '\Drupal\neruds_mcp\Controller\MCPController::updateNode'
+  methods: [PATCH, PUT]
+  requirements:
+    _permission: 'access mcp api'
+    nid: '\d+'
+
+neruds_mcp.delete_node:
+  path: '/api/mcp/nodes/{nid}'
+  defaults:
+    _controller: '\Drupal\neruds_mcp\Controller\MCPController::deleteNode'
+  methods: [DELETE]
+  requirements:
+    _permission: 'access mcp api'
+    nid: '\d+'
+
+neruds_mcp.list_nodes:
+  path: '/api/mcp/nodes'
+  defaults:
+    _controller: '\Drupal\neruds_mcp\Controller\MCPController::listNodes'
+  methods: [GET]
+  requirements:
+    _permission: 'access mcp api'
+
+# Taxonomy Routes
+neruds_mcp.ods_terms:
+  path: '/api/mcp/taxonomy/ods'
+  defaults:
+    _controller: '\Drupal\neruds_mcp\Controller\MCPController::getODSTerms'
+  methods: [GET]
+  requirements:
+    _permission: 'access mcp api'
+
+neruds_mcp.categories:
+  path: '/api/mcp/taxonomy/categories'
+  defaults:
+    _controller: '\Drupal\neruds_mcp\Controller\MCPController::getCategories'
+  methods: [GET]
+  requirements:
+    _permission: 'access mcp api'

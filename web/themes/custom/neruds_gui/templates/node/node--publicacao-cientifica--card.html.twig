@@ -1,0 +1,8 @@
+{# Keep Drupal field formatters, access checks and cache metadata. #}
+<article{{ attributes.addClass('node', 'node--type-publicacao-cientifica', 'node--view-mode-card', 'academic-publication') }}>
+  {{ title_prefix }}
+  <h2{{ title_attributes.addClass('node__title') }}><a href="{{ url }}" rel="bookmark">{{ label }}</a></h2>
+  {{ title_suffix }}
+  <div{{ content_attributes.addClass('academic-publication__metadata') }}>{{ content|without('links') }}</div>
+  <a class="academic-card__link" href="{{ url }}">{{ 'Ver publicação'|t }}<span class="visually-hidden">: {{ label }}</span></a>
+</article>

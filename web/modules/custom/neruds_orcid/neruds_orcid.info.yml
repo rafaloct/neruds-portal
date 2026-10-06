@@ -1,0 +1,9 @@
+name: 'NERUDS ORCID Integration'
+type: module
+description: 'Integrates researcher profiles with ORCID identifiers and displays ORCID badges'
+core_version_requirement: ^11
+package: 'NERUDS'
+version: '1.0.0'
+dependencies:
+  - drupal:node
+  - drupal:field

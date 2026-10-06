@@ -1,0 +1,143 @@
+{#
+/**
+ * @file
+ * Template de página principal do tema NERUDS
+ * Baseado em Bootstrap 5, mantendo compatibilidade com regiões do Olivero
+ */
+#}
+
+<div id="page-wrapper">
+  <div id="page">
+    
+    {# Header #}
+    <header id="header" class="site-header" role="banner" aria-label="{{ 'Site header'|t }}">
+      <div class="neruds-container">
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            {% if page.header %}
+              {{ page.header }}
+            {% endif %}
+          </div>
+          <div class="col-md-8">
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-neruds">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryMenu" aria-controls="primaryMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="primaryMenu">
+                {% if page.primary_menu %}
+                  {{ page.primary_menu }}
+                {% endif %}
+              </div>
+            </nav>
+            {% if page.secondary_menu %}
+              <div class="secondary-menu-wrapper">
+                {{ page.secondary_menu }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {# Hero Section (Full Width) #}
+    {% if page.hero %}
+      <section id="hero" class="neruds-hero">
+        <div class="neruds-container">
+          {{ page.hero }}
+        </div>
+      </section>
+    {% endif %}
+
+    {# Highlighted (Messages, Tabs) #}
+    {% if page.highlighted %}
+      <div id="highlighted" class="highlighted">
+        <div class="neruds-container">
+          {{ page.highlighted }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Breadcrumb #}
+    {% if page.breadcrumb %}
+      <div id="breadcrumb" class="breadcrumb-wrapper">
+        <div class="neruds-container">
+          <nav aria-label="breadcrumb">
+            {{ page.breadcrumb }}
+          </nav>
+        </div>
+      </div>
+    {% endif %}
+
+    {# Main Content Area #}
+    <main role="main" class="main-content">
+      <div class="neruds-container">
+        <div class="row">
+          
+          {# Social Bar (Left Sidebar) #}
+          {% if page.social_bar %}
+            <aside class="col-lg-1 col-md-2 d-none d-md-block social-bar-wrapper">
+              <div class="neruds-social-bar">
+                {{ page.social_bar }}
+              </div>
+            </aside>
+          {% endif %}
+
+          {# Content Column #}
+          <div class="{% if page.sidebar and page.social_bar %}col-lg-8 col-md-10{% elseif page.sidebar %}col-lg-9{% elseif page.social_bar %}col-lg-11 col-md-10{% else %}col-12{% endif %}">
+            
+            {# Content Above #}
+            {% if page.content_above %}
+              <div class="content-above">
+                {{ page.content_above }}
+              </div>
+            {% endif %}
+
+            {# Main Content #}
+            <div class="content-wrapper">
+              {{ page.content }}
+            </div>
+
+            {# Content Below #}
+            {% if page.content_below %}
+              <div class="content-below mt-4">
+                {{ page.content_below }}
+              </div>
+            {% endif %}
+
+          </div>
+
+          {# Right Sidebar #}
+          {% if page.sidebar %}
+            <aside class="col-lg-3 col-md-12 sidebar-wrapper mt-4 mt-lg-0">
+              {{ page.sidebar }}
+            </aside>
+          {% endif %}
+
+        </div>
+      </div>
+    </main>
+
+    {# Footer #}
+    <footer class="neruds-footer" role="contentinfo">
+      {% if page.footer_top %}
+        <div class="footer-top-wrapper">
+          <div class="neruds-container">
+            <div class="row">
+              {{ page.footer_top }}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% if page.footer_bottom %}
+        <div class="footer-bottom-wrapper">
+          <div class="neruds-container">
+            {{ page.footer_bottom }}
+          </div>
+        </div>
+      {% endif %}
+    </footer>
+
+  </div>
+</div>
+

@@ -1,0 +1,15 @@
+/**
+ * @file dark-mode.css
+ * Variação: Amazônia Vibrante - Dark Mode Specifics
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-babasu: #1A2F0D;
+    --color-babasu-light: #2D5016;
+    --color-paper: #121812;
+    --color-white: #0A0F0A;
+    --color-gray-900: #F9FAFB;
+    --color-gray-50: #1A1F1A;
+  }
+}

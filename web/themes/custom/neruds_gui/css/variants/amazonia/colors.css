@@ -1,0 +1,21 @@
+/**
+ * @file colors.css
+ * Variação: Amazônia Vibrante
+ */
+
+:root {
+  /* Overrides para Design Tokens */
+  --color-babasu: #2D5016;       /* Verde Amazônico */
+  --color-babasu-light: #6AA84F; /* Verde Claro */
+  --color-babasu-dark: #1A2F0D;  
+  
+  --color-barro: #A65628;        /* Terra */
+  --color-barro-light: #C07A50;
+  --color-barro-dark: #7D411E;
+  
+  --color-palha: #D4A574;        /* Amarelo Ouro */
+  
+  /* Gradientes Customizados */
+  --gradient-amazonia: linear-gradient(135deg, #2D5016 0%, #6AA84F 100%);
+  --gradient-sunset: linear-gradient(135deg, #A65628 0%, #D4A574 100%);
+}

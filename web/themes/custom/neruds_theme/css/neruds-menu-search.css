@@ -1,0 +1,386 @@
+/**
+ * NERUDS - Menu Otimizado e Barra de Pesquisa
+ * Estilo Ant Design
+ */
+
+/* ============================================
+   Menu Wrapper
+   ============================================ */
+.neruds-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--neruds-spacing-lg);
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Barra de Pesquisa
+   ============================================ */
+.neruds-search-wrapper {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+  position: relative;
+}
+
+.neruds-search-form {
+  position: relative;
+  margin: 0;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--neruds-bg-base);
+  border-radius: 8px;
+  box-shadow: var(--neruds-box-shadow-sm);
+  transition: var(--neruds-transition-ease-out);
+}
+
+.search-input-wrapper:focus-within {
+  box-shadow: var(--neruds-box-shadow-md);
+  border-color: var(--neruds-primary-color);
+}
+
+.neruds-search-input {
+  width: 100%;
+  padding: var(--neruds-spacing-sm) var(--neruds-spacing-lg) var(--neruds-spacing-sm) var(--neruds-spacing-md);
+  padding-right: 50px;
+  border: 1px solid var(--neruds-border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: var(--neruds-bg-base);
+  color: var(--neruds-text-primary);
+  transition: var(--neruds-transition-ease-out);
+  height: 42px;
+  line-height: 1.5;
+}
+
+.neruds-search-input:focus {
+  outline: none;
+  border-color: var(--neruds-primary-color);
+  box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.15);
+  background-color: #fff;
+}
+
+.neruds-search-input::placeholder {
+  color: var(--neruds-text-color-tertiary);
+  font-size: 0.9rem;
+}
+
+.neruds-search-input.has-value {
+  border-color: var(--neruds-primary-color);
+}
+
+/* Indicador de atalho de teclado */
+.search-shortcut-hint {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background: var(--neruds-background-color-light);
+  border: 1px solid var(--neruds-border-color);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--neruds-text-color-secondary);
+  pointer-events: none;
+}
+
+.search-input-wrapper:not(:focus-within) .search-shortcut-hint {
+  display: flex;
+}
+
+.search-shortcut-hint kbd {
+  padding: 2px 4px;
+  background: #fff;
+  border: 1px solid var(--neruds-border-color);
+  border-radius: 3px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.7rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.neruds-search-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: var(--neruds-spacing-xs) var(--neruds-spacing-sm);
+  background: transparent;
+  border: none;
+  color: var(--neruds-text-color-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: var(--neruds-transition-ease-out);
+  height: 34px;
+  width: 34px;
+}
+
+.neruds-search-btn:hover {
+  background-color: var(--neruds-primary-color);
+  color: #fff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.neruds-search-btn:active {
+  background-color: var(--neruds-primary-color-active);
+  transform: translateY(-50%) scale(0.95);
+}
+
+.neruds-search-btn.searching {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.neruds-search-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Sugestões de busca (autocomplete) */
+.neruds-search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: var(--neruds-spacing-xs);
+  background: var(--neruds-bg-base);
+  border: 1px solid var(--neruds-border-color);
+  border-radius: 8px;
+  box-shadow: var(--neruds-shadow-3);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.neruds-search-suggestions.show {
+  display: block;
+  animation: fadeInDown 0.2s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestion-item {
+  padding: var(--neruds-spacing-sm) var(--neruds-spacing-md);
+  cursor: pointer;
+  transition: var(--neruds-transition-ease-out);
+  border-bottom: 1px solid var(--neruds-background-color-light);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item.active {
+  background-color: var(--neruds-background-color-light);
+  color: var(--neruds-primary-color);
+}
+
+.suggestion-item-title {
+  font-weight: 500;
+  color: var(--neruds-text-primary);
+  margin-bottom: 2px;
+}
+
+.suggestion-item-type {
+  font-size: 0.8rem;
+  color: var(--neruds-text-color-secondary);
+}
+
+/* ============================================
+   Menu de Navegação
+   ============================================ */
+.neruds-navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--neruds-spacing-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.neruds-nav-item {
+  position: relative;
+}
+
+.neruds-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--neruds-spacing-xxs);
+  padding: var(--neruds-spacing-xs) var(--neruds-spacing-md);
+  color: var(--neruds-text-primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: var(--neruds-transition-ease-out);
+  white-space: nowrap;
+  position: relative;
+}
+
+.neruds-nav-link:hover {
+  color: var(--neruds-primary-color);
+  background-color: rgba(82, 196, 26, 0.05);
+  text-decoration: none;
+}
+
+.neruds-nav-link.active {
+  color: var(--neruds-primary-color);
+  background-color: rgba(82, 196, 26, 0.1);
+  font-weight: 600;
+}
+
+.neruds-nav-link.dropdown-toggle {
+  padding-right: var(--neruds-spacing-md);
+}
+
+.dropdown-icon {
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-toggle[aria-expanded="true"] .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.neruds-dropdown-menu {
+  margin-top: var(--neruds-spacing-xs);
+  padding: var(--neruds-spacing-xs) 0;
+  background-color: var(--neruds-bg-base);
+  border: 1px solid var(--neruds-border-color);
+  border-radius: 8px;
+  box-shadow: var(--neruds-shadow-3);
+  min-width: 200px;
+}
+
+.neruds-dropdown-menu .neruds-nav-link {
+  padding: var(--neruds-spacing-sm) var(--neruds-spacing-md);
+  border-radius: 0;
+}
+
+.neruds-dropdown-menu .neruds-nav-link:hover {
+  background-color: var(--neruds-background-color-light);
+}
+
+.neruds-dropdown-menu .neruds-nav-link.active {
+  background-color: rgba(82, 196, 26, 0.1);
+  color: var(--neruds-primary-color);
+}
+
+/* ============================================
+   Responsivo
+   ============================================ */
+@media (max-width: 991px) {
+  .neruds-menu-wrapper {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--neruds-spacing-md);
+  }
+
+  .neruds-search-wrapper {
+    width: 100%;
+    max-width: 100%;
+    order: -1; /* Coloca a busca no topo em mobile */
+  }
+  
+  .search-shortcut-hint {
+    display: none !important; /* Esconde hint em mobile */
+  }
+
+  .neruds-navbar-nav {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--neruds-spacing-xxs);
+  }
+
+  .neruds-nav-link {
+    width: 100%;
+    justify-content: space-between;
+    padding: var(--neruds-spacing-sm) var(--neruds-spacing-md);
+  }
+  
+  .neruds-search-suggestions {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .neruds-search-input {
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+
+  .neruds-nav-link {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   Integração com Navbar Bootstrap
+   ============================================ */
+.navbar-neruds {
+  background-color: transparent;
+  padding: var(--neruds-spacing-md) 0;
+}
+
+.navbar-neruds .neruds-menu-wrapper {
+  width: 100%;
+}
+
+/* Ajustes para menu colapsado */
+.navbar-collapse {
+  padding-top: var(--neruds-spacing-md);
+}
+
+@media (min-width: 992px) {
+  .navbar-collapse {
+    padding-top: 0;
+  }
+}
+
+/* Animações */
+@keyframes fadeInSearch {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.neruds-search-wrapper {
+  animation: fadeInSearch 0.3s ease-out;
+}
+

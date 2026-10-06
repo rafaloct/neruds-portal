@@ -1,0 +1,334 @@
+{#
+/**
+ * @file
+ * NERUDS Project Card Template — Research Project Showcase
+ *
+ * Available variables:
+ * - node: The node object
+ * - title: Project title
+ * - teaser: Project summary
+ * - url: Project URL
+ * - field_ods: ODS goals
+ * - field_research_categories: Research areas
+ * - field_researcher: Lead researcher (if available)
+ * - field_status: Project status (active/completed/proposal)
+ */
+#}
+
+<article class="neruds-project-card project-card">
+
+  {# Status Badge — Top Right #}
+  <div class="project-card__status-badge">
+    {% set status = node.field_status.value ?? 'active' %}
+    {% if status == 'active' %}
+      <span class="badge badge-active">Em Andamento</span>
+    {% elseif status == 'completed' %}
+      <span class="badge badge-completed">Concluído</span>
+    {% else %}
+      <span class="badge badge-proposal">Proposta</span>
+    {% endif %}
+  </div>
+
+  {# Visual Header — ODS Gradient #}
+  {% if node.field_ods|length > 0 %}
+    {% set colors = [] %}
+    {% for term_ref in node.field_ods|slice(0, 3) %}
+      {% set term = term_ref.entity %}
+      {% set color = term.field_ods_color.value ?? '#CCCCCC' %}
+      {% set colors = colors|merge([color]) %}
+    {% endfor %}
+
+    {% set gradient = 'linear-gradient(135deg, ' ~ colors|join(', ') ~ ')' %}
+    <div class="project-card__header" style="background: {{ gradient }};"></div>
+  {% else %}
+    <div class="project-card__header" style="background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-barro) 100%);"></div>
+  {% endif %}
+
+  {# Content Section #}
+  <div class="project-card__content">
+
+    {# Title #}
+    <h3 class="project-card__title">
+      <a href="{{ url }}" class="project-card__link">{{ title }}</a>
+    </h3>
+
+    {# Lead Researcher #}
+    {% if node.field_researcher %}
+      <div class="project-card__researcher">
+        <span class="label">Pesquisador Responsável:</span>
+        <strong>{{ node.field_researcher.entity.title ?? 'NERUDS' }}</strong>
+      </div>
+    {% endif %}
+
+    {# Summary #}
+    {% if teaser %}
+      <p class="project-card__summary">
+        {{ teaser|striptags|truncate(200, true, '...') }}
+      </p>
+    {% endif %}
+
+    {# ODS Goals #}
+    {% if node.field_ods|length > 0 %}
+      <div class="project-card__ods-list">
+        <span class="label">ODS Alinhados:</span>
+        <div class="ods-grid">
+          {% for term_ref in node.field_ods %}
+            {% set term = term_ref.entity %}
+            {% set color = term.field_ods_color.value ?? '#CCCCCC' %}
+            <a href="/pesquisa?ods={{ term.id }}" class="ods-tag" style="border-left: 4px solid {{ color }};" title="{{ term.name }}">
+              <span class="ods-number">{{ term.name|replace({'ODS ':''}) }}</span>
+              <span class="ods-name">{{ term.name|replace({'ODS ' ~ term.name|replace({'ODS ':''}) ~ ' - ':''}) }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Research Categories #}
+    {% if node.field_research_categories|length > 0 %}
+      <div class="project-card__categories">
+        <span class="label">Áreas de Pesquisa:</span>
+        <div class="category-pills">
+          {% for term_ref in node.field_research_categories %}
+            {% set term = term_ref.entity %}
+            <a href="/pesquisa?categoria={{ term.id }}" class="category-pill">{{ term.name }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Footer CTA #}
+    <div class="project-card__footer">
+      <a href="{{ url }}" class="project-card__cta btn btn-primary btn-sm">
+        Explorar Projeto →
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .neruds-project-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-gray-200);
+    transition: all var(--transition-base);
+    height: 100%;
+    position: relative;
+  }
+
+  .neruds-project-card:hover {
+    box-shadow: 0 12px 32px rgba(46, 70, 50, 0.2);
+    transform: translateY(-6px);
+    border-color: var(--color-babasu);
+  }
+
+  .project-card__status-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+  }
+
+  .badge-active {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    animation: pulse-green 2s infinite;
+  }
+
+  .badge-completed {
+    background: linear-gradient(135deg, #2196F3, #0b7dda);
+    color: white;
+  }
+
+  .badge-proposal {
+    background: linear-gradient(135deg, #FFC107, #FF9800);
+    color: white;
+  }
+
+  @keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .project-card__header {
+    height: 120px;
+    width: 100%;
+  }
+
+  .project-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .project-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 15px;
+    line-height: 1.3;
+    color: var(--color-gray-900);
+  }
+
+  .project-card__link {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-base);
+  }
+
+  .project-card__link:hover {
+    color: var(--color-babasu);
+  }
+
+  .project-card__researcher {
+    font-size: 0.9rem;
+    color: var(--color-gray-700);
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  .project-card__researcher .label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-gray-600);
+    margin-bottom: 4px;
+  }
+
+  .project-card__summary {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-gray-700);
+    margin: 12px 0 15px;
+    flex-grow: 1;
+  }
+
+  .project-card__ods-list,
+  .project-card__categories {
+    margin-bottom: 15px;
+  }
+
+  .project-card__ods-list .label,
+  .project-card__categories .label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-gray-600);
+    margin-bottom: 8px;
+  }
+
+  .ods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .ods-tag {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    background: var(--color-gray-50);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all var(--transition-base);
+  }
+
+  .ods-tag:hover {
+    background: var(--color-babasu);
+    color: white;
+    transform: translateX(2px);
+  }
+
+  .ods-number {
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .ods-name {
+    font-size: 0.75rem;
+    opacity: 0.9;
+  }
+
+  .category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .category-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--color-babasu);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all var(--transition-base);
+  }
+
+  .category-pill:hover {
+    background: var(--color-barro);
+    transform: scale(1.05);
+  }
+
+  .project-card__footer {
+    padding-top: 15px;
+    border-top: 1px solid var(--color-gray-100);
+    margin-top: auto;
+  }
+
+  .project-card__cta {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .project-card__header {
+      height: 80px;
+    }
+
+    .project-card__content {
+      padding: 16px;
+    }
+
+    .project-card__title {
+      font-size: 1.1rem;
+    }
+
+    .ods-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .neruds-project-card {
+      background: var(--color-gray-900);
+      border-color: var(--color-gray-700);
+    }
+
+    .project-card__title {
+      color: var(--color-white);
+    }
+
+    .project-card__researcher,
+    .project-card__summary {
+      color: var(--color-gray-300);
+    }
+
+    .ods-tag {
+      background: var(--color-gray-800);
+      color: var(--color-gray-200);
+    }
+
+    .ods-tag:hover {
+      background: var(--color-babasu);
+      color: white;
+    }
+  }
+</style>

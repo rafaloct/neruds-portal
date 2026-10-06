@@ -1,0 +1,7 @@
+neruds_notifications.preferences:
+  title: 'Preferências de Notificações'
+  route_name: neruds_notifications.preferences
+  route_parameters:
+    user: '%user%'
+  parent: entity.user.canonical
+  weight: 10

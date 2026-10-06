@@ -1,0 +1,92 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Nó Teaser (listagens, views)
+ * Card decolonial universal
+ */
+#}
+
+{%
+  set bundle_class = node.bundle|clean_class
+%}
+
+<article{{ attributes.addClass('card-content', 'card-content--' ~ bundle_class) }}>
+
+  {# Imagem de destaque #}
+  {% set imagem_fields = [
+    'field_imagem_destaque_noticia',
+    'field_imagens_projeto',
+    'field_foto_perfil',
+    'field_imagem_capa',
+    'field_imagem_destaque',
+  ] %}
+
+  {% set tem_imagem = false %}
+  {% for campo in imagem_fields %}
+    {% if content[campo] and not tem_imagem %}
+      <div class="card-content__image">
+        <a href="{{ url }}" tabindex="-1" aria-hidden="true">
+          {{ content[campo] }}
+        </a>
+      </div>
+      {% set tem_imagem = true %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="card-content__body">
+
+    {# Meta: tipo + data #}
+    <div class="card-content__meta">
+      <span class="badge-decolonial badge-eixo">{{ tipo_label|default(node.bundle|replace({'_': ' '})|capitalize) }}</span>
+
+      {% if content.field_data_noticia %}
+        <span class="card-content__date">{{ content.field_data_noticia }}</span>
+      {% else %}
+        <span class="card-content__date">{{ node.createdtime|date('d/m/Y') }}</span>
+      {% endif %}
+    </div>
+
+    {# Título #}
+    <h3 class="card-content__title">
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h3>
+
+    {# Resumo #}
+    {% if content.field_resumo_noticia %}
+      <div class="card-content__summary">{{ content.field_resumo_noticia }}</div>
+    {% elseif content.field_descricao_projeto %}
+      <div class="card-content__summary">{{ content.field_descricao_projeto }}</div>
+    {% elseif content.body %}
+      <div class="card-content__summary">{{ content.body }}</div>
+    {% endif %}
+
+    {# Taxonomia principal #}
+    <div class="card-content__meta" style="margin-top:auto; padding-top:var(--space-2);">
+      {% if content.field_eixo_tematico_noticia %}
+        {{ content.field_eixo_tematico_noticia }}
+      {% elseif content.field_eixo_tematico_projeto %}
+        {{ content.field_eixo_tematico_projeto }}
+      {% elseif content.field_linha_pesquisa %}
+        {{ content.field_linha_pesquisa }}
+      {% endif %}
+    </div>
+
+    {# Footer com link #}
+    <div class="card-content__footer">
+      <a href="{{ url }}" class="card-content__link">{{ 'Saiba mais'|t }}</a>
+
+      {# Localização se disponível #}
+      {% if content.field_microrregiao_noticia %}
+        <span style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--terra-400);">
+          {{ content.field_microrregiao_noticia }}
+        </span>
+      {% elseif content.field_microrregiao_projeto %}
+        <span style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--terra-400);">
+          {{ content.field_microrregiao_projeto }}
+        </span>
+      {% endif %}
+    </div>
+
+  </div>
+
+</article>

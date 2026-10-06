@@ -1,0 +1,167 @@
+{#
+/**
+ * @file
+ * Template para exibição completa de Article (Artigo/Blog)
+ */
+#}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class) }}>
+  
+  {% if not page %}
+    <h2{{ title_attributes.addClass('node__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+
+  {% if display_submitted %}
+    <div class="node__meta mb-3">
+      <span class="text-muted">
+        <i class="bi bi-calendar"></i> {{ node.createdtime|date('d/m/Y') }}
+        {% if node.owner %}
+          <span class="ms-3">
+            <i class="bi bi-person"></i> {{ node.owner.entity.name.value }}
+          </span>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+
+  {# Resumo #}
+  {% if content.field_resumo_artigo %}
+    <div class="node__summary lead mb-4">
+      {{ content.field_resumo_artigo }}
+    </div>
+  {% endif %}
+
+  {# Imagem Principal #}
+  {% if content.field_image %}
+    <div class="node__image mb-4">
+      {{ content.field_image }}
+    </div>
+  {% endif %}
+
+  {# Conteúdo Principal #}
+  <div{{ content_attributes.addClass('node__content') }}>
+    {{ content|without('field_resumo_artigo', 'field_image', 'field_galeria_imagens_artigo', 'field_ods_artigo', 'field_palavras_chave_artigo', 'field_eixo_tematico_artigo', 'field_linha_pesquisa_artigo', 'field_projeto_artigo', 'field_setor_produtivo_artigo', 'field_microrregiao_artigo', 'field_municipio_artigo', 'field_autores_artigo', 'field_link_relacionado_artigo', 'field_arquivo_pdf_artigo', 'field_meta_descricao_artigo') }}
+  </div>
+
+  {# Galeria de Imagens #}
+  {% if content.field_galeria_imagens_artigo %}
+    <div class="node__gallery mt-4 mb-4">
+      <h3>Galeria</h3>
+      <div class="row g-3">
+        {{ content.field_galeria_imagens_artigo }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Taxonomias #}
+  <div class="node__taxonomies mt-4 pt-4 border-top">
+    
+    {# ODS #}
+    {% if content.field_ods_artigo %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-check-circle"></i> ODS Relacionados:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {% for item in content.field_ods_artigo['#items'] %}
+            {% set term = item.entity %}
+            {% set ods_num = '' %}
+            {% if term.name.value matches '/ODS\\s*(\\d+)/i' %}
+              {% set ods_num = term.name.value|preg_replace('/.*ODS\\s*(\\d+).*/i', '$1') %}
+            {% endif %}
+            <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term.id}) }}" 
+               class="taxonomy-badge badge-ods badge-ods-{{ ods_num }}">
+              {{ term.name.value }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Palavras-Chave #}
+    {% if content.field_palavras_chave_artigo %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-tags"></i> Palavras-Chave:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_palavras_chave_artigo }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Eixo Temático #}
+    {% if content.field_eixo_tematico_artigo %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-diagram-3"></i> Eixo Temático:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_eixo_tematico_artigo }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Projeto Associado #}
+    {% if content.field_projeto_artigo %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-folder"></i> Projetos Associados:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_projeto_artigo }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Autor(es) #}
+    {% if content.field_autores_artigo %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-people"></i> Autor(es):
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_autores_artigo }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Localização #}
+    {% if content.field_microrregiao_artigo or content.field_municipio_artigo %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-geo-alt"></i> Localização:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_microrregiao_artigo }}
+          {{ content.field_municipio_artigo }}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {# Links e Arquivos #}
+  <div class="node__actions mt-4 pt-4 border-top">
+    {% if content.field_link_relacionado_artigo %}
+      <div class="mb-3">
+        <strong><i class="bi bi-link-45deg"></i> Link Relacionado:</strong>
+        {{ content.field_link_relacionado_artigo }}
+      </div>
+    {% endif %}
+
+    {% if content.field_arquivo_pdf_artigo %}
+      <div class="mb-3">
+        <a href="{{ file_url(content.field_arquivo_pdf_artigo['#items'].entity.uri.value) }}" 
+           class="btn btn-outline-primary" 
+           target="_blank">
+          <i class="bi bi-file-pdf"></i> Baixar PDF
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+</article>
+

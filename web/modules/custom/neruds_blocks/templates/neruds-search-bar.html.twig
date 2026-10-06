@@ -1,0 +1,167 @@
+{#
+/**
+ * @file neruds-search-bar.html.twig
+ * NERUDS Search Bar Block — 3 display styles.
+ *
+ * Available variables:
+ * - style: 'inline' | 'hero' | 'overlay'
+ * - placeholder: Input placeholder text
+ * - search_action: Form action URL
+ * - categories: Array of {value, label} category chips
+ */
+#}
+{% set style_class = 'neruds-search--' ~ style %}
+
+{# ── OVERLAY STYLE: icon trigger + fullscreen panel ── #}
+{% if style == 'overlay' %}
+
+  <div class="neruds-search {{ style_class }}" data-neruds-search>
+    {# Trigger button (for header placement) #}
+    <button
+      class="neruds-search__trigger"
+      type="button"
+      aria-label="{{ 'Abrir busca'|t }}"
+      aria-expanded="false"
+      aria-controls="neruds-search-panel"
+      data-search-trigger
+    >
+      <svg class="neruds-search__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </button>
+
+    {# Fullscreen search panel #}
+    <div
+      id="neruds-search-panel"
+      class="neruds-search__panel"
+      role="dialog"
+      aria-label="{{ 'Busca do site'|t }}"
+      aria-modal="true"
+      data-state="closed"
+    >
+      <div class="neruds-search__panel-inner">
+        <button
+          class="neruds-search__close"
+          type="button"
+          aria-label="{{ 'Fechar busca'|t }}"
+          data-search-close
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <form class="neruds-search__form" action="{{ search_action|default('/busca') }}" method="get" role="search">
+          <div class="neruds-search__input-wrap neruds-search__input-wrap--lg">
+            <svg class="neruds-search__input-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              class="neruds-search__input"
+              type="search"
+              name="keys"
+              placeholder="{{ placeholder }}"
+              autocomplete="off"
+              aria-label="{{ 'Termo de busca'|t }}"
+              data-search-input
+            />
+          </div>
+
+          {% if categories|length > 0 %}
+            <div class="neruds-search__chips" role="radiogroup" aria-label="{{ 'Filtrar por tipo'|t }}">
+              {% for cat in categories %}
+                <button
+                  type="button"
+                  class="neruds-search__chip{% if loop.first %} neruds-search__chip--active{% endif %}"
+                  data-search-category="{{ cat.value }}"
+                  role="radio"
+                  aria-checked="{{ loop.first ? 'true' : 'false' }}"
+                >
+                  {{ cat.label }}
+                </button>
+              {% endfor %}
+            </div>
+            <input type="hidden" name="type" value="{{ categories[0].value|default('all') }}" data-search-type />
+          {% endif %}
+        </form>
+
+        {# Suggestions area (populated by JS / Search API Autocomplete) #}
+        <div class="neruds-search__suggestions" aria-live="polite" data-search-suggestions></div>
+
+        <p class="neruds-search__hint">
+          {{ 'Pressione'|t }} <kbd>Esc</kbd> {{ 'para fechar ou'|t }} <kbd>Enter</kbd> {{ 'para buscar'|t }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+{# ── HERO STYLE: large centered search ── #}
+{% elseif style == 'hero' %}
+
+  <div class="neruds-search {{ style_class }}" data-neruds-search>
+    <form class="neruds-search__form" action="{{ search_action|default('/busca') }}" method="get" role="search">
+      <div class="neruds-search__input-wrap neruds-search__input-wrap--lg">
+        <svg class="neruds-search__input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          class="neruds-search__input"
+          type="search"
+          name="keys"
+          placeholder="{{ placeholder }}"
+          autocomplete="off"
+          aria-label="{{ 'Termo de busca'|t }}"
+          data-search-input
+        />
+        <button class="neruds-search__submit" type="submit" aria-label="{{ 'Buscar'|t }}">
+          {{ 'Buscar'|t }}
+        </button>
+      </div>
+
+      {% if categories|length > 0 %}
+        <div class="neruds-search__chips" role="radiogroup" aria-label="{{ 'Filtrar por tipo'|t }}">
+          {% for cat in categories %}
+            <button
+              type="button"
+              class="neruds-search__chip{% if loop.first %} neruds-search__chip--active{% endif %}"
+              data-search-category="{{ cat.value }}"
+              role="radio"
+              aria-checked="{{ loop.first ? 'true' : 'false' }}"
+            >
+              {{ cat.label }}
+            </button>
+          {% endfor %}
+        </div>
+        <input type="hidden" name="type" value="{{ categories[0].value|default('all') }}" data-search-type />
+      {% endif %}
+    </form>
+  </div>
+
+{# ── INLINE STYLE: compact bar for header/sidebar ── #}
+{% else %}
+
+  <div class="neruds-search {{ style_class }}" data-neruds-search>
+    <form class="neruds-search__form" action="{{ search_action|default('/busca') }}" method="get" role="search">
+      <div class="neruds-search__input-wrap">
+        <svg class="neruds-search__input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          class="neruds-search__input"
+          type="search"
+          name="keys"
+          placeholder="{{ placeholder }}"
+          autocomplete="off"
+          aria-label="{{ 'Termo de busca'|t }}"
+          data-search-input
+        />
+      </div>
+    </form>
+  </div>
+
+{% endif %}

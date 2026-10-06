@@ -1,0 +1,140 @@
+.neruds-community {
+  --community-green: var(--color-babasu,#606062);     /* Maps to official Dark Grey */
+  --community-earth: var(--color-barro,#F58535);      /* Maps to official Orange */
+  --community-water: var(--color-barro-dark,#c45e10); /* Maps to official Dark Orange */
+}
+
+.neruds-community__progress {
+  background: #edf3e9;
+  border-radius: 999px;
+  height: .75rem;
+  overflow: hidden;
+}
+
+.neruds-community__progress-bar {
+  background: linear-gradient(90deg, var(--community-green), var(--community-water));
+  display: block;
+  height: 100%;
+  width: var(--progress, 0%);
+}
+
+.neruds-community__tabs {
+  border-bottom: 1px solid #dce5d8;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-top: 1.25rem;
+}
+
+.neruds-community__tab {
+  background: #f7faf5;
+  border: 1px solid #dce5d8;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  color: #243328;
+  cursor: pointer;
+  font-weight: 700;
+  padding: .65rem .85rem;
+}
+
+.neruds-community__tab[aria-selected="true"] {
+  background: #fff;
+  color: var(--community-green);
+}
+
+.neruds-community__panel {
+  background: #fff;
+  border: 1px solid #dce5d8;
+  border-top: 0;
+  padding: 1rem;
+}
+
+.neruds-community__stat-grid {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.neruds-community__stat {
+  background: #f8faf6;
+  border-left: 4px solid var(--community-earth);
+  border-radius: 8px;
+  padding: .75rem;
+}
+
+.neruds-community__stat strong {
+  display: block;
+  font-size: 1.5rem;
+}
+
+.neruds-community__drive {
+  margin-top: .85rem;
+}
+
+.neruds-community__drive-list {
+  display: grid;
+  gap: .5rem;
+  list-style: none;
+  margin: .85rem 0 0;
+  padding: 0;
+}
+
+.neruds-community__drive-list li {
+  align-items: center;
+  border: 1px solid #dce5d8;
+  border-radius: 8px;
+  display: flex;
+  gap: .75rem;
+  justify-content: space-between;
+  padding: .65rem .75rem;
+}
+
+.neruds-community__drive-list a {
+  color: var(--community-green);
+  font-weight: 700;
+}
+
+.neruds-community__drive-list span {
+  color: #5f6f64;
+  font-size: .875rem;
+  white-space: nowrap;
+}
+
+.neruds-community__forum-intro {
+  border-left: 4px solid var(--community-water);
+  margin-bottom: 1rem;
+  padding-left: .85rem;
+}
+
+.neruds-community__forum-intro h2 {
+  font-size: 1.35rem;
+  margin: 0 0 .35rem;
+}
+
+.neruds-community__forum-intro p {
+  color: #5f6f64;
+  margin: 0;
+}
+
+.neruds-community .comment-wrapper,
+.neruds-community .comment-form {
+  margin-top: 1rem;
+}
+
+.neruds-community .comment {
+  border: 1px solid #dce5d8;
+  border-radius: 8px;
+  margin-top: .85rem;
+  padding: .85rem;
+}
+
+@media (max-width: 720px) {
+  .neruds-community__stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .neruds-community__drive-list li {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

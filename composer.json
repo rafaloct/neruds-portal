@@ -1,0 +1,132 @@
+{
+    "name": "drupal/cms",
+    "version": "1.2.8",
+    "description": "Drupal CMS is a ready-to-use platform built on Drupal core, offering smart defaults to get started quickly and enterprise-grade tools for marketers, designers, and content creators.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/cms",
+    "support": {
+        "docs": "https://new.drupal.org/docs/drupal-cms",
+        "chat": "https://drupal.org/node/314178"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "require": {
+        "composer/composer": "^2.9.8",
+        "composer/installers": "^2.3",
+        "drupal/a11y_form_helpers": "^2.2",
+        "drupal/ableplayer": "^3.4",
+        "drupal/addtoany": "^2.0",
+        "drupal/admin_toolbar": "^3.6",
+        "drupal/ai": "^1.3.5",
+        "drupal/bibcite": "^3.1",
+        "drupal/bootstrap5": "^4.0",
+        "drupal/charts": "^5.2",
+        "drupal/core-composer-scaffold": "11.2.12",
+        "drupal/core-project-message": "11.2.12",
+        "drupal/core-recipe-unpack": "^11.2.4",
+        "drupal/core-recommended": "11.2.12",
+        "drupal/core-vendor-hardening": "^11.2.4",
+        "drupal/drupal_cms_accessibility_tools": "^1.2",
+        "drupal/drupal_cms_ai": "^1.2",
+        "drupal/drupal_cms_blog": "^1.2",
+        "drupal/drupal_cms_case_study": "^1.2",
+        "drupal/drupal_cms_events": "^1.2",
+        "drupal/drupal_cms_forms": "^1.2",
+        "drupal/drupal_cms_google_analytics": "^1.2",
+        "drupal/drupal_cms_news": "^1.2",
+        "drupal/drupal_cms_page": "^1.2",
+        "drupal/drupal_cms_person": "^1.2",
+        "drupal/drupal_cms_project": "^1.2",
+        "drupal/drupal_cms_seo_tools": "^1.2",
+        "drupal/drupal_cms_starter": "^1.2",
+        "drupal/facets": "^3.0",
+        "drupal/field_group": "^4.0",
+        "drupal/fullcalendar": "^3",
+        "drupal/gemini_provider": "^1.0.1",
+        "drupal/google_api_client": "^4.5",
+        "drupal/imce": "^3.1",
+        "drupal/inline_entity_form": "^3.0@RC",
+        "drupal/mcp": "^1.0",
+        "drupal/metatag": "^2.2",
+        "drupal/paragraphs": "^1.20",
+        "drupal/pathauto": "^1.14",
+        "drupal/pwa": "^2.1@beta",
+        "drupal/recaptcha": "^3.4",
+        "drupal/recaptcha_v3": "^2.0",
+        "drupal/recipe_installer_kit": "^1-alpha6@alpha",
+        "drupal/redirect": "^1.12",
+        "drupal/schema_metatag": "^3.0",
+        "drupal/search_api": "^1.40",
+        "drupal/simplenews": "^4.1",
+        "drupal/smart_date": "^4.2",
+        "drupal/social_auth": "^4.1",
+        "drupal/social_auth_google": "^4.0",
+        "drupal/token": "^1.17",
+        "drupal/vefl": "^3.2",
+        "drupal/views_infinite_scroll": "^2.0",
+        "drupal/webform": "^6.3@beta",
+        "drush/drush": "^13.7",
+        "google/cloud-bigquery": "^1.34"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-recipe-unpack": true,
+            "php-http/discovery": true,
+            "drupal/core-vendor-hardening": true
+        },
+        "bin-dir": "vendor/bin",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "./drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+            "./recipes/{$name}": ["type:drupal-recipe"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
+        },
+        "drupal-core-project-message": {
+            "include-keys": ["homepage", "support"],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                   </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed Drupal CMS!    </>",
+                "<bg=blue;fg=white>                                                   </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://drupal.org/support",
+                "  * Get involved with the Drupal community: https://drupal.org/getting-involved"
+            ]
+        },
+        "drupal-core-vendor-hardening": {
+            "composer/composer": false
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "@php -r \"@unlink('vendor/bin/composer');\""
+        ]
+    }
+}

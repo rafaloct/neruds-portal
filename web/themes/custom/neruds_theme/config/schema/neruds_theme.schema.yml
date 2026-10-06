@@ -1,0 +1,9 @@
+# Schema para configurações do tema NERUDS
+# Seguindo as melhores práticas do Drupal 11
+
+neruds_theme.settings:
+  type: theme_settings
+  label: 'NERUDS Theme Settings'
+  mapping:
+    # Configurações podem ser adicionadas aqui no futuro
+

@@ -1,0 +1,32 @@
+<section class="neruds-publication-discovery" aria-labelledby="neruds-publication-discovery-title" data-neruds-publication-discovery>
+  <header class="neruds-publication-discovery__header">
+    <h2 id="neruds-publication-discovery-title">{{ 'Acervo e literatura global'|t }}</h2>
+    <div class="neruds-publication-discovery__controls">
+      <div class="neruds-publication-discovery__source" role="group" aria-label="Origem da busca">
+        <button type="button" data-search-source="neruds" aria-pressed="true">Acervo NERUDS</button>
+        <button type="button" data-search-source="scientific" aria-pressed="false">Literatura Global</button>
+      </div>
+      <form class="neruds-publication-discovery__search" data-publication-search-form role="search">
+        <label class="visually-hidden" for="neruds-publication-query">Buscar publicações</label>
+        <input id="neruds-publication-query" name="q" type="search" placeholder="Buscar por tema, autor, DOI ou território" autocomplete="off">
+        <button type="submit">Buscar</button>
+      </form>
+      <p class="neruds-publication-discovery__source-status" data-source-status aria-live="polite">Modo: Acervo NERUDS</p>
+    </div>
+  </header>
+  <div class="neruds-publication-discovery__summary" data-publication-summary aria-live="polite">
+    <p>Use a busca para combinar registros do acervo local e literatura acadêmica.</p>
+  </div>
+  <div class="neruds-publication-discovery__body">
+    <aside class="neruds-publication-discovery__facets" data-publication-facets aria-label="Filtros de publicações">
+      <h3>Filtros</h3>
+      <p>As contagens aparecem depois da primeira consulta.</p>
+    </aside>
+    <div class="neruds-publication-discovery__results" data-publication-results aria-live="polite" aria-atomic="false">
+      <p>Digite um termo para consultar a busca pública do NERUDS.</p>
+    </div>
+    <div class="neruds-publication-discovery__cse" data-google-cse hidden aria-label="Busca incorporada do Google Programmable Search">
+      <div class="gcse-search"></div>
+    </div>
+  </div>
+</section>

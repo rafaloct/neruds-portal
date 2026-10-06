@@ -1,0 +1,13 @@
+/**
+ * @file typography.css
+ * Variação: Amazônia Vibrante
+ */
+
+:root {
+  /* Overrides para Design Tokens */
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Importar fontes se necessário (assumindo que o tema já carrega as bases ou que estas são padrão) */
+/* Nota: Em uma implementação real, carregaríamos via libraries.yml ou @import */

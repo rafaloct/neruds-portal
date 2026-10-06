@@ -1,0 +1,706 @@
+/**
+ * @file
+ * CSS Personalizado Aprimorado do Tema NERUDS/UFT
+ * Baseado em Bootstrap 5 com taxonomias expandidas
+ * Versão: 2.0 - Responsivo e Otimizado
+ */
+
+/* ==========================================================================
+   VARIÁVEIS CSS CUSTOMIZADAS NERUDS/UFT
+   ========================================================================== */
+
+:root {
+  /* Cores principais NERUDS/UFT */
+  --neruds-primary: #0d6efd;
+  --neruds-secondary: #6c757d;
+  --neruds-success: #198754;
+  --neruds-info: #0dcaf0;
+  --neruds-warning: #ffc107;
+  --neruds-danger: #dc3545;
+  --neruds-light: #f8f9fa;
+  --neruds-dark: #212529;
+  
+  /* Cores específicas para taxonomias */
+  --ods-color: #0066cc;
+  --eixo-color: #28a745;
+  --projeto-color: #17a2b8;
+  --microrregiao-color: #ffc107;
+  --pesquisador-color: #6f42c1;
+  --linha-pesquisa-color: #fd7e14;
+  --area-conhecimento-color: #20c997;
+  
+  /* Gradientes */
+  --neruds-gradient-primary: linear-gradient(135deg, var(--neruds-primary) 0%, var(--neruds-info) 100%);
+  --neruds-gradient-success: linear-gradient(135deg, var(--neruds-success) 0%, var(--eixo-color) 100%);
+  
+  /* Sombras */
+  --neruds-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --neruds-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --neruds-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  
+  /* Transições */
+  --neruds-transition: all 0.3s ease;
+  --neruds-transition-fast: all 0.2s ease;
+}
+
+/* ==========================================================================
+   LAYOUT GERAL E TIPOGRAFIA
+   ========================================================================== */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--neruds-dark);
+}
+
+.neruds-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Títulos com gradiente */
+h1, h2, h3 {
+  background: var(--neruds-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   HEADER E NAVEGAÇÃO
+   ========================================================================== */
+
+.navbar-neruds {
+  background: var(--neruds-gradient-primary);
+  padding: 1rem 0;
+  box-shadow: var(--neruds-shadow-md);
+}
+
+.navbar-brand img {
+  max-height: 50px;
+  transition: var(--neruds-transition-fast);
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: var(--neruds-transition-fast);
+  border-radius: 6px;
+  margin: 0 0.25rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.navbar-nav .dropdown-menu {
+  border: none;
+  box-shadow: var(--neruds-shadow-lg);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+}
+
+.navbar-nav .dropdown-item {
+  padding: 0.5rem 1.5rem;
+  transition: var(--neruds-transition-fast);
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: var(--neruds-light);
+  color: var(--neruds-primary);
+}
+
+/* ==========================================================================
+   SOCIAL BAR (Sidebar Esquerda)
+   ========================================================================== */
+
+.neruds-social-bar {
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+}
+
+.social-bar-item {
+  display: block;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--neruds-gradient-primary);
+  color: white;
+  text-align: center;
+  line-height: 45px;
+  transition: var(--neruds-transition);
+  box-shadow: var(--neruds-shadow-sm);
+  text-decoration: none;
+}
+
+.social-bar-item:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: var(--neruds-shadow-md);
+  color: white;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.neruds-hero {
+  background: var(--neruds-gradient-primary);
+  color: white;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.neruds-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.neruds-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  color: white;
+  background: none;
+  -webkit-text-fill-color: white;
+}
+
+.neruds-hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   CARDS E COMPONENTES
+   ========================================================================== */
+
+.neruds-card {
+  border: none;
+  box-shadow: var(--neruds-shadow-sm);
+  transition: var(--neruds-transition);
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.neruds-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--neruds-shadow-lg);
+}
+
+.neruds-card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: var(--neruds-transition);
+}
+
+.neruds-card:hover .neruds-card-img-top {
+  transform: scale(1.05);
+}
+
+.card-header {
+  background: var(--neruds-gradient-primary);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-footer {
+  background-color: var(--neruds-light);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.5rem;
+}
+
+/* ==========================================================================
+   BADGES DE TAXONOMIA EXPANDIDOS
+   ========================================================================== */
+
+.taxonomy-badges-wrapper {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.taxonomy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  padding: 0.5em 0.75em;
+  border-radius: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--neruds-transition-fast);
+  box-shadow: var(--neruds-shadow-sm);
+  border: 2px solid transparent;
+}
+
+.taxonomy-badge:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--neruds-shadow-md);
+  text-decoration: none;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.taxonomy-badge i {
+  font-size: 0.875em;
+}
+
+/* Badges por tipo de taxonomia */
+.badge-ods {
+  background: linear-gradient(135deg, var(--ods-color), #0052a3);
+  color: white;
+}
+
+.badge-eixos-tematicos {
+  background: linear-gradient(135deg, var(--eixo-color), #1e7e34);
+  color: white;
+}
+
+.badge-linha-pesquisa {
+  background: linear-gradient(135deg, var(--linha-pesquisa-color), #e55a00);
+  color: white;
+}
+
+.badge-area-conhecimento {
+  background: linear-gradient(135deg, var(--area-conhecimento-color), #17a085);
+  color: white;
+}
+
+.badge-projeto {
+  background: linear-gradient(135deg, var(--projeto-color), #138496);
+  color: white;
+}
+
+.badge-microrregiao-tocantins {
+  background: linear-gradient(135deg, var(--microrregiao-color), #e0a800);
+  color: var(--neruds-dark);
+}
+
+.badge-pesquisador {
+  background: linear-gradient(135deg, var(--pesquisador-color), #563d7c);
+  color: white;
+}
+
+.badge-palavras-chave, .badge-tags {
+  background: linear-gradient(135deg, var(--neruds-secondary), #545b62);
+  color: white;
+}
+
+/* Cores específicas por ODS (17 cores oficiais da ONU) */
+.badge-ods-1 { background: linear-gradient(135deg, #E5243B, #c41e3a); }
+.badge-ods-2 { background: linear-gradient(135deg, #DDA63A, #c4941f); }
+.badge-ods-3 { background: linear-gradient(135deg, #4C9F38, #3d7f2c); }
+.badge-ods-4 { background: linear-gradient(135deg, #C5192D, #a01424); }
+.badge-ods-5 { background: linear-gradient(135deg, #FF3A21, #e6331c); }
+.badge-ods-6 { background: linear-gradient(135deg, #26BDE2, #1fa5c4); }
+.badge-ods-7 { background: linear-gradient(135deg, #FCC30B, #e3af0a); color: var(--neruds-dark); }
+.badge-ods-8 { background: linear-gradient(135deg, #A21942, #8a1538); }
+.badge-ods-9 { background: linear-gradient(135deg, #FD6925, #e45a20); }
+.badge-ods-10 { background: linear-gradient(135deg, #DD1367, #c4115a); }
+.badge-ods-11 { background: linear-gradient(135deg, #FD9D24, #e48a1f); }
+.badge-ods-12 { background: linear-gradient(135deg, #BF8B2E, #a67828); }
+.badge-ods-13 { background: linear-gradient(135deg, #3F7E44, #356b39); }
+.badge-ods-14 { background: linear-gradient(135deg, #0A97D9, #0985c2); }
+.badge-ods-15 { background: linear-gradient(135deg, #56C02B, #4aa824); }
+.badge-ods-16 { background: linear-gradient(135deg, #00689D, #005a87); }
+.badge-ods-17 { background: linear-gradient(135deg, #19486A, #153d5a); }
+
+/* ==========================================================================
+   GRUPOS DE TAXONOMIA
+   ========================================================================== */
+
+.taxonomy-group {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(248, 249, 250, 0.5);
+  border-radius: 8px;
+  border-left: 4px solid var(--neruds-primary);
+}
+
+.taxonomy-group-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--neruds-dark);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.taxonomy-group-label i {
+  font-size: 1.1em;
+}
+
+/* ==========================================================================
+   TEMPLATES ESPECÍFICOS
+   ========================================================================== */
+
+/* Template de Perfil de Pesquisador */
+.node--type-perfil-pesquisador .node__photo img {
+  border-radius: 50%;
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: var(--neruds-shadow-md);
+  border: 4px solid white;
+}
+
+/* Template de Projeto */
+.node--type-projeto-pesquisa-extensao .node__header {
+  background: var(--neruds-gradient-success);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* Template de Boletim */
+.boletim-card .boletim__cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.boletim-card .boletim__cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+}
+
+/* Template de Relatório */
+.node--type-relatorio .nav-tabs .nav-link {
+  border: none;
+  border-radius: 8px 8px 0 0;
+  margin-right: 0.25rem;
+  transition: var(--neruds-transition-fast);
+}
+
+.node--type-relatorio .nav-tabs .nav-link.active {
+  background: var(--neruds-primary);
+  color: white;
+}
+
+.node--type-relatorio .tab-content {
+  background: white;
+  border-radius: 0 8px 8px 8px;
+  padding: 1.5rem;
+  box-shadow: var(--neruds-shadow-sm);
+}
+
+/* ==========================================================================
+   VIEWS E LISTAGENS
+   ========================================================================== */
+
+.views-view {
+  margin: 2rem 0;
+}
+
+.view-header {
+  background: var(--neruds-gradient-primary);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.view-filters {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--neruds-shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.view-filters .form-control,
+.view-filters .form-select {
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  transition: var(--neruds-transition-fast);
+}
+
+.view-filters .form-control:focus,
+.view-filters .form-select:focus {
+  border-color: var(--neruds-primary);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* ==========================================================================
+   BOTÕES E INTERAÇÕES
+   ========================================================================== */
+
+.btn-primary {
+  background: var(--neruds-gradient-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: var(--neruds-transition-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neruds-shadow-md);
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--neruds-primary);
+  color: var(--neruds-primary);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: var(--neruds-transition-fast);
+}
+
+.btn-outline-primary:hover {
+  background: var(--neruds-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--neruds-shadow-md);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  background: var(--neruds-dark);
+  color: white;
+  padding: 3rem 0 1rem;
+  margin-top: 4rem;
+}
+
+.site-footer h5 {
+  color: var(--neruds-info);
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: var(--neruds-transition-fast);
+}
+
+.site-footer a:hover {
+  color: var(--neruds-info);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .neruds-hero {
+    padding: 2rem 0;
+  }
+  
+  .neruds-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .social-bar-item {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  
+  .taxonomy-badges-wrapper {
+    justify-content: center;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .node--type-relatorio .nav-tabs {
+    flex-direction: column;
+  }
+  
+  .node--type-relatorio .nav-tabs .nav-link {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+    border-radius: 8px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .neruds-container {
+    padding: 0 10px;
+  }
+  
+  .neruds-hero {
+    padding: 1.5rem 0;
+  }
+  
+  .neruds-hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .taxonomy-badge {
+    font-size: 0.75rem;
+    padding: 0.4em 0.6em;
+  }
+  
+  .neruds-card {
+    margin-bottom: 1rem;
+  }
+  
+  .card-body {
+    padding: 0.75rem;
+  }
+  
+  .taxonomy-group {
+    padding: 0.75rem;
+  }
+  
+  .view-header {
+    padding: 1rem;
+  }
+  
+  .view-filters {
+    padding: 1rem;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1400px) {
+  .neruds-container {
+    max-width: 1400px;
+  }
+  
+  .row {
+    --bs-gutter-x: 2rem;
+  }
+  
+  .neruds-card {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   ANIMAÇÕES E EFEITOS
+   ========================================================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.taxonomy-badge.pulse {
+  animation: pulse 0.3s ease;
+}
+
+/* ==========================================================================
+   ACESSIBILIDADE
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states melhorados */
+.taxonomy-badge:focus,
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+  outline: 2px solid var(--neruds-primary);
+  outline-offset: 2px;
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+  .taxonomy-badge {
+    border: 2px solid currentColor;
+  }
+  
+  .neruds-card {
+    border: 1px solid var(--neruds-secondary);
+  }
+}
+
+/* ==========================================================================
+   IMPRESSÃO
+   ========================================================================== */
+
+@media print {
+  .social-bar,
+  .navbar,
+  .btn,
+  .card-footer {
+    display: none !important;
+  }
+  
+  .neruds-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  
+  .taxonomy-badge {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc;
+  }
+}

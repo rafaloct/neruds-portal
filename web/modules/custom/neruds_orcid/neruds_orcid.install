@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for NERUDS ORCID module.
+ */
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+
+/**
+ * Implements hook_install().
+ */
+function neruds_orcid_install() {
+  _neruds_orcid_add_field();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function neruds_orcid_uninstall() {
+  // Remove ORCID field from researcher profiles
+  $field = FieldConfig::loadByName('node', 'perfil_pesquisador', 'field_orcid_id');
+  if ($field) {
+    $field->delete();
+  }
+  $storage = FieldStorageConfig::loadByName('node', 'field_orcid_id');
+  if ($storage) {
+    $storage->delete();
+  }
+}
+
+/**
+ * Add ORCID field to researcher profile content type.
+ */
+function _neruds_orcid_add_field() {
+  // Create field storage if not exists
+  if (!FieldStorageConfig::loadByName('node', 'field_orcid_id')) {
+    FieldStorageConfig::create([
+      'field_name' => 'field_orcid_id',
+      'entity_type' => 'node',
+      'type' => 'string',
+      'settings' => ['max_length' => 19],
+      'cardinality' => 1,
+    ])->save();
+  }
+
+  // Add to researcher profile
+  if (!FieldConfig::loadByName('node', 'perfil_pesquisador', 'field_orcid_id')) {
+    FieldConfig::create([
+      'field_name' => 'field_orcid_id',
+      'entity_type' => 'node',
+      'bundle' => 'perfil_pesquisador',
+      'label' => 'ORCID iD',
+      'description' => 'ORCID identifier no formato 0000-0000-0000-0000',
+      'required' => FALSE,
+    ])->save();
+  }
+
+  // Configure form display
+  $form_display = EntityFormDisplay::load('node.perfil_pesquisador.default');
+  if ($form_display) {
+    $form_display->setComponent('field_orcid_id', [
+      'type' => 'string_textfield',
+      'settings' => ['size' => 25, 'placeholder' => '0000-0000-0000-0000'],
+      'weight' => 20,
+    ]);
+    $form_display->save();
+  }
+
+  // Configure view display
+  $view_display = EntityViewDisplay::load('node.perfil_pesquisador.default');
+  if ($view_display) {
+    $view_display->setComponent('field_orcid_id', [
+      'type' => 'basic_string',
+      'weight' => 20,
+      'label' => 'above',
+    ]);
+    $view_display->save();
+  }
+}

@@ -1,0 +1,175 @@
+{#
+/**
+ * @file
+ * Template para exibição de Projeto de Pesquisa e Extensão
+ */
+#}
+
+{{ attach_library('neruds_theme/projeto-pesquisa-extensao') }}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'projeto-pesquisa') }}>
+
+  {# Hero Section do Projeto #}
+  <div class="projeto-header bg-light mb-4">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-8">
+          {# Badges de Status e Tipo #}
+          <div class="projeto-badges mb-3">
+            {% if content.field_status_projeto %}
+              <span class="badge bg-primary me-2">{{ content.field_status_projeto|render|striptags }}</span>
+            {% endif %}
+            {% if content.field_tipo_projeto %}
+              <span class="badge bg-secondary">{{ content.field_tipo_projeto|render|striptags }}</span>
+            {% endif %}
+          </div>
+
+          <h1 class="display-5 fw-bold mb-3">{{ label }}</h1>
+          
+          {% if content.field_resumo %}
+            <div class="lead mb-4">{{ content.field_resumo }}</div>
+          {% endif %}
+
+          {# Dados Rápidos #}
+          <div class="projeto-meta d-flex flex-wrap gap-4 text-muted">
+            {% if content.field_data_inicio %}
+              <div class="meta-item">
+                <i class="bi bi-calendar-event me-1"></i>
+                <strong>Início:</strong> {{ content.field_data_inicio }}
+              </div>
+            {% endif %}
+            {% if content.field_data_fim %}
+              <div class="meta-item">
+                <i class="bi bi-calendar-check me-1"></i>
+                <strong>Fim:</strong> {{ content.field_data_fim }}
+              </div>
+            {% endif %}
+            {% if content.field_local_execucao %}
+              <div class="meta-item">
+                <i class="bi bi-geo-alt me-1"></i>
+                {{ content.field_local_execucao }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container projeto-content">
+    <div class="row">
+      {# Coluna Principal #}
+      <div class="col-lg-8">
+        
+        {# Abas de Navegação #}
+        <ul class="nav nav-tabs mb-4" id="projetoTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="sobre-tab" data-bs-toggle="tab" data-bs-target="#sobre" type="button" role="tab">Sobre o Projeto</button>
+          </li>
+          {% if content.field_metodologia|render|trim is not empty %}
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="metodologia-tab" data-bs-toggle="tab" data-bs-target="#metodologia" type="button" role="tab">Metodologia</button>
+            </li>
+          {% endif %}
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="equipe-tab" data-bs-toggle="tab" data-bs-target="#equipe" type="button" role="tab">Equipe</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="projetoTabsContent">
+          {# Aba Sobre #}
+          <div class="tab-pane fade show active" id="sobre" role="tabpanel">
+            {% if content.field_justificativa %}
+              <section class="mb-5">
+                <h3 class="h4 mb-3 border-bottom pb-2">Justificativa</h3>
+                {{ content.field_justificativa }}
+              </section>
+            {% endif %}
+
+            {% if content.field_objetivos %}
+              <section class="mb-5">
+                <h3 class="h4 mb-3 border-bottom pb-2">Objetivos</h3>
+                {{ content.field_objetivos }}
+              </section>
+            {% endif %}
+          </div>
+
+          {# Aba Metodologia #}
+          <div class="tab-pane fade" id="metodologia" role="tabpanel">
+            {{ content.field_metodologia }}
+          </div>
+
+          {# Aba Equipe #}
+          <div class="tab-pane fade" id="equipe" role="tabpanel">
+            {% if content.field_coordenador %}
+              <div class="mb-4">
+                <h4 class="h5 text-primary">Coordenação</h4>
+                <p class="fs-5">{{ content.field_coordenador }}</p>
+              </div>
+            {% endif %}
+
+            {% if content.field_equipe_pesquisa %}
+              <div class="mb-4">
+                <h4 class="h5 text-primary">Pesquisadores Vinculados</h4>
+                <div class="equipe-grid">
+                  {{ content.field_equipe_pesquisa }}
+                </div>
+              </div>
+            {% endif %}
+
+            {% if content.field_participantes %}
+              <div class="mb-4">
+                <h4 class="h5 text-primary">Outros Participantes</h4>
+                {{ content.field_participantes }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+      {# Sidebar #}
+      <div class="col-lg-4">
+        <div class="projeto-sidebar p-4 bg-light rounded-3">
+          
+          {% if content.field_financiamento %}
+            <div class="sidebar-block mb-4">
+              <h4 class="h6 text-uppercase text-muted mb-3">Financiamento</h4>
+              {{ content.field_financiamento }}
+            </div>
+          {% endif %}
+
+          {% if content.field_linhas_pesquisa %}
+            <div class="sidebar-block mb-4">
+              <h4 class="h6 text-uppercase text-muted mb-3">Linhas de Pesquisa</h4>
+              {{ content.field_linhas_pesquisa }}
+            </div>
+          {% endif %}
+
+          {% if content.field_ods_interesse %}
+            <div class="sidebar-block mb-4">
+              <h4 class="h6 text-uppercase text-muted mb-3">ODS Relacionados</h4>
+              {{ content.field_ods_interesse }}
+            </div>
+          {% endif %}
+
+          {% if content.field_eixos_tematicos %}
+            <div class="sidebar-block mb-4">
+              <h4 class="h6 text-uppercase text-muted mb-3">Eixos Temáticos</h4>
+              {{ content.field_eixos_tematicos }}
+            </div>
+          {% endif %}
+
+          {% if content.field_palavras_chave %}
+            <div class="sidebar-block">
+              <h4 class="h6 text-uppercase text-muted mb-3">Palavras-chave</h4>
+              {{ content.field_palavras_chave }}
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</article>

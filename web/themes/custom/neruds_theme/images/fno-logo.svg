@@ -1,0 +1,25 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fnoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Círculo de fundo -->
+  <circle cx="40" cy="40" r="38" fill="url(#fnoGradient)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Texto FNO -->
+  <text x="40" y="35" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">FNO</text>
+  
+  <!-- Linha decorativa -->
+  <line x1="20" y1="45" x2="60" y2="45" stroke="white" stroke-width="2"/>
+  
+  <!-- Texto "Norte" -->
+  <text x="40" y="55" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="white">NORTE</text>
+  
+  <!-- Elementos decorativos (estrelas representando a região Norte) -->
+  <polygon points="15,20 17,25 22,25 18,28 20,33 15,30 10,33 12,28 8,25 13,25" fill="#f59e0b"/>
+  <polygon points="65,15 66,18 69,18 67,20 68,23 65,21 62,23 63,20 61,18 64,18" fill="#f59e0b"/>
+  <polygon points="25,65 26,67 28,67 27,68 27,70 25,69 23,70 23,68 22,67 24,67" fill="#f59e0b"/>
+</svg>

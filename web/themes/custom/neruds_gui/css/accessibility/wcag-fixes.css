@@ -1,0 +1,225 @@
+/**
+ * @file wcag-fixes.css
+ * NERUDS — Correções de acessibilidade WCAG 2.1 AA
+ * Baseado em auditoria Lighthouse + inspeção manual
+ *
+ * Problemas corrigidos:
+ *  1. Botões: texto branco em laranja #F58535 → contraste 2.53:1 (FALHA)
+ *  2. Texto auxiliar #8a8a8c em branco → contraste 3.44:1 (FALHA)
+ *  3. Hover de links no rodapé: #F58535 em fundo escuro → contraste 3.08:1 (FALHA)
+ *  4. Indicadores de foco insuficientes
+ *  5. Hierarquia de cabeçalhos: h4 paginação sem h3 precedente
+ */
+
+/* ============================================================
+   1. BOTÕES — texto escuro sobre laranja (WCAG AA: 7.5:1)
+   ============================================================ */
+
+/* Branco em #F58535 = 2.53:1 → FALHA
+   Preto  em #F58535 = 8.32:1 → APROVADO */
+.button--primary,
+.btn-primary,
+input[type="submit"],
+button[type="submit"],
+.form-submit,
+.button {
+  color: #1a1a1a !important;
+}
+
+.button--primary:hover,
+.btn-primary:hover,
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.form-submit:hover {
+  color: #1a1a1a !important;
+}
+
+/* Skip link: fundo laranja com texto escuro */
+.skip-link:focus {
+  color: #1a1a1a !important;
+}
+
+/* Botão de pesquisa no header */
+.neruds-search__submit {
+  color: #1a1a1a !important;
+}
+
+/* ============================================================
+   2. TEXTO AUXILIAR — cinza escurecido (WCAG AA: 7.0:1)
+   ============================================================ */
+
+/* #8a8a8c em branco = 3.44:1 → FALHA
+   #595959 em branco = 7.00:1 → APROVADO */
+
+/* Textos secundários/auxiliares nas views */
+.views-view-grid .field--name-field-resumo p,
+.views-view-grid .field--name-field-biografia p,
+.views-view-grid .field--name-field-resumo-boletim p,
+.views-view-grid .field--name-body p,
+.view-view-pesquisadores-por-linha .field--name-field-biografia p,
+.view-view-pesquisadores-por-linha .field--name-field-nome-completo .field__item {
+  color: #595959 !important;
+}
+
+/* Nomes de pesquisadores no card */
+.views-view-grid .node__title a,
+.views-view-grid h2.node__title a,
+.views-view-grid h3.node__title a {
+  color: #404040 !important; /* contraste 10.0:1 */
+}
+
+.views-view-grid .node__title a:hover,
+.views-view-grid h2.node__title a:hover {
+  color: #C15900 !important; /* laranja acessível 4.52:1 */
+}
+
+/* Metadados de cards (data, autor) */
+.views-view-grid .node__meta,
+.card__meta,
+.node__submitted,
+.field--name-field-data,
+.field--name-created {
+  color: #595959 !important;
+}
+
+/* Textos de descrição/extrato em cards */
+.card__excerpt,
+.node__excerpt,
+.field--name-field-descricao p,
+.field--name-body .field__item p {
+  color: #595959 !important;
+}
+
+/* Texto placeholder dos filtros */
+input::placeholder,
+select option[value=""] {
+  color: #595959 !important;
+}
+
+/* ============================================================
+   3. RODAPÉ — links e texto em fundo escuro (#2c2c2e)
+   ============================================================ */
+
+/* #F58535 em #2c2c2e = 3.08:1 → FALHA para texto normal
+   Exceto para texto grande/bold (18pt+ ou 14pt bold) = OK (mínimo 3:1) */
+
+/* Links hover no rodapé: usar laranja mais claro (#FFB366 = 7.2:1 em #2c2c2e) */
+.site-footer a:hover,
+.site-footer__bottom a:hover,
+.region-footer-bottom a:hover,
+.region-footer-top a:hover {
+  color: #FFB366 !important;
+}
+
+/* Texto de descrição no rodapé: aumentar opacidade */
+.site-footer__brand p,
+.site-footer p {
+  color: rgba(255, 255, 255, 0.82) !important; /* contraste ~9.8:1 */
+}
+
+/* Links normais no rodapé (não hover) */
+.site-footer a,
+.site-footer__bottom a,
+.region-footer-bottom a {
+  color: #D4D4D4 !important; /* contraste ~8.9:1 em #2c2c2e */
+}
+
+/* Texto do copyright */
+.site-footer__bottom,
+.region-footer-bottom {
+  color: #C8C8C8 !important; /* contraste ~7.8:1 */
+}
+
+/* ============================================================
+   4. FOCO — indicadores de alta visibilidade
+   ============================================================ */
+
+/* Todos os elementos interativos: anel laranja acessível sobre qualquer fundo */
+:focus-visible {
+  outline: 3px solid #C15900 !important;
+  outline-offset: 3px !important;
+  border-radius: 3px;
+}
+
+/* Links */
+a:focus-visible {
+  outline: 3px solid #C15900 !important;
+  outline-offset: 3px !important;
+  border-radius: 2px;
+  text-decoration: underline;
+}
+
+/* Botões */
+button:focus-visible,
+input[type="submit"]:focus-visible,
+.button:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid #C15900 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(193, 89, 0, 0.2) !important;
+}
+
+/* Inputs e Selects */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #C15900 !important;
+  outline-offset: 0 !important;
+  border-color: #C15900 !important;
+  box-shadow: 0 0 0 3px rgba(193, 89, 0, 0.15) !important;
+}
+
+/* Cards clicáveis */
+.views-view-grid article.node:focus-within {
+  outline: 3px solid #C15900;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   5. HIERARQUIA DE CABEÇALHOS
+   ============================================================ */
+
+/* Paginação: h4 visually-hidden sem h3 precedente → manter oculto visualmente
+   mas corrigir via atributo aria (impossível via CSS — corrigido no template) */
+
+/* "MEMBER FOR" nas notícias: garantir que não pareça heading */
+.node__submitted h4,
+.field--name-member-for h4,
+[class*="member"] h4 {
+  font-size: inherit !important;
+  font-weight: normal !important;
+  margin: 0 !important;
+  display: inline !important;
+}
+
+/* ============================================================
+   6. CONTRASTE DE FORMULÁRIOS
+   ============================================================ */
+
+/* Label de formulário: garantir contraste */
+.form-item__label,
+label {
+  color: #333333 !important; /* contraste 12.6:1 */
+}
+
+/* Borda de inputs: mais visível */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+select,
+textarea {
+  border-color: #595959 !important;
+  border-width: 1.5px !important;
+}
+
+/* ============================================================
+   7. TAGS / BADGES — laranja acessível
+   ============================================================ */
+
+/* Tags ODS e Linhas de Pesquisa: fundo laranja com texto escuro */
+.views-view-grid .field--type-entity-reference a,
+.views-view-grid .field--name-field-ods-interesse .field__item,
+.views-view-grid .field--name-field-eixos-tematicos a,
+.views-view-grid .field--name-field-linhas-pesquisa a {
+  color: #7A3800 !important; /* contraste 7.0:1 em fundo rgba(245,133,53,0.1) */
+}

@@ -1,0 +1,60 @@
+/* Scoped presentation for academic cards; source titles and fields stay intact. */
+.view-view-publicacoes-taxonomia.view-display-id-page_1 .views-view-grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.view-view-pesquisadores-por-linha .views-view-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); align-items: start; }
+@media (min-width: 1200px) {
+  .view-view-pesquisadores-por-linha .views-view-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.views-view-grid .academic-publication { padding: 1.25rem; margin: 0; border-left: 3px solid #a04800; }
+.views-view-grid .academic-publication:hover, .views-view-grid .academic-person:hover { transform: none; }
+.academic-publication .node__title, .academic-person .node__title { margin: 0 0 .75rem; font-size: 1.3rem; line-height: 1.4; overflow-wrap: anywhere; }
+.academic-publication__metadata { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: baseline; }
+.academic-publication__metadata .field { margin: 0; font-size: 1rem; }
+.academic-publication__metadata .field__label { font-weight: 600; }
+.academic-publication .field--name-field-ano-publicacao .field__item { background: #f2ede8; color: #40352d; border-radius: 1rem; padding: .15rem .65rem; }
+.academic-publication .field--name-field-revista-veiculo { font-style: italic; }
+.views-view-grid .academic-publication .field--name-field-pesquisadores-autores a { background: none; border: 0; padding: 0; font-size: 1rem; text-transform: none; letter-spacing: normal; color: #843b00; text-decoration: underline; }
+.academic-card__link { display: inline-block; align-self: start; margin-top: 1rem; padding: .5rem 0; color: #843b00; font-weight: 600; text-decoration: underline; }
+.academic-person__body { padding: 1.1rem; min-width: 0; }
+.views-view-grid article.academic-person .field--name-field-foto-perfil img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 25%; margin: 0; }
+.academic-person .field--name-field-foto-perfil { margin: 0; }
+.academic-person .field--name-field-nome-completo { color: #505052; font-size: .95rem; }
+.academic-person__bio { margin: .75rem 0; }
+.academic-person__bio summary { cursor: pointer; padding: .6rem 0; color: #40352d; font-weight: 600; }
+.views-view-grid .academic-person__bio .field__item p { display: block; overflow: visible; -webkit-line-clamp: unset; margin: .5rem 0; }
+.academic-person .field--name-field-ods, .academic-person .field--name-field-ods-interesse { margin-top: .75rem; }
+.views-view-grid .academic-person :is(.field--name-field-ods, .field--name-field-ods-interesse) .field__item { padding: 0; margin: 0; background: none; border: 0; text-transform: none; letter-spacing: normal; }
+.views-view-grid .academic-person :is(.field--name-field-ods, .field--name-field-ods-interesse) .field__item a { display: inline-block; padding: .35rem .65rem; margin: .15rem 0; background: #f2ede8; color: #40352d; border: 1px solid #b7aaa0; border-radius: 1rem; font-size: .85rem; line-height: 1.4; text-transform: none; letter-spacing: normal; }
+/* Keep structural field labels available to assistive technology. */
+.academic-person :is(.field--name-field-foto-perfil, .field--name-field-nome-completo, .field--name-field-biografia) > .field__label,
+.academic-publication :is(.field--name-field-ano-publicacao, .field--name-field-revista-veiculo) > .field__label { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.neruds-contact-layout { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .neruds-contact-layout { grid-template-columns: minmax(240px, .8fr) minmax(0, 1.4fr); } }
+.neruds-contact-intro { padding: 1.5rem; background: #f2ede8; border-radius: .75rem; align-self: start; }
+.neruds-contact-panel { min-width: 0; }
+.neruds-contact-form { padding: 1.5rem; border: 1px solid #b7aaa0; border-radius: .75rem; background: #fff; }
+.neruds-contact-form :is(input:not([type=submit]), select, textarea) { width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box; border-color: #767676; }
+.neruds-contact-form textarea { min-height: 8rem; resize: vertical; }
+.neruds-contact-form .form-item { margin-block: 0 1.25rem; }
+.neruds-contact-form input[type=submit] { color: #1a1a1a; white-space: normal; max-width: 100%; }
+.neruds-filter { min-width: 0; width: 100%; border: 1px solid #767676; border-radius: .5rem; background: white; color: #40352d; }
+.neruds-filter > summary { cursor: pointer; padding: .7rem; font-size: 1rem; }
+.neruds-filter__options { max-height: 18rem; overflow-y: auto; padding: .5rem; }
+.views-exposed-form .neruds-filter label { display: flex; align-items: start; gap: .5rem; padding: .5rem; color: #40352d; font-size: .95rem; text-transform: none; letter-spacing: normal; font-weight: 400; cursor: pointer; }
+.neruds-filter input[type=checkbox] { flex: 0 0 auto; width: 1.15rem; height: 1.15rem; margin-top: .1rem; }
+.neruds-filter[hidden], select[hidden] { display: none !important; }
+.neruds-filter :focus-visible, .academic-person summary:focus-visible { outline: 3px solid #843b00; outline-offset: 3px; }
+.views-view-grid article.academic-person .field--name-field-foto-perfil img { max-height: none; }
+.view-view-pesquisadores-por-linha article.academic-person:hover .field--name-field-foto-perfil img { transform: none; }
+.views-view-grid :is(.academic-person, .academic-publication) .node__title a { display: block; -webkit-line-clamp: unset; overflow: visible; font-size: inherit; text-align: left; color: #40352d; }
+.views-view-grid :is(.academic-person, .academic-publication) .node__title a:hover { color: #843b00; text-decoration: underline; }
+.academic-person .field > .field__label { display: block; }
+.academic-person__bio .field__item { color: #505052; }
+.views-exposed-form label[hidden] { display: none; }
+/* The inherited reading column is too narrow for these listing/form layouts. */
+.region--content:has(.view-view-publicacoes-taxonomia, .view-view-pesquisadores-por-linha),
+.neruds-contact-panel .region--content { display: block; }
+.views-view-grid .academic-person :is(.field--name-field-ods, .field--name-field-ods-interesse) :is(.field__item, .field__item a) { white-space: normal; overflow: visible; text-overflow: clip; max-width: 100%; }
+.academic-person .field--name-field-ods-interesse { display: block; padding: .75rem 0 0; }
+.academic-person .field--name-field-nome-completo { padding: 0; text-align: left; }
+.academic-person .field--name-field-nome-completo .field__item { font-size: .95rem; color: #505052; }
+.academic-person .field--name-field-biografia { padding: 0; }

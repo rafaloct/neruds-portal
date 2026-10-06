@@ -1,0 +1,162 @@
+/**
+ * @file brand-fonts.css
+ * NERUDS — Fontes oficiais da marca + paleta oficial
+ * Manual da Marca NERUDS v1.0
+ */
+
+/* ============================================================
+   FONTES DA MARCA
+   ============================================================ */
+
+/* Nature Beauty — display/decorativa (logotipo e elementos gráficos) */
+@font-face {
+  font-family: 'Nature Beauty';
+  src: url('/themes/custom/neruds_gui/fonts/NatureBeauty.woff2') format('woff2'),
+       url('/themes/custom/neruds_gui/fonts/NatureBeauty.woff')  format('woff'),
+       url('/themes/custom/neruds_gui/fonts/NatureBeauty.ttf')   format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Serifa Blk BT — serifada Black (títulos de destaque) */
+@font-face {
+  font-family: 'Serifa Blk BT';
+  src: url('/themes/custom/neruds_gui/fonts/Serifa-Blk-BT-Black.woff2') format('woff2'),
+       url('/themes/custom/neruds_gui/fonts/Serifa-Blk-BT-Black.woff')  format('woff'),
+       url('/themes/custom/neruds_gui/fonts/Serifa-Blk-BT-Black.ttf')   format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   PALETA OFICIAL DA MARCA — Manual da Marca NERUDS
+   ============================================================ */
+
+:root {
+  /* Cores primárias */
+  --neruds-laranja:       #F58535;  /* Laranja — 0C 60M 100Y 0K  */
+  --neruds-cinza-escuro:  #606062;  /* 80% preto — 0C 0M 0Y 80K  */
+  --neruds-cinza-claro:   #DCDDDF;  /* 15% preto — 0C 0M 0Y 15K  */
+
+  /* Derivações de UI */
+  --neruds-bg:            #ffffff;
+  --neruds-texto:         #606062;
+  --neruds-texto-claro:   #9a9a9c;
+  --neruds-accent:        #F58535;
+  --neruds-accent-hover:  #e07020;
+  --neruds-borda:         #DCDDDF;
+  --neruds-bg-secao:      #f5f5f6;
+
+  /* Aliases para variáveis de tema existentes */
+  --color-babasu:         var(--neruds-cinza-escuro);
+  --color-babasu-dark:    #3a3a3c;
+  --color-barro:          var(--neruds-laranja);
+  --color-palha:          #fdf3e7;
+  --color-white:          #ffffff;
+  --color-gray-50:        #fafafa;
+  --color-gray-100:       #f5f5f6;
+  --color-gray-200:       #DCDDDF;
+  --color-gray-400:       #9a9a9c;
+  --color-gray-500:       #808082;
+  --color-gray-600:       #606062;
+  --color-gray-700:       #4a4a4c;
+  --color-gray-800:       #333334;
+  --color-gray-900:       #1a1a1c;
+
+  /* Tipografia da marca */
+  --font-brand-display:  'Nature Beauty', cursive;
+  --font-brand-heading:  'Serifa Blk BT', 'Playfair Display', Georgia, serif;
+
+  /* Stack tipográfico completo */
+  --font-serif:   'Serifa Blk BT', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ============================================================
+   APLICAÇÃO TIPOGRÁFICA — Manual da Marca
+   ============================================================ */
+
+/* Nature Beauty: uso exclusivo em elementos de identidade */
+.brand-display,
+.logo-nature-beauty,
+.neruds-wordmark {
+  font-family: var(--font-brand-display);
+  font-weight: normal;
+}
+
+/* Serifa Blk BT: headings de destaque em todo o site */
+h1, h2, h3,
+.page-title,
+.node__title,
+.card__title,
+.section-title {
+  font-family: var(--font-brand-heading);
+  font-weight: 900;
+}
+
+/* Títulos menores mantêm a família serifada mas peso menor */
+h4, h5, h6 {
+  font-family: var(--font-brand-heading);
+  font-weight: 900;
+}
+
+/* ============================================================
+   LOGO — Versões cromáticas (Manual da Marca §4)
+   ============================================================ */
+
+/* Versão colorida (padrão) */
+.logo-default .logo-sigla { color: var(--neruds-laranja); }
+.logo-default .logo-nome  { color: var(--neruds-cinza-escuro); }
+
+/* Versão negativa (fundo escuro) */
+.logo-negativo .logo-sigla,
+.logo-negativo .logo-nome  { color: #ffffff; }
+
+/* Versão tons de cinza */
+.logo-grayscale .logo-sigla,
+.logo-grayscale .logo-nome  { color: var(--neruds-cinza-escuro); }
+
+/* Versão preto */
+.logo-preto .logo-sigla,
+.logo-preto .logo-nome  { color: #000000; }
+
+/* ============================================================
+   ÁREA DE PROTEÇÃO DO LOGO (Manual da Marca §5)
+   ============================================================ */
+
+.site-branding__logo {
+  padding: 0.6em;
+  box-sizing: content-box;
+}
+
+/* ============================================================
+   ACENTOS E BOTÕES COM IDENTIDADE OFICIAL
+   ============================================================ */
+
+a {
+  color: var(--neruds-cinza-escuro);
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: var(--neruds-accent);
+}
+
+/* Botão primário — laranja oficial */
+.button--primary,
+.btn-primary,
+input[type="submit"],
+button[type="submit"] {
+  background-color: var(--neruds-laranja);
+  color: #ffffff;
+  border-color: var(--neruds-laranja);
+}
+
+.button--primary:hover,
+.btn-primary:hover {
+  background-color: var(--neruds-accent-hover);
+  border-color: var(--neruds-accent-hover);
+}

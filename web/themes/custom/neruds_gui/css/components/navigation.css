@@ -1,0 +1,226 @@
+/**
+ * @file navigation.css
+ * Navegação — Menu principal, breadcrumbs, paginação
+ */
+
+/* =====================================================
+   NAVEGAÇÃO BASE
+   ===================================================== */
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-2);
+}
+
+nav a {
+  color: var(--color-babasu);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+nav a:hover {
+  background: rgba(46, 70, 50, 0.1);
+  color: var(--color-barro);
+}
+
+nav a.active {
+  background: rgba(46, 70, 50, 0.15);
+  font-weight: var(--font-weight-semibold);
+  border-bottom: 2px solid var(--color-palha);
+}
+
+/* =====================================================
+   BREADCRUMBS
+   ===================================================== */
+
+.breadcrumb,
+nav.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  padding: var(--space-3) 0;
+  overflow-x: auto;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: "›";
+  color: var(--color-babasu);
+}
+
+.breadcrumb a {
+  color: var(--color-babasu);
+  text-decoration: none;
+  padding: 0;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-barro);
+}
+
+.breadcrumb [aria-current="page"] {
+  color: var(--color-barro);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* =====================================================
+   PAGINAÇÃO
+   ===================================================== */
+
+.pagination,
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  flex-wrap: wrap;
+}
+
+.pagination li {
+  list-style: none;
+}
+
+.pagination a,
+.pagination button,
+.pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-200);
+  background: var(--color-white);
+  color: var(--color-babasu);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.pagination a:hover,
+.pagination button:hover {
+  background: rgba(46, 70, 50, 0.1);
+  border-color: var(--color-babasu);
+}
+
+.pagination [aria-current="page"],
+.pagination .active {
+  background: var(--color-babasu);
+  color: var(--color-white);
+  border-color: var(--color-babasu);
+  font-weight: var(--font-weight-bold);
+}
+
+.pagination .disabled,
+.pagination [disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
+
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background: var(--color-paper);
+  padding: var(--space-4);
+  max-height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  z-index: var(--z-dropdown);
+}
+
+@media (max-width: 768px) {
+  .nav-mobile.active {
+    display: block;
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav.mobile-active {
+    display: flex;
+  }
+}
+
+.nav-mobile ul {
+  flex-direction: column;
+  gap: 0;
+}
+
+.nav-mobile a {
+  display: block;
+  border: none;
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  padding-left: var(--space-3);
+}
+
+.nav-mobile a:hover {
+  background: var(--color-gray-50);
+  border-left-color: var(--color-palha);
+}
+
+.nav-mobile a.active {
+  border-left-color: var(--color-palha);
+  background: rgba(46, 70, 50, 0.05);
+}
+
+/* =====================================================
+   FILTERS / CHIPS
+   ===================================================== */
+
+.filter-bar,
+.nav-filters {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.filter-chip,
+.nav-filters button {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  color: var(--color-babasu);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: var(--font-size-sm);
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  background: var(--color-babasu);
+  color: var(--color-white);
+  border-color: var(--color-babasu);
+}
+
+.filter-chip .close {
+  margin-left: var(--space-2);
+}

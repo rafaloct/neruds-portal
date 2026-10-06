@@ -1,0 +1,97 @@
+.neruds-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.neruds-skeleton-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d8ded6;
+  border-radius: 8px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.neruds-skeleton-text {
+  height: 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.neruds-skeleton-text.short {
+  width: 60%;
+}
+
+.neruds-skeleton-text.long {
+  width: 100%;
+}
+
+.neruds-skeleton-heading {
+  height: 1.25rem;
+  border-radius: 4px;
+  width: 85%;
+}
+
+.neruds-skeleton-snippet {
+  height: 0.875rem;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.neruds-skeleton-snippet + .neruds-skeleton-snippet {
+  width: 95%;
+}
+
+.neruds-skeleton-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.neruds-skeleton-actions > div {
+  height: 2.25rem;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.neruds-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.neruds-skeleton-metric {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d8ded6;
+  border-radius: 8px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.neruds-skeleton-metric .neruds-skeleton-text {
+  height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.neruds-skeleton-metric .neruds-skeleton-text.label {
+  height: 0.875rem;
+  width: 70%;
+}
+
+@media (max-width: 52rem) {
+  .neruds-skeleton-grid {
+    grid-template-columns: 1fr;
+  }
+}

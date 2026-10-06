@@ -1,0 +1,159 @@
+# ==========================================================================
+# NERUDS Theme Libraries — Unified Configuration
+# ==========================================================================
+
+# 1. Bootstrap 5 (CDN)
+bootstrap:
+  css:
+    theme:
+      'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css':
+        type: external
+        minified: true
+      'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css':
+        type: external
+        minified: true
+  js:
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js':
+      type: external
+      minified: true
+      attributes:
+        defer: true
+
+# 2. Google Fonts (Inter + Source Serif 4)
+google-fonts:
+  css:
+    theme:
+      'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&display=swap':
+        type: external
+        preprocess: false
+        attributes:
+          media: all
+
+# 3. Main custom library (loaded globally via info.yml)
+custom:
+  css:
+    theme:
+      css/layout.css: { weight: -10 }
+      css/custom-enhanced.css: {}
+  js:
+    js/custom.js:
+      attributes:
+        defer: true
+  dependencies:
+    - neruds_theme/bootstrap
+    - neruds_theme/google-fonts
+    - core/drupal
+
+# 4. Taxonomy badge styles
+taxonomy-badges:
+  css:
+    theme:
+      css/taxonomy-badges.css: {}
+  dependencies:
+    - neruds_theme/bootstrap
+
+# 5. Navigation & Search
+navigation:
+  css:
+    theme:
+      css/neruds-menu-search.css: {}
+  js:
+    js/navigation.js: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal.ajax
+
+menu-search:
+  css:
+    theme:
+      css/neruds-menu-search.css: {}
+  js:
+    js/menu-search.js: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+    - core/jquery
+
+# 6. Ant Design components (legacy support)
+neruds-ant-design:
+  css:
+    theme:
+      css/neruds_ant_design_style.css: {}
+  js:
+    js/custom.js: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+
+# 7. Forms and Tables
+neruds-forms-tables:
+  css:
+    theme:
+      css/neruds_forms_tables.css: {}
+  dependencies:
+    - core/drupal
+
+# 8. Responsive interactions
+responsive-templates:
+  css:
+    theme:
+      css/custom-enhanced.css: {}
+  js:
+    js/responsive-interactions.js: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+    - core/jquery
+
+# 9. FNO Reports
+fno-reports:
+  css:
+    theme:
+      css/fno-report-styles.css: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+
+# ==========================================================================
+# Content Type Libraries (loaded per-template via attach_library)
+# ==========================================================================
+
+perfil-pesquisador:
+  css:
+    theme:
+      css/content-types/perfil-pesquisador.css: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+
+projeto-pesquisa-extensao:
+  css:
+    theme:
+      css/content-types/projeto-pesquisa-extensao.css: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+
+publicacao-cientifica:
+  css:
+    theme:
+      css/content-types/publicacao-cientifica.css: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+
+noticia:
+  css:
+    theme:
+      css/content-types/noticia.css: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal
+
+evento-cientifico:
+  css:
+    theme:
+      css/content-types/evento-cientifico.css: {}
+  dependencies:
+    - neruds_theme/bootstrap
+    - core/drupal

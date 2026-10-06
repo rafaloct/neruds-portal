@@ -1,0 +1,73 @@
+/**
+ * @file
+ * Estilos para badges de taxonomias do tema NERUDS
+ * 
+ * Estilos para exibir termos de taxonomia como badges/badges
+ */
+
+/* Badges de taxonomia */
+.taxonomy-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin: 0.125rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+  background-color: var(--neruds-primary, #0d6efd);
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.taxonomy-badge:hover {
+  opacity: 0.85;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Cores específicas por tipo de taxonomia */
+.taxonomy-badge--ods {
+  background-color: var(--ods-color, #0066cc);
+}
+
+.taxonomy-badge--eixo-tematico {
+  background-color: var(--eixo-color, #28a745);
+}
+
+.taxonomy-badge--linha-pesquisa {
+  background-color: var(--linha-pesquisa-color, #fd7e14);
+}
+
+.taxonomy-badge--area-conhecimento {
+  background-color: var(--area-conhecimento-color, #20c997);
+}
+
+.taxonomy-badge--projeto {
+  background-color: var(--projeto-color, #17a2b8);
+}
+
+.taxonomy-badge--microrregiao {
+  background-color: var(--microrregiao-color, #ffc107);
+  color: #212529;
+}
+
+.taxonomy-badge--pesquisador {
+  background-color: var(--pesquisador-color, #6f42c1);
+}
+
+/* Lista de badges */
+.taxonomy-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.taxonomy-badges-list li {
+  margin: 0;
+  padding: 0;
+}
+

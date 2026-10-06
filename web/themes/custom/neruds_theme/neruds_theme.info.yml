@@ -1,0 +1,39 @@
+name: 'NERUDS Theme'
+type: theme
+description: 'Tema customizado do NERUDS/UFT baseado em Bootstrap 5, integrando taxonomias e blocos dinâmicos.'
+package: 'Custom'
+version: '1.0.0'
+core_version_requirement: ^11 || ^12
+
+base theme: olivero
+
+# Regiões de blocos (compatível com estrutura Olivero e Drupal 11)
+regions:
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  hero: 'Hero (full width)'
+  highlighted: 'Highlighted'
+  breadcrumb: 'Breadcrumb'
+  social_bar: 'Social Bar'
+  content_above: 'Content Above'
+  content: 'Content'
+  sidebar: 'Sidebar'
+  content_below: 'Content Below'
+  footer_top: 'Footer Top'
+  footer_bottom: 'Footer Bottom'
+
+# Bibliotecas globais do tema
+libraries:
+  - neruds_theme/google-fonts
+  - neruds_theme/bootstrap
+  - neruds_theme/custom
+
+# Dependências
+dependencies:
+  - olivero
+
+# Configurações do tema
+settings:
+  # Configurações de tema podem ser adicionadas aqui
+

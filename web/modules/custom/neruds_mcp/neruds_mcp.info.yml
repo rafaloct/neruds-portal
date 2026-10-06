@@ -1,0 +1,12 @@
+name: 'NERUDS MCP — AI Content Management'
+description: 'Drupal Model Context Protocol integration for AI-powered content automation'
+type: module
+core_version_requirement: ^11 || ^12
+version: 1.0.0
+package: NERUDS
+
+dependencies:
+  - drupal:rest
+  - drupal:serialization
+  - drupal:node
+  - drupal:taxonomy

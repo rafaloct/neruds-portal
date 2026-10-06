@@ -1,0 +1,12 @@
+name: 'NERUDS Google Integration'
+type: module
+description: 'Territorial portal blocks, cached public Google integrations, and discovery endpoints for NERUDS.'
+package: NERUDS
+core_version_requirement: ^11
+dependencies:
+  - drupal:block
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:user
+  - drupal:views
+  - drupal:datetime

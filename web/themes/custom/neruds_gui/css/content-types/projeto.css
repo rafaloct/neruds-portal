@@ -1,0 +1,257 @@
+/**
+ * @file projeto.css
+ * Projetos de pesquisa/extensão
+ */
+
+.node--project {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-gray-200);
+}
+
+.node--project__image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.node--project__content {
+  padding: var(--space-6);
+}
+
+.node--project__status {
+  display: inline-block;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-babasu);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+}
+
+/* ============================================================
+   PROJECT PAGE — Layout acadêmico com sidebar e citação
+   ============================================================ */
+
+.project-page {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.project-page__header {
+  grid-column: 1 / -1;
+}
+
+.project-page__body { grid-column: 1 / 2; }
+.project-page__sidebar { grid-column: 2 / 3; }
+
+@media (max-width: 900px) {
+  .project-page {
+    grid-template-columns: 1fr;
+  }
+  .project-page__header,
+  .project-page__body,
+  .project-page__sidebar {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.project-page__meta-top {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.project-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.status--active  { background: #FFF3E0; color: #C15900; border: 1px solid #F58535; }
+.status--done    { background: #E8F5E9; color: #1B5E20; border: 1px solid #4CAF50; }
+.status--planned { background: #E3F2FD; color: #0D47A1; border: 1px solid #2196F3; }
+.status--cancelled,
+.status--suspended { background: #F5F5F5; color: #616161; border: 1px solid #9E9E9E; }
+
+.project-type-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: #606062;
+}
+
+.project-page__title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-family: var(--font-serif, 'Georgia', serif);
+  font-weight: 700;
+  color: #606062;
+  line-height: 1.2;
+  margin: 0.5rem 0 1rem;
+}
+
+.project-page__info-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.project-page__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.project-page__info-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+}
+
+.project-page__info-item a,
+.project-page__info-item {
+  color: #606062;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+/* ── Seções do corpo ──────────────────────────────────────── */
+.project-page__section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.project-page__section:last-child {
+  border-bottom: none;
+}
+
+.project-page__section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #606062;
+  font-family: var(--font-serif, Georgia, serif);
+  margin: 0 0 1rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid #F58535;
+}
+
+.project-page__participants {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #606062;
+  line-height: 1.8;
+}
+
+/* ── Citation block ───────────────────────────────────────── */
+.citation-block {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.citation-block__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #606062;
+  margin: 0 0 0.75rem;
+  border-bottom: 2px solid #F58535;
+  padding-bottom: 0.5rem;
+}
+
+.citation-block__text {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #4b5563;
+  background: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border-left: 3px solid #F58535;
+  margin: 0 0 0.75rem;
+}
+
+.citation-block__copy-btn {
+  width: 100%;
+  padding: 0.5rem;
+  background: #F58535;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.citation-block__copy-btn:hover { background: #C15900; }
+
+.citation-block__formats {
+  margin-top: 0.75rem;
+}
+
+.citation-block__formats summary {
+  font-size: 0.8rem;
+  color: #C15900;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.citation-block__bibtex { margin-top: 0.75rem; }
+
+.citation-block__code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  background: #f3f4f6;
+  padding: 0.75rem;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: #374151;
+  margin: 0.5rem 0 0;
+}
+
+/* ── Team block ───────────────────────────────────────────── */
+.project-page__team-block {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.project-page__team-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #606062;
+  margin: 0 0 0.75rem;
+  border-bottom: 2px solid #F58535;
+  padding-bottom: 0.5rem;
+}

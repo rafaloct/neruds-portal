@@ -1,0 +1,297 @@
+/**
+ * @file
+ * Layout CSS para NERUDS Theme
+ * Seguindo as melhores práticas do Drupal 11 e metodologia SMACSS
+ * @see https://www.drupal.org/docs/develop/theming-drupal
+ */
+
+/* ============================================
+   BASE LAYOUT
+   ============================================ */
+
+.layout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--neruds-spacing-md);
+}
+
+@media (min-width: 768px) {
+  .layout-container {
+    padding: 0 var(--neruds-spacing-lg);
+  }
+}
+
+/* ============================================
+   LAYOUT SYSTEM (BEM Methodology)
+   ============================================ */
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--neruds-spacing-lg);
+}
+
+.layout__region {
+  flex: 1 1 100%;
+}
+
+/* ============================================
+   HEADER LAYOUT
+   ============================================ */
+
+.layout--header {
+  align-items: center;
+  padding: var(--neruds-spacing-md) 0;
+}
+
+.layout__region--header {
+  flex: 0 0 auto;
+}
+
+.layout__region--navigation {
+  flex: 1 1 auto;
+  min-width: 0; /* Permite que flex item encolha */
+}
+
+.layout__region--secondary-menu {
+  flex: 1 1 100%;
+  margin-top: var(--neruds-spacing-sm);
+}
+
+@media (min-width: 992px) {
+  .layout--header {
+    flex-wrap: nowrap;
+  }
+  
+  .layout__region--header {
+    flex: 0 0 25%;
+    max-width: 300px;
+  }
+  
+  .layout__region--navigation {
+    flex: 1 1 auto;
+  }
+  
+  .layout__region--secondary-menu {
+    flex: 1 1 100%;
+    margin-top: 0;
+  }
+}
+
+/* ============================================
+   HERO LAYOUT
+   ============================================ */
+
+.layout-hero {
+  width: 100%;
+  margin-bottom: var(--neruds-spacing-xl);
+}
+
+/* ============================================
+   HIGHLIGHTED LAYOUT
+   ============================================ */
+
+.layout-highlighted {
+  padding: var(--neruds-spacing-md) 0;
+  background-color: var(--neruds-background-color-light);
+}
+
+/* ============================================
+   BREADCRUMB LAYOUT
+   ============================================ */
+
+.layout-breadcrumb {
+  padding: var(--neruds-spacing-sm) 0;
+  background-color: var(--neruds-bg-base);
+  border-bottom: 1px solid var(--neruds-border-color);
+}
+
+/* ============================================
+   MAIN CONTENT LAYOUT
+   ============================================ */
+
+.layout-content {
+  padding: var(--neruds-spacing-xl) 0;
+  min-height: 400px; /* Garante altura mínima */
+}
+
+.layout--content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--neruds-spacing-xl);
+}
+
+.layout__region--social-bar {
+  display: none; /* Oculto por padrão em mobile */
+}
+
+.layout__region--content {
+  min-width: 0; /* Permite que grid item encolha */
+}
+
+.layout__region--sidebar {
+  min-width: 0;
+}
+
+/* Desktop: 3 colunas (social-bar | content | sidebar) */
+@media (min-width: 992px) {
+  .layout--content {
+    grid-template-columns: auto 1fr 300px;
+    gap: var(--neruds-spacing-lg);
+  }
+  
+  .layout__region--social-bar {
+    display: block;
+    flex: 0 0 60px;
+  }
+  
+  .layout__region--content {
+    grid-column: 2;
+  }
+  
+  .layout__region--sidebar {
+    grid-column: 3;
+  }
+}
+
+/* Tablet: 2 colunas (content | sidebar) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .layout--content {
+    grid-template-columns: 1fr 250px;
+  }
+  
+  .layout__region--content {
+    grid-column: 1;
+  }
+  
+  .layout__region--sidebar {
+    grid-column: 2;
+  }
+}
+
+/* Content sub-regions */
+.layout__region--content-above {
+  margin-bottom: var(--neruds-spacing-lg);
+}
+
+.layout__region--content-main {
+  min-width: 0;
+}
+
+.layout__region--content-below {
+  margin-top: var(--neruds-spacing-lg);
+  padding-top: var(--neruds-spacing-lg);
+  border-top: 1px solid var(--neruds-border-color);
+}
+
+/* ============================================
+   FOOTER LAYOUT
+   ============================================ */
+
+.layout-footer {
+  margin-top: var(--neruds-spacing-xxl);
+  padding: var(--neruds-spacing-xl) 0;
+  background-color: var(--neruds-gray-10);
+  color: var(--neruds-text-inverse);
+}
+
+.layout__region--footer-top {
+  padding-bottom: var(--neruds-spacing-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.layout__region--footer-bottom {
+  padding-top: var(--neruds-spacing-lg);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   SKIP LINK (Acessibilidade)
+   ============================================ */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  z-index: 9999;
+  padding: var(--neruds-spacing-sm) var(--neruds-spacing-md);
+  background-color: var(--neruds-primary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+
+/* ============================================
+   VISUALLY HIDDEN (Acessibilidade)
+   ============================================ */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.visually-hidden.focusable:focus,
+.visually-hidden.focusable:active {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .layout-container {
+    padding: 0 var(--neruds-spacing-sm);
+  }
+  
+  .layout--content {
+    gap: var(--neruds-spacing-md);
+  }
+  
+  .layout-content {
+    padding: var(--neruds-spacing-md) 0;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .layout__region--social-bar,
+  .layout__region--sidebar,
+  .layout-footer,
+  .layout-breadcrumb,
+  .skip-link {
+    display: none !important;
+  }
+  
+  .layout--content {
+    display: block;
+  }
+  
+  .layout__region--content {
+    width: 100%;
+  }
+}
+

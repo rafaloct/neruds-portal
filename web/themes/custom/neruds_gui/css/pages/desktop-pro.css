@@ -1,0 +1,601 @@
+/**
+ * @file desktop-pro.css
+ * Design profissional para desktop — experiência acadêmica premium
+ * Corrige layout solto, espaçamentos irregulares e falta de hierarquia visual
+ */
+
+/* ============================================================
+   CONTAINER GLOBAL — limita largura e centraliza
+   ============================================================ */
+.layout-container {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .layout-container { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* ============================================================
+   MAIN — área de conteúdo com espaçamento adequado
+   ============================================================ */
+main,
+[role="main"] {
+  min-height: 60vh;
+  padding: 2.5rem 0;
+}
+
+/* ============================================================
+   TIPOGRAFIA GLOBAL — escala profissional
+   ============================================================ */
+h1, .h1 {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 900;
+  color: #606062;
+  line-height: 1.2;
+  letter-spacing: 0;
+  margin: 0 0 1.25rem;
+}
+
+h2, .h2 {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-weight: 700;
+  color: #606062;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+h3, .h3 {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  color: #606062;
+  line-height: 1.3;
+  margin: 0 0 0.75rem;
+}
+
+p {
+  color: #606062;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+  max-width: 72ch; /* Linha de leitura confortável */
+}
+
+a {
+  color: #F58535;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover { color: #e07020; text-decoration: underline; }
+
+/* ============================================================
+   TÍTULOS DE SEÇÃO — padrão para todas as páginas de listagem
+   ============================================================ */
+.view-header h1,
+.view-header h2,
+.page-title,
+h1.page-title,
+.block-page-title-block h1 {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem) !important;
+  font-weight: 900;
+  color: #606062;
+  margin-bottom: 0.25rem !important;
+  padding-bottom: 0;
+}
+
+/* Linha laranja decorativa sob título de página */
+.block-page-title-block {
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 3px solid #F58535;
+}
+
+/* ============================================================
+   NODE — página de conteúdo individual (artigo, projeto, etc.)
+   ============================================================ */
+.node--view-mode-full {
+  max-width: 860px;
+}
+
+.node--view-mode-full .node__title {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  color: #606062;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.node--view-mode-full .node__meta {
+  font-size: 0.82rem;
+  color: #8a8a8c;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Imagem destaque no conteúdo */
+.node--view-mode-full .field--name-field-imagem-destaque img,
+.node--view-mode-full .field--name-field-imagem-capa img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+/* Corpo do texto — tipografia confortável */
+.node--view-mode-full .text-formatted {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: #606062;
+}
+
+.node--view-mode-full .text-formatted h2 { margin-top: 2.5rem; }
+.node--view-mode-full .text-formatted h3 { margin-top: 2rem; }
+
+/* ============================================================
+   CARDS — design profissional uniforme
+   ============================================================ */
+.views-view-grid article.node,
+.views-view-grid .node {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #DCDDDF;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.views-view-grid article.node:hover,
+.views-view-grid .node:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+
+/* Imagem do card */
+.views-view-grid article.node .field--type-image img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: #F5F5F6;
+}
+
+/* ============================================================
+   PESQUISADORES — card elegante com foto no topo
+   ============================================================ */
+
+/* Ocultar meta (autor/data) e labels em todos os cards de pesquisador */
+.view-view-pesquisadores-por-linha .node__meta,
+.node--type-perfil-pesquisador.node--view-mode-card .node__meta {
+  display: none;
+}
+
+.view-view-pesquisadores-por-linha .field__label,
+.node--type-perfil-pesquisador.node--view-mode-card .field__label {
+  display: none;
+}
+
+/* Cabeçalho do card: nome centralizado com fundo sutil */
+.view-view-pesquisadores-por-linha article.node > header {
+  padding: 0.9rem 1rem 0.5rem;
+  background: #fff;
+  order: 2;
+}
+
+.view-view-pesquisadores-por-linha .node__title a {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2E4632;
+  text-align: center;
+  display: block;
+  line-height: 1.3;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+.view-view-pesquisadores-por-linha .node__title a:hover {
+  color: #F58535;
+}
+
+/* node__content: foto sai sem padding; resto com padding interno */
+.view-view-pesquisadores-por-linha article.node .node__content {
+  padding: 0;
+  order: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Foto: topo do card, sangra até as bordas */
+.view-view-pesquisadores-por-linha .field--name-field-foto-perfil {
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.view-view-pesquisadores-por-linha .field--name-field-foto-perfil .field__item,
+.view-view-pesquisadores-por-linha .field--name-field-foto-perfil {
+  display: block;
+  margin: 0;
+}
+
+.view-view-pesquisadores-por-linha .field--name-field-foto-perfil img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.view-view-pesquisadores-por-linha article.node:hover .field--name-field-foto-perfil img {
+  transform: scale(1.06);
+}
+
+/* Nome completo: subtítulo sob o título */
+.view-view-pesquisadores-por-linha .field--name-field-nome-completo {
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.view-view-pesquisadores-por-linha .field--name-field-nome-completo .field__item {
+  font-size: 0.72rem;
+  color: #8a8a8c;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Bio: 2 linhas max */
+.view-view-pesquisadores-por-linha .field--name-field-biografia {
+  padding: 0.35rem 1rem 0;
+  flex: 1;
+}
+
+.view-view-pesquisadores-por-linha .field--name-field-biografia p {
+  font-size: 0.8rem;
+  color: #8a8a8c;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ODS: tags compactas no rodapé do card */
+.view-view-pesquisadores-por-linha .field--name-field-ods-interesse {
+  padding: 0.5rem 1rem 0.9rem;
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  border-top: 1px solid #f0f0f1;
+}
+
+.view-view-pesquisadores-por-linha .field--name-field-ods-interesse .field__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+.view-view-pesquisadores-por-linha .field--name-field-ods-interesse .field__item a,
+.view-view-pesquisadores-por-linha .field--name-field-ods-interesse .field__item {
+  font-size: 0.62rem;
+  padding: 0.14rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(46, 70, 50, 0.07);
+  color: #2E4632;
+  border: 1px solid rgba(46, 70, 50, 0.15);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+/* Hover mais vivo no card inteiro */
+.view-view-pesquisadores-por-linha article.node {
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.view-view-pesquisadores-por-linha article.node:hover {
+  box-shadow: 0 12px 32px rgba(46, 70, 50, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Linha separadora discreta entre header e content */
+.view-view-pesquisadores-por-linha article.node > header {
+  border-top: 1px solid #f0f0f1;
+}
+
+/* Corpo do card */
+.views-view-grid article.node .node__content,
+.views-view-grid .node .node__content {
+  padding: 1.1rem 1.25rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Título do card */
+.views-view-grid .node__title a,
+.views-view-grid h3.node__title a,
+.views-view-grid h2.node__title a {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #606062;
+  text-decoration: none;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.views-view-grid .node__title a:hover {
+  color: #F58535;
+}
+
+/* Resumo truncado */
+.views-view-grid .field--name-field-resumo p,
+.views-view-grid .field--name-field-biografia p,
+.views-view-grid .field--name-field-resumo-boletim p,
+.views-view-grid .field--name-body p {
+  font-size: 0.875rem;
+  color: #8a8a8c;
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Footer do card — tags */
+.views-view-grid .node__tags,
+.views-view-grid .field--name-field-eixos-tematicos,
+.views-view-grid .field--name-field-linhas-pesquisa,
+.views-view-grid .field--name-field-ods-interesse {
+  margin-top: auto;
+  padding-top: 0.6rem;
+}
+
+.views-view-grid .field--type-entity-reference a,
+.views-view-grid .field--name-field-ods-interesse .field__item,
+.views-view-grid .field--name-field-eixos-tematicos a,
+.views-view-grid .field--name-field-linhas-pesquisa a {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(245,133,53,0.1);
+  color: #F58535;
+  border: 1px solid rgba(245,133,53,0.2);
+  text-decoration: none;
+  margin: 0.15rem 0.15rem 0 0;
+  line-height: 1.4;
+  transition: background 0.15s;
+}
+
+.views-view-grid .field--type-entity-reference a:hover {
+  background: rgba(245,133,53,0.2);
+  text-decoration: none;
+}
+
+/* Badge de status */
+.views-view-grid .field--name-field-status-projeto .field__item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(96,96,98,0.08);
+  color: #606062;
+  border: 1px solid #DCDDDF;
+}
+
+/* ============================================================
+   FILTROS — barra elegante
+   ============================================================ */
+.views-exposed-form {
+  background: #F5F5F6;
+  border: 1px solid #DCDDDF;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  /* forms.css makes every form a column; exposed filters are a horizontal UI */
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.75rem;
+  align-items: flex-end;
+}
+
+/* Remover fundo duplicado que vinha do views-ux.css */
+.views-exposed-form .form--inline { display: contents; }
+
+/* Itens do formulário crescem para preencher o espaço horizontal */
+.views-exposed-form .js-form-item {
+  flex: 1 1 180px;
+  min-width: 0;
+  max-width: 280px;
+  margin: 0;
+}
+
+/* Keep compact numeric filters from growing to the same width as taxonomy filters. */
+.views-exposed-form .js-form-item.form-item-ano-publicacao {
+  flex: 0 1 110px;
+  max-width: 120px;
+}
+
+.views-exposed-form .js-form-item .form-element {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.views-exposed-form .js-form-item .form-item__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Botão de busca alinhado à direita sem crescer */
+.views-exposed-form .form-actions {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  margin: 0;
+}
+
+/* ============================================================
+   SIDEBAR — para layouts com barra lateral
+   ============================================================ */
+.layout-sidebar-first,
+.layout-sidebar-second {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.layout-sidebar-first .layout-sidebar { position: sticky; top: calc(var(--header-height) + 1rem); }
+
+@media (max-width: 900px) {
+  .layout-sidebar-first,
+  .layout-sidebar-second {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   BOTÕES GLOBAIS
+   ============================================================ */
+.button,
+.btn,
+input[type="submit"],
+button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  border: none;
+  text-decoration: none;
+  gap: 0.4rem;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.button--primary,
+.btn-primary,
+input[type="submit"] {
+  background: #F58535;
+  color: #fff;
+}
+
+.button--primary:hover,
+input[type="submit"]:hover {
+  background: #e07020;
+  color: #fff;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* ============================================================
+   MENSAGENS DO SISTEMA
+   ============================================================ */
+.messages--status { border-left: 4px solid #10B981; background: #f0fdf4; color: #065f46; }
+.messages--warning { border-left: 4px solid #F58535; background: #fff7ed; color: #92400e; }
+.messages--error { border-left: 4px solid #EF4444; background: #fef2f2; color: #991b1b; }
+.messages { padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; }
+
+/* ============================================================
+   SKIP LINK — acessibilidade
+   ============================================================ */
+.skip-link:focus {
+  background: #F58535;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+}
+
+/* ============================================================
+   ACESSIBILIDADE — Contraste WCAG AA (corrigido)
+   ============================================================ */
+
+/* Links de texto em fundo claro: laranja acessível #C15900 (contraste 4.52:1 no branco) */
+a {
+  color: #C15900;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+a:hover { color: #a04800; text-decoration: underline; }
+
+/* Links no corpo do texto (sem classe específica) recebem underline para acessibilidade daltonismo */
+.site-main a:not([class]),
+article a:not([class]),
+.node__content a:not([class]),
+.field--type-text-with-summary a,
+.field--type-text-long a,
+.field--name-body a,
+.field--name-field-resumo a,
+.field--name-field-justificativa a,
+.field--name-field-metodologia a,
+.field--name-field-objetivos a {
+  text-decoration: underline;
+}
+
+/* Navegação e botões mantêm suas cores próprias (não afetados pelo global acima) */
+.site-header a,
+.site-header a:hover,
+.navbar a,
+.nav-link,
+.menu a,
+.menu a:hover {
+  text-decoration: none;
+}
+
+/* Metadados secundários — contraste mínimo #767676 (4.54:1) */
+.node__submitted,
+.node__meta,
+.submitted,
+.field--name-node-link,
+time.datetime,
+.views-field-created,
+.views-field-changed {
+  color: #767676;
+}

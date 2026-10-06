@@ -1,0 +1,935 @@
+/**
+ * @file components.css
+ * BICO DO PAPAGAIO — Componentes
+ * Header, Navegação, Hero, Cards, Pesquisadores, Repositório
+ */
+
+/* =========================================================
+   LOGO NERUDS
+   ========================================================= */
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.site-logo:hover { opacity: 0.85; }
+
+.site-logo img {
+  height: 48px;
+  width: auto;
+  filter: brightness(1.1);
+}
+
+/* Emblema de identificação territorial */
+.site-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.site-identity__acronym {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--palha-light);
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.site-identity__name {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--babacú-xlight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  max-width: 160px;
+  line-height: 1.3;
+}
+
+/* =========================================================
+   NAVEGAÇÃO PRINCIPAL — navbar decolonial
+   ========================================================= */
+
+.navbar-neruds {
+  background: transparent !important;
+  padding: 0;
+  width: 100%;
+}
+
+.navbar-neruds .nav-link {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  color: var(--terra-200) !important;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3) !important;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+/* Sublinhado estilo trama */
+.navbar-neruds .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: var(--space-3);
+  right: var(--space-3);
+  height: 2px;
+  background: var(--palha);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.navbar-neruds .nav-link:hover,
+.navbar-neruds .nav-link:focus {
+  color: var(--palha-light) !important;
+  background: rgba(225, 193, 110, 0.1) !important;
+}
+
+.navbar-neruds .nav-link:hover::after,
+.navbar-neruds .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.navbar-neruds .nav-link.active,
+.navbar-neruds .nav-link[aria-current="page"] {
+  color: var(--palha-light) !important;
+  font-weight: 600;
+}
+
+/* Dropdown */
+.navbar-neruds .dropdown-menu {
+  background: var(--babacú-dark);
+  border: 1px solid rgba(225, 193, 110, 0.2);
+  border-top: 3px solid var(--barro);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  min-width: 220px;
+}
+
+.navbar-neruds .dropdown-item {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--terra-200);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  transition: all var(--transition-fast);
+}
+
+.navbar-neruds .dropdown-item:hover {
+  background: rgba(225, 193, 110, 0.1);
+  color: var(--palha-light);
+}
+
+/* Botão toggler mobile */
+.navbar-toggler {
+  border-color: rgba(225, 193, 110, 0.5) !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23E1C16E' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+/* =========================================================
+   HERO SECTION — Babaçual com manifesto
+   ========================================================= */
+
+.region-hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background do hero — babaçual com tratamento quente */
+.region-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      rgba(28, 16, 8, 0.65) 0%,
+      rgba(46, 70, 50, 0.45) 40%,
+      rgba(160, 82, 45, 0.35) 100%
+    );
+  z-index: 1;
+}
+
+/* Trama sobreposta */
+.region-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(28, 16, 8, 0.05) 0px,
+      rgba(28, 16, 8, 0.05) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  background-size: 16px 16px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.region-hero .layout-container {
+  position: relative;
+  z-index: 3;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+/* Hero sem imagem de fundo */
+.region-hero--no-image {
+  min-height: 50vh;
+  background: var(--bg-hero-terra, linear-gradient(135deg, var(--babacú-dark), var(--terra-800)));
+}
+
+/* =========================================================
+   CARDS DE CONTEÚDO — bordas de trama
+   ========================================================= */
+
+.card-content {
+  background: var(--branco);
+  border: 1px solid var(--terra-200);
+  border-top: 3px solid var(--barro);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-content:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-top-color: var(--barro-dark);
+}
+
+.card-content__image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.card-content__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card-content:hover .card-content__image img {
+  transform: scale(1.04);
+}
+
+/* Overlay da imagem com trama */
+.card-content__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(28, 16, 8, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.card-content:hover .card-content__image::after {
+  opacity: 1;
+}
+
+.card-content__body {
+  padding: var(--space-5) var(--space-6);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.card-content__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  letter-spacing: 0.05em;
+}
+
+.card-content__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--babacú-dark);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-3);
+}
+
+.card-content__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-content__title a:hover {
+  color: var(--barro);
+}
+
+.card-content__summary {
+  font-size: var(--text-sm);
+  color: var(--terra-600);
+  line-height: var(--leading-normal);
+  flex: 1;
+  margin-bottom: var(--space-4);
+
+  /* Clamp a 3 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-content__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--terra-200);
+  margin-top: auto;
+}
+
+.card-content__link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--barro);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.card-content__link:hover {
+  color: var(--barro-dark);
+  gap: var(--space-2);
+}
+
+.card-content__link::after {
+  content: '→';
+}
+
+/* =========================================================
+   CARD PESQUISADOR — perfil com estilo carimbo
+   ========================================================= */
+
+.card-pesquisador {
+  background: var(--branco);
+  border: 1px solid var(--terra-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.card-pesquisador:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 0 2px var(--palha);
+}
+
+.card-pesquisador__foto {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: var(--space-6) auto var(--space-4);
+}
+
+.card-pesquisador__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--palha);
+  box-shadow: 0 0 0 2px var(--barro-20);
+}
+
+/* Foto sem imagem */
+.card-pesquisador__foto--avatar {
+  background: var(--babacú);
+  border-radius: 50%;
+  border: 3px solid var(--palha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--palha-light);
+  font-weight: 700;
+}
+
+.card-pesquisador__body {
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+.card-pesquisador__nome {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--babacú-dark);
+  margin-bottom: var(--space-1);
+}
+
+.card-pesquisador__titulo {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+}
+
+.card-pesquisador__linha {
+  display: inline-block;
+}
+
+/* =========================================================
+   CARD PUBLICAÇÃO — arquivo vivo de resistência
+   ========================================================= */
+
+.card-publicacao {
+  background: var(--branco);
+  border-left: 4px solid var(--sedimento);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--space-5) var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.card-publicacao:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--barro);
+}
+
+.card-publicacao__tipo {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--sedimento-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.card-publicacao__titulo {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--babacú-dark);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-2);
+}
+
+.card-publicacao__autores {
+  font-size: var(--text-sm);
+  color: var(--terra-600);
+  font-style: italic;
+  margin-bottom: var(--space-3);
+}
+
+.card-publicacao__referencia {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  letter-spacing: 0.03em;
+  line-height: var(--leading-normal);
+}
+
+/* =========================================================
+   CARD PROJETO — carimbo de resistência
+   ========================================================= */
+
+.card-projeto {
+  background: var(--branco);
+  border: 1px solid var(--terra-200);
+  border-top: 4px solid var(--babacú);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.card-projeto:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--babacú-20);
+}
+
+.card-projeto__header {
+  background: var(--babacú-10);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px dashed var(--babacú-20);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.card-projeto__titulo {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--babacú-dark);
+  line-height: var(--leading-snug);
+}
+
+.card-projeto__body {
+  padding: var(--space-4) var(--space-5);
+}
+
+.card-projeto__descricao {
+  font-size: var(--text-sm);
+  color: var(--terra-600);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-3);
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+/* =========================================================
+   REPOSITÓRIO — ARQUIVO VIVO
+   Uso intensivo de tipografia monospace
+   ========================================================= */
+
+.repositorio {
+  background: var(--terra-900);
+  color: var(--terra-200);
+  font-family: var(--font-mono);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.repositorio__header {
+  background: var(--babacú-dark);
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 2px solid var(--barro);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.repositorio__titulo {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--palha-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.repositorio__titulo::before {
+  content: '◈ ';
+  color: var(--barro);
+}
+
+.repositorio__lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.repositorio__item {
+  border-bottom: 1px solid rgba(225, 193, 110, 0.08);
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  transition: background var(--transition-fast);
+  font-size: var(--text-sm);
+}
+
+.repositorio__item:hover {
+  background: rgba(225, 193, 110, 0.06);
+}
+
+.repositorio__item::before {
+  content: '›';
+  color: var(--barro-light);
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+
+.repositorio__item a {
+  color: var(--palha-light);
+  text-decoration: none;
+}
+
+.repositorio__item a:hover {
+  color: var(--palha);
+  text-decoration: underline;
+}
+
+.repositorio__meta {
+  margin-left: auto;
+  color: var(--terra-500);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   SEÇÃO SOBRE — identidade territorial
+   ========================================================= */
+
+.section-identidade {
+  background: var(--babacú-dark);
+  color: var(--branco);
+  padding: var(--space-20) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-identidade::before {
+  content: 'BICO DO PAPAGAIO';
+  position: absolute;
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(225, 193, 110, 0.04);
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =========================================================
+   BREADCRUMB DECOLONIAL
+   ========================================================= */
+
+.breadcrumb-decolonial {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+}
+
+.breadcrumb-decolonial li::after {
+  content: ' ◈ ';
+  color: var(--palha-dark);
+  margin-left: var(--space-1);
+}
+
+.breadcrumb-decolonial li:last-child::after {
+  content: none;
+}
+
+.breadcrumb-decolonial a {
+  color: var(--babacú);
+  text-decoration: none;
+}
+
+.breadcrumb-decolonial a:hover {
+  color: var(--barro);
+  text-decoration: underline;
+}
+
+.breadcrumb-decolonial .current {
+  color: var(--terra-600);
+  font-weight: 500;
+}
+
+/* =========================================================
+   PAGINAÇÃO
+   ========================================================= */
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: var(--space-10) 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.pager__item a,
+.pager__item span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--terra-200);
+  color: var(--terra-700);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.pager__item a:hover {
+  background: var(--barro-10);
+  border-color: var(--barro);
+  color: var(--barro);
+}
+
+.pager__item--current span,
+.pager__item.is-active span {
+  background: var(--barro);
+  border-color: var(--barro-dark);
+  color: var(--branco);
+}
+
+/* =========================================================
+   MESSAGES / STATUS DECOLONIAL
+   ========================================================= */
+
+.messages {
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  position: relative;
+}
+
+.messages--status {
+  background: rgba(45, 106, 79, 0.1);
+  border-color: var(--sucesso);
+  color: var(--sucesso);
+}
+
+.messages--warning {
+  background: var(--palha-10);
+  border-color: var(--aviso);
+  color: var(--palha-xdark);
+}
+
+.messages--error {
+  background: rgba(139, 37, 0, 0.08);
+  border-color: var(--erro);
+  color: var(--erro);
+}
+
+/* =========================================================
+   SEARCH BAR
+   ========================================================= */
+
+.search-form {
+  position: relative;
+  max-width: 500px;
+}
+
+.search-form input[type="search"] {
+  background: rgba(251, 246, 240, 0.9);
+  border: 2px solid rgba(225, 193, 110, 0.4);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-10) var(--space-2) var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.03em;
+  color: var(--terra-800);
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+.search-form input[type="search"]:focus {
+  background: var(--branco);
+  border-color: var(--barro);
+  box-shadow: 0 0 0 3px var(--barro-20);
+  outline: none;
+}
+
+.search-form button[type="submit"] {
+  position: absolute;
+  right: var(--space-2);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--barro);
+  color: var(--branco);
+  border: none;
+  border-radius: var(--radius-full);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  padding: 0;
+  min-width: 0;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.search-form button[type="submit"]:hover {
+  background: var(--barro-dark);
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* =========================================================
+   FILTROS / FACETS
+   ========================================================= */
+
+.filter-section {
+  background: var(--babacú-10);
+  border: 1px solid var(--babacú-20);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.filter-section__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--babacú);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px dashed var(--babacú-20);
+}
+
+.filter-section__title::before {
+  content: '◈ ';
+  color: var(--barro);
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--terra-700);
+  transition: color var(--transition-fast);
+}
+
+.filter-item:hover {
+  color: var(--barro);
+}
+
+.filter-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--barro);
+  cursor: pointer;
+}
+
+/* =========================================================
+   SOCIAL BAR
+   ========================================================= */
+
+.social-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.social-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--terra-100);
+  border: 2px solid var(--terra-200);
+  border-radius: var(--radius-md);
+  color: var(--terra-600);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.social-bar a:hover {
+  background: var(--barro);
+  border-color: var(--barro-dark);
+  color: var(--branco);
+  transform: scale(1.1);
+}
+
+/* =========================================================
+   ESTATÍSTICAS / NÚMEROS DE IMPACTO
+   ========================================================= */
+
+.stat-card {
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.stat-card__number {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  color: var(--barro);
+  line-height: 1;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.stat-card__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--terra-500);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   MAPA DO TERRITÓRIO — placeholder visual
+   ========================================================= */
+
+.territorio-map {
+  background: var(--babacú-10);
+  border: 2px dashed var(--babacú-20);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.territorio-map::before {
+  content: 'NORTE DO TOCANTINS';
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  color: var(--terra-400);
+  position: absolute;
+  top: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}

@@ -1,0 +1,85 @@
+/**
+ * @file
+ * Estilos específicos para badges de taxonomia
+ */
+
+.taxonomy-badges-wrapper {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.taxonomy-badge {
+  font-size: 0.875rem;
+  padding: 0.5em 0.75em;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.taxonomy-badge i {
+  font-size: 0.875em;
+}
+
+/* Efeito pulse para interação */
+.taxonomy-badge.pulse {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Cores específicas por ODS */
+.badge-ods-1 { background-color: #E5243B; color: white; }
+.badge-ods-2 { background-color: #DDA63A; color: white; }
+.badge-ods-3 { background-color: #4C9F38; color: white; }
+.badge-ods-4 { background-color: #C5192D; color: white; }
+.badge-ods-5 { background-color: #FF3A21; color: white; }
+.badge-ods-6 { background-color: #26BDE2; color: white; }
+.badge-ods-7 { background-color: #FCC30B; color: #212529; }
+.badge-ods-8 { background-color: #A21942; color: white; }
+.badge-ods-9 { background-color: #FD6925; color: white; }
+.badge-ods-10 { background-color: #DD1367; color: white; }
+.badge-ods-11 { background-color: #FD9D24; color: white; }
+.badge-ods-12 { background-color: #BF8B2E; color: white; }
+.badge-ods-13 { background-color: #3F7E44; color: white; }
+.badge-ods-14 { background-color: #0A97D9; color: white; }
+.badge-ods-15 { background-color: #56C02B; color: white; }
+.badge-ods-16 { background-color: #00689D; color: white; }
+.badge-ods-17 { background-color: #19486A; color: white; }
+
+/* Hover effects */
+.taxonomy-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+/* Badge groups */
+.taxonomy-group {
+  margin-bottom: 1.5rem;
+}
+
+.taxonomy-group-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+

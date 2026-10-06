@@ -1,0 +1,112 @@
+{#
+/**
+ * @file
+ * Template customizado para campos de taxonomia
+ * Renderiza como badges Bootstrap
+ */
+#}
+
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes.addClass('taxonomy-badges-wrapper') }}>
+      {% for item in items %}
+        {% set term = item.content['#options'].entity %}
+        {% if term %}
+          {% set vocab_id = term.bundle %}
+          {% set badge_class = 'taxonomy-badge badge-' ~ vocab_id|replace({'_': '-'}) %}
+          
+          {# Classe específica para ODS #}
+          {% if vocab_id == 'ods_agenda_2030' %}
+            {% if term.name.value matches '/ODS\\s*(\\d+)/i' %}
+              {% set ods_num = term.name.value|preg_replace('/.*ODS\\s*(\\d+).*/i', '$1') %}
+              {% set badge_class = badge_class ~ ' badge-ods-' ~ ods_num %}
+            {% endif %}
+          {% endif %}
+          
+          <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term.id}) }}" 
+             class="{{ badge_class }}" 
+             title="{{ term.name.value }}">
+            {{ term.name.value }}
+          </a>
+        {% else %}
+          <div{{ item.attributes.addClass('taxonomy-badge') }}>
+            {{ item.content }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      {% set term = item.content['#options'].entity %}
+      {% if term %}
+        {% set vocab_id = term.bundle %}
+        {% set badge_class = 'taxonomy-badge badge-' ~ vocab_id|replace({'_': '-'}) %}
+        
+        <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term.id}) }}" 
+           class="{{ badge_class }}">
+          {{ term.name.value }}
+        </a>
+      {% else %}
+        <div{{ item.attributes.addClass('taxonomy-badge') }}>
+          {{ item.content }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass('field', 'field--name-' ~ field_name|clean_class, 'field--type-' ~ field_type|clean_class) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% if multiple %}
+      <div class="taxonomy-badges-wrapper">
+        {% for item in items %}
+          {% set term = item.content['#options'].entity %}
+          {% if term %}
+            {% set vocab_id = term.bundle %}
+            {% set badge_class = 'taxonomy-badge badge-' ~ vocab_id|replace({'_': '-'}) %}
+            
+            {% if vocab_id == 'ods_agenda_2030' %}
+              {% if term.name.value matches '/ODS\\s*(\\d+)/i' %}
+                {% set ods_num = term.name.value|preg_replace('/.*ODS\\s*(\\d+).*/i', '$1') %}
+                {% set badge_class = badge_class ~ ' badge-ods-' ~ ods_num %}
+              {% endif %}
+            {% endif %}
+            
+            <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term.id}) }}" 
+               class="{{ badge_class }}">
+              {{ term.name.value }}
+            </a>
+          {% else %}
+            <div{{ item.attributes.addClass('taxonomy-badge') }}>
+              {{ item.content }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      {% for item in items %}
+        {% set term = item.content['#options'].entity %}
+        {% if term %}
+          {% set vocab_id = term.bundle %}
+          {% set badge_class = 'taxonomy-badge badge-' ~ vocab_id|replace({'_': '-'}) %}
+          
+          <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term.id}) }}" 
+             class="{{ badge_class }}">
+            {{ term.name.value }}
+          </a>
+        {% else %}
+          <div{{ item.attributes.addClass('taxonomy-badge') }}>
+            {{ item.content }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endif %}
+

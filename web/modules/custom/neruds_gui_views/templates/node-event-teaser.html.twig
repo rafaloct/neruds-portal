@@ -1,0 +1,358 @@
+{#
+/**
+ * @file
+ * NERUDS Event Card Template — Academic Events Timeline
+ *
+ * Available variables:
+ * - node: The node object
+ * - title: Event title
+ * - created: Creation timestamp
+ * - field_event_date: Event date (if available)
+ * - field_location: Event location (if available)
+ * - field_ods: ODS taxonomy references
+ * - teaser: Event description (short)
+ * - url: Event URL
+ */
+#}
+
+<article class="neruds-event-card event-card">
+
+  {# Timeline Indicator #}
+  <div class="event-card__timeline">
+    <div class="timeline-marker">📅</div>
+    <div class="timeline-connector"></div>
+  </div>
+
+  {# Event Container #}
+  <div class="event-card__container">
+
+    {# Event Header — Date & Status #}
+    <div class="event-card__header">
+      {% if node.field_event_date %}
+        {% set event_date = node.field_event_date %}
+        <div class="event-card__date-box">
+          <span class="date-month">{{ event_date|format_date('custom', 'M') }}</span>
+          <span class="date-day">{{ event_date|format_date('custom', 'd') }}</span>
+          <span class="date-year">{{ event_date|format_date('custom', 'Y') }}</span>
+        </div>
+      {% endif %}
+
+      <div class="event-card__status">
+        {% set days_until = (node.field_event_date|date('U') - 'now'|date('U')) / 86400 %}
+        {% if days_until < 0 %}
+          <span class="badge badge-past">Realizado</span>
+        {% elseif days_until <= 7 %}
+          <span class="badge badge-soon">Em breve</span>
+        {% else %}
+          <span class="badge badge-upcoming">Próximo</span>
+        {% endif %}
+      </div>
+    </div>
+
+    {# ODS Badges #}
+    {% if node.field_ods|length > 0 %}
+      <div class="event-card__ods">
+        {% for term_ref in node.field_ods|slice(0, 3) %}
+          {% set term = term_ref.entity %}
+          {% set color = term.field_ods_color.value ?? '#CCCCCC' %}
+          <span class="badge badge-ods-small" style="background-color: {{ color }};" title="{{ term.name }}"></span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# Title #}
+    <h3 class="event-card__title">
+      <a href="{{ url }}" class="event-card__link">{{ title }}</a>
+    </h3>
+
+    {# Location #}
+    {% if node.field_location %}
+      <div class="event-card__location">
+        📍 {{ node.field_location.value }}
+      </div>
+    {% endif %}
+
+    {# Description #}
+    {% if teaser %}
+      <p class="event-card__description">
+        {{ teaser|striptags|truncate(150, true, '...') }}
+      </p>
+    {% endif %}
+
+    {# Event Categories #}
+    {% if node.field_research_categories|length > 0 %}
+      <div class="event-card__categories">
+        {% for term_ref in node.field_research_categories %}
+          {% set term = term_ref.entity %}
+          <span class="event-category">{{ term.name }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# Action Buttons #}
+    <div class="event-card__actions">
+      <a href="{{ url }}" class="btn btn-primary btn-sm">Saiba Mais</a>
+      {% if days_until > 0 %}
+        <a href="{{ url }}#inscrever" class="btn btn-secondary btn-sm">Inscrever-se</a>
+      {% endif %}
+    </div>
+  </div>
+</article>
+
+<style>
+  .neruds-event-card {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 30px;
+    opacity: 1;
+    transition: opacity var(--transition-base);
+  }
+
+  .event-card__timeline {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .timeline-marker {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border: 3px solid var(--color-babasu);
+    border-radius: 50%;
+    z-index: 2;
+    transition: transform var(--transition-base);
+  }
+
+  .neruds-event-card:hover .timeline-marker {
+    transform: scale(1.2);
+  }
+
+  .timeline-connector {
+    position: absolute;
+    left: 18px;
+    top: 40px;
+    width: 4px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--color-babasu), transparent);
+  }
+
+  .neruds-event-card:last-child .timeline-connector {
+    height: 0;
+  }
+
+  .event-card__container {
+    background: var(--color-white);
+    border-radius: var(--border-radius-md);
+    border: 2px solid var(--color-gray-200);
+    padding: 20px;
+    transition: all var(--transition-base);
+  }
+
+  .neruds-event-card:hover .event-card__container {
+    border-color: var(--color-babasu);
+    box-shadow: 0 8px 24px rgba(46, 70, 50, 0.15);
+  }
+
+  .event-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .event-card__date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-barro) 100%);
+    color: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    min-width: 60px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .date-month {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .date-day {
+    font-size: 1.8rem;
+    line-height: 1;
+    margin: 2px 0;
+  }
+
+  .date-year {
+    font-size: 0.8rem;
+    opacity: 0.9;
+  }
+
+  .event-card__status {
+    flex: 1;
+    text-align: right;
+  }
+
+  .badge-past {
+    background: var(--color-gray-400);
+    color: white;
+  }
+
+  .badge-soon {
+    background: var(--color-barro);
+    color: white;
+    animation: pulse 2s infinite;
+  }
+
+  .badge-upcoming {
+    background: var(--color-babasu);
+    color: white;
+  }
+
+  .event-card__ods {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .badge-ods-small {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  .event-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 10px 0 8px;
+    color: var(--color-gray-900);
+  }
+
+  .event-card__link {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-base);
+  }
+
+  .event-card__link:hover {
+    color: var(--color-babasu);
+  }
+
+  .event-card__location {
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+    margin-bottom: 10px;
+  }
+
+  .event-card__description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-gray-700);
+    margin: 12px 0;
+  }
+
+  .event-card__categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0;
+  }
+
+  .event-category {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--color-gray-100);
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: var(--color-gray-700);
+  }
+
+  .event-card__actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-gray-100);
+  }
+
+  .event-card__actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .neruds-event-card {
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+
+    .event-card__timeline {
+      display: none;
+    }
+
+    .event-card__header {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .event-card__date-box {
+      order: 2;
+    }
+
+    .event-card__status {
+      order: 1;
+      text-align: left;
+    }
+
+    .event-card__actions {
+      flex-direction: column;
+    }
+
+    .event-card__actions .btn {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .event-card__container {
+      background: var(--color-gray-900);
+      border-color: var(--color-gray-700);
+    }
+
+    .event-card__title {
+      color: var(--color-white);
+    }
+
+    .event-card__description {
+      color: var(--color-gray-300);
+    }
+
+    .event-card__location {
+      color: var(--color-gray-400);
+    }
+
+    .event-category {
+      background: var(--color-gray-800);
+      color: var(--color-gray-300);
+    }
+  }
+</style>

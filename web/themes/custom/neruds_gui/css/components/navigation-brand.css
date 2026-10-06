@@ -1,0 +1,172 @@
+/* ============================================================
+   MENU NERUDS — Paleta Oficial do Manual da Marca
+   Laranja #F58535 | Cinza Escuro #606062 | Cinza Claro #DCDDDF
+   ============================================================ */
+
+/* ── Links do menu principal — cor do texto → cinza escuro ── */
+.primary-nav .primary-nav__menu-link,
+.primary-nav a,
+header nav a,
+.region-primary-menu a,
+.nav-primary a {
+  color: var(--neruds-cinza-escuro, #606062) !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  font-family: var(--font-sans, 'Outfit', sans-serif) !important;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 0.85rem !important;
+  border-radius: 0.4rem;
+  text-decoration: none !important;
+  transition: color 0.18s, background 0.18s !important;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* ── Hover → laranja ── */
+.primary-nav a:hover,
+header nav a:hover,
+.region-primary-menu a:hover,
+.nav-primary a:hover {
+  color: var(--neruds-laranja, #F58535) !important;
+  background: rgba(245, 133, 53, 0.08) !important;
+}
+
+/* ── Ativo → laranja + underline ── */
+.primary-nav a.is-active,
+.primary-nav a[aria-current="page"],
+header nav a.is-active,
+.nav-primary a.is-active,
+.region-primary-menu a.is-active {
+  color: var(--neruds-laranja, #F58535) !important;
+  background: rgba(245, 133, 53, 0.1) !important;
+  font-weight: 700 !important;
+}
+
+.primary-nav a.is-active::after,
+.primary-nav a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0.5rem;
+  right: 0.5rem;
+  height: 2px;
+  background: var(--neruds-laranja, #F58535);
+  border-radius: 2px;
+}
+
+/* ── Dropdown submenu ── */
+.primary-nav li > ul,
+.primary-nav li > .menu,
+.nav-primary__item > ul {
+  background: #fff !important;
+  border: 1px solid var(--neruds-cinza-claro, #DCDDDF) !important;
+  border-radius: 0.6rem !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+  padding: 0.4rem 0 !important;
+  min-width: 220px !important;
+}
+
+.primary-nav li > ul a,
+.primary-nav li > .menu a {
+  border-radius: 0 !important;
+  border-left: 3px solid transparent !important;
+  padding-left: 1.1rem !important;
+}
+
+.primary-nav li > ul a:hover,
+.primary-nav li > .menu a:hover {
+  border-left-color: var(--neruds-laranja, #F58535) !important;
+  background: rgba(245, 133, 53, 0.06) !important;
+}
+
+/* ── Hamburger button — mobile ── */
+.hamburger,
+.mobile-menu-toggle,
+button[aria-label*="menu"],
+button[aria-label*="Menu"],
+.nav-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1.5px solid var(--neruds-borda, #DCDDDF);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  color: var(--neruds-cinza-escuro, #606062);
+}
+
+@media (max-width: 900px) {
+  .hamburger,
+  .mobile-menu-toggle,
+  .nav-mobile-toggle {
+    display: flex;
+  }
+}
+
+.hamburger span,
+.mobile-menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--neruds-cinza-escuro, #606062);
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+/* ── Olivero nav override — remover estilos conflitantes ── */
+.primary-nav__menu-link--button,
+.primary-nav__button {
+  background: none !important;
+  border: none !important;
+}
+
+/* ── Header brand name → cinza escuro ── */
+.site-branding__name a,
+.site-branding a {
+  color: var(--neruds-cinza-escuro, #606062) !important;
+}
+
+/* ── Header brand name hover → laranja ── */
+.site-branding__name a:hover {
+  color: var(--neruds-laranja, #F58535) !important;
+}
+
+/* ── Logo: área de proteção conforme manual da marca ── */
+.site-logo,
+.site-branding__logo {
+  padding: 0.75rem !important;
+  box-sizing: content-box;
+}
+
+/* ── Breadcrumb com paleta da marca ── */
+.breadcrumb a,
+nav.breadcrumb a,
+ol.breadcrumb a {
+  color: var(--neruds-cinza-escuro, #606062) !important;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--neruds-laranja, #F58535) !important;
+}
+
+.breadcrumb [aria-current="page"],
+.breadcrumb .active {
+  color: var(--neruds-laranja, #F58535) !important;
+  font-weight: 600;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  color: var(--neruds-cinza-claro, #DCDDDF) !important;
+}
+
+/* ── Skip link acessibilidade ── */
+.skip-link:focus {
+  background: var(--neruds-laranja, #F58535) !important;
+  color: #fff !important;
+}

@@ -1,0 +1,97 @@
+{#
+/**
+ * @file neruds-hero-section.html.twig
+ * NERUDS Hero Section Block — 4 layout variants.
+ *
+ * Available variables:
+ * - variant: 'centered' | 'split' | 'overlay' | 'gradient'
+ * - eyebrow: Small text above title
+ * - title: Main heading
+ * - subtitle: Secondary heading
+ * - description: Body text
+ * - cta_text: Primary button text
+ * - cta_url: Primary button URL
+ * - cta_secondary_text: Secondary button text
+ * - cta_secondary_url: Secondary button URL
+ * - image_url: Hero image path
+ * - image_alt: Image alt text
+ * - stats: Array of {value, label} objects
+ */
+#}
+{% set variant_class = 'hero-block--' ~ variant %}
+
+<section class="hero-block {{ variant_class }}" role="region" aria-label="{{ title }}" data-animate="fadeIn">
+
+  {# Decorative background elements #}
+  <div class="hero-block__bg" aria-hidden="true"></div>
+
+  {# ── VARIANT: OVERLAY — image as full background ── #}
+  {% if variant == 'overlay' and image_url %}
+    <div class="hero-block__backdrop" aria-hidden="true">
+      <img src="{{ image_url }}" alt="" loading="eager" />
+    </div>
+  {% endif %}
+
+  <div class="hero-block__inner layout-container">
+
+    {# ── TEXT CONTENT ── #}
+    <div class="hero-block__content">
+      {% if eyebrow %}
+        <span class="hero-block__eyebrow">{{ eyebrow }}</span>
+      {% endif %}
+
+      {% if title %}
+        <h1 class="hero-block__title">
+          {{ title }}
+          {% if subtitle %}
+            <span class="hero-block__title-accent">{{ subtitle }}</span>
+          {% endif %}
+        </h1>
+      {% endif %}
+
+      {% if description %}
+        <p class="hero-block__description">{{ description }}</p>
+      {% endif %}
+
+      {# CTA Buttons #}
+      {% if cta_text and cta_url %}
+        <div class="hero-block__ctas">
+          <a href="{{ cta_url }}" class="btn btn--primary btn--lg">
+            {{ cta_text }}
+          </a>
+          {% if cta_secondary_text and cta_secondary_url %}
+            <a href="{{ cta_secondary_url }}" class="btn btn--outline btn--lg">
+              {{ cta_secondary_text }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    {# ── VISUAL SIDE (split variant) ── #}
+    {% if variant == 'split' and image_url %}
+      <div class="hero-block__visual">
+        <div class="hero-block__visual-bg" aria-hidden="true"></div>
+        <img
+          class="hero-block__image"
+          src="{{ image_url }}"
+          alt="{{ image_alt|default(title) }}"
+          loading="eager"
+        />
+      </div>
+    {% endif %}
+
+    {# ── STATS BAR (centered + gradient variants) ── #}
+    {% if stats|length > 0 and variant in ['centered', 'gradient'] %}
+      <div class="hero-block__stats" aria-label="{{ 'Estatísticas'|t }}">
+        {% for stat in stats %}
+          <div class="hero-block__stat" data-animate="fadeIn" data-animate-delay="{{ loop.index * 100 }}">
+            <span class="hero-block__stat-number">{{ stat.value }}</span>
+            <span class="hero-block__stat-label">{{ stat.label }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

@@ -1,0 +1,502 @@
+/**
+ * @file header.css
+ * Header NERUDS — Paleta oficial sem verde
+ * Branco com laranja nos elementos ativos, cinza escuro no texto
+ */
+
+/* ── Variáveis locais (brand manual) ────────────────── */
+:root {
+  --header-height: 72px;
+  --header-bg: rgba(255,255,255,0.97);
+  --header-border: rgba(220,221,223,0.8);
+  --header-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* ── Wrapper sticky ─────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: var(--header-shadow);
+}
+
+/* ── Inner flex container ───────────────────────────── */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  min-height: var(--header-height);
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 0.5rem 1rem;
+}
+
+@media (max-width: 1200px) {
+  .site-header__inner { gap: 0.75rem; padding: 0 1rem; }
+}
+@media (max-width: 360px) {
+  .site-header__inner { gap: 0.5rem; padding: 0 0.75rem; min-height: 60px; }
+}
+
+/* ── Brand (logo + nome) ────────────────────────────── */
+.site-header__brand,
+.site-branding {
+  flex-shrink: 0;
+}
+
+.site-branding__inner,
+.site-header__brand .site-branding__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.site-branding__logo img,
+.site-header__brand .site-branding__logo img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.site-branding__name a,
+.site-header__brand .site-branding__name a {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #606062;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: color 0.15s;
+}
+
+.site-branding__name a:hover {
+  color: #F58535;
+}
+
+@media (max-width: 480px) {
+  .site-branding__name { display: none; }
+}
+@media (max-width: 360px) {
+  .site-branding__logo img { height: 32px; }
+}
+
+/* ── Nav principal ──────────────────────────────────── */
+.primary-nav,
+.region-primary-menu {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#primary-nav {
+  flex: 1 1 auto;
+  order: 0;
+}
+
+.site-header__brand {
+  margin-right: 0;
+}
+
+/* Lista de nível 1 */
+.primary-nav > ul,
+.primary-nav > .menu,
+.primary-nav > nav > ul {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0 !important;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Itens */
+.primary-nav li {
+  margin: 0 !important;
+  flex: 0 0 auto !important;
+  position: relative;
+}
+
+/* Links nível 1 */
+.primary-nav a,
+.primary-nav span.primary-nav__menu-link,
+.primary-nav .primary-nav__menu-link {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 0.5rem 0.85rem !important;
+  color: #606062 !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  font-family: var(--font-sans, 'Outfit', sans-serif) !important;
+  letter-spacing: 0;
+  text-decoration: none !important;
+  border-radius: 6px;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.15s, background 0.15s !important;
+  min-height: 44px;
+}
+
+.primary-nav a:hover,
+.primary-nav span.primary-nav__menu-link:hover,
+.primary-nav .primary-nav__menu-link:hover {
+  color: #a44400 !important;
+  background: rgba(245,133,53,0.08) !important;
+}
+
+.primary-nav a.is-active,
+.primary-nav a[aria-current="page"] {
+  color: #a44400 !important;
+  background: rgba(245,133,53,0.1) !important;
+  font-weight: 700 !important;
+}
+
+/* Linha laranja embaixo do item ativo */
+.primary-nav a.is-active::after,
+.primary-nav a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0.6rem;
+  right: 0.6rem;
+  height: 2px;
+  background: #F58535;
+  border-radius: 2px;
+}
+
+/* ── Submenu dropdown ───────────────────────────────── */
+.primary-nav li > ul,
+.primary-nav li > .menu {
+  display: none !important;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: #fff;
+  min-width: 220px;
+  border: 1px solid #DCDDDF;
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  padding: 0.5rem 0;
+  z-index: 1000;
+  flex-direction: column !important;
+  list-style: none;
+  margin: 0;
+}
+
+.primary-nav li:not([data-submenu-open]):hover > ul,
+.primary-nav li:not([data-submenu-open]):focus-within > ul,
+.primary-nav li[data-submenu-open="true"] > ul {
+  display: flex !important;
+}
+
+.primary-nav__button-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #767676;
+  border-radius: 4px;
+  background: #fff;
+  color: #606062;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.primary-nav__button-toggle .icon--menu-toggle {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.primary-nav__button-toggle[aria-expanded="true"] .icon--menu-toggle {
+  transform: rotate(225deg);
+}
+
+#primary-nav :focus-visible,
+.nav-toggle:focus-visible {
+  outline: 3px solid #a44400;
+  outline-offset: 2px;
+}
+
+.primary-nav li > ul a,
+.primary-nav li > .menu a {
+  padding: 0.55rem 1.25rem !important;
+  border-radius: 0 !important;
+  border-left: 3px solid transparent !important;
+  display: block !important;
+  width: 100%;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  min-height: unset;
+}
+
+.primary-nav li > ul a::after,
+.primary-nav li > .menu a::after { display: none !important; }
+
+.primary-nav li > ul a:hover,
+.primary-nav li > .menu a:hover {
+  border-left-color: #F58535 !important;
+  background: rgba(245,133,53,0.06) !important;
+}
+
+/* Compact/tablet navigation. */
+@media (max-width: 1100px) {
+  .primary-nav li > ul,
+  .primary-nav li > .menu {
+    position: static !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0.25rem 0;
+    box-shadow: none;
+    border-radius: 8px;
+  }
+}
+
+/* ── Botão hamburguer ───────────────────────────────── */
+.nav-toggle,
+button.hamburger,
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1.5px solid #DCDDDF;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: border-color 0.15s;
+}
+
+.nav-toggle:hover { border-color: #F58535; }
+
+.nav-toggle span,
+button.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #606062;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+@media (min-width: 1101px) and (max-width: 1280px) {
+  .site-header__brand .site-branding__name {
+    display: none;
+  }
+
+  .primary-nav a,
+  .primary-nav span.primary-nav__menu-link,
+  .primary-nav .primary-nav__menu-link {
+    padding-left: 0.55rem !important;
+    padding-right: 0.55rem !important;
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .nav-toggle,
+  button.hamburger { display: flex; }
+
+  .site-header__inner {
+    flex-wrap: wrap;
+  }
+
+  .site-header__brand {
+    margin-right: auto;
+  }
+
+  #primary-nav {
+    flex-basis: 100%;
+    order: 4;
+  }
+
+  .site-header,
+  .site-header__inner {
+    overflow: visible;
+  }
+
+  .site-header__inner {
+    position: relative;
+  }
+
+  #primary-nav {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - var(--header-height) - 1rem);
+    overflow-y: auto;
+    display: none;
+    align-items: stretch;
+    justify-content: flex-start;
+    background: #fff;
+    border: 1px solid #DCDDDF;
+    border-radius: 10px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.14);
+    padding: 0.75rem;
+    z-index: 1040;
+  }
+
+  #primary-nav[data-state="open"] {
+    display: flex;
+  }
+
+  #primary-nav > .primary-nav {
+    display: block;
+    width: 100%;
+  }
+
+  .primary-nav > ul,
+  .primary-nav > .menu,
+  .primary-nav > nav > ul {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100%;
+  }
+
+  .primary-nav li {
+    width: 100%;
+  }
+
+  .primary-nav li[data-submenu-open] > a {
+    padding-right: 3.5rem !important;
+  }
+
+  .primary-nav__button-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .primary-nav a,
+  .primary-nav span.primary-nav__menu-link,
+  .primary-nav .primary-nav__menu-link {
+    width: 100%;
+    justify-content: flex-start;
+    white-space: normal;
+    min-height: 44px;
+  }
+}
+
+/* ── Search trigger (overlay) ───────────────────────── */
+.site-header__search,
+.site-header__search-link {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__search-link {
+  gap: 0.4rem;
+  min-height: 40px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #DCDDDF;
+  border-radius: 8px;
+  color: #606062;
+  font: 600 0.875rem/1 var(--font-sans, 'Outfit', sans-serif);
+  text-decoration: none;
+  background: #fff;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.site-header__search-link:hover,
+.site-header__search-link:focus-visible {
+  color: #a44400;
+  border-color: #F58535;
+  background: rgba(245,133,53,0.08);
+}
+
+.site-header__search-icon {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .site-header__search-link span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* ── Secondary actions (conta, idioma) ──────────────── */
+.site-header__actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Secondary menu (busca, idioma) ─────────────────── */
+.region-secondary-menu {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Breadcrumb bar ─────────────────────────────────── */
+.breadcrumb-bar {
+  background: #F5F5F6;
+  border-bottom: 1px solid #DCDDDF;
+  padding: 0.5rem 0;
+}
+
+.breadcrumb-bar .layout-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.breadcrumb-bar nav,
+.breadcrumb-bar ol {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.82rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.breadcrumb-bar a { color: #606062; text-decoration: none; }
+.breadcrumb-bar a:hover { color: #F58535; }
+.breadcrumb-bar [aria-current="page"],
+.breadcrumb-bar .active { color: #F58535; font-weight: 600; }
+.breadcrumb-bar li:not(:last-child)::after {
+  content: '›';
+  color: #DCDDDF;
+  margin-left: 0.4rem;
+}
+
+/* ── Olivero overrides ──────────────────────────────── */
+/* Suprimir todos os estilos verdes do Olivero no nav */
+.primary-nav__menu-link--button,
+.primary-nav__button { background: none !important; border: none !important; }

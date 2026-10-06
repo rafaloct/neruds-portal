@@ -1,0 +1,361 @@
+<?php
+
+/**
+ * @file
+ * Theme hooks and functions for NERUDS-GUI
+ * Tema acadêmico premium com identidade decolonial
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
+
+/**
+ * Implements hook_preprocess_page() — attach home library on front.
+ */
+function neruds_gui_preprocess_page(array &$variables) {
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+
+  if ($variables['is_front']) {
+    $variables['#attached']['library'][] = 'neruds_gui/home';
+  }
+
+  $variables['is_neruds_contact'] = \Drupal::routeMatch()->getRouteName() === 'entity.contact_form.canonical'
+    && \Drupal::routeMatch()->getParameter('contact_form')?->id() === 'neruds_contato';
+
+  // Attach search results page library on /busca.
+  $current_path = \Drupal::service('path.current')->getPath();
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($current_path === '/busca' || $route === 'view.neruds_busca.page_1') {
+    $variables['#attached']['library'][] = 'neruds_gui/busca';
+    $variables['#attached']['library'][] = 'neruds_gui/search-bar';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page() for the front page.
+ * Renders view blocks for the homepage template.
+ */
+function neruds_gui_preprocess_page__front(array &$variables) {
+  // Render view blocks for homepage panels
+  $view_map = [
+    'noticias'   => ['neruds_noticias', 'block_1'],
+    'eventos'    => ['neruds_eventos', 'block_1'],
+    'grupos'     => ['neruds_grupos_estudos', 'block_1'],
+    'publicacoes' => ['view_publicacoes_taxonomia', 'block_1'],
+  ];
+
+  $variables['views'] = [];
+  foreach ($view_map as $key => [$view_id, $display_id]) {
+    $view = \Drupal\views\Views::getView($view_id);
+    if ($view && $view->access($display_id)) {
+      $view->setDisplay($display_id);
+      $view->preExecute();
+      $view->execute();
+      if ($key === 'eventos') {
+        $variables['has_home_events'] = !empty($view->result);
+      }
+      // Keep render array intact so attached assets and behaviors function.
+      $variables['views'][$key] = $view->buildRenderable($display_id);
+    }
+  }
+
+  // The news cards on the homepage use the territorial/ODS filter behaviour.
+  $variables['#attached']['library'][] = 'neruds_google_integration/territorial_news';
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function neruds_gui_preprocess_node(array &$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  $bundle = $node->bundle();
+
+  // Only suppress duplicate presentation, never merge vocabularies or data.
+  if ($bundle === 'perfil_pesquisador' && $variables['view_mode'] === 'card'
+    && isset($variables['content']['field_ods'], $variables['content']['field_ods_interesse'])) {
+    $labels = [];
+    foreach (['field_ods_interesse', 'field_ods'] as $field_name) {
+      $field = $node->get($field_name);
+      $access = $field->access('view', NULL, TRUE);
+      \Drupal\Core\Cache\CacheableMetadata::createFromRenderArray($variables['content'])->addCacheableDependency($access)->applyTo($variables['content']);
+      if (!$access->isAllowed()) {
+        break;
+      }
+      foreach ($field->referencedEntities() as $term) {
+        \Drupal\Core\Cache\CacheableMetadata::createFromRenderArray($variables['content'])->addCacheableDependency($term)->applyTo($variables['content']);
+        $labels[$field_name][] = $term->label();
+      }
+      if (isset($labels[$field_name])) {
+        sort($labels[$field_name]);
+      }
+    }
+    if (!empty($labels['field_ods_interesse']) && $labels['field_ods_interesse'] === ($labels['field_ods'] ?? [])) {
+      $variables['content']['field_ods']['#access'] = FALSE;
+    }
+  }
+
+  // Adicionar labels legíveis dos tipos de conteúdo
+  $content_type_labels = [
+    'noticia' => 'Notícia',
+    'evento' => 'Evento',
+    'evento_cientifico' => 'Evento Científico',
+    'artigo' => 'Artigo',
+    'projeto' => 'Projeto',
+    'projeto_pesquisa_extensao' => 'Projeto',
+    'pesquisador' => 'Pesquisador',
+    'perfil_pesquisador' => 'Pesquisador',
+    'publicacao' => 'Publicação',
+    'publicacao_cientifica' => 'Publicação Científica',
+    'grupo_estudos' => 'Grupo de Estudos',
+    'page' => 'Página Institucional',
+  ];
+
+  $variables['content_type_label'] = $content_type_labels[$bundle] ?? ucfirst(str_replace('_', ' ', $bundle));
+
+  // Adicionar data formatada
+  $variables['published_date'] = $node->getCreatedTime() ? \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'medium') : '';
+
+  // Adicionar autor — usa campos específicos do tipo de conteúdo.
+  // Evita "Anônimo" quando uid=0: usa o campo de autoria editorial ou fallback "NERUDS".
+  $author_name = '';
+  if ($bundle === 'noticia') {
+    if ($node->hasField('field_responsavel_editorial') && !$node->get('field_responsavel_editorial')->isEmpty()) {
+      $ref = $node->get('field_responsavel_editorial')->entity;
+      if ($ref) {
+        $author_name = $ref->label();
+      }
+    }
+    if (!$author_name && $node->hasField('field_autor_noticia') && !$node->get('field_autor_noticia')->isEmpty()) {
+      $author_name = $node->get('field_autor_noticia')->value;
+    }
+  }
+  elseif ($bundle === 'publicacao_cientifica') {
+    if ($node->hasField('field_pesquisadores_autores') && !$node->get('field_pesquisadores_autores')->isEmpty()) {
+      $names = [];
+      foreach ($node->get('field_pesquisadores_autores') as $item) {
+        if ($item->entity) {
+          $names[] = $item->entity->label();
+        }
+      }
+      $author_name = implode(', ', $names);
+    }
+    if (!$author_name && $node->hasField('field_autores') && !$node->get('field_autores')->isEmpty()) {
+      $names = [];
+      foreach ($node->get('field_autores') as $item) {
+        $names[] = $item->value;
+      }
+      $author_name = implode(', ', $names);
+    }
+  }
+  if (!$author_name) {
+    $owner = $node->getOwner();
+    $display = $owner->getDisplayName();
+    $author_name = ($owner->isAnonymous() || $display === 'Anonymous') ? 'NERUDS' : $display;
+  }
+  $variables['author_name'] = $author_name;
+  $variables['author_link'] = $node->getOwner()->isAnonymous() ? '' : $node->getOwner()->toUrl('canonical')->toString();
+
+  // Iniciais para avatar de pesquisador
+  if ($bundle === 'perfil_pesquisador') {
+    $nome = $node->getTitle();
+    $palavras = explode(' ', trim($nome));
+    $iniciais = '';
+    foreach (array_slice($palavras, 0, 2) as $palavra) {
+      if (!empty($palavra)) {
+        $iniciais .= mb_strtoupper(mb_substr($palavra, 0, 1));
+      }
+    }
+    $variables['iniciais'] = $iniciais ?: '?';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function neruds_gui_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $suggestions[] = 'page__front';
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    $suggestions[] = 'page__node__' . $node->bundle();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_node_alter().
+ */
+function neruds_gui_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  if (empty($variables['elements']['#node'])) {
+    return;
+  }
+
+  $node = $variables['elements']['#node'];
+  $view_mode = $variables['elements']['#view_mode'];
+  $suggestions[] = 'node__' . $node->bundle() . '__' . $view_mode;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function neruds_gui_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  // Adicionar classes Bootstrap aos formulários
+  if (isset($form['#type']) && $form['#type'] === 'form') {
+    foreach ($form as $key => &$field) {
+      if (isset($field['#type']) && in_array($field['#type'], ['text', 'email', 'password', 'textarea', 'select'])) {
+        $field['#attributes']['class'][] = 'form-control';
+      }
+    }
+  }
+
+  if ($form_id === 'views_exposed_form' && ($form['#id'] ?? '') === 'views-exposed-form-view-publicacoes-taxonomia-page-1') {
+    // Let visitors compose multiple selections before submitting once.
+    foreach (array_keys($form['#attributes'] ?? []) as $attribute) {
+      if (str_starts_with($attribute, 'data-bef-auto-submit')) {
+        unset($form['#attributes'][$attribute]);
+      }
+    }
+    if (isset($form['actions']['submit']['#attributes']['class'])) {
+      $form['actions']['submit']['#attributes']['class'] = array_values(array_diff($form['actions']['submit']['#attributes']['class'], ['js-hide']));
+    }
+  }
+
+  if ($form_id === 'contact_message_neruds_contato_form') {
+    $form['#attributes']['class'][] = 'neruds-contact-form';
+    $form['actions']['preview']['#access'] = FALSE;
+    $form['message']['widget'][0]['value']['#rows'] = 5;
+    $form['name']['#attributes']['autocomplete'] = 'name';
+    $form['mail']['#attributes']['autocomplete'] = 'email';
+  }
+
+  // Customizar search form
+  if ($form_id === 'search_block_form') {
+    $form['keys']['#attributes']['placeholder'] = t('Buscar publicações, pesquisadores...');
+    $form['keys']['#attributes']['class'][] = 'search-input-neruds';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function neruds_gui_form_search_block_form_alter(array &$form, FormStateInterface $form_state) {
+  $form['#attributes']['class'][] = 'search-form-neruds';
+  $form['keys']['#attributes']['autocomplete'] = 'off';
+}
+
+/**
+ * Implements hook_preprocess_node() for grupo_estudos.
+ */
+function neruds_gui_preprocess_node__grupo_estudos(array &$variables) {
+  $node = $variables['node'];
+
+  if (!$node->hasField('field_cronograma') || $node->get('field_cronograma')->isEmpty()) {
+    $variables['grupo_cronograma_label'] = t('Cronograma em definição pelo líder');
+    $variables['grupo_status'] = 'indefinido';
+    $variables['grupo_status_label'] = t('A Confirmar');
+    $variables['grupo_calendar_links'] = [];
+    return;
+  }
+
+  $tz_brasilia = new \DateTimeZone('America/Sao_Paulo');
+  $item = $node->get('field_cronograma')->first();
+
+  $start_dt = new \DateTime($item->value, new \DateTimeZone('UTC'));
+  $start_dt->setTimezone($tz_brasilia);
+  $end_dt = new \DateTime($item->end_value, new \DateTimeZone('UTC'));
+  $end_dt->setTimezone($tz_brasilia);
+
+  $show_time = ($start_dt->format('H:i') !== '21:00' && $start_dt->format('H:i') !== '00:00');
+  $suffix = ' (Brasília)';
+
+  $variables['grupo_cronograma_inicio'] = $start_dt->format('d/m/Y') . ($show_time ? ' às ' . $start_dt->format('H:i') . $suffix : '');
+  $variables['grupo_cronograma_fim']    = $end_dt->format('d/m/Y')   . ($show_time ? ' às ' . $end_dt->format('H:i')   . $suffix : '');
+  $variables['grupo_cronograma_label']  = NULL;
+
+  // Status badge baseado nas datas
+  $now = new \DateTime('now', $tz_brasilia);
+  if ($now < $start_dt) {
+    $variables['grupo_status']       = 'aberto';
+    $variables['grupo_status_label'] = t('Inscrições Abertas');
+  }
+  elseif ($now <= $end_dt) {
+    $variables['grupo_status']       = 'andamento';
+    $variables['grupo_status_label'] = t('Em Andamento');
+  }
+  else {
+    $variables['grupo_status']       = 'concluido';
+    $variables['grupo_status_label'] = t('Concluído');
+  }
+
+  // Google Calendar link
+  $title_enc  = rawurlencode($node->getTitle());
+  $details    = rawurlencode('Grupo de estudos NERUDS. Mais informações: ' . $node->toUrl('canonical', ['absolute' => TRUE])->toString());
+  $start_gcal = $start_dt->format('Ymd\THis');
+  $end_gcal   = $end_dt->format('Ymd\THis');
+
+  $variables['grupo_google_cal_url'] = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    . '&text=' . $title_enc
+    . '&dates=' . $start_gcal . '/' . $end_gcal
+    . '&details=' . $details;
+
+  // Anexar biblioteca CSS/JS do grupo de estudos
+  $variables['#attached']['library'][] = 'neruds_gui/grupo-estudos';
+
+  // Líder — iniciais para avatar
+  $variables['grupo_lider_iniciais'] = '';
+  $variables['grupo_lider_nome'] = '';
+  $variables['grupo_lider_url'] = '';
+  if (!$node->get('field_lider')->isEmpty()) {
+    $lider = $node->get('field_lider')->entity;
+    if ($lider) {
+      $palavras = array_filter(explode(' ', trim($lider->getTitle())));
+      $iniciais = implode('', array_map(fn($p) => mb_strtoupper(mb_substr($p, 0, 1)), array_slice($palavras, 0, 2)));
+      $variables['grupo_lider_iniciais'] = $iniciais ?: '?';
+      $variables['grupo_lider_nome'] = $lider->getTitle();
+      $variables['grupo_lider_url']  = $lider->toUrl('canonical')->toString();
+    }
+  }
+
+  // Membros — pré-computar dados para evitar chamadas proibidas no Twig sandbox
+  $variables['grupo_membros'] = [];
+  if (!$node->get('field_membros')->isEmpty()) {
+    foreach ($node->get('field_membros') as $item) {
+      $membro = $item->entity;
+      if (!$membro) {
+        continue;
+      }
+      $palavras = array_filter(explode(' ', trim($membro->getTitle())));
+      $ini = implode('', array_map(fn($p) => mb_strtoupper(mb_substr($p, 0, 1)), array_slice($palavras, 0, 2)));
+      $variables['grupo_membros'][] = [
+        'nome'     => $membro->getTitle(),
+        'url'      => $membro->toUrl('canonical')->toString(),
+        'iniciais' => $ini ?: '?',
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for breadcrumb templates.
+ */
+function neruds_gui_preprocess_breadcrumb(array &$variables) {
+  $variables['breadcrumb_has_items'] = !empty($variables['breadcrumb']);
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function neruds_gui_views_pre_render(\Drupal\views\ViewExecutable $view) {
+  if ($view->id() === 'view_publicacoes_taxonomia' && $view->current_display === 'page_1') {
+    // Native GET gives filters/bookmarks one source of truth, including removal
+    // of the last selection; Views AJAX otherwise retains the old URL query.
+    $view->setAjaxEnabled(FALSE);
+    // Core's module pre-render runs before this theme hook.
+    unset($view->element['#attached']['drupalSettings']['views']['ajaxViews']['views_dom_id:' . $view->dom_id]);
+  }
+}

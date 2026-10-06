@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * NERUDS MCP — AI Content Management Module.
+ *
+ * Provides REST API endpoints for Model Context Protocol (MCP) integration
+ * allowing AI systems to create, read, update, and delete NERUDS content
+ * (News, Events, Projects) with full audit logging and security controls.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function neruds_mcp_install() {
+  // Grant permissions to authenticated users
+  $role = \Drupal::entityTypeManager()
+    ->getStorage('user_role')
+    ->load('authenticated');
+
+  if ($role) {
+    $role->grantPermission('access mcp api');
+    $role->grantPermission('create mcp nodes');
+    $role->save();
+  }
+
+  // Log installation
+  \Drupal::logger('neruds_mcp')->notice('NERUDS MCP module installed successfully.');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function neruds_mcp_uninstall() {
+  \Drupal::logger('neruds_mcp')->notice('NERUDS MCP module uninstalled.');
+}

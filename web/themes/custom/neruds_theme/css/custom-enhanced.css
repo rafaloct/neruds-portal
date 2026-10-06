@@ -1,0 +1,1290 @@
+/**
+ * @file
+ * NERUDS Theme — Unified Stylesheet v3.0
+ * Portal Acadêmico do Núcleo de Estudos Rurais, Desigualdades e Sistemas Socioecológicos
+ *
+ * Architecture:
+ *   1. Design Tokens (CSS Custom Properties)
+ *   2. Reset & Base Typography
+ *   3. Layout Overrides (Olivero/Drupal)
+ *   4. Header & Navigation
+ *   5. Hero Section
+ *   6. Cards & Content Components
+ *   7. Taxonomy Badges
+ *   8. Sidebar & Complementary
+ *   9. Forms & Admin UX
+ *  10. Footer
+ *  11. Responsive Breakpoints (mobile-first)
+ *  12. Animations & Micro-interactions
+ *  13. Accessibility & Print
+ */
+
+/* ===========================================================================
+   1. DESIGN TOKENS
+   =========================================================================== */
+
+:root {
+  /* Brand Colors — academic, sober, trustworthy */
+  --neruds-primary: #1a5276;
+  --neruds-primary-light: #2980b9;
+  --neruds-primary-dark: #0e3650;
+  --neruds-accent: #27ae60;
+  --neruds-accent-light: #2ecc71;
+
+  /* Neutrals */
+  --neruds-dark: #1c2024;
+  --neruds-gray-900: #2c3e50;
+  --neruds-gray-700: #555e68;
+  --neruds-gray-500: #8e99a4;
+  --neruds-gray-300: #c8ced3;
+  --neruds-gray-100: #eef1f4;
+  --neruds-light: #f7f9fb;
+  --neruds-white: #ffffff;
+
+  /* Semantic Colors */
+  --neruds-success: #27ae60;
+  --neruds-warning: #f39c12;
+  --neruds-danger: #c0392b;
+  --neruds-info: #2980b9;
+
+  /* Taxonomy Colors */
+  --ods-color: #0a6ebd;
+  --eixo-color: #1b8553;
+  --projeto-color: #2471a3;
+  --microrregiao-color: #d4ac0d;
+  --pesquisador-color: #6c3483;
+  --linha-pesquisa-color: #ca6f1e;
+  --area-conhecimento-color: #148f77;
+
+  /* Typography — system stack for performance */
+  --font-heading: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+  --font-ui: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Type Scale (major third — 1.25) */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+  --text-3xl: 1.875rem;
+  /* 30px */
+  --text-4xl: 2.25rem;
+  /* 36px */
+  --text-5xl: 3rem;
+  /* 48px */
+
+  /* Spacing Scale (8pt grid) */
+  --space-1: 0.25rem;
+  /* 4px */
+  --space-2: 0.5rem;
+  /* 8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.5rem;
+  /* 24px */
+  --space-6: 2rem;
+  /* 32px */
+  --space-8: 3rem;
+  /* 48px */
+  --space-10: 4rem;
+  /* 64px */
+  --space-12: 5rem;
+  /* 80px */
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.08), 0 8px 10px rgba(0, 0, 0, 0.04);
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  --border-thin: 1px solid var(--neruds-gray-300);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Z-Index scale */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+
+  /* Compatibility variables used in layout.css */
+  --neruds-spacing-sm: var(--space-2);
+  --neruds-spacing-md: var(--space-4);
+  --neruds-spacing-lg: var(--space-5);
+  --neruds-spacing-xl: var(--space-8);
+  --neruds-spacing-xxl: var(--space-10);
+  --neruds-primary-color: var(--neruds-primary);
+  --neruds-background-color-light: var(--neruds-light);
+  --neruds-bg-base: var(--neruds-white);
+  --neruds-border-color: var(--neruds-gray-300);
+  --neruds-gray-10: var(--neruds-dark);
+  --neruds-text-inverse: var(--neruds-white);
+}
+
+
+/* ===========================================================================
+   2. RESET & BASE TYPOGRAPHY
+   =========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--neruds-gray-900);
+  background-color: var(--neruds-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--neruds-dark);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-5);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-4);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-3);
+}
+
+h4 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-3);
+}
+
+h5 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+
+h6 {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-2);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-base);
+  max-width: 72ch;
+}
+
+a {
+  color: var(--neruds-primary-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--neruds-primary-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+blockquote {
+  border-left: 4px solid var(--neruds-primary);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-6) 0;
+  background: var(--neruds-gray-100);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-style: italic;
+  color: var(--neruds-gray-700);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+}
+
+th {
+  background-color: var(--neruds-gray-100);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--neruds-gray-300);
+  text-align: left;
+  color: var(--neruds-dark);
+}
+
+td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--neruds-gray-100);
+}
+
+tr:hover td {
+  background-color: var(--neruds-light);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--neruds-primary);
+  color: var(--neruds-white);
+}
+
+
+/* ===========================================================================
+   3. LAYOUT OVERRIDES (Olivero / Drupal Core)
+   =========================================================================== */
+
+/* Fix Olivero's default header background to use our brand */
+.site-header {
+  background-color: var(--neruds-white);
+  border-bottom: 1px solid var(--neruds-gray-100);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+/* Content region spacing */
+.node--view-mode-full .field--name-body {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  max-width: 72ch;
+}
+
+/* Fix drupal admin toolbar offset */
+body.toolbar-fixed {
+  padding-top: 0 !important;
+}
+
+
+/* ===========================================================================
+   4. HEADER & NAVIGATION
+   =========================================================================== */
+
+.navbar-neruds {
+  background-color: var(--neruds-primary-dark);
+  padding: 0;
+  border-radius: 0;
+}
+
+.navbar-neruds .navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  margin: var(--space-2) 0;
+}
+
+.navbar-neruds .navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.navbar-brand img {
+  max-height: 48px;
+  transition: opacity var(--transition-fast);
+}
+
+.navbar-brand img:hover {
+  opacity: 0.85;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  padding: var(--space-3) var(--space-4);
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.01em;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--neruds-white);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav .nav-link.is-active {
+  color: var(--neruds-white);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.navbar-nav .dropdown-menu {
+  border: none;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) 0;
+  margin-top: var(--space-2);
+  animation: fadeInDropdown var(--transition-base) ease;
+}
+
+.navbar-nav .dropdown-item {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-5);
+  color: var(--neruds-gray-700);
+  transition: all var(--transition-fast);
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: var(--neruds-gray-100);
+  color: var(--neruds-primary);
+  padding-left: calc(var(--space-5) + 4px);
+}
+
+
+/* ===========================================================================
+   5. HERO SECTION
+   =========================================================================== */
+
+.neruds-hero,
+.layout-hero {
+  background: linear-gradient(135deg, var(--neruds-primary-dark) 0%, var(--neruds-primary) 50%, var(--neruds-primary-light) 100%);
+  color: var(--neruds-white);
+  padding: var(--space-10) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.neruds-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.neruds-hero h1 {
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  color: var(--neruds-white);
+  margin-bottom: var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+.neruds-hero p {
+  font-size: var(--text-lg);
+  max-width: 600px;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ===========================================================================
+   6. CARDS & CONTENT COMPONENTS
+   =========================================================================== */
+
+.neruds-card {
+  background: var(--neruds-white);
+  border: 1px solid var(--neruds-gray-100);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  margin-bottom: var(--space-5);
+  overflow: hidden;
+}
+
+.neruds-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--neruds-primary-light);
+}
+
+.neruds-card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.neruds-card-body {
+  padding: var(--space-5);
+}
+
+.neruds-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--neruds-dark);
+  margin-bottom: var(--space-3);
+}
+
+.neruds-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.neruds-card-title a:hover {
+  color: var(--neruds-primary);
+}
+
+.neruds-card-text {
+  color: var(--neruds-gray-700);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* Bootstrap card overrides */
+.card {
+  border: 1px solid var(--neruds-gray-100);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: var(--neruds-primary);
+  color: var(--neruds-white);
+  border: none;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.card-body {
+  padding: var(--space-5);
+}
+
+.card-footer {
+  background-color: var(--neruds-gray-100);
+  border-top: 1px solid var(--neruds-gray-100);
+  padding: var(--space-3) var(--space-5);
+}
+
+/* Section titles */
+.section-title,
+.block-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--neruds-dark);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 3px solid var(--neruds-primary);
+  display: inline-block;
+}
+
+/* Node meta info */
+.node__meta {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--neruds-gray-500);
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+
+/* ===========================================================================
+   7. TAXONOMY BADGES
+   =========================================================================== */
+
+.taxonomy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.taxonomy-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+
+.badge-ods {
+  background-color: var(--ods-color);
+  color: var(--neruds-white);
+}
+
+.badge-eixo,
+.badge-eixos-tematicos {
+  background-color: var(--eixo-color);
+  color: var(--neruds-white);
+}
+
+.badge-projeto {
+  background-color: var(--projeto-color);
+  color: var(--neruds-white);
+}
+
+.badge-microrregiao,
+.badge-microrregiao-tocantins {
+  background-color: var(--microrregiao-color);
+  color: var(--neruds-dark);
+}
+
+.badge-pesquisador {
+  background-color: var(--pesquisador-color);
+  color: var(--neruds-white);
+}
+
+.badge-linha-pesquisa {
+  background-color: var(--linha-pesquisa-color);
+  color: var(--neruds-white);
+}
+
+.badge-area-conhecimento {
+  background-color: var(--area-conhecimento-color);
+  color: var(--neruds-white);
+}
+
+.badge-palavra-chave,
+.badge-palavras-chave,
+.badge-tags {
+  background-color: var(--neruds-gray-500);
+  color: var(--neruds-white);
+}
+
+.taxonomy-badges-wrapper,
+.taxonomy-badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+
+.taxonomy-group {
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background: var(--neruds-light);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--neruds-primary);
+}
+
+.taxonomy-group-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--neruds-dark);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+
+/* ===========================================================================
+   8. SIDEBAR & COMPLEMENTARY
+   =========================================================================== */
+
+.neruds-sidebar,
+.layout__region--sidebar .block {
+  background-color: var(--neruds-white);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+  box-shadow: var(--shadow-xs);
+  border: 1px solid var(--neruds-gray-100);
+}
+
+.neruds-sidebar h3,
+.layout__region--sidebar .block h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--neruds-dark);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--neruds-primary);
+}
+
+.neruds-sidebar .list-group-item {
+  border: none;
+  border-bottom: 1px solid var(--neruds-gray-100);
+  padding: var(--space-3) 0;
+  font-size: var(--text-sm);
+}
+
+.neruds-sidebar .list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* Social Bar */
+.neruds-social-bar,
+.layout__region--social-bar {
+  position: sticky;
+  top: var(--space-6);
+  z-index: var(--z-dropdown);
+}
+
+.social-bar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-full);
+  background-color: var(--neruds-primary);
+  color: var(--neruds-white);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.social-bar-item:hover {
+  background-color: var(--neruds-primary-dark);
+  color: var(--neruds-white);
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+
+/* ===========================================================================
+   9. FORMS & ADMIN UX
+   =========================================================================== */
+
+.form-control,
+.form-select {
+  border: 2px solid var(--neruds-gray-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--neruds-primary);
+  box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.15);
+  outline: none;
+}
+
+.form-label {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--neruds-dark);
+  margin-bottom: var(--space-2);
+}
+
+.description,
+.form-text {
+  font-size: var(--text-xs);
+  color: var(--neruds-gray-500);
+  margin-top: var(--space-1);
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.btn-primary,
+.button--primary {
+  background-color: var(--neruds-primary);
+  border-color: var(--neruds-primary);
+  color: var(--neruds-white);
+}
+
+.btn-primary:hover,
+.button--primary:hover {
+  background-color: var(--neruds-primary-dark);
+  border-color: var(--neruds-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-primary {
+  border-color: var(--neruds-primary);
+  color: var(--neruds-primary);
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--neruds-primary);
+  color: var(--neruds-white);
+  transform: translateY(-1px);
+}
+
+/* Views & Exposed Filters */
+.view-filters {
+  background: var(--neruds-white);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--neruds-gray-100);
+}
+
+.view-header {
+  background-color: var(--neruds-primary);
+  color: var(--neruds-white);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.view-header h2 {
+  color: var(--neruds-white);
+  margin-bottom: 0;
+}
+
+/* Drupal admin tabs */
+.tabs__tab {
+  font-family: var(--font-ui);
+}
+
+
+/* ===========================================================================
+  10. FOOTER
+   =========================================================================== */
+
+.layout-footer,
+.neruds-footer {
+  background-color: var(--neruds-dark);
+  color: rgba(255, 255, 255, 0.85);
+  padding: var(--space-10) 0 var(--space-5);
+  margin-top: var(--space-10);
+}
+
+.layout-footer h5,
+.neruds-footer h5 {
+  color: var(--neruds-white);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+}
+
+.layout-footer a,
+.neruds-footer a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.layout-footer a:hover,
+.neruds-footer a:hover {
+  color: var(--neruds-white);
+  text-decoration: underline;
+}
+
+.layout-footer ul,
+.neruds-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.layout-footer ul li,
+.neruds-footer ul li {
+  margin-bottom: var(--space-2);
+}
+
+.layout__region--footer-top {
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--space-5);
+}
+
+.layout__region--footer-bottom {
+  padding-top: var(--space-4);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ===========================================================================
+  11. RESPONSIVE BREAKPOINTS (mobile-first adjustments)
+   =========================================================================== */
+
+/* --- Small phones (< 480px) --- */
+@media (max-width: 479px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+  }
+
+  .neruds-hero {
+    padding: var(--space-5) 0;
+  }
+
+  .neruds-card-body,
+  .card-body {
+    padding: var(--space-3);
+  }
+
+  .taxonomy-badge {
+    font-size: 0.65rem;
+    padding: 2px var(--space-2);
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Stack nav items */
+  .navbar-collapse {
+    padding: var(--space-3) 0;
+  }
+
+  .navbar-nav .nav-link {
+    padding: var(--space-3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  table {
+    font-size: var(--text-xs);
+  }
+
+  th,
+  td {
+    padding: var(--space-2);
+  }
+}
+
+/* --- Standard phones (480px - 767px) --- */
+@media (max-width: 767px) {
+
+  .neruds-social-bar,
+  .layout__region--social-bar {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+  }
+
+  .social-bar-item {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0;
+  }
+
+  .neruds-card-img-top {
+    height: 160px;
+  }
+
+  .node--view-mode-full .field--name-body {
+    font-size: var(--text-base);
+  }
+}
+
+/* --- Tablets (768px - 991px) --- */
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: var(--text-xs);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .neruds-card-img-top {
+    height: 180px;
+  }
+}
+
+/* --- Desktop (992px+) --- */
+@media (min-width: 992px) {
+  .navbar-nav .nav-link {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .neruds-hero {
+    padding: var(--space-12) 0;
+  }
+}
+
+/* --- Large desktop (1400px+) --- */
+@media (min-width: 1400px) {
+  .layout-container {
+    max-width: 1320px;
+  }
+
+  h1 {
+    font-size: var(--text-5xl);
+  }
+}
+
+/* --- Landscape phones --- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .neruds-hero {
+    padding: var(--space-4) 0;
+  }
+
+  .neruds-hero h1 {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Responsive table wrapper */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ===========================================================================
+  12. ANIMATIONS & MICRO-INTERACTIONS
+   =========================================================================== */
+
+@keyframes fadeInDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity var(--transition-base);
+}
+
+
+/* ===========================================================================
+  13. ACCESSIBILITY & PRINT
+   =========================================================================== */
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 3px solid var(--neruds-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .taxonomy-badge {
+    border: 2px solid currentColor;
+  }
+
+  .neruds-card,
+  .card {
+    border: 2px solid var(--neruds-gray-700);
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* Print */
+@media print {
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+
+  .navbar-neruds,
+  .neruds-social-bar,
+  .layout__region--social-bar,
+  .layout__region--sidebar,
+  .layout-footer,
+  .neruds-footer,
+  .btn,
+  .view-filters {
+    display: none !important;
+  }
+
+  .neruds-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  .taxonomy-badge {
+    background: #fff !important;
+    color: #000 !important;
+    border: 1px solid #ccc;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #000;
+    page-break-after: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* ===========================================================================
+   10. REACT-LIKE VIEWS & COMPONENTS
+   =========================================================================== */
+
+/* Grid Layout for Repositories */
+.neruds-view-grid,
+.views-view-grid .views-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+/* Modern Card Style */
+.neruds-card-modern {
+  background: var(--neruds-white);
+  border: 1px solid var(--neruds-gray-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.neruds-card-modern:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--neruds-primary-light);
+}
+
+.neruds-card-modern::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--neruds-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.neruds-card-modern:hover::after {
+  transform: scaleX(1);
+}
+
+/* Interactive Filter Bar (React-style) */
+.neruds-filters {
+  background: var(--neruds-white);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-end;
+  border: 1px solid var(--neruds-gray-100);
+}
+
+.neruds-filters .form-item {
+  margin-bottom: 0;
+  flex: 1 1 200px;
+}
+
+.neruds-filters label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--neruds-gray-500);
+  font-weight: 600;
+}
+
+.neruds-filters .form-select,
+.neruds-filters .form-control {
+  background-color: var(--neruds-light);
+  border: 1px solid transparent;
+}
+
+.neruds-filters .form-select:focus,
+.neruds-filters .form-control:focus {
+  background-color: var(--neruds-white);
+  border-color: var(--neruds-primary);
+}
+
+/* Highlights Carousel (Scroll Snap) */
+.neruds-carousel-wrapper {
+  position: relative;
+  padding: var(--space-2) 0;
+}
+
+.neruds-carousel {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-4);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.neruds-carousel::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.neruds-carousel-item {
+  flex: 0 0 85%;
+  min-width: 300px;
+  scroll-snap-align: center;
+}
+
+@media (min-width: 768px) {
+  .neruds-carousel-item {
+    flex: 0 0 45%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .neruds-carousel-item {
+    flex: 0 0 32%;
+  }
+}
+
+/* Loading Skeleton Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.neruds-skeleton {
+  background: linear-gradient(90deg, var(--neruds-gray-100) 25%, var(--neruds-gray-200) 50%, var(--neruds-gray-100) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Footer Fix */
+.site-footer {
+  background-color: var(--neruds-dark);
+  color: var(--neruds-gray-300);
+  padding: var(--space-8) 0;
+  margin-top: auto;
+}

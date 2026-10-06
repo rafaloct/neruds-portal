@@ -1,0 +1,201 @@
+/**
+ * @file footer.css
+ * Rodapé NERUDS — Paleta oficial: cinza escuro + laranja
+ * Desktop profissional com 4 colunas + barra inferior
+ */
+
+/* ── Wrapper principal ──────────────────────────────── */
+.site-footer {
+  background: #2c2c2e;           /* Quase preto neutro — sem verde */
+  color: rgba(255,255,255,0.78);
+  padding: 4rem 0 0;
+  margin-top: auto;
+  width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ── Container interno ──────────────────────────────── */
+.site-footer .layout-container,
+.site-footer > .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Grid superior: 4 colunas ──────────────────────── */
+.site-footer__top,
+.region-footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 1024px) {
+  .site-footer__top,
+  .region-footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-footer__top,
+  .region-footer-top {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ── Bloco de marca (primeira coluna) ───────────────── */
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.site-footer__brand .site-footer__logo {
+  height: 40px;
+  width: auto;
+  opacity: 0.9;
+  filter: brightness(0) invert(1); /* Logo branca sobre escuro */
+}
+
+.site-footer__brand p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  max-width: 280px;
+  margin: 0;
+}
+
+.site-footer__brand .site-footer__sigla {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #F58535;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.site-footer__brand .site-footer__nome {
+  font-size: 0.78rem;
+  color: #C5C5C5;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Títulos das colunas ────────────────────────────── */
+.site-footer__top h2,
+.site-footer__top h3,
+.site-footer__top .block-title,
+.region-footer-top .block-title {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  color: #F58535 !important;
+  margin: 0 0 1.25rem !important;
+  padding: 0 !important;
+}
+
+/* ── Listas de links ────────────────────────────────── */
+.site-footer__top .menu,
+.region-footer-top .menu {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+}
+
+.site-footer__top .menu li,
+.region-footer-top .menu li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-footer__top .menu a,
+.region-footer-top .menu a {
+  color: rgba(255,255,255,0.65) !important;
+  text-decoration: none !important;
+  font-size: 0.875rem !important;
+  transition: color 0.15s, padding-left 0.15s !important;
+  display: block !important;
+}
+
+.site-footer__top .menu a:hover,
+.region-footer-top .menu a:hover {
+  color: #F58535 !important;
+  padding-left: 6px !important;
+}
+
+/* ── Redes sociais ──────────────────────────────────── */
+.site-footer__social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.site-footer__social a:hover {
+  background: #F58535;
+  color: #fff;
+}
+
+/* ── Barra inferior (copyright) ─────────────────────── */
+.site-footer__bottom,
+.region-footer-bottom {
+  background: rgba(0,0,0,0.25);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: #B0B0B0;
+}
+
+.site-footer__bottom a,
+.region-footer-bottom a {
+  color: #C5C5C5;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.site-footer__bottom a:hover,
+.region-footer-bottom a:hover {
+  color: #F58535;
+}
+
+.site-footer__bottom p,
+.region-footer-bottom p {
+  margin: 0;
+}
+
+/* Linha laranja de destaque no topo do rodapé */
+.site-footer::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, #F58535 0%, #e07020 50%, #F58535 100%);
+  margin-bottom: 4rem;
+}

@@ -1,0 +1,167 @@
+.neruds-drive-documents {
+  margin: 2rem 0;
+  border-radius: 8px;
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-left: 4px solid #1976d2;
+}
+
+.neruds-drive-documents__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.neruds-drive-documents__count {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.neruds-drive-documents__folder-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #1976d2;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.neruds-drive-documents__folder-link:hover {
+  background: #1565c0;
+}
+
+.neruds-drive-documents__folder-link::before {
+  content: '🔗';
+}
+
+.neruds-drive-documents__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.neruds-drive-documents__section {
+  background: white;
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.neruds-drive-documents__section-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.neruds-drive-documents__section-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.neruds-drive-documents__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.neruds-drive-documents__item:last-child {
+  border-bottom: none;
+}
+
+.neruds-drive-documents__link {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-word;
+  flex: 1;
+  transition: color 0.2s ease;
+}
+
+.neruds-drive-documents__link:hover {
+  color: #1565c0;
+  text-decoration: underline;
+}
+
+.neruds-drive-documents__item-name {
+  display: block;
+}
+
+.neruds-drive-documents__item-date {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: #999;
+  white-space: nowrap;
+}
+
+.neruds-drive-documents__loading,
+.neruds-drive-documents__empty,
+.neruds-drive-documents__error {
+  padding: 2rem;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.neruds-drive-documents__loading {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.neruds-drive-documents__empty {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.neruds-drive-documents__error {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.neruds-drive-documents__loading p,
+.neruds-drive-documents__empty p,
+.neruds-drive-documents__error p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .neruds-drive-documents {
+    padding: 1rem;
+  }
+
+  .neruds-drive-documents__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .neruds-drive-documents__list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .neruds-drive-documents__item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .neruds-drive-documents__item-date {
+    white-space: normal;
+  }
+}

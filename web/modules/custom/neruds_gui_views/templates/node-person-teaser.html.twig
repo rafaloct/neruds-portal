@@ -1,0 +1,186 @@
+{#
+/**
+ * @file
+ * NERUDS Researcher Profile Card Template
+ *
+ * Available variables:
+ * - node: The person/researcher node object
+ * - title: Researcher name
+ * - field_specialty: Research specialization
+ * - field_ods: Aligned ODS goals
+ * - field_bio: Biography/about
+ * - url: Profile URL
+ */
+#}
+
+<article class="neruds-researcher-card researcher-card">
+
+  {# Photo #}
+  {% if node.field_photo %}
+    <div class="researcher-card__photo">
+      {{ node.field_photo }}
+    </div>
+  {% else %}
+    <div class="researcher-card__photo researcher-card__photo--empty">
+      <span class="photo-placeholder">👤</span>
+    </div>
+  {% endif %}
+
+  {# Content #}
+  <div class="researcher-card__content">
+
+    {# Name #}
+    <h3 class="researcher-card__name">
+      <a href="{{ url }}">{{ title }}</a>
+    </h3>
+
+    {# Specialty #}
+    {% if node.field_specialty %}
+      <div class="researcher-card__specialty">
+        {{ node.field_specialty.value }}
+      </div>
+    {% endif %}
+
+    {# ODS Alignment #}
+    {% if node.field_ods|length > 0 %}
+      <div class="researcher-card__ods">
+        {% for term_ref in node.field_ods|slice(0, 5) %}
+          {% set term = term_ref.entity %}
+          {% set color = term.field_ods_color.value ?? '#CCCCCC' %}
+          <span class="ods-indicator" style="background-color: {{ color }};" title="{{ term.name }}"></span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# Bio #}
+    {% if node.field_bio %}
+      <p class="researcher-card__bio">
+        {{ node.field_bio.value|striptags|truncate(150, true, '...') }}
+      </p>
+    {% endif %}
+
+    {# CTA #}
+    <a href="{{ url }}" class="researcher-card__cta btn btn-primary btn-sm btn-block">
+      Ver Perfil Completo
+    </a>
+  </div>
+</article>
+
+<style>
+  .neruds-researcher-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .neruds-researcher-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--color-babasu);
+  }
+
+  .researcher-card__photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-babasu), var(--color-barro));
+  }
+
+  .researcher-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .researcher-card__photo--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-barro) 100%);
+  }
+
+  .photo-placeholder {
+    font-size: 3rem;
+    opacity: 0.6;
+  }
+
+  .researcher-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .researcher-card__name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--color-gray-900);
+  }
+
+  .researcher-card__name a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-base);
+  }
+
+  .researcher-card__name a:hover {
+    color: var(--color-babasu);
+  }
+
+  .researcher-card__specialty {
+    font-size: 0.9rem;
+    color: var(--color-barro);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .researcher-card__ods {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .ods-indicator {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .researcher-card__bio {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-gray-700);
+    margin: 10px 0 15px;
+    flex-grow: 1;
+  }
+
+  .researcher-card__cta {
+    width: 100%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .neruds-researcher-card {
+      background: var(--color-gray-900);
+      border-color: var(--color-gray-700);
+    }
+
+    .researcher-card__name {
+      color: var(--color-white);
+    }
+
+    .researcher-card__bio {
+      color: var(--color-gray-300);
+    }
+  }
+</style>

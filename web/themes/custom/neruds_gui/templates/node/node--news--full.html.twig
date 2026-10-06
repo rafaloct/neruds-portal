@@ -1,0 +1,79 @@
+{#
+ * @file
+ * NERUDS Theme - News (Notícia) Full View
+ #}
+
+{%
+  set classes = [
+    'node',
+    'node--' ~ node.bundle|clean_class,
+    'node--' ~ node.bundle|clean_class ~ '--full',
+    not node.isPublished() ? 'unpublished'
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {# Featured Image #}
+  {% if node.field_featured_image.0 %}
+    <div class="node--news__image-wrapper">
+      {{ content.field_featured_image }}
+    </div>
+  {% endif %}
+
+  {# Content Container #}
+  <div class="node--news__content">
+
+    {# Title #}
+    {% if not page %}
+      <h2{{ title_attributes.addClass('node--news__title') }}>
+        <a href="{{ node_url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {% else %}
+      <h1{{ title_attributes.addClass('node--news__title') }}>{{ label }}</h1>
+    {% endif %}
+
+    {# Meta Information #}
+    <div class="node--news__meta">
+      <span class="node--news__author">
+        👤 {% trans %}By{% endtrans %} {{ node.getOwner().getDisplayName() }}
+      </span>
+      <time class="node--news__date" datetime="{{ node.getCreatedTime()|date('c') }}">
+        📅 {{ node.getCreatedTime()|date('d/m/Y') }}
+      </time>
+      {% if node.field_tags.0 %}
+        <span class="node--news__tags">
+          🏷️ {% for tag in node.field_tags %}
+            <a href="{{ tag.url }}" class="tag-link">{{ tag.name }}</a>
+            {%- if not loop.last %}, {% endif %}
+          {% endfor %}
+        </span>
+      {% endif %}
+    </div>
+
+    {# Description/Excerpt #}
+    {% if node.field_description.0 %}
+      <div class="node--news__excerpt">
+        {{ content.field_description }}
+      </div>
+    {% endif %}
+
+    {# Main Content #}
+    <div class="node--news__body">
+      {{ content.field_content }}
+    </div>
+
+    {# ODS Badges #}
+    {% if node.field_ods_tags.0 %}
+      <div class="node--news__badges">
+        {% for ods in node.field_ods_tags %}
+          <span class="badge ods-{{ ods.target_id }}">
+            ODS {{ ods.target_id }}
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+
+</article>

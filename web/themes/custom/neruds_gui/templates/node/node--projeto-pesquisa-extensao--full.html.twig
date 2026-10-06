@@ -1,0 +1,223 @@
+{#
+ * @file node--projeto-pesquisa-extensao--full.html.twig
+ * NERUDS Theme — Projeto de Pesquisa/Extensão (Full)
+ * Inclui: status badge, seções acadêmicas, bloco "Citar este projeto", JSON-LD
+ #}
+
+{%
+  set status_map = {
+    'Em andamento': 'status--active',
+    'Concluído': 'status--done',
+    'Em Planejamento': 'status--planned',
+    'Cancelado': 'status--cancelled',
+    'Suspenso': 'status--suspended',
+  }
+%}
+
+{%
+  set status_label = node.field_status_projeto.entity ? node.field_status_projeto.entity.label : 'Em andamento'
+%}
+{%
+  set status_class = status_map[status_label] ?? 'status--active'
+%}
+
+{%
+  set classes = [
+    'node',
+    'node--projeto-pesquisa-extensao',
+    'node--full',
+    'project-page',
+  ]
+%}
+
+{# JSON-LD Schema.org #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchProject",
+  "name": "{{ node.label|e('js') }}",
+  "description": "{{ node.field_resumo.value|striptags|slice(0, 300)|e('js') }}",
+  "url": "{{ url('<current>') }}",
+  "funder": "{{ node.field_financiamento.entity ? node.field_financiamento.entity.label : 'UFT/NERUDS'|e('js') }}",
+  "location": {
+    "@type": "Place",
+    "name": "{{ node.field_local_execucao.value|e('js') }}"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "NERUDS – Núcleo de Estudos Rurais, Desigualdades e Sistemas Socioecológicos",
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidade Federal do Tocantins (UFT)"
+    }
+  }
+}
+</script>
+
+<article{{ attributes.addClass(classes) }} data-project-scope="{{ label|e("html_attr") }}">
+
+  {# ── Cabeçalho ───────────────────────────────────────── #}
+  <header class="project-page__header">
+
+    <div class="project-page__meta-top">
+      {# Status badge #}
+      {% if status_label %}
+        <span class="project-status-badge {{ status_class }}">
+          {% if status_label == 'Em andamento' %}▶{% elseif status_label == 'Concluído' %}✓{% elseif status_label == 'Em Planejamento' %}◎{% else %}●{% endif %}
+          {{ status_label }}
+        </span>
+      {% endif %}
+
+      {# Tipo de projeto #}
+      {% if not node.field_tipo_projeto.isEmpty %}
+        <span class="project-type-badge">{{ content.field_tipo_projeto }}</span>
+      {% endif %}
+    </div>
+
+    <h1 class="project-page__title">{{ label }}</h1>
+
+    <div class="project-page__info-bar">
+      {% if node.field_coordenador.value %}
+        <span class="project-page__info-item">
+          <span class="project-page__info-label">Coordenação</span>
+          {{ node.field_coordenador.value }}
+        </span>
+      {% endif %}
+      {% if node.field_local_execucao.value %}
+        <span class="project-page__info-item">
+          <span class="project-page__info-label">Local</span>
+          {{ node.field_local_execucao.value }}
+        </span>
+      {% endif %}
+      {% if not node.field_financiamento.isEmpty %}
+        <span class="project-page__info-item">
+          <span class="project-page__info-label">Financiamento</span>
+          {{ content.field_financiamento }}
+        </span>
+      {% endif %}
+    </div>
+
+    {# ODS tags #}
+    {% if not node.field_ods_interesse.isEmpty %}
+      <div class="project-page__ods">
+        {{ content.field_ods_interesse }}
+      </div>
+    {% endif %}
+
+  </header>
+
+  {# ── Corpo principal ─────────────────────────────────── #}
+  <div class="project-page__body">
+
+    {# Resumo #}
+    {% if not node.field_resumo.isEmpty %}
+      <section class="project-page__section">
+        <h2 class="project-page__section-title">Resumo</h2>
+        <div class="project-page__resumo">
+          {{ content.field_resumo }}
+        </div>
+      </section>
+    {% endif %}
+
+    {# Objetivos #}
+    {% if not node.field_objetivos.isEmpty %}
+      <section class="project-page__section">
+        <h2 class="project-page__section-title">Objetivos</h2>
+        {{ content.field_objetivos }}
+      </section>
+    {% endif %}
+
+    {# Justificativa #}
+    {% if not node.field_justificativa.isEmpty %}
+      <section class="project-page__section">
+        <h2 class="project-page__section-title">Justificativa</h2>
+        {{ content.field_justificativa }}
+      </section>
+    {% endif %}
+
+    {# Metodologia #}
+    {% if not node.field_metodologia.isEmpty %}
+      <section class="project-page__section">
+        <h2 class="project-page__section-title">Metodologia</h2>
+        {{ content.field_metodologia }}
+      </section>
+    {% endif %}
+
+    {# Participantes #}
+    {% if not node.field_participantes.isEmpty %}
+      <section class="project-page__section">
+        <h2 class="project-page__section-title">Público-Alvo e Participantes</h2>
+        <ul class="project-page__participants">
+          {% for item in node.field_participantes %}
+            <li>{{ item.value }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {# Linhas de pesquisa #}
+    {% if not node.field_linhas_pesquisa.isEmpty %}
+      <section class="project-page__section project-page__section--tags">
+        <h2 class="project-page__section-title">Linhas de Pesquisa</h2>
+        {{ content.field_linhas_pesquisa }}
+      </section>
+    {% endif %}
+
+  </div>
+
+  {# ── Bloco lateral: Citar este Projeto ──────────────── #}
+  <aside class="project-page__sidebar">
+
+    <div class="citation-block">
+      <h3 class="citation-block__title">📄 Citar este Projeto</h3>
+      <div class="citation-block__body">
+        <p class="citation-block__text" id="citation-abnt-{{ node.id }}">
+          {{ node.field_coordenador.value ? node.field_coordenador.value : 'NERUDS/UFT' }}.
+          <strong>{{ node.label }}</strong>.
+          Palmas: NERUDS — Universidade Federal do Tocantins, {{ node.getCreatedTime|date('Y') }}.
+          Disponível em: {{ url('<current>')|raw }}.
+          Acesso em: <span class="citation-access-date">{{ "now"|date("d/m/Y") }}</span>.
+        </p>
+        <button class="citation-block__copy-btn" onclick="
+          const text = document.getElementById('citation-abnt-{{ node.id }}').innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            this.textContent = '✓ Copiado!';
+            setTimeout(() => this.textContent = 'Copiar ABNT', 2000);
+          });
+        ">Copiar ABNT</button>
+      </div>
+
+      <details class="citation-block__formats">
+        <summary>Outros formatos</summary>
+        <div class="citation-block__bibtex">
+          <strong>BibTeX</strong>
+          <pre class="citation-block__code">@misc{neruds{{ node.id }},
+  title  = { {{- node.label -}} },
+  author = { {{- node.field_coordenador.value ? node.field_coordenador.value : 'NERUDS' -}} },
+  year   = { {{- node.getCreatedTime|date('Y') -}} },
+  url    = { {{- url('<current>')|raw -}} },
+  note   = {NERUDS/UFT — Disponível em: {{- url('<current>')|raw -}} }
+}</pre>
+        </div>
+      </details>
+    </div>
+
+    {# Equipe #}
+    {% if not node.field_equipe_pesquisa.isEmpty %}
+      <div class="project-page__team-block">
+        <h3 class="project-page__team-title">Equipe do Projeto</h3>
+        {{ content.field_equipe_pesquisa }}
+      </div>
+    {% endif %}
+
+    {# Downloads / arquivos (se existir) #}
+    {% if content.field_galeria_imagens is defined and not node.field_galeria_imagens.isEmpty %}
+      <div class="project-page__downloads">
+        <h3>Imagens</h3>
+        {{ content.field_galeria_imagens }}
+      </div>
+    {% endif %}
+
+  </aside>
+
+</article>

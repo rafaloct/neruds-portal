@@ -1,0 +1,179 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Página Inicial (Front)
+ * Manifesto visual decolonial completo
+ *
+ * O site como extensão da terra.
+ */
+#}
+<div id="page-wrapper" class="page-wrapper page-wrapper--front bg-trama">
+  <div id="page" class="page">
+
+    {# Skip link #}
+    <a href="#main-content" class="skip-link">{{ 'Ir para o conteúdo'|t }}</a>
+
+    {# =====================================================
+       HEADER — sticky, babaçu escuro
+       ===================================================== #}
+    {% if page.header or page.primary_menu %}
+      <header id="header" class="site-header" role="banner">
+        <div class="layout-container">
+          <div class="layout layout--header">
+
+            {% if page.header %}
+              <div class="layout__region layout__region--header">
+                {{ page.header }}
+              </div>
+            {% endif %}
+
+            {% if page.primary_menu %}
+              <div class="layout__region layout__region--navigation">
+                <nav class="navbar navbar-expand-lg navbar-neruds"
+                     role="navigation"
+                     aria-labelledby="primary-menu-label">
+                  <h2 id="primary-menu-label" class="visually-hidden">{{ 'Menu principal'|t }}</h2>
+                  <button class="navbar-toggler"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#primaryMenu"
+                          aria-controls="primaryMenu"
+                          aria-expanded="false"
+                          aria-label="{{ 'Abrir menu'|t }}">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="primaryMenu">
+                    {{ page.primary_menu }}
+                  </div>
+                </nav>
+              </div>
+            {% endif %}
+
+            {% if page.secondary_menu %}
+              <div class="layout__region layout__region--secondary-menu">
+                {{ page.secondary_menu }}
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </header>
+    {% endif %}
+
+    {# =====================================================
+       HERO FRONT — babaçual com manifesto
+       ===================================================== #}
+    {% if page.hero %}
+      <section id="hero" class="region-hero hero--front overlay-trama" role="banner" aria-label="{{ 'Seção principal'|t }}">
+        <div class="layout-container">
+          {{ page.hero }}
+        </div>
+      </section>
+    {% else %}
+      {# Hero padrão quando nenhum bloco está configurado #}
+      <section id="hero" class="region-hero hero--front bg-hero-terra" role="banner" aria-label="{{ 'NERUDS'|t }}">
+        <div class="layout-container">
+          <div class="hero-glass-card">
+            <h1 class="hero-title">
+              Núcleo de Estudos Rurais, Desigualdades e Sistemas Socioecológicos
+            </h1>
+            <p class="hero-subtitle">
+              Pesquisa, extensão e resistência no Bico do Papagaio, Norte do Tocantins.
+            </p>
+            <p class="hero-manifesto">
+              ◈ UFT — Universidade Federal do Tocantins
+            </p>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+
+    {# Highlighted #}
+    {% if page.highlighted %}
+      <div id="highlighted" class="layout-highlighted" role="complementary">
+        <div class="layout-container">
+          {{ page.highlighted }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# =====================================================
+       CONTEÚDO — Área Principal
+       ===================================================== #}
+    <main id="main-content" role="main" class="layout-content">
+
+      {# Content Above — pode ter banner, stats #}
+      {% if page.content_above %}
+        <div class="section-terra" style="padding: var(--space-10) 0;">
+          <div class="layout-container">
+            {{ page.content_above }}
+          </div>
+        </div>
+      {% endif %}
+
+      {# Conteúdo central (views, blocos) #}
+      {% if page.content %}
+        <div style="padding: var(--space-10) 0;">
+          <div class="layout-container">
+            <div class="layout layout--content{% if page.sidebar %} has-sidebar{% endif %}">
+
+              <div class="layout__region layout__region--content layout__region--content-main">
+                {{ page.content }}
+              </div>
+
+              {% if page.sidebar %}
+                <aside class="layout__region layout__region--sidebar"
+                       role="complementary"
+                       aria-label="{{ 'Lateral'|t }}">
+                  {{ page.sidebar }}
+                </aside>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {# Content Below — rodapé do conteúdo #}
+      {% if page.content_below %}
+        <div class="section-babacú" style="padding: var(--space-12) 0;">
+          <div class="layout-container">
+            {{ page.content_below }}
+          </div>
+        </div>
+      {% endif %}
+
+    </main>
+
+    {# =====================================================
+       FOOTER — Raízes do Bico do Papagaio
+       ===================================================== #}
+    {% if page.footer_top or page.footer_bottom %}
+      <footer class="layout-footer" role="contentinfo">
+
+        {% if page.footer_top %}
+          <div class="layout__region--footer-top">
+            <div class="layout-container">
+              {{ page.footer_top }}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if page.footer_bottom %}
+          <div class="layout__region--footer-bottom">
+            <div class="layout-container">
+              <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-4);">
+                {{ page.footer_bottom }}
+                <span style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.1em; opacity:0.45; white-space:nowrap; text-transform:uppercase;">
+                  ◈ NERUDS/UFT — Norte do Tocantins ◈
+                </span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      </footer>
+    {% endif %}
+
+  </div>
+</div>

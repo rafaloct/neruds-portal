@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Views unformatted (grid de cards decoloniais)
+ * Substitui o bootstrap-cards genérico
+ */
+#}
+
+{% if title %}
+  <h2 class="section-ornament">{{ title }}</h2>
+{% endif %}
+
+<div class="card-grid">
+  {% for row in rows %}
+    <div class="card-grid__item">
+      {{ row.content }}
+    </div>
+  {% endfor %}
+</div>

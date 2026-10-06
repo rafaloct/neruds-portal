@@ -1,0 +1,307 @@
+/**
+ * @file effects.css
+ * Efeitos Visuais — Glassmorphism, Sombras, Transições
+ * NERUDS-GUI Premium Design
+ */
+
+/* =====================================================
+   GLASSMORPHISM — Efeito Vidro Fosco
+   ===================================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: var(--glass-effect);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-dark {
+  background: rgba(31, 38, 135, 0.15);
+  backdrop-filter: var(--glass-effect);
+  border: 1px solid rgba(31, 38, 135, 0.2);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-primary {
+  background: rgba(46, 70, 50, 0.1);
+  backdrop-filter: var(--glass-effect);
+  border: 1px solid rgba(46, 70, 50, 0.2);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-accent {
+  background: rgba(225, 193, 110, 0.1);
+  backdrop-filter: var(--glass-effect);
+  border: 1px solid rgba(225, 193, 110, 0.2);
+  box-shadow: var(--shadow-glass);
+}
+
+/* =====================================================
+   SOMBRAS — Profundidade
+   ===================================================== */
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.shadow-glass {
+  box-shadow: var(--shadow-glass);
+}
+
+/* Hover elevation */
+.hover-lift {
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.hover-lift:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   BORDAS — Raios e Estilos
+   ===================================================== */
+
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.rounded-xl {
+  border-radius: var(--radius-xl);
+}
+
+.rounded-full {
+  border-radius: var(--radius-full);
+}
+
+/* Borda com cor primária */
+.border-primary {
+  border: var(--border-width-thin) solid var(--color-babasu);
+}
+
+.border-secondary {
+  border: var(--border-width-thin) solid var(--color-barro);
+}
+
+.border-accent {
+  border: var(--border-width-thin) solid var(--color-palha);
+}
+
+.border-thick {
+  border: var(--border-width-thick) solid var(--color-barro);
+}
+
+/* =====================================================
+   GRADIENTES
+   ===================================================== */
+
+.gradient-fade-down {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.gradient-fade-up {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.gradient-primary-light {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 70, 50, 0.1) 0%,
+    rgba(46, 70, 50, 0.05) 100%
+  );
+}
+
+/* =====================================================
+   OPACIDADE — Efeitos de Transparência
+   ===================================================== */
+
+.opacity-0 { opacity: var(--opacity-0); }
+.opacity-5 { opacity: var(--opacity-5); }
+.opacity-10 { opacity: var(--opacity-10); }
+.opacity-20 { opacity: var(--opacity-20); }
+.opacity-30 { opacity: var(--opacity-30); }
+.opacity-40 { opacity: var(--opacity-40); }
+.opacity-50 { opacity: var(--opacity-50); }
+.opacity-60 { opacity: var(--opacity-60); }
+.opacity-70 { opacity: var(--opacity-70); }
+.opacity-80 { opacity: var(--opacity-80); }
+.opacity-90 { opacity: var(--opacity-90); }
+.opacity-100 { opacity: var(--opacity-100); }
+
+/* =====================================================
+   TRANSIÇÕES — Animações Suaves
+   ===================================================== */
+
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.transition-base {
+  transition: all var(--transition-base);
+}
+
+.transition-slow {
+  transition: all var(--transition-slow);
+}
+
+/* Transições específicas */
+.transition-colors {
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+}
+
+.transition-transform {
+  transition: transform var(--transition-base);
+}
+
+.transition-opacity {
+  transition: opacity var(--transition-base);
+}
+
+.transition-shadow {
+  transition: box-shadow var(--transition-base);
+}
+
+/* =====================================================
+   HOVER STATES — Estados Interativos
+   ===================================================== */
+
+.hover-opacity-80:hover {
+  opacity: 0.8;
+}
+
+.hover-scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover-scale-110:hover {
+  transform: scale(1.10);
+}
+
+.hover-translate-y-minus-2:hover {
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   FOCUS VISIBLE — Acessibilidade
+   ===================================================== */
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.focus-ring {
+  box-shadow: var(--focus-ring);
+}
+
+/* =====================================================
+   BLUR — Efeito de Desfoque
+   ===================================================== */
+
+.blur-sm {
+  filter: blur(var(--blur-sm));
+}
+
+.blur-md {
+  filter: blur(var(--blur-md));
+}
+
+.blur-lg {
+  filter: blur(var(--blur-lg));
+}
+
+/* =====================================================
+   FILTROS AVANÇADOS
+   ===================================================== */
+
+.brightness-low {
+  filter: brightness(0.7);
+}
+
+.brightness-normal {
+  filter: brightness(1);
+}
+
+.brightness-high {
+  filter: brightness(1.3);
+}
+
+.saturate-boost {
+  filter: saturate(1.4);
+}
+
+.desaturate {
+  filter: grayscale(100%);
+}
+
+.hover-desaturate:hover {
+  filter: grayscale(0%);
+  transition: filter var(--transition-base);
+}
+
+/* =====================================================
+   VISIBILIDADE
+   ===================================================== */
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}

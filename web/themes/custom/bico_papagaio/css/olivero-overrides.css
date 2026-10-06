@@ -1,0 +1,398 @@
+/**
+ * @file olivero-overrides.css
+ * BICO DO PAPAGAIO — Subversão do Olivero
+ *
+ * Neutraliza o azul corporativo e a estética "limpa eurocêntrica"
+ * do tema base Olivero, substituindo pelo território do Bico do Papagaio.
+ */
+
+/* =========================================================
+   VARIÁVEIS OLIVERO — sobrescrever com tokens decoloniais
+   ========================================================= */
+
+:root {
+  /* Substitui o azul Olivero pelo barro/babaçu */
+  --color-text:               var(--terra-800);
+  --color-text-neutral:       var(--terra-600);
+  --color-text-light:         var(--terra-400);
+  --color-background:         var(--terra-50);
+  --color-background-alt:     var(--terra-100);
+  --color-focus:              var(--barro);
+  --color-link:               var(--barro);
+  --color-link-hover:         var(--barro-dark);
+  --color-border:             var(--terra-200);
+  --color-primary:            var(--barro);
+  --color-secondary:          var(--babacú);
+  --color-accent:             var(--palha-dark);
+
+  /* Cabeçalho Olivero */
+  --color-header-background:  var(--babacú-dark);
+  --color-header-text:        var(--terra-100);
+  --color-nav-background:     var(--babacú-dark);
+  --color-nav-text:           var(--terra-200);
+  --color-nav-text-hover:     var(--palha-light);
+  --color-nav-text-active:    var(--palha-light);
+
+  /* Rodapé Olivero */
+  --color-footer-background:  var(--babacú-dark);
+  --color-footer-text:        var(--terra-200);
+
+  /* Formulários */
+  --color-input-border:       var(--terra-300);
+  --color-input-border-focus: var(--barro);
+  --color-button-background:  var(--barro);
+  --color-button-text:        var(--branco);
+}
+
+/* =========================================================
+   RESET OLIVERO — elementos que colidem
+   ========================================================= */
+
+/* Remove foco azul padrão */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline-color: var(--palha-dark) !important;
+}
+
+/* Olivero body */
+body.olivero-page {
+  background-color: var(--terra-50) !important;
+  color: var(--terra-800) !important;
+}
+
+/* Olivero header */
+.olivero-header,
+header[role="banner"],
+.site-header {
+  background-color: var(--babacú-dark) !important;
+  border-bottom-color: var(--barro) !important;
+}
+
+/* Logo Olivero */
+.header-nav-overlay,
+.header__logo {
+  filter: brightness(1.2) !important;
+}
+
+/* Menu principal Olivero */
+.menu--main .menu__item a,
+nav.primary-nav a,
+.primary-nav__menu-link {
+  color: var(--terra-200) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.menu--main .menu__item a:hover,
+nav.primary-nav a:hover,
+.primary-nav__menu-link:hover,
+.primary-nav__menu-link--active-trail {
+  color: var(--palha-light) !important;
+  background-color: rgba(225, 193, 110, 0.1) !important;
+}
+
+/* Sub-menus Olivero */
+.primary-nav__menu--level-2 {
+  background: var(--babacú-dark) !important;
+  border-top-color: var(--barro) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.primary-nav__menu--level-2 a {
+  color: var(--terra-200) !important;
+}
+
+.primary-nav__menu--level-2 a:hover {
+  background: rgba(225, 193, 110, 0.08) !important;
+  color: var(--palha-light) !important;
+}
+
+/* Botão mobile hamburger */
+.header-nav__region button,
+.primary-nav__button {
+  color: var(--terra-100) !important;
+  border-color: rgba(225, 193, 110, 0.4) !important;
+}
+
+/* =========================================================
+   LINKS — azul → barro
+   ========================================================= */
+
+a {
+  color: var(--barro) !important;
+}
+
+a:hover {
+  color: var(--barro-dark) !important;
+}
+
+/* Links de títulos */
+.node__title a,
+h1 a, h2 a, h3 a, h4 a {
+  color: inherit !important;
+}
+
+.node__title a:hover,
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
+  color: var(--barro) !important;
+}
+
+/* =========================================================
+   BOTÕES — azul → barro
+   ========================================================= */
+
+.button,
+.btn-primary,
+input[type="submit"],
+[type="submit"] {
+  background-color: var(--barro) !important;
+  border-color: var(--barro-dark) !important;
+  color: var(--branco) !important;
+  font-family: var(--font-ui) !important;
+}
+
+.button:hover,
+.btn-primary:hover,
+input[type="submit"]:hover {
+  background-color: var(--barro-dark) !important;
+  border-color: var(--barro-dark) !important;
+}
+
+.button--secondary,
+.btn-secondary {
+  background-color: var(--babacú) !important;
+  border-color: var(--babacú-dark) !important;
+  color: var(--branco) !important;
+}
+
+.button--secondary:hover,
+.btn-secondary:hover {
+  background-color: var(--babacú-dark) !important;
+}
+
+/* =========================================================
+   PAGER / PAGINAÇÃO — azul → barro
+   ========================================================= */
+
+.pager__item--active a,
+.pager__item.is-active a,
+.pager--mini .pager__item--active a {
+  background: var(--barro) !important;
+  border-color: var(--barro-dark) !important;
+  color: var(--branco) !important;
+}
+
+/* =========================================================
+   TABS — abas de conteúdo
+   ========================================================= */
+
+.tabs__tab.is-active,
+.tabs__tab[aria-selected="true"] {
+  border-bottom-color: var(--barro) !important;
+  color: var(--barro) !important;
+}
+
+.tabs__tab:hover {
+  color: var(--barro) !important;
+}
+
+/* =========================================================
+   BREADCRUMB Olivero
+   ========================================================= */
+
+.breadcrumb ol,
+nav[aria-label="Breadcrumb"] ol,
+nav[aria-labelledby="breadcrumb"] ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+}
+
+.breadcrumb li + li::before,
+nav[aria-label="Breadcrumb"] li + li::before {
+  content: '◈';
+  color: var(--palha-dark);
+  margin-right: 4px;
+}
+
+.breadcrumb a,
+nav[aria-label="Breadcrumb"] a {
+  color: var(--babacú) !important;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover,
+nav[aria-label="Breadcrumb"] a:hover {
+  color: var(--barro) !important;
+}
+
+/* =========================================================
+   OLIVERO — DESTACADO (highlighted)
+   ========================================================= */
+
+.highlighted {
+  background: var(--palha-20) !important;
+  border-bottom: 1px solid var(--palha-50) !important;
+}
+
+/* =========================================================
+   OLIVERO — FOOTER
+   ========================================================= */
+
+footer[role="contentinfo"],
+.olivero-footer,
+.region-footer-bottom,
+.region-footer-top {
+  background-color: var(--babacú-dark) !important;
+  color: var(--terra-200) !important;
+}
+
+footer a {
+  color: var(--terra-300) !important;
+}
+
+footer a:hover {
+  color: var(--palha-light) !important;
+}
+
+/* =========================================================
+   OLIVERO — STATUS MESSAGES
+   ========================================================= */
+
+.messages--status {
+  background: rgba(45, 106, 79, 0.1) !important;
+  border-color: var(--sucesso) !important;
+  color: var(--sucesso) !important;
+}
+
+.messages--warning {
+  background: var(--palha-10) !important;
+  border-color: var(--aviso) !important;
+  color: var(--palha-xdark) !important;
+}
+
+.messages--error {
+  background: rgba(139, 37, 0, 0.08) !important;
+  border-color: var(--erro) !important;
+  color: var(--erro) !important;
+}
+
+/* =========================================================
+   BOOTSTRAP — sobrescrever azul padrão
+   ========================================================= */
+
+:root {
+  --bs-primary:        #A0522D;
+  --bs-primary-rgb:    160, 82, 45;
+  --bs-secondary:      #2E4632;
+  --bs-secondary-rgb:  46, 70, 50;
+  --bs-success:        #2D6A4F;
+  --bs-info:           #4682B4;
+  --bs-warning:        #B8943A;
+  --bs-danger:         #8B2500;
+  --bs-light:          #F5EBE0;
+  --bs-dark:           #1C1008;
+
+  --bs-link-color:          var(--barro);
+  --bs-link-hover-color:    var(--barro-dark);
+  --bs-body-color:          var(--terra-800);
+  --bs-body-bg:             var(--terra-50);
+  --bs-border-color:        var(--terra-200);
+  --bs-heading-color:       var(--babacú-dark);
+  --bs-emphasis-color:      var(--terra-900);
+  --bs-secondary-color:     var(--terra-600);
+
+  /* Fonts Bootstrap → decoloniais */
+  --bs-body-font-family:      var(--font-body);
+  --bs-heading-font-family:   var(--font-heading);
+}
+
+/* Bootstrap badges */
+.badge.bg-primary   { background-color: var(--barro) !important; }
+.badge.bg-secondary { background-color: var(--babacú) !important; }
+.badge.bg-info      { background-color: var(--sedimento) !important; }
+
+/* Bootstrap buttons */
+.btn-primary {
+  background-color: var(--barro) !important;
+  border-color: var(--barro-dark) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--barro-dark) !important;
+  border-color: var(--barro-dark) !important;
+}
+
+.btn-secondary {
+  background-color: var(--babacú) !important;
+  border-color: var(--babacú-dark) !important;
+  color: var(--branco) !important;
+}
+
+.btn-outline-primary {
+  color: var(--barro) !important;
+  border-color: var(--barro) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--barro) !important;
+  color: var(--branco) !important;
+}
+
+/* Bootstrap cards */
+.card {
+  border-color: var(--terra-200) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+.card-header {
+  border-bottom-color: var(--terra-200) !important;
+}
+
+/* Bootstrap navbar */
+.navbar-dark,
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--terra-100) !important;
+}
+
+/* Bootstrap tables */
+.table > :not(caption) > * > * {
+  border-bottom-color: var(--terra-200) !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: var(--babacú-10) !important;
+  color: var(--terra-800) !important;
+}
+
+/* Bootstrap alerts */
+.alert-primary {
+  background-color: var(--barro-10) !important;
+  border-color: var(--barro-20) !important;
+  color: var(--barro-dark) !important;
+}
+
+/* Bootstrap pagination */
+.page-item.active .page-link {
+  background-color: var(--barro) !important;
+  border-color: var(--barro-dark) !important;
+}
+
+.page-link {
+  color: var(--barro) !important;
+}
+
+.page-link:hover {
+  color: var(--barro-dark) !important;
+  background-color: var(--barro-10) !important;
+}

@@ -1,0 +1,30 @@
+/**
+ * @file components.css
+ * Variação: Amazônia Vibrante - Overrides de Componentes
+ */
+
+.btn-primary {
+  background: var(--gradient-amazonia);
+  border: none;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card {
+  border-left: 4px solid var(--color-babasu);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: rgba(26, 31, 26, 0.8);
+    border-left: 4px solid var(--color-babasu-light);
+  }
+}

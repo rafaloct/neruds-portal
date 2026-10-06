@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * NERUDS Analytics Dashboard module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function neruds_analytics_theme($existing, $type, $theme, $path) {
+  return [
+    'neruds_analytics_dashboard' => [
+      'variables' => [
+        'stats' => [],
+      ],
+      'template' => 'neruds-analytics-dashboard',
+      'path' => $path . '/templates',
+    ],
+  ];
+}

@@ -1,0 +1,7 @@
+neruds_analytics.dashboard:
+  path: '/admin/neruds/analytics'
+  defaults:
+    _controller: '\Drupal\neruds_analytics\Controller\AnalyticsDashboardController::dashboard'
+    _title: 'NERUDS Analytics'
+  requirements:
+    _permission: 'administer site configuration'

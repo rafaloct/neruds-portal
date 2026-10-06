@@ -1,0 +1,27 @@
+/**
+ * @file about.css
+ * Página About — Missão, equipe, ODS
+ */
+
+.page--about {
+  background: var(--color-paper);
+}
+
+.about__mission {
+  background: var(--color-babasu);
+  color: var(--color-white);
+  padding: var(--space-12) var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.about__team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+}
+
+.about__ods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--space-4);
+}

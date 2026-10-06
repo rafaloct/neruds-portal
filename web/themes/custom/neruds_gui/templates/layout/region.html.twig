@@ -1,0 +1,9 @@
+{#
+ * @file
+ * Default theme implementation to display a region.
+ #}
+{%- if content -%}
+  <div{{ attributes.addClass('region', 'region--' ~ region|clean_class) }}>
+    {{- content -}}
+  </div>
+{%- endif -%}

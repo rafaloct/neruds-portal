@@ -1,0 +1,16 @@
+neruds_notifications.preferences:
+  path: '/user/{user}/notificacoes'
+  defaults:
+    _form: '\Drupal\neruds_notifications\Form\NotificationPreferencesForm'
+    _title: 'Preferências de Notificações'
+  requirements:
+    _permission: 'access content'
+    user: \d+
+
+neruds_notifications.unsubscribe:
+  path: '/notificacoes/cancelar/{token}'
+  defaults:
+    _controller: '\Drupal\neruds_notifications\Controller\NotificationsController::unsubscribe'
+    _title: 'Cancelar Inscrições'
+  requirements:
+    _access: 'TRUE'

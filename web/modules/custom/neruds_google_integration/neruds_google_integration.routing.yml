@@ -1,0 +1,213 @@
+neruds_google_integration.dashboard:
+  path: '/neruds/api/dashboard'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::dashboard'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '120/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.territories:
+  path: '/neruds/api/territories'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::territories'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.calendar:
+  path: '/neruds/api/calendar'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::calendar'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.calendar_ics:
+  path: '/neruds/api/calendar.ics'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::calendarIcs'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.publication_metrics:
+  path: '/neruds/api/publication-metrics'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::publicationMetrics'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.audit_citations:
+  path: '/neruds/api/audit/citations'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::auditCitations'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '30/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.audit_samples:
+  path: '/neruds/api/audit/samples'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::auditSamples'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '30/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.audit_schema:
+  path: '/neruds/api/audit/schema'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::auditSchema'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '30/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.audit_lookup:
+  path: '/neruds/api/audit'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::auditLookup'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '30/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.datasets:
+  path: '/neruds/api/datasets'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::datasets'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.dataset_detail:
+  path: '/neruds/api/datasets/{dataset_id}'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::datasetDetail'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.drive_folder:
+  path: '/neruds/api/drive-folder'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::driveFolder'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.google_search:
+  path: '/neruds/api/google-search'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::googleSearch'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.scientific_search:
+  path: '/neruds/api/scientific-search'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::scientificSearch'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.search_readiness:
+  path: '/neruds/api/search-readiness'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::searchReadiness'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '30/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.forum_moderation_status:
+  path: '/neruds/api/forum-moderation'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::forumModerationStatus'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '30/600'
+  options:
+    no_cache: false
+
+neruds_google_integration.publications_page:
+  path: '/publicacoes-discovery'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsPageController::publications'
+    _title: 'Descoberta acadêmica'
+  requirements:
+    _permission: 'access content'
+
+neruds_google_integration.datasets_page:
+  path: '/datasets-discovery'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsPageController::datasets'
+    _title: 'Descoberta de Datasets'
+  requirements:
+    _permission: 'access content'
+
+neruds_google_integration.territory_page:
+  path: '/territorios/{territory}'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsPageController::territory'
+    _title: 'Territorio'
+  requirements:
+    _permission: 'access content'
+
+neruds_google_integration.firebase_auth:
+  path: '/neruds/api/auth/firebase'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\FirebaseAuthController::exchangeToken'
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '120/600'
+
+neruds_google_integration.chat_session:
+  path: '/neruds/api/chat/session'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::chatSession'
+  methods: ['POST']
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '30/600'
+  options:
+    no_cache: true
+
+neruds_google_integration.chat:
+  path: '/neruds/api/chat'
+  defaults:
+    _controller: '\Drupal\neruds_google_integration\Controller\NerudsApiController::chat'
+  methods: ['POST']
+  requirements:
+    _permission: 'access content'
+    _neruds_rate_limit: '60/600'
+  options:
+    no_cache: true

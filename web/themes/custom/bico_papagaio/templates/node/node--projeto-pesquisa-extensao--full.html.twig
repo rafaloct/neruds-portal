@@ -1,0 +1,144 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Projeto de Pesquisa/Extensão (Full)
+ * Template decolonial — ficha de campo
+ */
+#}
+{{ attach_library('bico_papagaio/projeto') }}
+
+<article{{ attributes.addClass('node--full', 'node--projeto') }}>
+
+  <header class="node__header">
+    <div class="node__tipo">{{ tipo_label|default('Projeto de Pesquisa') }}</div>
+
+    {% if not page %}
+      <h2 class="node__title">
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {% else %}
+      <h1 class="node__title">{{ label }}</h1>
+    {% endif %}
+
+    <div class="node__meta">
+      {% if content.field_status_projeto %}
+        <span class="node__meta-item">{{ content.field_status_projeto }}</span>
+      {% endif %}
+      {% if content.field_ano_inicio %}
+        <span class="node__meta-item">
+          {% if content.field_ano_inicio %}{{ content.field_ano_inicio }}{% endif %}
+          {% if content.field_ano_fim %} — {{ content.field_ano_fim }}{% endif %}
+        </span>
+      {% endif %}
+    </div>
+  </header>
+
+  {# Ficha técnica — estilo relatório de campo #}
+  <div class="projeto-ficha">
+    <div class="projeto-ficha__titulo">Ficha do Projeto</div>
+    <dl>
+      {% if content.field_coordenador %}
+        <dt>Coordenação</dt>
+        <dd>{{ content.field_coordenador }}</dd>
+      {% endif %}
+      {% if content.field_status_projeto %}
+        <dt>Situação</dt>
+        <dd>{{ content.field_status_projeto }}</dd>
+      {% endif %}
+      {% if content.field_ano_inicio %}
+        <dt>Início</dt>
+        <dd>{{ content.field_ano_inicio }}</dd>
+      {% endif %}
+      {% if content.field_ano_fim %}
+        <dt>Término</dt>
+        <dd>{{ content.field_ano_fim }}</dd>
+      {% endif %}
+      {% if content.field_financiamento %}
+        <dt>Financiamento</dt>
+        <dd>{{ content.field_financiamento }}</dd>
+      {% endif %}
+    </dl>
+  </div>
+
+  {# Descrição #}
+  {% if content.field_descricao_projeto %}
+    <div class="node__body">
+      {{ content.field_descricao_projeto }}
+    </div>
+  {% elseif content.body %}
+    <div class="node__body">
+      {{ content.body }}
+    </div>
+  {% endif %}
+
+  {# Equipe — grid de pesquisadores #}
+  {% if content.field_equipe_pesquisadores %}
+    <section style="margin-top: var(--space-8);">
+      <h2 class="section-ornament" style="font-size:var(--text-sm); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:var(--babacú);">Equipe de Pesquisa</h2>
+      {{ content.field_equipe_pesquisadores }}
+    </section>
+  {% endif %}
+
+  {# Taxonomias #}
+  <footer class="node__taxonomy">
+    {% if content.field_ods_projeto %}
+      <div style="width:100%; margin-bottom:var(--space-2);">
+        <span style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--terra-500); text-transform:uppercase; letter-spacing:0.08em; margin-right:var(--space-2);">ODS:</span>
+        {{ content.field_ods_projeto }}
+      </div>
+    {% endif %}
+    {% if content.field_eixo_tematico_projeto %}{{ content.field_eixo_tematico_projeto }}{% endif %}
+    {% if content.field_linha_pesquisa_projeto %}{{ content.field_linha_pesquisa_projeto }}{% endif %}
+    {% if content.field_setor_produtivo_projeto %}{{ content.field_setor_produtivo_projeto }}{% endif %}
+    {% if content.field_microrregiao_projeto %}{{ content.field_microrregiao_projeto }}{% endif %}
+    {% if content.field_municipio_projeto %}{{ content.field_municipio_projeto }}{% endif %}
+  </footer>
+
+  {# Boletins e Notícias Associadas (renderizados pelo preprocess do tema original) #}
+  {% if boletins_associados is defined and boletins_associados is not empty %}
+    <section class="projeto__boletins" style="margin-top:var(--space-10); padding-top:var(--space-6); border-top:2px solid var(--terra-200);">
+      <h2 class="section-ornament" style="font-size:var(--text-sm); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:var(--barro);">Boletins</h2>
+      <div class="card-grid card-grid--compact">
+        {% for boletim in boletins_associados %}
+          {% if boletim %}
+            <div class="card-projeto">
+              <div class="card-projeto__header">
+                <h3 class="card-projeto__titulo">
+                  <a href="{{ path('entity.node.canonical', {'node': boletim.id}) }}" style="color:inherit; text-decoration:none;">
+                    {{ boletim.label }}
+                  </a>
+                </h3>
+              </div>
+              <div class="card-projeto__body">
+                <a href="{{ path('entity.node.canonical', {'node': boletim.id}) }}" class="card-content__link">Ver Boletim</a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if noticias_associadas is defined and noticias_associadas is not empty %}
+    <section class="projeto__noticias" style="margin-top:var(--space-8); padding-top:var(--space-6); border-top:2px dashed var(--terra-200);">
+      <h2 class="section-ornament" style="font-size:var(--text-sm); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:var(--sedimento-dark);">Notícias Relacionadas</h2>
+      <div class="card-grid card-grid--compact">
+        {% for noticia in noticias_associadas %}
+          {% if noticia %}
+            <div class="card-content">
+              <div class="card-content__body">
+                <h3 class="card-content__title">
+                  <a href="{{ path('entity.node.canonical', {'node': noticia.id}) }}">{{ noticia.label }}</a>
+                </h3>
+                <div class="card-content__meta">
+                  <span class="card-content__date">{{ noticia.createdtime|date('d/m/Y') }}</span>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+</article>

@@ -1,0 +1,122 @@
+{#
+/**
+ * @file neruds-card-grid.html.twig
+ * NERUDS Card Grid Block — Responsive grid of content cards.
+ *
+ * Available variables:
+ * - title: Section title
+ * - subtitle: Section subtitle
+ * - columns: Number of columns (2, 3, 4)
+ * - card_variant: 'default' | 'glass' | 'minimal' | 'featured'
+ * - items: Array of card objects with:
+ *     title, description, url, image_url, image_alt, date, content_type, badges[]
+ * - view_all_url: Link to full listing
+ * - view_all_text: Button text for full listing
+ * - enable_animation: Boolean for scroll animations
+ */
+#}
+{% set grid_class = 'card-grid--cols-' ~ columns %}
+{% set variant_class = 'card-grid--' ~ card_variant %}
+{% set anim_attr = enable_animation ? 'data-animate="fadeIn"' : '' %}
+
+<section class="card-grid-section {{ variant_class }}" {{ anim_attr|raw }}>
+  <div class="layout-container">
+
+    {# ── SECTION HEADER ── #}
+    {% if title or (view_all_text and view_all_url) %}
+      <div class="card-grid-section__header">
+        <div class="card-grid-section__titles">
+          {% if title %}
+            <h2 class="card-grid-section__title">{{ title }}</h2>
+          {% endif %}
+          {% if subtitle %}
+            <p class="card-grid-section__subtitle">{{ subtitle }}</p>
+          {% endif %}
+        </div>
+        {% if view_all_text and view_all_url %}
+          <a href="{{ view_all_url }}" class="btn btn--ghost btn--sm">
+            {{ view_all_text }} &rarr;
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# ── CARD GRID ── #}
+    <div class="card-grid {{ grid_class }}">
+      {% for item in items %}
+        {% set card_class = 'card' %}
+        {% if card_variant == 'glass' %}
+          {% set card_class = card_class ~ ' card--glass' %}
+        {% elseif card_variant == 'minimal' %}
+          {% set card_class = card_class ~ ' card--minimal' %}
+        {% elseif card_variant == 'featured' %}
+          {% set card_class = card_class ~ ' card--featured' %}
+        {% endif %}
+
+        <article class="{{ card_class }}"
+          {% if enable_animation %}data-animate="fadeIn" data-animate-delay="{{ loop.index * 80 }}"{% endif %}
+        >
+          {# Card Image #}
+          {% if item.image_url %}
+            <div class="card__image">
+              <img
+                src="{{ item.image_url }}"
+                alt="{{ item.image_alt|default(item.title) }}"
+                loading="lazy"
+              />
+            </div>
+          {% endif %}
+
+          {# Card Body #}
+          <div class="card__body">
+            {# Badges #}
+            {% if item.badges|length > 0 %}
+              <div class="card__badges">
+                {% for badge_label in item.badges %}
+                  <span class="badge badge--accent">{{ badge_label }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {# Title #}
+            {% if item.url %}
+              <a href="{{ item.url }}" class="card__title">{{ item.title }}</a>
+            {% else %}
+              <h3 class="card__title">{{ item.title }}</h3>
+            {% endif %}
+
+            {# Description #}
+            {% if item.description %}
+              <p class="card__excerpt">{{ item.description }}</p>
+            {% endif %}
+
+            {# Meta (date) #}
+            {% if item.date %}
+              <div class="card__meta">
+                <span class="card__meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  {{ item.date }}
+                </span>
+              </div>
+            {% endif %}
+          </div>
+
+          {# Card Footer — Read More #}
+          {% if item.url %}
+            <div class="card__footer">
+              <a href="{{ item.url }}" class="card__link">
+                {{ 'Ler mais'|t }} &rarr;
+              </a>
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

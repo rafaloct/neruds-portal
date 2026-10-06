@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Componente Card Genérico - Ant Design Style
+ *
+ * Variáveis:
+ * - title: Título do card
+ * - body: Conteúdo do card
+ * - footer: Rodapé do card (opcional)
+ * - class: Classes CSS adicionais (opcional)
+ */
+#}
+<div class="card-neruds {{ class|default('') }}">
+  {% if title %}
+  <div class="card-neruds__header">
+    <h3 class="card-neruds__title">{{ title }}</h3>
+  </div>
+  {% endif %}
+  <div class="card-neruds__body">
+    {{ body }}
+  </div>
+  {% if footer %}
+  <div class="card-neruds__footer">
+    {{ footer }}
+  </div>
+  {% endif %}
+</div>

@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Campo de Referência de Entidade
+ * Badges decoloniais para taxonomias
+ */
+#}
+
+{%
+  set label_classes = [
+    'field-label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% set badge_class = 'badge-' ~ field_name|replace({'field_': '', '_': '-'})|clean_class %}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes.addClass('field', 'field--type-entity-reference', 'field--label-hidden') }}>
+      {% for item in items %}
+        <span class="badge-decolonial {{ badge_class }}">{{ item.content }}</span>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <span{{ attributes.addClass('field', 'field--type-entity-reference', 'field--label-hidden') }}>
+        <span class="badge-decolonial {{ badge_class }}">{{ item.content }}</span>
+      </span>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass('field', 'field--type-entity-reference') }}>
+    <div{{ title_attributes.addClass(label_classes) }}>{{ label }}</div>
+    <div class="field__items" style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.25rem;">
+      {% for item in items %}
+        <span class="badge-decolonial {{ badge_class }}">{{ item.content }}</span>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

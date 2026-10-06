@@ -1,0 +1,53 @@
+{#
+ * @file
+ * NERUDS Theme - Project Full View
+ #}
+
+{%
+  set classes = [
+    'node',
+    'node--' ~ node.bundle|clean_class,
+    'node--' ~ node.bundle|clean_class ~ '--full'
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+
+  <h1{{ title_attributes.addClass('node--project__title') }}>{{ label }}</h1>
+
+  {# Featured Image #}
+  {% if node.field_featured_image.0 %}
+    <div class="node--project__image">
+      {{ content.field_featured_image }}
+    </div>
+  {% endif %}
+
+  {# Description #}
+  {% if node.field_description.0 %}
+    <div class="node--project__excerpt">
+      {{ content.field_description }}
+    </div>
+  {% endif %}
+
+  {# Project Details #}
+  <div class="node--project__details">
+    {% if node.field_project__client_name.value %}
+      <p><strong>Parceiro:</strong> {{ node.field_project__client_name.value }}</p>
+    {% endif %}
+  </div>
+
+  {# Main Content #}
+  <div class="node--project__content">
+    {{ content.field_content }}
+  </div>
+
+  {# ODS Tags #}
+  {% if node.field_tags.0 %}
+    <div class="node--project__tags">
+      {% for tag in node.field_tags %}
+        <span class="badge badge--primary">{{ tag.name }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</article>

@@ -1,0 +1,239 @@
+/**
+ * @file layout.css
+ * Componentes de Layout Principal
+ * Grid, containers, regiões
+ */
+
+/* =====================================================
+   CONTAINERS
+   ===================================================== */
+
+.layout-container {
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .layout-container {
+    padding: 0 var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-container {
+    padding: 0 var(--space-8);
+  }
+}
+
+/* =====================================================
+   PAGE WRAPPER
+   ===================================================== */
+
+#page-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+#page {
+  flex: 1;
+  width: 100%;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-white);
+  border-bottom: none; /* No Lines Rule */
+  box-shadow: 0 10px 30px rgba(96, 96, 98, 0.05); /* Tonal Shadow */
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-header {
+    background-color: var(--color-gray-900);
+    border-bottom-color: var(--color-gray-700);
+  }
+}
+
+/* =====================================================
+   NAVEGAÇÃO
+   ===================================================== */
+
+.navbar-neruds {
+  padding: var(--space-4) 0;
+}
+
+.navbar-neruds .navbar-brand {
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-babasu) !important;
+  font-size: var(--font-size-xl);
+}
+
+.navbar-neruds .nav-link {
+  color: var(--color-gray-800) !important;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-base);
+}
+
+.navbar-neruds .nav-link:hover {
+  color: var(--color-babasu) !important;
+}
+
+.navbar-neruds .nav-link.active {
+  color: var(--color-babasu) !important;
+  border-bottom: var(--border-width-md) solid var(--color-barro);
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .main-content--with-sidebar {
+    grid-template-columns: 1fr 300px;
+  }
+  /* Páginas de texto/detalhe sem sidebar ficam com largura leitura (~900px).
+     Páginas com view-grid usam grid-full e sobrescrevem via .view-neruds. */
+  .content-layout:not(.content-layout--sidebar) .content-layout__main {
+    max-width: 100%;
+  }
+}
+
+
+/* =====================================================
+   SECTIONS
+   ===================================================== */
+
+section {
+  width: 100%;
+}
+
+.section-full {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: var(--space-12) var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .section-full {
+    padding: var(--space-16) var(--space-6);
+  }
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.site-footer {
+  margin-top: auto;
+  margin-top: auto;
+  background-color: var(--color-babasu-dark); /* Dark Green/Gray */
+  color: var(--color-white);
+  padding: var(--space-12) 0 var(--space-6);
+  border-top: none; /* No Lines Rule */
+}
+
+.footer-section {
+  margin-bottom: var(--space-8);
+}
+
+.footer-section:last-child {
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   GRID SYSTEM
+   ===================================================== */
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid--cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid--cols-2 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid--cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid--cols-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .grid--cols-2,
+  .grid--cols-3,
+  .grid--cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   FLEXBOX UTILITIES
+   ===================================================== */
+
+.flex {
+  display: flex;
+}
+
+.flex--center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex--between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex--start {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.flex--end {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.flex--col {
+  flex-direction: column;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
+}
+
+.flex--gap-4 {
+  gap: var(--space-4);
+}
+
+.flex--gap-6 {
+  gap: var(--space-6);
+}

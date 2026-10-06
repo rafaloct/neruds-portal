@@ -1,0 +1,50 @@
+{#
+ * NERUDS research community card.
+ #}
+{% set progress = neruds_group_progress|default(0) %}
+{% set member_count = neruds_group_member_count|default(grupo_membros ? grupo_membros|length : 0) %}
+
+<article{{ attributes.addClass(['node', 'node--grupo-estudos', 'node--grupo-estudos--teaser', 'grupo-card', 'neruds-community']) }} data-neruds-community>
+  <div class="grupo-card__header">
+    <span class="grupo__status-badge grupo__status-badge--{{ grupo_status|default('indefinido') }} grupo__status-badge--sm">
+      {{ grupo_status_label|default('Status a definir'|t) }}
+    </span>
+  </div>
+
+  <h3 class="grupo-card__title">
+    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+  </h3>
+
+  <div class="neruds-community__progress">
+    <span class="visually-hidden">{{ 'Progresso anual'|t }}: {{ progress }}%</span>
+    <span class="neruds-community__progress-bar" style="--progress: {{ progress }}%;"></span>
+  </div>
+
+  <dl class="grupo-card__meta">
+    <dt class="grupo-card__meta-label">{{ 'Período'|t }}</dt>
+    <dd class="grupo-card__meta-value">
+      {% if grupo_cronograma_label %}
+        <em class="grupo-card__empty">{{ grupo_cronograma_label }}</em>
+      {% else %}
+        {{ grupo_cronograma_inicio }} - {{ grupo_cronograma_fim }}
+      {% endif %}
+    </dd>
+
+    {% if grupo_lider_nome %}
+      <dt class="grupo-card__meta-label">{{ 'Líder'|t }}</dt>
+      <dd class="grupo-card__meta-value">
+        <a href="{{ grupo_lider_url }}" class="grupo-card__lider-link">
+          <span class="grupo__avatar grupo__avatar--xs" aria-hidden="true">{{ grupo_lider_iniciais }}</span>
+          {{ grupo_lider_nome }}
+        </a>
+      </dd>
+    {% endif %}
+
+    <dt class="grupo-card__meta-label">{{ 'Membros'|t }}</dt>
+    <dd class="grupo-card__meta-value">{{ member_count }}</dd>
+  </dl>
+
+  <a href="{{ url }}" class="grupo-card__cta" aria-label="{{ 'Ver detalhes de '|t ~ node.title.value }}">
+    {{ 'Ver Grupo'|t }}
+  </a>
+</article>

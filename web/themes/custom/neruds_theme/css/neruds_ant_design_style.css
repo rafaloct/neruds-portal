@@ -1,0 +1,466 @@
+/**
+ * NERUDS - Estilo Inspirado em Ant Design
+ * Design System baseado nos princípios do Ant Design
+ */
+
+:root {
+  /* Cores Primárias - Adaptadas para NERUDS (verde) */
+  --neruds-primary: #52c41a;
+  --neruds-primary-hover: #73d13d;
+  --neruds-primary-active: #389e0d;
+  --neruds-primary-light: #f6ffed;
+  --neruds-primary-border: #b7eb8f;
+  
+  /* Cores Neutras - Ant Design */
+  --neruds-gray-1: #ffffff;
+  --neruds-gray-2: #fafafa;
+  --neruds-gray-3: #f5f5f5;
+  --neruds-gray-4: #f0f0f0;
+  --neruds-gray-5: #d9d9d9;
+  --neruds-gray-6: #bfbfbf;
+  --neruds-gray-7: #8c8c8c;
+  --neruds-gray-8: #595959;
+  --neruds-gray-9: #434343;
+  --neruds-gray-10: #262626;
+  --neruds-gray-11: #1f1f1f;
+  --neruds-gray-12: #141414;
+  
+  /* Cores de Texto */
+  --neruds-text-primary: rgba(0, 0, 0, 0.85);
+  --neruds-text-secondary: rgba(0, 0, 0, 0.65);
+  --neruds-text-disabled: rgba(0, 0, 0, 0.25);
+  --neruds-text-inverse: #fff;
+  
+  /* Cores de Background */
+  --neruds-bg-base: #ffffff;
+  --neruds-bg-container: #fafafa;
+  --neruds-bg-layout: #f0f2f5;
+  
+  /* Sombras - Ant Design */
+  --neruds-shadow-1: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --neruds-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --neruds-shadow-3: 0 6px 16px rgba(0, 0, 0, 0.12);
+  --neruds-shadow-4: 0 8px 24px rgba(0, 0, 0, 0.12);
+  
+  /* Espaçamentos - Ant Design 8px grid */
+  --neruds-spacing-xs: 4px;
+  --neruds-spacing-sm: 8px;
+  --neruds-spacing-md: 16px;
+  --neruds-spacing-lg: 24px;
+  --neruds-spacing-xl: 32px;
+  --neruds-spacing-xxl: 48px;
+  
+  /* Bordas */
+  --neruds-border-radius: 4px;
+  --neruds-border-radius-lg: 8px;
+  --neruds-border-color: #d9d9d9;
+  
+  /* Tipografia */
+  --neruds-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --neruds-font-size-base: 14px;
+  --neruds-line-height-base: 1.5715;
+  
+  /* Transições */
+  --neruds-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* ============================================
+   RESET E BASE
+   ============================================ */
+
+.neruds-ant-design {
+  font-family: var(--neruds-font-family);
+  font-size: var(--neruds-font-size-base);
+  line-height: var(--neruds-line-height-base);
+  color: var(--neruds-text-primary);
+  background-color: var(--neruds-bg-base);
+}
+
+/* ============================================
+   HERO SECTION - Ant Design Style
+   ============================================ */
+
+.hero-section-neruds {
+  background: linear-gradient(135deg, #2d5016 0%, #52c41a 100%);
+  color: var(--neruds-text-inverse);
+  padding: var(--neruds-spacing-xxl) var(--neruds-spacing-lg);
+  text-align: center;
+  margin-bottom: var(--neruds-spacing-xl);
+  border-radius: var(--neruds-border-radius-lg);
+  box-shadow: var(--neruds-shadow-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section-neruds::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-section-neruds .container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-section-neruds h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: var(--neruds-spacing-md);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.5px;
+}
+
+.hero-section-neruds p {
+  font-size: 18px;
+  margin-bottom: var(--neruds-spacing-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+  line-height: 1.8;
+}
+
+/* ============================================
+   BUTTONS - Ant Design Style
+   ============================================ */
+
+.button-neruds {
+  display: inline-block;
+  padding: var(--neruds-spacing-sm) var(--neruds-spacing-lg);
+  font-size: var(--neruds-font-size-base);
+  font-weight: 400;
+  line-height: 1.5715;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--neruds-border-radius);
+  transition: var(--neruds-transition);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  text-decoration: none;
+  user-select: none;
+}
+
+.button-neruds--primary {
+  background: var(--neruds-gray-1);
+  color: #2d5016;
+  border-color: var(--neruds-gray-1);
+  font-weight: 500;
+}
+
+.button-neruds--primary:hover {
+  background: var(--neruds-gray-2);
+  border-color: var(--neruds-gray-2);
+  transform: translateY(-1px);
+  box-shadow: var(--neruds-shadow-2);
+}
+
+.button-neruds--primary:active {
+  transform: translateY(0);
+  box-shadow: var(--neruds-shadow-1);
+}
+
+/* ============================================
+   STATISTICS CARDS - Ant Design Style
+   ============================================ */
+
+.estatisticas-neruds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--neruds-spacing-lg);
+  margin: var(--neruds-spacing-xl) 0;
+  padding: var(--neruds-spacing-lg);
+  background: var(--neruds-bg-container);
+  border-radius: var(--neruds-border-radius-lg);
+}
+
+.stat-card {
+  text-align: center;
+  padding: var(--neruds-spacing-lg);
+  background: var(--neruds-bg-base);
+  border-radius: var(--neruds-border-radius);
+  box-shadow: var(--neruds-shadow-1);
+  border: 1px solid var(--neruds-border-color);
+  transition: var(--neruds-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neruds-primary), var(--neruds-primary-hover));
+  transform: scaleX(0);
+  transition: var(--neruds-transition);
+}
+
+.stat-card:hover {
+  box-shadow: var(--neruds-shadow-2);
+  transform: translateY(-2px);
+  border-color: var(--neruds-primary-border);
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--neruds-primary);
+  margin-bottom: var(--neruds-spacing-sm);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: var(--neruds-font-size-base);
+  color: var(--neruds-text-secondary);
+  font-weight: 400;
+  margin-top: var(--neruds-spacing-xs);
+}
+
+/* ============================================
+   CARDS - Ant Design Style
+   ============================================ */
+
+.card-neruds {
+  background: var(--neruds-bg-base);
+  border-radius: var(--neruds-border-radius);
+  border: 1px solid var(--neruds-border-color);
+  box-shadow: var(--neruds-shadow-1);
+  transition: var(--neruds-transition);
+  overflow: hidden;
+}
+
+.card-neruds:hover {
+  box-shadow: var(--neruds-shadow-2);
+  border-color: var(--neruds-primary-border);
+}
+
+.card-neruds__header {
+  padding: var(--neruds-spacing-md) var(--neruds-spacing-lg);
+  border-bottom: 1px solid var(--neruds-border-color);
+  background: var(--neruds-bg-container);
+}
+
+.card-neruds__title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--neruds-text-primary);
+  margin: 0;
+}
+
+.card-neruds__body {
+  padding: var(--neruds-spacing-lg);
+}
+
+.card-neruds__footer {
+  padding: var(--neruds-spacing-md) var(--neruds-spacing-lg);
+  border-top: 1px solid var(--neruds-border-color);
+  background: var(--neruds-bg-container);
+}
+
+/* ============================================
+   TYPOGRAPHY - Ant Design Style
+   ============================================ */
+
+.neruds-title {
+  font-weight: 600;
+  color: var(--neruds-text-primary);
+  margin-bottom: var(--neruds-spacing-md);
+}
+
+.neruds-title--h1 {
+  font-size: 38px;
+  line-height: 1.23;
+}
+
+.neruds-title--h2 {
+  font-size: 30px;
+  line-height: 1.35;
+}
+
+.neruds-title--h3 {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.neruds-title--h4 {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.neruds-text {
+  color: var(--neruds-text-primary);
+  line-height: 1.5715;
+}
+
+.neruds-text--secondary {
+  color: var(--neruds-text-secondary);
+}
+
+.neruds-text--disabled {
+  color: var(--neruds-text-disabled);
+}
+
+/* ============================================
+   LAYOUT - Ant Design Style
+   ============================================ */
+
+.neruds-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--neruds-spacing-lg);
+}
+
+.neruds-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(-1 * var(--neruds-spacing-md) / 2);
+}
+
+.neruds-col {
+  padding: 0 calc(var(--neruds-spacing-md) / 2);
+}
+
+/* ============================================
+   HOME SPECIFIC STYLES
+   ============================================ */
+
+.home-neruds {
+  padding: var(--neruds-spacing-xl) 0;
+  background: var(--neruds-bg-base);
+}
+
+.home-neruds h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--neruds-text-primary);
+  margin-bottom: var(--neruds-spacing-lg);
+  line-height: 1.35;
+}
+
+.home-neruds p {
+  font-size: var(--neruds-font-size-base);
+  line-height: 1.8;
+  color: var(--neruds-text-secondary);
+  margin-bottom: var(--neruds-spacing-md);
+}
+
+.home-neruds ul {
+  margin: var(--neruds-spacing-md) 0;
+  padding-left: var(--neruds-spacing-lg);
+}
+
+.home-neruds li {
+  margin-bottom: var(--neruds-spacing-sm);
+  line-height: 1.8;
+  color: var(--neruds-text-secondary);
+}
+
+.home-neruds li strong {
+  color: var(--neruds-text-primary);
+  font-weight: 500;
+}
+
+/* ============================================
+   RESPONSIVE - Ant Design Breakpoints
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-section-neruds h1 {
+    font-size: 32px;
+  }
+  
+  .hero-section-neruds p {
+    font-size: 16px;
+  }
+  
+  .estatisticas-neruds {
+    grid-template-columns: 1fr;
+    gap: var(--neruds-spacing-md);
+  }
+  
+  .stat-number {
+    font-size: 28px;
+  }
+  
+  .neruds-title--h1 {
+    font-size: 28px;
+  }
+  
+  .neruds-title--h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section-neruds {
+    padding: var(--neruds-spacing-lg) var(--neruds-spacing-md);
+  }
+  
+  .hero-section-neruds h1 {
+    font-size: 24px;
+  }
+  
+  .button-neruds {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* ============================================
+   ANIMATIONS - Ant Design Style
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.neruds-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.neruds-text-center {
+  text-align: center;
+}
+
+.neruds-mt-md {
+  margin-top: var(--neruds-spacing-md);
+}
+
+.neruds-mb-md {
+  margin-bottom: var(--neruds-spacing-md);
+}
+
+.neruds-mt-lg {
+  margin-top: var(--neruds-spacing-lg);
+}
+
+.neruds-mb-lg {
+  margin-bottom: var(--neruds-spacing-lg);
+}
+

@@ -1,0 +1,52 @@
+{#
+ * Territorial news card for NERUDS.
+ #}
+{% set summary = content.field_resumo_noticia|render ? content.field_resumo_noticia|render|striptags|trim : content.body|render|striptags|trim %}
+{% set author = neruds_news_author|default('Equipe NERUDS') %}
+{% set published = neruds_news_date|default(node.created.value) %}
+
+<article class="neruds-news-card" data-nid="{{ node.id }}" itemscope itemtype="https://schema.org/NewsArticle">
+  <div class="neruds-news-card__media">
+    <a href="{{ url }}" tabindex="-1" aria-hidden="true">
+      {% if content.field_imagem_destaque|render %}
+        {{ content.field_imagem_destaque }}
+      {% else %}
+        <span class="neruds-news-card__placeholder" aria-hidden="true"></span>
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="neruds-news-card__body">
+    <div class="neruds-news-card__badges">
+      <span class="visually-hidden">Classificações territoriais e ODS:</span>
+      {% if content.field_territorio|render %}
+        <span class="neruds-news-card__badge neruds-news-card__badge--territory">{{ content.field_territorio }}</span>
+      {% endif %}
+      {% if content.field_ods|render %}
+        <span class="neruds-news-card__badge neruds-news-card__badge--ods">{{ content.field_ods }}</span>
+      {% endif %}
+    </div>
+
+    <h3 class="neruds-news-card__title" itemprop="headline">
+      <a href="{{ url }}" itemprop="url">{{ label }}</a>
+    </h3>
+
+    {% if summary %}
+      <p class="neruds-news-card__summary" itemprop="description">
+        <span data-news-summary-short>{{ summary|slice(0, 150) }}{% if summary|length > 150 %}...{% endif %}</span>
+        {% if summary|length > 150 %}
+          <span data-news-summary-full hidden>{{ summary }}</span>
+          <button class="neruds-news-card__expand" type="button" data-news-expand aria-expanded="false">Leia mais</button>
+        {% endif %}
+      </p>
+    {% endif %}
+
+    <footer class="neruds-news-card__footer">
+      <span class="neruds-news-card__author" itemprop="author">{{ author }}</span>
+      <time class="neruds-news-card__date" datetime="{{ published|date('Y-m-d') }}" itemprop="datePublished">
+        {{ published|date('d/m/Y') }}
+      </time>
+      <button class="neruds-news-card__share" type="button" data-news-share hidden>Compartilhar</button>
+    </footer>
+  </div>
+</article>

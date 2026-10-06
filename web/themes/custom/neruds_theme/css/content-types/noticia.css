@@ -1,0 +1,61 @@
+/**
+ * @file
+ * Estilos para Notícias
+ */
+
+.noticia-hero .hero-image-wrapper img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.noticia-header .noticia-data {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+}
+
+.noticia-body {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--neruds-gray-900);
+}
+
+.noticia-body p {
+    margin-bottom: 1.5rem;
+}
+
+.noticia-body img {
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.noticia-body blockquote {
+    font-size: 1.25rem;
+    border-left-width: 5px;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    color: var(--neruds-primary-dark);
+}
+
+/* Link Externo Destaque */
+.noticia-body a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    color: var(--neruds-primary);
+}
+
+.noticia-body a:hover {
+    background-color: rgba(26, 82, 118, 0.05);
+    /* Tint of primary */
+}
+
+/* Field Image adjustments if user puts image in body */
+.field--name-body img {
+    height: auto;
+    max-width: 100%;
+}

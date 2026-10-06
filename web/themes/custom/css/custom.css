@@ -1,0 +1,441 @@
+/**
+ * @file
+ * Estilos customizados do tema NERUDS/UFT
+ * Baseado em Bootstrap 5
+ */
+
+/* ==========================================================================
+   VARIÁVEIS E CORES NERUDS/UFT
+   ========================================================================== */
+
+:root {
+  /* Cores principais NERUDS/UFT */
+  --neruds-primary: #0d6efd;
+  --neruds-secondary: #6c757d;
+  --neruds-success: #198754;
+  --neruds-info: #0dcaf0;
+  --neruds-warning: #ffc107;
+  --neruds-danger: #dc3545;
+  --neruds-light: #f8f9fa;
+  --neruds-dark: #212529;
+  
+  /* Cores específicas para taxonomias */
+  --ods-color: #0066cc;
+  --eixo-color: #28a745;
+  --projeto-color: #17a2b8;
+  --microrregiao-color: #ffc107;
+  --pesquisador-color: #6f42c1;
+}
+
+/* ==========================================================================
+   LAYOUT GERAL
+   ========================================================================== */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.neruds-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ==========================================================================
+   HEADER E NAVEGAÇÃO
+   ========================================================================== */
+
+.navbar-neruds {
+  background-color: var(--neruds-dark);
+  padding: 1rem 0;
+}
+
+.navbar-brand img {
+  max-height: 50px;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fff;
+}
+
+.navbar-nav .dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   SOCIAL BAR (Sidebar Esquerda)
+   ========================================================================== */
+
+.neruds-social-bar {
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+}
+
+.social-bar-item {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background-color: var(--neruds-primary);
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-bar-item:hover {
+  transform: scale(1.1);
+  background-color: var(--neruds-dark);
+  color: white;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.neruds-hero {
+  background: linear-gradient(135deg, var(--neruds-primary) 0%, var(--neruds-info) 100%);
+  color: white;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+}
+
+.neruds-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.neruds-hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   BADGES DE TAXONOMIA
+   ========================================================================== */
+
+.taxonomy-badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.875em;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.375rem;
+  margin: 0.25rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.taxonomy-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+/* Badges por tipo de taxonomia */
+.badge-ods {
+  background-color: var(--ods-color);
+  color: white;
+}
+
+.badge-eixo {
+  background-color: var(--eixo-color);
+  color: white;
+}
+
+.badge-projeto {
+  background-color: var(--projeto-color);
+  color: white;
+}
+
+.badge-microrregiao {
+  background-color: var(--microrregiao-color);
+  color: var(--neruds-dark);
+}
+
+.badge-pesquisador {
+  background-color: var(--pesquisador-color);
+  color: white;
+}
+
+.badge-palavra-chave {
+  background-color: var(--neruds-secondary);
+  color: white;
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.neruds-card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 2rem;
+  height: 100%;
+}
+
+.neruds-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.neruds-card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.neruds-card-body {
+  padding: 1.5rem;
+}
+
+.neruds-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--neruds-dark);
+}
+
+.neruds-card-text {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+
+.neruds-sidebar {
+  background-color: var(--neruds-light);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.neruds-sidebar h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--neruds-dark);
+  border-bottom: 2px solid var(--neruds-primary);
+  padding-bottom: 0.5rem;
+}
+
+.neruds-sidebar .list-group-item {
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  padding: 0.75rem 0;
+}
+
+.neruds-sidebar .list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.neruds-footer {
+  background-color: var(--neruds-dark);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 3rem 0 1rem;
+  margin-top: 4rem;
+}
+
+.neruds-footer-top {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neruds-footer-bottom {
+  padding-top: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.neruds-footer h5 {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.neruds-footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.neruds-footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+.neruds-footer ul li a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.neruds-footer ul li a:hover {
+  color: white;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .neruds-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .neruds-hero p {
+    font-size: 1rem;
+  }
+  
+  .neruds-social-bar {
+    position: relative;
+    top: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .social-bar-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+/* ==========================================================================
+   UTILITÁRIOS
+   ========================================================================== */
+
+.text-neruds-primary {
+  color: var(--neruds-primary) !important;
+}
+
+.bg-neruds-primary {
+  background-color: var(--neruds-primary) !important;
+}
+
+.mb-section {
+  margin-bottom: 4rem;
+}
+
+.py-section {
+  padding: 4rem 0;
+}
+
+
+/* ==========================================================================
+   MELHORIAS ACADÊMICAS (Added by Assistant)
+   ========================================================================== */
+
+/* Tipografia Acadêmica */
+body {
+  font-family: 'Merriweather', 'Georgia', serif;
+  line-height: 1.8;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar, .btn {
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+/* Espaçamento e Leitura */
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.node--view-mode-full .field--name-body {
+  font-size: 1.15rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Tabelas Acadêmicas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: var(--neruds-light);
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid var(--neruds-secondary);
+  text-align: left;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Citações */
+blockquote {
+  border-left: 4px solid var(--neruds-primary);
+  padding-left: 1.5rem;
+  font-style: italic;
+  color: var(--neruds-secondary);
+  background: var(--neruds-light);
+  padding: 1rem 1rem 1rem 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Links */
+a {
+  color: var(--neruds-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Cards de Notícias e Eventos com visual limpo */
+.neruds-card {
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.neruds-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: var(--neruds-primary);
+}
+
+.neruds-card-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+/* Badges mais sutis */
+.taxonomy-badge {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 0.4em 0.8em;
+  border-radius: 20px;
+}

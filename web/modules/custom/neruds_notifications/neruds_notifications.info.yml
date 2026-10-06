@@ -1,0 +1,10 @@
+name: 'NERUDS Notifications'
+type: module
+description: 'Email notification system for NERUDS - alerts researchers about new content in their interest areas'
+core_version_requirement: ^11
+package: 'NERUDS'
+version: '1.0.0'
+dependencies:
+  - drupal:node
+  - drupal:user
+  - drupal:field

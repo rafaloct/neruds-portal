@@ -1,0 +1,9 @@
+name: 'NERUDS Blocks'
+type: module
+description: 'Blocos reutilizáveis para o NERUDS: Hero Section (4 variantes) e Card Grid com conteúdo dinâmico.'
+package: 'NERUDS'
+version: '1.0.0'
+core_version_requirement: ^11 || ^12
+dependencies:
+  - drupal:block
+  - drupal:node

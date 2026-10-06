@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" width="160" height="48" role="img" aria-label="NERUDS">
+  <!-- Background circle -->
+  <circle cx="24" cy="24" r="22" fill="#2E4632"/>
+  <!-- Stylized N letter -->
+  <text x="14" y="32" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#E1C16E">N</text>
+  <!-- NERUDS text -->
+  <text x="54" y="20" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#2E4632">NERUDS</text>
+  <text x="54" y="36" font-family="Arial,sans-serif" font-size="9" fill="#A0522D" letter-spacing="0.5">UFT — Pesquisa Rural</text>
+</svg>

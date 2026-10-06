@@ -1,0 +1,28 @@
+services:
+  neruds_google_integration.portal_data:
+    class: Drupal\neruds_google_integration\Service\PortalDataService
+    arguments:
+      - '@entity_type.manager'
+      - '@cache.default'
+      - '@http_client'
+      - '@config.factory'
+      - '@logger.channel.neruds_google_integration'
+
+  neruds_google_integration.audit:
+    class: Drupal\neruds_google_integration\Service\AuditService
+    arguments:
+      - '@cache.default'
+      - '@config.factory'
+      - '@logger.channel.neruds_google_integration'
+
+  logger.channel.neruds_google_integration:
+    parent: logger.channel_base
+    arguments: ['neruds_google_integration']
+
+  neruds_google_integration.rate_limit_checker:
+    class: Drupal\neruds_google_integration\Access\NerudsRateLimitChecker
+    arguments:
+      - '@cache.default'
+      - '@request_stack'
+    tags:
+      - { name: access_check, applies_to: '_neruds_rate_limit' }

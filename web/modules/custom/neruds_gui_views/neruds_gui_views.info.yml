@@ -1,0 +1,12 @@
+name: 'NERUDS GUI — Views & Layouts'
+description: 'Custom views and display modes for academic content (News, Events, Projects)'
+type: module
+core_version_requirement: ^11 || ^12
+version: 1.0.0
+package: NERUDS
+
+dependencies:
+  - drupal:views
+  - drupal:search_api
+  - drupal:facets
+  - neruds_mcp

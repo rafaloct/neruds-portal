@@ -1,0 +1,81 @@
+/**
+ * @file
+ * Estilos para Publicações Científicas
+ */
+
+.publicacao-autores {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.pesquisadores-vinculados a {
+    color: var(--neruds-primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dotted var(--neruds-primary);
+}
+
+.pesquisadores-vinculados a:hover {
+    background-color: var(--neruds-light);
+    border-bottom-style: solid;
+}
+
+.publicacao-meta {
+    border: 1px solid var(--neruds-gray-200);
+}
+
+.publicacao-resumo {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* Customizing File Field (PDF Download) */
+.btn-download-wrapper .file {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--neruds-primary);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-download-wrapper .file:hover {
+    background-color: var(--neruds-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: #fff;
+}
+
+.btn-download-wrapper .file--application-pdf::before,
+.btn-download-wrapper .file--x-office-document::before {
+    content: "\F30A";
+    /* Bootstrap Icon: file-earmark-arrow-down */
+    font-family: "bootstrap-icons";
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    background: none;
+    /* Remove default Drupal icon background if present */
+    width: auto;
+    height: auto;
+}
+
+/* Hide default file size if desired, or style it */
+.btn-download-wrapper .file__size {
+    margin-left: 0.5rem;
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* Taxonomy styling refinement */
+.publicacao-cientifica .field--name-field-areas-conhecimento .field__item,
+.publicacao-cientifica .field--name-field-linhas-pesquisa .field__item {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}

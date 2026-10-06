@@ -1,0 +1,125 @@
+/**
+ * @file focus-visible.css
+ * Acessibilidade — Focus states visíveis para navegação por teclado
+ * WCAG 2.1 AA compliance
+ */
+
+/* =====================================================
+   FOCUS VISIBLE
+   ===================================================== */
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline para mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* =====================================================
+   LINK FOCUS
+   ===================================================== */
+
+a:focus-visible {
+  outline: 3px solid var(--color-babasu);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-babasu);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   CUSTOM FOCUS STYLES
+   ===================================================== */
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-babasu);
+  outline-offset: 2px;
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--color-babasu);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+/* =====================================================
+   SKIP LINK
+   ===================================================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-babasu);
+  color: var(--color-white);
+  padding: 8px;
+  text-decoration: none;
+  z-index: var(--z-modal);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* =====================================================
+   HIGH CONTRAST MODE
+   ===================================================== */
+
+@media (prefers-contrast: more) {
+  :focus-visible {
+    outline-width: 4px;
+  }
+
+  .btn,
+  button,
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =====================================================
+   COLOR CONTRAST HELPERS
+   ===================================================== */
+
+.high-contrast {
+  filter: contrast(1.3);
+}
+
+.text-contrast-high {
+  color: var(--color-babasu-dark);
+  background: var(--color-white);
+}
+
+/* =====================================================
+   TEXT SIZING
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :focus-visible {
+    outline-color: var(--color-palha);
+  }
+}

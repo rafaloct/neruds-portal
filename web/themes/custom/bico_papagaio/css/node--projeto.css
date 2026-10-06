@@ -1,0 +1,97 @@
+/**
+ * @file node--projeto.css
+ * Estilos específicos para Projeto de Pesquisa/Extensão
+ */
+
+/* Status badges */
+.field--name-field-status-projeto .field__item {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2em 0.8em;
+  border-radius: 2px;
+  border: 1.5px solid currentColor;
+}
+
+/* Em andamento */
+.field--name-field-status-projeto .field__item:has(a[href*="andamento"]),
+.projeto-status--ativo {
+  color: var(--sucesso);
+  background: rgba(45, 106, 79, 0.08);
+}
+
+/* Concluído */
+.field--name-field-status-projeto .field__item:has(a[href*="conclu"]),
+.projeto-status--concluido {
+  color: var(--sedimento-dark);
+  background: var(--sedimento-10);
+}
+
+/* Grid de boletins do projeto */
+.projeto__boletim-card {
+  border: 1px solid var(--terra-200) !important;
+  border-top: 3px solid var(--barro) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all var(--transition-base) !important;
+  background: var(--branco) !important;
+}
+
+.projeto__boletim-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--barro-20) !important;
+  border-top-color: var(--barro-dark) !important;
+}
+
+.projeto__boletim-title a {
+  color: var(--babacú-dark) !important;
+  font-family: var(--font-heading) !important;
+}
+
+.projeto__boletim-title a:hover {
+  color: var(--barro) !important;
+}
+
+/* Seção de boletins — título decolonial */
+.projeto__section-title {
+  font-family: var(--font-heading) !important;
+  color: var(--babacú-dark) !important;
+  border-bottom-color: var(--barro) !important;
+}
+
+/* Override dos botões Bootstrap para o tema */
+.projeto__boletim-card .btn-outline-primary {
+  color: var(--barro) !important;
+  border-color: var(--barro) !important;
+}
+
+.projeto__boletim-card .btn-outline-primary:hover {
+  background: var(--barro) !important;
+  border-color: var(--barro-dark) !important;
+  color: var(--branco) !important;
+}
+
+/* Notícias associadas */
+.projeto__noticia-card {
+  border: 1px solid var(--terra-200) !important;
+  border-top: 3px solid var(--sedimento) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+  background: var(--branco) !important;
+}
+
+.projeto__noticia-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.projeto__noticia-title a {
+  color: var(--babacú-dark) !important;
+  font-family: var(--font-heading) !important;
+}
+
+.projeto__noticia-title a:hover {
+  color: var(--sedimento-dark) !important;
+}

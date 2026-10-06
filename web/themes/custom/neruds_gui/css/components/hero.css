@@ -1,0 +1,289 @@
+/**
+ * @file hero.css
+ * Hero Section — Manifesto, CTA, estatísticas
+ * Fundo Verde Babaçu, micro-interações
+ */
+
+/* =====================================================
+   HERO CONTAINER
+   ===================================================== */
+
+.hero,
+.hero-section,
+[class*="hero-component"] {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-babasu-dark) 100%);
+  color: var(--color-white);
+  overflow: hidden;
+  padding: var(--space-16) var(--space-4);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: rgba(225, 193, 110, 0.1);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: rgba(160, 82, 45, 0.15);
+  border-radius: 50%;
+  filter: blur(50px);
+  z-index: 0;
+}
+
+/* =====================================================
+   INNER LAYOUT
+   ===================================================== */
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* =====================================================
+   CONTEÚDO (MANIFESTO)
+   ===================================================== */
+
+.hero__content {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-4);
+  color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+.hero__subtitle,
+.hero__lead {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: var(--font-weight-light);
+}
+
+.hero__description {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* =====================================================
+   CTA (CALL TO ACTION)
+   ===================================================== */
+
+.hero__cta {
+  display: inline-flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.hero__cta .btn {
+  font-size: var(--font-size-lg);
+  padding: var(--space-4) var(--space-8);
+}
+
+.hero__cta .btn--primary {
+  background: var(--color-white);
+  color: var(--color-babasu);
+  border-color: var(--color-white);
+}
+
+.hero__cta .btn--primary:hover {
+  background: var(--color-palha);
+  border-color: var(--color-palha);
+  color: var(--color-babasu-dark);
+}
+
+/* =====================================================
+   ESTATÍSTICAS
+   ===================================================== */
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat {
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.stat__number {
+  display: block;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-2);
+}
+
+.stat__label {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   IMAGEM / VISUAL
+   ===================================================== */
+
+.hero__visual {
+  position: relative;
+  animation: slideInRight 0.8s ease-out;
+}
+
+.hero__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+}
+
+.hero__visual-bg {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 300px;
+  height: 300px;
+  background: rgba(225, 193, 110, 0.2);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: -1;
+}
+
+/* =====================================================
+   GRID DE ÍCONES (ODS, valores)
+   ===================================================== */
+
+.hero__icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.hero__icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.hero__icon-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.hero__icon-item svg,
+.hero__icon-item img {
+  width: 48px;
+  height: 48px;
+}
+
+.hero__icon-label {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =====================================================
+   ANIMAÇÕES
+   ===================================================== */
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =====================================================
+   BACKGROUND PATTERN (opcional)
+   ===================================================== */
+
+.hero--with-pattern {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(255, 255, 255, 0.05) 35px,
+      rgba(255, 255, 255, 0.05) 70px
+    );
+}

@@ -1,0 +1,65 @@
+neruds_extensionista_guard.session:
+  path: '/neruds-control/session'
+  defaults:
+    _controller: '\Drupal\neruds_extensionista_guard\Controller\ControlController::session'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: TRUE
+
+neruds_extensionista_guard.publish_news:
+  path: '/neruds-control/news/{node}/publish'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\neruds_extensionista_guard\Controller\ControlController::publishNews'
+  requirements:
+    _permission: 'publish neruds news'
+    _csrf_token: 'TRUE'
+  options:
+    no_cache: TRUE
+    parameters:
+      node:
+        type: entity:node
+
+neruds_extensionista_guard.extensionistas_list:
+  path: '/neruds-control/extensionistas'
+  methods: [GET]
+  defaults:
+    _controller: '\Drupal\neruds_extensionista_guard\Controller\IdentityController::listAccounts'
+  requirements:
+    _permission: 'administer neruds extensionistas'
+  options:
+    no_cache: TRUE
+
+neruds_extensionista_guard.extensionistas_create:
+  path: '/neruds-control/extensionistas'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\neruds_extensionista_guard\Controller\IdentityController::createAccount'
+  requirements:
+    _permission: 'administer neruds extensionistas'
+    _csrf_token: 'TRUE'
+  options:
+    no_cache: TRUE
+
+neruds_extensionista_guard.extensionistas_status:
+  path: '/neruds-control/extensionistas/{uid}/status'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\neruds_extensionista_guard\Controller\IdentityController::setStatus'
+  requirements:
+    _permission: 'administer neruds extensionistas'
+    _csrf_token: 'TRUE'
+  options:
+    no_cache: TRUE
+
+neruds_extensionista_guard.extensionistas_password_reset:
+  path: '/neruds-control/extensionistas/{uid}/password-reset'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\neruds_extensionista_guard\Controller\IdentityController::passwordReset'
+  requirements:
+    _permission: 'administer neruds extensionistas'
+    _csrf_token: 'TRUE'
+  options:
+    no_cache: TRUE

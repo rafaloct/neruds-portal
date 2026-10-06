@@ -1,0 +1,17 @@
+# MCP Permissions
+access mcp api:
+  title: 'Access MCP API endpoints'
+  description: 'Grant access to Model Context Protocol API for content management'
+  restrict access: true
+
+create mcp nodes:
+  title: 'Create nodes via MCP'
+  description: 'Allow creation of News, Event, and Project nodes through API'
+
+edit mcp nodes:
+  title: 'Edit nodes via MCP'
+  description: 'Allow modification of existing nodes through API'
+
+delete mcp nodes:
+  title: 'Delete nodes via MCP'
+  description: 'Allow deletion of nodes through API'

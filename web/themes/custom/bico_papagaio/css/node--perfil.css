@@ -1,0 +1,41 @@
+/**
+ * @file node--perfil.css
+ * Estilos específicos adicionais para Perfil Pesquisador
+ * (Complementa content-types.css)
+ */
+
+/* Grid de pesquisadores em views */
+.view-pesquisadores .views-row {
+  display: flex;
+}
+
+.view-pesquisadores .card-pesquisador {
+  width: 100%;
+}
+
+/* Foto hover */
+.card-pesquisador:hover .card-pesquisador__foto img {
+  box-shadow: 0 0 0 4px var(--barro-50);
+  transition: box-shadow var(--transition-base);
+}
+
+/* Lattes link */
+.field--name-field-lattes a,
+.field--name-field-lattes-link a {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--barro);
+  border: 1px dashed var(--barro);
+  padding: 0.15em 0.6em;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-fast);
+}
+
+.field--name-field-lattes a:hover,
+.field--name-field-lattes-link a:hover {
+  background: var(--barro);
+  color: var(--branco);
+  border-style: solid;
+}

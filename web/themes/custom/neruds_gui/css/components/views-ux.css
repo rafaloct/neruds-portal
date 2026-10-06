@@ -1,0 +1,709 @@
+/**
+ * @file views-ux.css
+ * Views UX — Grid, filtros expostos, paginação e cards
+ * Segue o Manual da Marca NERUDS:
+ *   Laranja:     #F58535  (--color-barro)
+ *   Cinza Escuro:#606062  (--color-babasu-dark via var)
+ *   Cinza Claro: #DCDDDF  (--color-gray-300)
+ */
+
+/* ===========================================================
+   VARIÁVEIS NERUDS (atalhos semânticos)
+   =========================================================== */
+:root {
+  --neruds-laranja:       #F58535;
+  --neruds-cinza-escuro:  #606062;
+  --neruds-cinza-claro:   #DCDDDF;
+  --neruds-bg:            #ffffff;
+  --neruds-texto:         #606062;
+  --neruds-accent:        #F58535;
+  --neruds-accent-hover:  #e07020;
+  --neruds-borda:         #DCDDDF;
+  --neruds-bg-secao:      #f5f5f6;
+}
+
+/* ===========================================================
+   VIEWS — CONTAINER GERAL
+   =========================================================== */
+
+.view {
+  --view-gap: 1.5rem;
+}
+
+.view-content {
+  display: grid;
+  gap: var(--view-gap);
+}
+
+/* Grid responsivo padrão (herdado do style=grid do Drupal) */
+.views-view-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 640px) {
+  .views-view-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .views-view-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Pesquisadores: 4 colunas em desktop */
+.view-view-pesquisadores-por-linha .views-view-grid {
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 640px) {
+  .view-view-pesquisadores-por-linha .views-view-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .view-view-pesquisadores-por-linha .views-view-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .view-view-pesquisadores-por-linha .views-view-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Relatórios e Reuniões: 2 colunas */
+.view-neruds-relatorios .views-view-grid,
+.view-neruds-reunioes .views-view-grid,
+.view-neruds-grupos-estudos .views-view-grid {
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .view-neruds-relatorios .views-view-grid,
+  .view-neruds-reunioes .views-view-grid,
+  .view-neruds-grupos-estudos .views-view-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Célula do grid */
+.views-view-grid .views-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Garante que o node dentro do grid ocupa 100% */
+.views-view-grid .views-col > article,
+.views-view-grid .views-col > .node {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========================================================
+   VIEWS — CABEÇALHO (título da view)
+   =========================================================== */
+
+.view-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--neruds-laranja);
+}
+
+.view-header h2,
+.view-header h3 {
+  font-family: var(--font-serif, Georgia, serif);
+  color: var(--neruds-cinza-escuro);
+  margin: 0;
+}
+
+/* ===========================================================
+   FILTROS EXPOSTOS — FORM PRINCIPAL
+   =========================================================== */
+
+.views-exposed-form {
+  background: var(--neruds-bg-secao);
+  border: 1px solid var(--neruds-borda);
+  border-radius: 0.5rem;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  /* Layout em linha: campos lado a lado */
+  display: flex;
+  /* Override the theme-wide column layout used by ordinary forms. */
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.75rem;
+  align-items: flex-end;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.views-exposed-form .js-form-type-textfield,
+.views-exposed-form .js-form-type-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Wrapper interno dos campos */
+.views-exposed-form .form-actions,
+.views-exposed-form .bef-exposed-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+/* Cada campo exposto ocupa espaço proporcional */
+.views-exposed-form .form-item {
+  flex: 1 1 160px;
+  min-width: 140px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+}
+
+/* Campo de título: ligeiramente mais largo */
+.views-exposed-form .form-item-title {
+  flex: 1 1 200px;
+  max-width: 260px;
+}
+
+/* Ano de publicação: campo mais estreito */
+.views-exposed-form .form-item-ano-publicacao {
+  flex: 0 1 100px;
+  min-width: 90px;
+  max-width: 120px;
+}
+
+/* Botões: não crescem, ficam ao lado dos campos */
+.views-exposed-form .form-actions {
+  flex: 0 0 auto;
+  margin: 0;
+  min-width: unset;
+  max-width: unset;
+  padding-top: 0;
+}
+
+/* Label dos filtros */
+.views-exposed-form label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--neruds-cinza-escuro);
+}
+
+/* Inputs de texto */
+.views-exposed-form input[type="text"],
+.views-exposed-form input[type="search"],
+.views-exposed-form input[type="number"] {
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  border: 1.5px solid var(--neruds-borda);
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--neruds-cinza-escuro);
+  font-size: 1rem; /* ≥16px previne zoom automático no iOS */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.views-exposed-form input[type="text"]:focus,
+.views-exposed-form input[type="search"]:focus {
+  outline: none;
+  border-color: var(--neruds-laranja);
+  box-shadow: 0 0 0 3px rgba(245, 133, 53, 0.18);
+}
+
+/* Selects */
+.views-exposed-form select {
+  width: 100%;
+  padding: 0.55rem 2rem 0.55rem 0.85rem;
+  border: 1.5px solid var(--neruds-borda);
+  border-radius: 0.5rem;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23606062' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--neruds-cinza-escuro);
+  font-size: 1rem; /* ≥16px previne zoom automático no iOS */
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.views-exposed-form select:focus {
+  outline: none;
+  border-color: var(--neruds-laranja);
+  box-shadow: 0 0 0 3px rgba(245, 133, 53, 0.18);
+}
+
+.views-exposed-form select option {
+  color: var(--neruds-cinza-escuro);
+}
+
+/* Botões do form exposto */
+.views-exposed-form .form-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding-top: 0;
+  flex-wrap: nowrap;
+}
+
+.views-exposed-form .form-submit[value="Filtrar"],
+.views-exposed-form .form-submit[id$="-submit"] {
+  padding: 0.55rem 1.4rem;
+  background: var(--neruds-laranja);
+  color: #1A1A1A;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.views-exposed-form .form-submit[value="Filtrar"]:hover,
+.views-exposed-form .form-submit[id$="-submit"]:hover {
+  background: var(--neruds-accent-hover);
+  transform: translateY(-1px);
+}
+
+.views-exposed-form .form-submit[value="Limpar"],
+.views-exposed-form .form-submit[id$="-reset"] {
+  padding: 0.55rem 1rem;
+  background: transparent;
+  color: var(--neruds-cinza-escuro);
+  border: 1.5px solid var(--neruds-borda);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.views-exposed-form .form-submit[value="Limpar"]:hover,
+.views-exposed-form .form-submit[id$="-reset"]:hover {
+  border-color: var(--neruds-cinza-escuro);
+  background: var(--neruds-bg-secao);
+}
+
+/* Responsivo: empilha em mobile */
+@media (max-width: 600px) {
+  .views-exposed-form .form-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .views-exposed-form .form-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+  .views-exposed-form .form-submit {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+/* ===========================================================
+   PAGINAÇÃO (mini pager)
+   =========================================================== */
+
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.pager__items {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.pager__item a,
+.pager__item--ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 0.6rem;
+  border-radius: 0.4rem;
+  border: 1.5px solid var(--neruds-borda);
+  color: var(--neruds-cinza-escuro);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  background: #fff;
+}
+
+.pager__item a:hover {
+  border-color: var(--neruds-laranja);
+  color: var(--neruds-laranja);
+  background: rgba(245, 133, 53, 0.06);
+}
+
+.pager__item--current a,
+.pager__item--current span {
+  background: var(--neruds-laranja);
+  border-color: var(--neruds-laranja);
+  color: #fff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.pager__item--previous a,
+.pager__item--next a {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ===========================================================
+   CARDS DENTRO DO GRID — ajuste de modo de visualização
+   =========================================================== */
+
+/* Garante que cards no teaser/card mode ficam com altura uniforme */
+.views-view-grid article.node--view-mode-card,
+.views-view-grid article.node--view-mode-teaser {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 0.75rem;
+  border: 1px solid var(--neruds-borda);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.views-view-grid article.node--view-mode-card:hover,
+.views-view-grid article.node--view-mode-teaser:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.11);
+  transform: translateY(-3px);
+}
+
+/* Título do card */
+.views-view-grid .node__title a,
+.views-view-grid h3 a,
+.views-view-grid h2 a {
+  color: var(--neruds-cinza-escuro);
+  text-decoration: none;
+  font-family: var(--font-serif, Georgia, serif);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.views-view-grid .node__title a:hover,
+.views-view-grid h3 a:hover,
+.views-view-grid h2 a:hover {
+  color: var(--neruds-laranja);
+}
+
+/* Imagem do card */
+.views-view-grid .field--type-image img,
+.views-view-grid .field--name-field-foto-perfil img,
+.views-view-grid .field--name-field-imagem-capa img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Foto de perfil: quadrada */
+.view-view-pesquisadores-por-linha .field--name-field-foto-perfil img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Conteúdo interno do card */
+.views-view-grid .node__content,
+.views-view-grid .node--view-mode-card .node__content,
+.views-view-grid .node--view-mode-teaser .node__content {
+  padding: 1rem 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Tags/badges de taxonomia dentro dos cards */
+.views-view-grid .field--type-entity-reference .field__item a,
+.views-view-grid .field--name-field-ods-interesse .field__item,
+.views-view-grid .field--name-field-eixos-tematicos .field__item a,
+.views-view-grid .field--name-field-linhas-pesquisa .field__item a {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(245, 133, 53, 0.12);
+  color: var(--neruds-laranja);
+  text-decoration: none;
+  border: 1px solid rgba(245, 133, 53, 0.25);
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Wrapper de tags */
+.views-view-grid .field--type-entity-reference .field__items,
+.views-view-grid .field--name-field-ods-interesse .field__items,
+.views-view-grid .field--name-field-eixos-tematicos .field__items,
+.views-view-grid .field--name-field-linhas-pesquisa .field__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+/* Status do projeto como badge colorido */
+.views-view-grid .field--name-field-status-projeto .field__item {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(96, 96, 98, 0.1);
+  color: var(--neruds-cinza-escuro);
+  border: 1px solid var(--neruds-borda);
+}
+
+/* Resumo/Bio truncada em 3 linhas */
+.views-view-grid .field--name-field-resumo .field__item,
+.views-view-grid .field--name-field-biografia .field__item p,
+.views-view-grid .field--name-field-resumo-boletim .field__item p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--neruds-cinza-escuro);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ===========================================================
+   VIEWS SEM RESULTADOS
+   =========================================================== */
+
+.view-empty {
+  text-align: center;
+  padding: 2rem 1.25rem;
+  color: var(--neruds-cinza-escuro);
+  background: var(--neruds-bg-secao);
+  border-radius: 0.75rem;
+  border: 1px dashed var(--neruds-borda);
+}
+
+.view-empty p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.75;
+}
+
+/* ===========================================================
+   LINHAS DE PESQUISA — página pública a partir da taxonomia
+   =========================================================== */
+
+.research-lines-page {
+  max-width: 860px;
+}
+
+.research-lines-page__intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.research-line-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.research-line-list__link {
+  display: block;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--neruds-borda);
+  border-left: 3px solid var(--neruds-laranja);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--neruds-cinza-escuro);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.research-line-list__link:hover,
+.research-line-list__link:focus {
+  background: rgba(245, 133, 53, 0.08);
+  color: #C15900;
+  text-decoration: none;
+}
+
+/* ===========================================================
+   AJAX THROBBER (loading state)
+   =========================================================== */
+
+.ajax-progress-throbber .throbber {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid var(--neruds-borda);
+  border-top-color: var(--neruds-laranja);
+  border-radius: 50%;
+  animation: neruds-spin 0.7s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes neruds-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   MELHORIAS UX — Pesquisadores, Projetos, Publicações
+   ============================================================ */
+
+/* ── Ocultar metadados de sistema nas listagens de cards ────── */
+.node--view-mode-card .node__submitted,
+.node--view-mode-teaser .node__submitted,
+.node--view-mode-card .submitted,
+.node--view-mode-teaser .submitted,
+/* Datas de criação do nó (desnecessárias em cards) */
+.views-field-created .field-content,
+.views-field-changed .field-content {
+  display: none;
+}
+
+/* ── STATUS BADGE de projetos ──────────────────────────────── */
+.project-status-badge,
+.field--name-field-status-projeto .field__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+/* Em andamento — laranja */
+.field--name-field-status-projeto .field__item:contains("Em andamento"),
+.term-420 { background: rgba(245,133,53,0.15); color: #C15900; border: 1px solid rgba(245,133,53,0.4); }
+
+/* Concluído — verde sutil */
+.term-421 { background: rgba(16,185,129,0.1); color: #065f46; border: 1px solid rgba(16,185,129,0.35); }
+
+/* Em Planejamento — azul sutil */
+.term-419 { background: rgba(59,130,246,0.1); color: #1e40af; border: 1px solid rgba(59,130,246,0.35); }
+
+/* Cancelado / Suspenso — cinza */
+.term-422,
+.term-423 { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.4); }
+
+/* ── Ocultar status vazio ─── */
+.field--name-field-status-projeto:empty { display: none; }
+
+/* ── Card de Pesquisador — melhorias ───────────────────────── */
+/* Garantir que o e-mail/Lattes apareçam como secondary text acessível */
+.node--type-perfil-pesquisador .field--name-field-email a,
+.node--type-perfil-pesquisador .field--name-field-lattes a,
+.node--type-perfil-pesquisador .field--name-field-orcid a {
+  color: #C15900;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+/* ── Publicações — visual acadêmico ────────────────────────── */
+.node--type-publicacao-cientifica.node--view-mode-teaser,
+.node--type-publicacao-cientifica.node--view-mode-card {
+  border-left: 3px solid var(--color-barro, #F58535);
+  padding-left: 0.875rem;
+  margin-left: 0;
+}
+
+.node--type-publicacao-cientifica .node__title a {
+  font-style: normal;
+}
+
+/* DOI e links externos de publicações */
+.field--name-field-doi,
+.field--name-field-link-acesso {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+}
+
+.field--name-field-doi a,
+.field--name-field-link-acesso a {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  color: #C15900;
+  text-decoration: none;
+}
+
+.field--name-field-doi a::before {
+  content: "DOI: ";
+  font-weight: 600;
+  color: #606062;
+}
+
+/* ── Notícias — tags de projeto visíveis ───────────────────── */
+.field--name-field-projeto-associado .field__label,
+.field--name-field-projeto-relacionado .field__label {
+  display: inline;
+  font-weight: 600;
+  color: #606062;
+  font-size: 0.8rem;
+  margin-right: 0.3rem;
+}
+
+.field--name-field-projeto-associado .field__item,
+.field--name-field-projeto-relacionado .field__item {
+  display: inline;
+}
+
+.field--name-field-projeto-associado .field__item a,
+.field--name-field-projeto-relacionado .field__item a {
+  display: inline-flex;
+  background: rgba(245,133,53,0.1);
+  color: #C15900;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(245,133,53,0.25);
+}
+
+/* ── Ocultar blocos de configuração visíveis para admin ─────── */
+/* Evitar que "Open configuration options" apareça para visitantes */
+.contextual-region > .contextual { display: none; }
+.contextual-region:hover > .contextual { display: block; }

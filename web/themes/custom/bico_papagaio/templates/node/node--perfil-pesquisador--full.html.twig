@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Bico do Papagaio — Perfil Pesquisador (Full)
+ * Template decolonial para exibição completa do perfil
+ */
+#}
+{{ attach_library('bico_papagaio/perfil-pesquisador') }}
+
+<article{{ attributes.addClass('node--full', 'node--perfil') }}>
+
+  <header class="node__header">
+    <div class="node__tipo">{{ tipo_label|default('Pesquisador(a)') }}</div>
+    <h1 class="node__title">{{ label }}</h1>
+  </header>
+
+  <div class="perfil-header">
+    {# Foto / Avatar #}
+    {% if content.field_foto_perfil %}
+      <div class="perfil-foto-wrapper">
+        {{ content.field_foto_perfil }}
+      </div>
+    {% else %}
+      <div class="perfil-foto--avatar" aria-hidden="true">{{ iniciais|default('?') }}</div>
+    {% endif %}
+
+    <div class="perfil-info">
+      <h1 class="perfil-nome">{{ label }}</h1>
+
+      {% if content.field_titulo_academico %}
+        <p class="perfil-titulo">{{ content.field_titulo_academico }}</p>
+      {% endif %}
+
+      {% if content.field_lattes %}
+        <a href="{{ content.field_lattes }}" class="perfil-lattes" target="_blank" rel="noopener noreferrer">
+          ◈ Currículo Lattes
+        </a>
+      {% endif %}
+
+      {# Linhas de pesquisa como badges #}
+      {% if content.field_linha_pesquisa %}
+        <div class="node__taxonomy" style="margin-top: 1rem;">
+          {{ content.field_linha_pesquisa }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {# Biografia #}
+  {% if content.body %}
+    <section class="node__body">
+      <h2 class="section-ornament" style="font-size:1.1rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--babacú); font-family:var(--font-mono);">Trajetória</h2>
+      {{ content.body }}
+    </section>
+  {% endif %}
+
+  {# Projetos vinculados #}
+  {% if content.field_projetos %}
+    <section style="margin-top: 2rem;">
+      <h2 class="section-ornament" style="font-size:1.1rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--babacú); font-family:var(--font-mono);">Projetos</h2>
+      {{ content.field_projetos }}
+    </section>
+  {% endif %}
+
+  {# Publicações vinculadas #}
+  {% if content.field_publicacoes %}
+    <section style="margin-top: 2rem;">
+      <h2 class="section-ornament" style="font-size:1.1rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--sedimento-dark); font-family:var(--font-mono);">Publicações</h2>
+      {{ content.field_publicacoes }}
+    </section>
+  {% endif %}
+
+  {# Taxonomias #}
+  <footer class="node__taxonomy">
+    {% if content.field_eixo_tematico %}{{ content.field_eixo_tematico }}{% endif %}
+    {% if content.field_area_conhecimento %}{{ content.field_area_conhecimento }}{% endif %}
+  </footer>
+
+</article>

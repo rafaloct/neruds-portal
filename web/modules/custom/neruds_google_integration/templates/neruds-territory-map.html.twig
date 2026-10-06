@@ -1,0 +1,22 @@
+<section class="neruds-territory-map" id="territorios" aria-labelledby="neruds-territory-map-title">
+  <div class="neruds-territory-map__header">
+    <div>
+      <h2 id="neruds-territory-map-title" class="neruds-territory-map__title">{{ title }}</h2>
+      <p class="neruds-territory-map__summary">{{ summary }}</p>
+    </div>
+    <div class="neruds-territory-map__filters" role="group" aria-label="Camadas do mapa territorial">
+      <button type="button" class="neruds-territory-map__filter is-active" data-layer="projects" aria-pressed="true">Projetos</button>
+      <button type="button" class="neruds-territory-map__filter is-active" data-layer="researchers" aria-pressed="true">Pesquisadores</button>
+      <button type="button" class="neruds-territory-map__filter is-active" data-layer="publications" aria-pressed="true">Publicacoes</button>
+      <button type="button" class="neruds-territory-map__filter is-active" data-layer="events" aria-pressed="true">Eventos</button>
+    </div>
+  </div>
+  <div class="neruds-territory-map__layout">
+    <div class="neruds-territory-map__canvas" data-neruds-territory-map role="application" tabindex="0" aria-label="Mapa interativo dos territorios NERUDS. Use os botoes de territorio abaixo do mapa para navegacao por teclado."></div>
+    <div class="neruds-territory-map__keyboard-list" data-neruds-territory-list aria-label="Lista de territorios para navegacao por teclado"></div>
+    <aside class="neruds-territory-map__sidebar" data-neruds-territory-sidebar tabindex="-1" aria-live="polite" aria-atomic="true">
+      <h3>Selecione um territorio</h3>
+      <p>Use o mapa para ver projetos, publicacoes, pesquisadores e eventos relacionados.</p>
+    </aside>
+  </div>
+</section>

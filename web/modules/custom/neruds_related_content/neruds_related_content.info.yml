@@ -1,0 +1,10 @@
+name: 'NERUDS Related Content'
+type: module
+description: 'Displays related research content based on ODS and research categories'
+core_version_requirement: ^11
+package: 'NERUDS'
+version: '1.0.0'
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:views

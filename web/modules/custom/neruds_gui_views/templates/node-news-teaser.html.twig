@@ -1,0 +1,266 @@
+{#
+/**
+ * @file
+ * NERUDS News Card Template — Academic Magazine Style
+ *
+ * Available variables:
+ * - node: The node object
+ * - title: Node title
+ * - created: Creation timestamp
+ * - author: Author object
+ * - teaser: Teaser text (body summary)
+ * - url: Node URL
+ * - field_ods: ODS taxonomy references
+ * - field_research_categories: Research category references
+ */
+#}
+
+<article class="neruds-news-card news-card">
+  {# ODS Badge Strip (Top) #}
+  {% if node.field_ods|length > 0 %}
+    <div class="news-card__ods-badges">
+      {% for term_ref in node.field_ods %}
+        {% set term = term_ref.entity %}
+        {% set color = term.field_ods_color.value ?? '#CCCCCC' %}
+        <div class="badge badge-ods" style="background-color: {{ color }};" title="{{ term.name }}">
+          <span class="badge-text">{{ term.name }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {# Featured Image (if available) #}
+  {% if node.field_image %}
+    <div class="news-card__image">
+      {{ node.field_image }}
+    </div>
+  {% endif %}
+
+  {# Content Section #}
+  <div class="news-card__content">
+
+    {# Date & Author Metadata #}
+    <div class="news-card__meta">
+      <time class="news-card__date" datetime="{{ node.created|format_date('html_datetime') }}">
+        {{ node.created|format_date('long') }}
+      </time>
+      <span class="news-card__author">
+        Por <strong>{{ node.uid.entity.name }}</strong>
+      </span>
+    </div>
+
+    {# Title #}
+    <h3 class="news-card__title">
+      <a href="{{ url }}" class="news-card__link">
+        {{ title }}
+      </a>
+    </h3>
+
+    {# Teaser Text #}
+    {% if teaser %}
+      <div class="news-card__excerpt">
+        {{ teaser|striptags|truncate(180, true, '...') }}
+      </div>
+    {% endif %}
+
+    {# Research Categories #}
+    {% if node.field_research_categories|length > 0 %}
+      <div class="news-card__categories">
+        <span class="label">Categorias:</span>
+        <ul class="category-list">
+          {% for term_ref in node.field_research_categories %}
+            {% set term = term_ref.entity %}
+            <li><a href="/pesquisa?categoria={{ term.id }}" class="category-tag">{{ term.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {# CTA Button #}
+    <a href="{{ url }}" class="news-card__cta btn btn-primary btn-sm">
+      Leia Mais <span class="icon-arrow">→</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .neruds-news-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-gray-200);
+    height: 100%;
+  }
+
+  .neruds-news-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .news-card__ods-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px;
+    background: var(--color-gray-50);
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  .badge-ods {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .news-card__image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-babasu) 0%, var(--color-barro) 100%);
+  }
+
+  .news-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .news-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .news-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--color-gray-100);
+    padding-bottom: 10px;
+  }
+
+  .news-card__date {
+    font-weight: 600;
+    color: var(--color-babasu);
+  }
+
+  .news-card__author {
+    font-style: italic;
+  }
+
+  .news-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin: 10px 0 15px;
+    line-height: 1.4;
+  }
+
+  .news-card__link {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-base);
+  }
+
+  .news-card__link:hover {
+    color: var(--color-babasu);
+  }
+
+  .news-card__excerpt {
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-gray-700);
+    margin-bottom: 15px;
+  }
+
+  .news-card__categories {
+    margin: 10px 0;
+    font-size: 0.85rem;
+  }
+
+  .news-card__categories .label {
+    font-weight: 600;
+    color: var(--color-gray-600);
+  }
+
+  .category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--color-gray-100);
+    border-radius: 16px;
+    color: var(--color-gray-700);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all var(--transition-base);
+  }
+
+  .category-tag:hover {
+    background: var(--color-barro);
+    color: white;
+  }
+
+  .news-card__cta {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  .icon-arrow {
+    margin-left: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .news-card__meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .news-card__title {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .neruds-news-card {
+      background: var(--color-gray-900);
+      border-color: var(--color-gray-700);
+    }
+
+    .news-card__ods-badges {
+      background: var(--color-gray-800);
+      border-bottom-color: var(--color-gray-700);
+    }
+
+    .news-card__title {
+      color: var(--color-white);
+    }
+
+    .news-card__excerpt {
+      color: var(--color-gray-300);
+    }
+  }
+</style>

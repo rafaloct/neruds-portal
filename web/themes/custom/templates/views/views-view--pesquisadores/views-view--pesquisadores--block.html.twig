@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Template para View de Pesquisadores - Card Style Ant Design
+ */
+#}
+<div class="view-pesquisadores-neruds">
+  <div class="estatisticas-neruds">
+    {% for row in rows %}
+      <div class="stat-card">
+        {% if row.content['#node'].field_foto_perfil %}
+          <div class="pesquisador-foto">
+            {{ row.content['#node'].field_foto_perfil }}
+          </div>
+        {% endif %}
+        <div class="pesquisador-nome">
+          <h3>{{ row.content['#node'].title }}</h3>
+        </div>
+        {% if row.content['#node'].field_resumo_biografico %}
+        <div class="pesquisador-resumo">
+          {{ row.content['#node'].field_resumo_biografico|render|striptags|truncate(150) }}
+        </div>
+        {% endif %}
+        <div class="pesquisador-links">
+          <a href="{{ path('entity.node.canonical', {'node': row.content['#node'].id}) }}" class="button-neruds button-neruds--primary">
+            Ver Perfil
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

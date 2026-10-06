@@ -1,0 +1,133 @@
+{#
+/**
+ * @file
+ * Template para exibição completa de Notícia
+ */
+#}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class) }}>
+  
+  {% if not page %}
+    <h2{{ title_attributes.addClass('node__title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+
+  {# Metadados #}
+  <div class="node__meta mb-3">
+    <div class="row">
+      <div class="col-md-6">
+        <span class="text-muted">
+          {% if content.field_data_noticia %}
+            <i class="bi bi-calendar-event"></i> {{ content.field_data_noticia }}
+          {% else %}
+            <i class="bi bi-calendar"></i> {{ node.createdtime|date('d/m/Y') }}
+          {% endif %}
+        </span>
+        {% if content.field_local_noticia %}
+          <span class="ms-3 text-muted">
+            <i class="bi bi-geo-alt"></i> {{ content.field_local_noticia }}
+          </span>
+        {% endif %}
+      </div>
+      {% if display_submitted %}
+        <div class="col-md-6 text-md-end">
+          <span class="text-muted">
+            <i class="bi bi-person"></i> {{ node.owner.entity.name.value }}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {# Imagem de Destaque #}
+  {% if content.field_imagem_destaque_noticia %}
+    <div class="node__featured-image mb-4">
+      {{ content.field_imagem_destaque_noticia }}
+    </div>
+  {% endif %}
+
+  {# Resumo/Chamada #}
+  {% if content.field_resumo_noticia %}
+    <div class="node__summary lead mb-4 p-3 bg-light rounded">
+      {{ content.field_resumo_noticia }}
+    </div>
+  {% endif %}
+
+  {# Conteúdo Principal #}
+  <div{{ content_attributes.addClass('node__content') }}>
+    {{ content|without('field_resumo_noticia', 'field_imagem_destaque_noticia', 'field_data_noticia', 'field_local_noticia', 'field_galeria_imagens_noticia', 'field_ods_noticia', 'field_palavras_chave_noticia', 'field_eixo_tematico_noticia', 'field_linha_pesquisa_noticia', 'field_projeto_noticia', 'field_setor_produtivo_noticia', 'field_microrregiao_noticia', 'field_municipio_noticia', 'field_autores_noticia', 'field_link_relacionado_noticia') }}
+  </div>
+
+  {# Galeria de Fotos #}
+  {% if content.field_galeria_imagens_noticia %}
+    <div class="node__gallery mt-4 mb-4">
+      <h3>Galeria de Fotos</h3>
+      <div class="row g-3">
+        {{ content.field_galeria_imagens_noticia }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Taxonomias #}
+  <div class="node__taxonomies mt-4 pt-4 border-top">
+    
+    {% if content.field_ods_noticia %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-check-circle"></i> ODS Relacionados:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_ods_noticia }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if content.field_eixo_tematico_noticia %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-diagram-3"></i> Eixo Temático:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_eixo_tematico_noticia }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if content.field_projeto_noticia %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-folder"></i> Projeto Associado:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_projeto_noticia }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if content.field_microrregiao_noticia or content.field_municipio_noticia %}
+      <div class="taxonomy-group mb-3">
+        <span class="taxonomy-group-label">
+          <i class="bi bi-geo-alt"></i> Localização:
+        </span>
+        <div class="taxonomy-badges-wrapper">
+          {{ content.field_microrregiao_noticia }}
+          {{ content.field_municipio_noticia }}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {# Link Relacionado #}
+  {% if content.field_link_relacionado_noticia %}
+    <div class="node__actions mt-4 pt-4 border-top">
+      <div class="mb-3">
+        <strong><i class="bi bi-link-45deg"></i> Saiba Mais:</strong>
+        {{ content.field_link_relacionado_noticia }}
+      </div>
+    </div>
+  {% endif %}
+
+</article>
+

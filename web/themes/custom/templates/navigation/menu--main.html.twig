@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Template para menu principal com Bootstrap
+ */
+#}
+
+{% import _self as menus %}
+
+{%
+  set classes = [
+    'navbar-nav',
+    'ms-auto',
+  ]
+%}
+
+{{ menus.menu_links(items, attributes.addClass(classes), 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes }}>
+    {% else %}
+      <ul class="dropdown-menu">
+    {% endif %}
+    {% for item in items %}
+      {%
+        set item_classes = [
+          'nav-item',
+          item.is_expanded ? 'dropdown',
+          item.in_active_trail ? 'active',
+        ]
+      %}
+      <li{{ item.attributes.addClass(item_classes) }}>
+        {% set link_classes = [
+          item.is_expanded ? 'nav-link dropdown-toggle',
+          not item.is_expanded ? 'nav-link',
+          item.in_active_trail ? 'active',
+        ] %}
+        <a href="{{ item.url }}" 
+           class="{{ link_classes|join(' ') }}"
+           {% if item.is_expanded %}data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
+          {{ item.title }}
+        </a>
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+

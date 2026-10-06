@@ -1,0 +1,251 @@
+/**
+ * @file Design Tokens — Variáveis CSS Globais
+ * NERUDS-GUI — Acadêmico Premium
+ * Sistema de design completo para consistência visual
+ */
+
+:root {
+  /* =====================================================
+     CORES — Paleta NERUDS "Trama e Barro"
+     ===================================================== */
+
+  /* ── PALETA OFICIAL NERUDS — Manual da Marca ───────────── */
+  --color-barro:        #F58535;  /* Laranja — cor principal, CTAs, destaques, ativo */
+  --color-barro-hover:  #e07020;  /* Laranja hover (10% mais escuro) */
+  --color-barro-light:  rgba(245,133,53,0.12); /* Laranja translúcido para backgrounds */
+  --color-barro-dark:   #c45e10;  /* Laranja escuro para contraste em fundo claro */
+
+  /* Cinza escuro 80% — texto, headings, ícones */
+  --color-babasu:       #606062;
+  --color-babasu-dark:  #3a3a3c;  /* Rodapé, elementos muito escuros */
+  --color-babasu-light: #767676;  /* Texto secundário, placeholder */
+
+  /* Cinza claro 15% — bordas, separadores, backgrounds sutis */
+  --color-gray-300:     #DCDDDF;
+
+  --color-paper:        #FFFFFF;
+  --color-palha:        #F58535;  /* Alias para compatibilidade — usa laranja */
+
+  /* Superfícies */
+  --color-bg-section:   #F5F5F6;  /* Fundo de seções alternas */
+  --color-bg-card:      #FFFFFF;
+
+  /* Secundárias descontinuadas (mantidas como alias para não quebrar) */
+  --color-barro-light:  rgba(245,133,53,0.12);
+
+  /* Neutros */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray-50: #F9FAFB;
+  --color-gray-100: #F3F4F6;
+  --color-gray-200: #E5E7EB;
+  --color-gray-300: #D1D5DB;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #6B7280;
+  --color-gray-600: #4B5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1F2937;
+  --color-gray-900: #111827;
+
+  /* Estados */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* =====================================================
+     TIPOGRAFIA — Escala de Fontes
+     ===================================================== */
+
+  /* Famílias de fonte (Brand Manual Update) */
+  --font-serif: 'Serifa Blk BT', 'Zilla Slab', Georgia, serif;      /* Voz Estrutural e Técnica */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* Voz Editorial fallback */
+  --font-nature: 'Nature Beauty', cursive;                          /* Destaques e Assinaturas */
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;          /* Dados Técnicos */
+
+  /* Tamanhos */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+
+  /* Pesos */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* =====================================================
+     ESPAÇAMENTO — Escala de 4px
+     ===================================================== */
+
+  --space-0: 0;
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+
+  /* =====================================================
+     LAYOUT — Dimensões
+     ===================================================== */
+
+  --max-width-container: 1140px;
+  --max-width-prose: 65ch;
+  --header-height: 80px;
+  --footer-height: auto;
+
+  /* =====================================================
+     SOMBRAS — Profundidade
+     ===================================================== */
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Glass shadow */
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  /* =====================================================
+     EFEITOS — Glassmorphism & Blur
+     ===================================================== */
+
+  --blur-sm: 4px;
+  --blur-md: 12px;
+  --blur-lg: 20px;
+
+  --backdrop-blur: blur(12px);
+  --backdrop-saturation: saturate(140%);
+  --glass-effect: var(--backdrop-blur) var(--backdrop-saturation);
+
+  /* =====================================================
+     BORDAS — Raio e Largura
+     ===================================================== */
+
+  --radius-sm: 0.25rem;     /* 4px */
+  --radius-md: 0.5rem;      /* 8px */
+  --radius-lg: 1rem;        /* 16px */
+  --radius-xl: 1.5rem;      /* 24px */
+  --radius-full: 9999px;
+
+  --border-width-thin: 1px;
+  --border-width-md: 2px;
+  --border-width-thick: 3px;
+
+  /* =====================================================
+     TRANSIÇÕES — Timing functions
+     ===================================================== */
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* =====================================================
+     ACESSIBILIDADE — Focus states
+     ===================================================== */
+
+  --focus-ring: 0 0 0 3px rgba(46, 70, 50, 0.3);
+  --focus-ring-width: 3px;
+  --focus-ring-color: var(--color-babasu);
+
+  /* =====================================================
+     OPACIDADE
+     ===================================================== */
+
+  --opacity-0: 0;
+  --opacity-5: 0.05;
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+  --opacity-90: 0.9;
+  --opacity-100: 1;
+
+  /* =====================================================
+     BREAKPOINTS — Responsive Design
+     ===================================================== */
+
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* =====================================================
+     Z-INDEX — Camadas
+     ===================================================== */
+
+  --z-dropdown: 1000;
+  --z-sticky: 100;
+  --z-fixed: 1020;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-tooltip: 1070;
+  --z-notification: 1080;
+}
+
+/* =====================================================
+   GLOBAL ROOT SCALING
+   Scaling down desktop proportions via base rem adjustment
+   ===================================================== */
+
+/* Base: 16px fixo em todos os breakpoints — WCAG mínimo para legibilidade */
+html { font-size: 16px; }
+
+/* Espaçamentos maiores em desktop via custom properties, NÃO reduzindo font-size base */
+@media (min-width: 1024px) {
+  :root {
+    --space-12: 2.75rem;
+    --space-16: 3.75rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --space-12: 3rem;
+    --space-16: 4rem;
+  }
+}
+
+/* =====================================================
+   MODO ESCURO (Dark Mode)
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #1F2937;
+    --color-white: #111827;
+    --color-gray-50: #0F1419;
+    --color-gray-100: #1F2937;
+    --color-gray-200: #374151;
+    --color-gray-300: #4B5563;
+    --color-gray-400: #6B7280;
+    --color-gray-500: #9CA3AF;
+    --color-gray-600: #D1D5DB;
+    --color-gray-700: #E5E7EB;
+    --color-gray-800: #F3F4F6;
+    --color-gray-900: #F9FAFB;
+  }
+}

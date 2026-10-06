@@ -1,0 +1,52 @@
+{% if orcid_id %}
+<div class="orcid-badge" itemscope itemtype="https://schema.org/Person">
+  <a href="https://orcid.org/{{ orcid_id }}"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="orcid-badge__link"
+     aria-label="{{ 'Ver perfil ORCID de '|t }}{{ name }}{{ ' (abre em nova aba)'|t }}"
+     itemprop="sameAs">
+    <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
+         alt="ORCID logo"
+         width="16"
+         height="16"
+         class="orcid-badge__logo" />
+    <span class="orcid-badge__id">{{ orcid_id }}</span>
+  </a>
+</div>
+
+<style>
+.orcid-badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.25rem 0;
+}
+
+.orcid-badge__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: #A6CE39;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.orcid-badge__link:hover {
+  background: #8db32e;
+}
+
+.orcid-badge__link:focus-visible {
+  outline: 3px solid rgba(166, 206, 57, 0.5);
+  outline-offset: 2px;
+}
+
+.orcid-badge__id {
+  font-family: 'JetBrains Mono', monospace;
+}
+</style>
+{% endif %}

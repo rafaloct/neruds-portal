@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for NERUDS Notifications module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function neruds_notifications_schema() {
+  return [
+    'neruds_notification_prefs' => [
+      'description' => 'Stores user notification preferences.',
+      'fields' => [
+        'uid' => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'description' => 'User ID.'],
+        'notify_new_content' => ['type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 1, 'description' => 'Notify on new content.'],
+        'notify_comments' => ['type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 1, 'description' => 'Notify on comments.'],
+        'notify_digest' => ['type' => 'varchar', 'length' => 10, 'not null' => TRUE, 'default' => 'weekly', 'description' => 'Digest frequency: none|daily|weekly.'],
+        'ods_filter' => ['type' => 'text', 'size' => 'normal', 'not null' => FALSE, 'description' => 'Serialized ODS term IDs filter.'],
+        'content_types' => ['type' => 'text', 'size' => 'normal', 'not null' => FALSE, 'description' => 'Serialized content type filter.'],
+        'token' => ['type' => 'varchar', 'length' => 64, 'not null' => TRUE, 'default' => '', 'description' => 'Unsubscribe token.'],
+        'created' => ['type' => 'int', 'not null' => TRUE, 'default' => 0, 'description' => 'Timestamp created.'],
+        'updated' => ['type' => 'int', 'not null' => TRUE, 'default' => 0, 'description' => 'Timestamp updated.'],
+      ],
+      'primary key' => ['uid'],
+      'indexes' => ['token' => ['token']],
+    ],
+  ];
+}

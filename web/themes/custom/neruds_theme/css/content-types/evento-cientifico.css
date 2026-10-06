@@ -1,0 +1,49 @@
+/**
+ * @file
+ * Estilos para Eventos Científicos
+ */
+
+.evento-banner .banner-wrapper {
+    max-height: 400px;
+}
+
+.evento-banner .banner-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.evento-descricao {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--neruds-gray-800);
+}
+
+/* Sidebar Icons */
+.evento-sidebar .icon-wrapper {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--neruds-light);
+    border-radius: 50%;
+}
+
+/* Primary Action Buttons */
+.evento-sidebar .btn-lg {
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+/* Taxonomy styling override */
+.evento-areas .field__item,
+.evento-sidebar .field--name-field-eixos-tematicos .field__item {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}

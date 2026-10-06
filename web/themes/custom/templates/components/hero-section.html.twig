@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Componente Hero Section - Ant Design Style
+ *
+ * Variáveis:
+ * - title: Título principal
+ * - description: Descrição
+ * - cta_text: Texto do botão CTA
+ * - cta_url: URL do botão CTA
+ */
+#}
+<div class="hero-section-neruds neruds-fade-in">
+  <div class="container">
+    <h1>{{ title }}</h1>
+    {% if description %}
+    <p>{{ description }}</p>
+    {% endif %}
+    {% if cta_text and cta_url %}
+    <a href="{{ cta_url }}" class="button-neruds button-neruds--primary">
+      {{ cta_text }}
+    </a>
+    {% endif %}
+  </div>
+</div>
