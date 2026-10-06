@@ -1,0 +1,2481 @@
+{
+  "schema_version": 1,
+  "issue": 1,
+  "verification_utc": "2026-10-06T21:53:18.972150+00:00",
+  "host": "DESKTOP-8T5DRBS",
+  "branch": "docs/neruds-001-source-inventory-20261006",
+  "base_sha": "e600761ad0d5a133638cad66a093ca8087f09ae1",
+  "import_commit": "3b69c3d2286a11e3abf132cd0f89c8d8d452b4fa",
+  "manifest": {
+    "path": "docs/architecture/source-manifest.json",
+    "sha256": "900ebe34e4d6bbcbaac1e1d84b00c2690d4180c77b63699428eff1328a991d5d",
+    "captured_at": "2026-10-06T18:23:59.757394+00:00",
+    "source": "production neruds.org",
+    "source_root": "/var/www/html",
+    "web_root": "web",
+    "file_count": 287,
+    "bytes": 2418471,
+    "excluded": [
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.info.yml",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.module",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.permissions.yml",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/neruds_extensionista_guard.routing.yml",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard/src/Controller/ControlController.php",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.info.yml",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.module",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.permissions.yml",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/neruds_extensionista_guard.routing.yml",
+      "web/modules/custom/neruds_extensionista_guard.bak-20261006/src/Controller/ControlController.php",
+      "web/modules/custom/neruds_google_integration/src/Service/PortalDataService.php.bak"
+    ]
+  },
+  "source_integrity": {
+    "method": "SHA-256 and byte length of working tree files, Git base blobs and original import blobs against the immutable source manifest; git archive reads blobs without checkout conversion.",
+    "checked": 287,
+    "matched": 287,
+    "mismatches": [],
+    "git_base_file_set_matches_manifest": true,
+    "git_import_file_set_matches_manifest": true,
+    "sample_paths": [
+      "composer.json",
+      "composer.lock",
+      "web/modules/custom/neruds_analytics/neruds_analytics.info.yml",
+      "web/modules/custom/neruds_analytics/neruds_analytics.module",
+      "web/modules/custom/neruds_blocks/neruds_blocks.info.yml",
+      "web/modules/custom/neruds_blocks/neruds_blocks.module",
+      "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.info.yml",
+      "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.module",
+      "web/modules/custom/neruds_google_integration/neruds_google_integration.info.yml",
+      "web/modules/custom/neruds_google_integration/neruds_google_integration.module",
+      "web/modules/custom/neruds_gui_views/neruds_gui_views.info.yml",
+      "web/modules/custom/neruds_gui_views/neruds_gui_views.module",
+      "web/modules/custom/neruds_mcp/neruds_mcp.info.yml",
+      "web/modules/custom/neruds_mcp/neruds_mcp.module",
+      "web/modules/custom/neruds_notifications/neruds_notifications.info.yml",
+      "web/modules/custom/neruds_notifications/neruds_notifications.module",
+      "web/modules/custom/neruds_orcid/neruds_orcid.info.yml",
+      "web/modules/custom/neruds_orcid/neruds_orcid.module",
+      "web/modules/custom/neruds_related_content/neruds_related_content.info.yml",
+      "web/modules/custom/neruds_related_content/neruds_related_content.module",
+      "web/themes/custom/bico_papagaio/bico_papagaio.info.yml",
+      "web/themes/custom/bico_papagaio/bico_papagaio.theme",
+      "web/themes/custom/css/custom-enhanced.css",
+      "web/themes/custom/js/custom.js",
+      "web/themes/custom/neruds_gui/css/accessibility/focus-visible.css",
+      "web/themes/custom/neruds_gui/js/academic-filters.js",
+      "web/themes/custom/neruds_gui/neruds_gui.info.yml",
+      "web/themes/custom/neruds_gui/neruds_gui.theme",
+      "web/themes/custom/neruds_gui/templates/layout/page--front.html.twig",
+      "web/themes/custom/neruds_theme/neruds_theme.info.yml",
+      "web/themes/custom/neruds_theme/neruds_theme.theme",
+      "web/themes/custom/templates/block/block--footer.html.twig"
+    ],
+    "sample_records": [
+      {
+        "path": "composer.json",
+        "expected_sha256": "a8104b7cf57eb6b28bf1332d950905738c54b5261c893c1fa99a30f6167c08d1",
+        "expected_bytes": 5267,
+        "working_tree_sha256": "a8104b7cf57eb6b28bf1332d950905738c54b5261c893c1fa99a30f6167c08d1",
+        "working_tree_bytes": 5267,
+        "base_blob_sha256": "a8104b7cf57eb6b28bf1332d950905738c54b5261c893c1fa99a30f6167c08d1",
+        "import_blob_sha256": "a8104b7cf57eb6b28bf1332d950905738c54b5261c893c1fa99a30f6167c08d1",
+        "match": true
+      },
+      {
+        "path": "composer.lock",
+        "expected_sha256": "cc1bfacc83dcb78df2e7fb3bced99eafac0685e778d5d5fc0b626dca92386d14",
+        "expected_bytes": 723678,
+        "working_tree_sha256": "cc1bfacc83dcb78df2e7fb3bced99eafac0685e778d5d5fc0b626dca92386d14",
+        "working_tree_bytes": 723678,
+        "base_blob_sha256": "cc1bfacc83dcb78df2e7fb3bced99eafac0685e778d5d5fc0b626dca92386d14",
+        "import_blob_sha256": "cc1bfacc83dcb78df2e7fb3bced99eafac0685e778d5d5fc0b626dca92386d14",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_analytics/neruds_analytics.info.yml",
+        "expected_sha256": "141940da18ab5a4f8bf5b4f0cc534dc0a5e48cb7c52bc33acd579c356149e46b",
+        "expected_bytes": 221,
+        "working_tree_sha256": "141940da18ab5a4f8bf5b4f0cc534dc0a5e48cb7c52bc33acd579c356149e46b",
+        "working_tree_bytes": 221,
+        "base_blob_sha256": "141940da18ab5a4f8bf5b4f0cc534dc0a5e48cb7c52bc33acd579c356149e46b",
+        "import_blob_sha256": "141940da18ab5a4f8bf5b4f0cc534dc0a5e48cb7c52bc33acd579c356149e46b",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_analytics/neruds_analytics.module",
+        "expected_sha256": "ca6a569fa1af0bf8682e180ee4a4a5e215db69680de738603cc5770cf4b1b431",
+        "expected_bytes": 372,
+        "working_tree_sha256": "ca6a569fa1af0bf8682e180ee4a4a5e215db69680de738603cc5770cf4b1b431",
+        "working_tree_bytes": 372,
+        "base_blob_sha256": "ca6a569fa1af0bf8682e180ee4a4a5e215db69680de738603cc5770cf4b1b431",
+        "import_blob_sha256": "ca6a569fa1af0bf8682e180ee4a4a5e215db69680de738603cc5770cf4b1b431",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_blocks/neruds_blocks.info.yml",
+        "expected_sha256": "47daa8533c7770b17c983f0ba170ee55ae1ceb69dd6467efb71188f014a2e1e6",
+        "expected_bytes": 270,
+        "working_tree_sha256": "47daa8533c7770b17c983f0ba170ee55ae1ceb69dd6467efb71188f014a2e1e6",
+        "working_tree_bytes": 270,
+        "base_blob_sha256": "47daa8533c7770b17c983f0ba170ee55ae1ceb69dd6467efb71188f014a2e1e6",
+        "import_blob_sha256": "47daa8533c7770b17c983f0ba170ee55ae1ceb69dd6467efb71188f014a2e1e6",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_blocks/neruds_blocks.module",
+        "expected_sha256": "a6ce06d01be58832742936ba3060240b0ca5f04408fb3d7ad4b98cff6ce41c5f",
+        "expected_bytes": 1234,
+        "working_tree_sha256": "a6ce06d01be58832742936ba3060240b0ca5f04408fb3d7ad4b98cff6ce41c5f",
+        "working_tree_bytes": 1234,
+        "base_blob_sha256": "a6ce06d01be58832742936ba3060240b0ca5f04408fb3d7ad4b98cff6ce41c5f",
+        "import_blob_sha256": "a6ce06d01be58832742936ba3060240b0ca5f04408fb3d7ad4b98cff6ce41c5f",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.info.yml",
+        "expected_sha256": "c36e23b9e7f4bf7dd3540d6d1d29a350ec6377962a408df5fb054704badd6b77",
+        "expected_bytes": 249,
+        "working_tree_sha256": "c36e23b9e7f4bf7dd3540d6d1d29a350ec6377962a408df5fb054704badd6b77",
+        "working_tree_bytes": 249,
+        "base_blob_sha256": "c36e23b9e7f4bf7dd3540d6d1d29a350ec6377962a408df5fb054704badd6b77",
+        "import_blob_sha256": "c36e23b9e7f4bf7dd3540d6d1d29a350ec6377962a408df5fb054704badd6b77",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.module",
+        "expected_sha256": "1f8ea6d3e1cccfe81b0120d82f19e33118257e0f02b401ae6c9bf6e84f803a1d",
+        "expected_bytes": 556,
+        "working_tree_sha256": "1f8ea6d3e1cccfe81b0120d82f19e33118257e0f02b401ae6c9bf6e84f803a1d",
+        "working_tree_bytes": 556,
+        "base_blob_sha256": "1f8ea6d3e1cccfe81b0120d82f19e33118257e0f02b401ae6c9bf6e84f803a1d",
+        "import_blob_sha256": "1f8ea6d3e1cccfe81b0120d82f19e33118257e0f02b401ae6c9bf6e84f803a1d",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.info.yml",
+        "expected_sha256": "8ce7559291beea6b82981271df9cc54d0788dfa49c04b29d1bc085a4599d43c2",
+        "expected_bytes": 326,
+        "working_tree_sha256": "8ce7559291beea6b82981271df9cc54d0788dfa49c04b29d1bc085a4599d43c2",
+        "working_tree_bytes": 326,
+        "base_blob_sha256": "8ce7559291beea6b82981271df9cc54d0788dfa49c04b29d1bc085a4599d43c2",
+        "import_blob_sha256": "8ce7559291beea6b82981271df9cc54d0788dfa49c04b29d1bc085a4599d43c2",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.module",
+        "expected_sha256": "d8e2032fa3f3939c2885fa6484db0ef9652a6d19c6b712c23f8720af19b1f6d5",
+        "expected_bytes": 7205,
+        "working_tree_sha256": "d8e2032fa3f3939c2885fa6484db0ef9652a6d19c6b712c23f8720af19b1f6d5",
+        "working_tree_bytes": 7205,
+        "base_blob_sha256": "d8e2032fa3f3939c2885fa6484db0ef9652a6d19c6b712c23f8720af19b1f6d5",
+        "import_blob_sha256": "d8e2032fa3f3939c2885fa6484db0ef9652a6d19c6b712c23f8720af19b1f6d5",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_gui_views/neruds_gui_views.info.yml",
+        "expected_sha256": "88083ee0bcb9216ffd34577f6fe0daa356d5ba22f8e5efff891004aa95ade7e2",
+        "expected_bytes": 299,
+        "working_tree_sha256": "88083ee0bcb9216ffd34577f6fe0daa356d5ba22f8e5efff891004aa95ade7e2",
+        "working_tree_bytes": 299,
+        "base_blob_sha256": "88083ee0bcb9216ffd34577f6fe0daa356d5ba22f8e5efff891004aa95ade7e2",
+        "import_blob_sha256": "88083ee0bcb9216ffd34577f6fe0daa356d5ba22f8e5efff891004aa95ade7e2",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_gui_views/neruds_gui_views.module",
+        "expected_sha256": "2e3860b6e66d06777897eec55d7d001c2c587e5ef095931f199777e765b2a408",
+        "expected_bytes": 3970,
+        "working_tree_sha256": "2e3860b6e66d06777897eec55d7d001c2c587e5ef095931f199777e765b2a408",
+        "working_tree_bytes": 3970,
+        "base_blob_sha256": "2e3860b6e66d06777897eec55d7d001c2c587e5ef095931f199777e765b2a408",
+        "import_blob_sha256": "2e3860b6e66d06777897eec55d7d001c2c587e5ef095931f199777e765b2a408",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_mcp/neruds_mcp.info.yml",
+        "expected_sha256": "3206f215d37e11239ef317258d9a8c04594fa663fbc58027bb0faf7f0b0f984d",
+        "expected_bytes": 309,
+        "working_tree_sha256": "3206f215d37e11239ef317258d9a8c04594fa663fbc58027bb0faf7f0b0f984d",
+        "working_tree_bytes": 309,
+        "base_blob_sha256": "3206f215d37e11239ef317258d9a8c04594fa663fbc58027bb0faf7f0b0f984d",
+        "import_blob_sha256": "3206f215d37e11239ef317258d9a8c04594fa663fbc58027bb0faf7f0b0f984d",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_mcp/neruds_mcp.module",
+        "expected_sha256": "70851d60dcb1f0571d0a19e3805701a2ea296f91526fed2d3a65ac037f431921",
+        "expected_bytes": 911,
+        "working_tree_sha256": "70851d60dcb1f0571d0a19e3805701a2ea296f91526fed2d3a65ac037f431921",
+        "working_tree_bytes": 911,
+        "base_blob_sha256": "70851d60dcb1f0571d0a19e3805701a2ea296f91526fed2d3a65ac037f431921",
+        "import_blob_sha256": "70851d60dcb1f0571d0a19e3805701a2ea296f91526fed2d3a65ac037f431921",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_notifications/neruds_notifications.info.yml",
+        "expected_sha256": "9ca675519d4747c6ff26cfc5d4da7042087001712ecb2f123b17a54018fd688b",
+        "expected_bytes": 285,
+        "working_tree_sha256": "9ca675519d4747c6ff26cfc5d4da7042087001712ecb2f123b17a54018fd688b",
+        "working_tree_bytes": 285,
+        "base_blob_sha256": "9ca675519d4747c6ff26cfc5d4da7042087001712ecb2f123b17a54018fd688b",
+        "import_blob_sha256": "9ca675519d4747c6ff26cfc5d4da7042087001712ecb2f123b17a54018fd688b",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_notifications/neruds_notifications.module",
+        "expected_sha256": "8fa8b487942dc0c13e04a96ca66008cbf9583c0315d9d01da3bf2a3972aa72bc",
+        "expected_bytes": 10536,
+        "working_tree_sha256": "8fa8b487942dc0c13e04a96ca66008cbf9583c0315d9d01da3bf2a3972aa72bc",
+        "working_tree_bytes": 10536,
+        "base_blob_sha256": "8fa8b487942dc0c13e04a96ca66008cbf9583c0315d9d01da3bf2a3972aa72bc",
+        "import_blob_sha256": "8fa8b487942dc0c13e04a96ca66008cbf9583c0315d9d01da3bf2a3972aa72bc",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_orcid/neruds_orcid.info.yml",
+        "expected_sha256": "f9e5a1b64939d9b688b8de3e6fefbffcee219c349dfca680d60c0dbb8b84d8f2",
+        "expected_bytes": 253,
+        "working_tree_sha256": "f9e5a1b64939d9b688b8de3e6fefbffcee219c349dfca680d60c0dbb8b84d8f2",
+        "working_tree_bytes": 253,
+        "base_blob_sha256": "f9e5a1b64939d9b688b8de3e6fefbffcee219c349dfca680d60c0dbb8b84d8f2",
+        "import_blob_sha256": "f9e5a1b64939d9b688b8de3e6fefbffcee219c349dfca680d60c0dbb8b84d8f2",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_orcid/neruds_orcid.module",
+        "expected_sha256": "50b2ec169911c75c459f43b51f3524a3154e09a905a9dd695bda5e179354aa95",
+        "expected_bytes": 884,
+        "working_tree_sha256": "50b2ec169911c75c459f43b51f3524a3154e09a905a9dd695bda5e179354aa95",
+        "working_tree_bytes": 884,
+        "base_blob_sha256": "50b2ec169911c75c459f43b51f3524a3154e09a905a9dd695bda5e179354aa95",
+        "import_blob_sha256": "50b2ec169911c75c459f43b51f3524a3154e09a905a9dd695bda5e179354aa95",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_related_content/neruds_related_content.info.yml",
+        "expected_sha256": "f41642066e4d1585695f62b752bffaf04449d096f7d081cac89fb0380dc61450",
+        "expected_bytes": 262,
+        "working_tree_sha256": "f41642066e4d1585695f62b752bffaf04449d096f7d081cac89fb0380dc61450",
+        "working_tree_bytes": 262,
+        "base_blob_sha256": "f41642066e4d1585695f62b752bffaf04449d096f7d081cac89fb0380dc61450",
+        "import_blob_sha256": "f41642066e4d1585695f62b752bffaf04449d096f7d081cac89fb0380dc61450",
+        "match": true
+      },
+      {
+        "path": "web/modules/custom/neruds_related_content/neruds_related_content.module",
+        "expected_sha256": "993ef9b438b7603cdf9021f194b50c2f0808d87981dc2dc4f2eb314c1260cfcd",
+        "expected_bytes": 1178,
+        "working_tree_sha256": "993ef9b438b7603cdf9021f194b50c2f0808d87981dc2dc4f2eb314c1260cfcd",
+        "working_tree_bytes": 1178,
+        "base_blob_sha256": "993ef9b438b7603cdf9021f194b50c2f0808d87981dc2dc4f2eb314c1260cfcd",
+        "import_blob_sha256": "993ef9b438b7603cdf9021f194b50c2f0808d87981dc2dc4f2eb314c1260cfcd",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/bico_papagaio/bico_papagaio.info.yml",
+        "expected_sha256": "d7ea9cc26607a8db7a1ae0a2f9546e843e308e4aa21f5e3724ce3195f77d0ef4",
+        "expected_bytes": 918,
+        "working_tree_sha256": "d7ea9cc26607a8db7a1ae0a2f9546e843e308e4aa21f5e3724ce3195f77d0ef4",
+        "working_tree_bytes": 918,
+        "base_blob_sha256": "d7ea9cc26607a8db7a1ae0a2f9546e843e308e4aa21f5e3724ce3195f77d0ef4",
+        "import_blob_sha256": "d7ea9cc26607a8db7a1ae0a2f9546e843e308e4aa21f5e3724ce3195f77d0ef4",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/bico_papagaio/bico_papagaio.theme",
+        "expected_sha256": "2c3bb9f3c16e82c71584fb368e016c8daab4ac56a7ef895a9f94d3622cf97f08",
+        "expected_bytes": 3579,
+        "working_tree_sha256": "2c3bb9f3c16e82c71584fb368e016c8daab4ac56a7ef895a9f94d3622cf97f08",
+        "working_tree_bytes": 3579,
+        "base_blob_sha256": "2c3bb9f3c16e82c71584fb368e016c8daab4ac56a7ef895a9f94d3622cf97f08",
+        "import_blob_sha256": "2c3bb9f3c16e82c71584fb368e016c8daab4ac56a7ef895a9f94d3622cf97f08",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/css/custom-enhanced.css",
+        "expected_sha256": "542cd84164b1635193e174837a6693a7208c7cda43dfab1deca8384477fee6a8",
+        "expected_bytes": 16479,
+        "working_tree_sha256": "542cd84164b1635193e174837a6693a7208c7cda43dfab1deca8384477fee6a8",
+        "working_tree_bytes": 16479,
+        "base_blob_sha256": "542cd84164b1635193e174837a6693a7208c7cda43dfab1deca8384477fee6a8",
+        "import_blob_sha256": "542cd84164b1635193e174837a6693a7208c7cda43dfab1deca8384477fee6a8",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/js/custom.js",
+        "expected_sha256": "4bc5c0759ef86c9ee2066ca12827e97e77f363d1be6be8745d9e37be46287b0f",
+        "expected_bytes": 3764,
+        "working_tree_sha256": "4bc5c0759ef86c9ee2066ca12827e97e77f363d1be6be8745d9e37be46287b0f",
+        "working_tree_bytes": 3764,
+        "base_blob_sha256": "4bc5c0759ef86c9ee2066ca12827e97e77f363d1be6be8745d9e37be46287b0f",
+        "import_blob_sha256": "4bc5c0759ef86c9ee2066ca12827e97e77f363d1be6be8745d9e37be46287b0f",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/neruds_gui/css/accessibility/focus-visible.css",
+        "expected_sha256": "ea4ab20fb2fe6993d6875306b8633c3b656db5b41931097145e67b8aa1b5db0f",
+        "expected_bytes": 2737,
+        "working_tree_sha256": "ea4ab20fb2fe6993d6875306b8633c3b656db5b41931097145e67b8aa1b5db0f",
+        "working_tree_bytes": 2737,
+        "base_blob_sha256": "ea4ab20fb2fe6993d6875306b8633c3b656db5b41931097145e67b8aa1b5db0f",
+        "import_blob_sha256": "ea4ab20fb2fe6993d6875306b8633c3b656db5b41931097145e67b8aa1b5db0f",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/neruds_gui/js/academic-filters.js",
+        "expected_sha256": "c7b1055d6c951a89b39b0faef183c135dfb1ffca4dffc0ec9df2cf121925e526",
+        "expected_bytes": 2214,
+        "working_tree_sha256": "c7b1055d6c951a89b39b0faef183c135dfb1ffca4dffc0ec9df2cf121925e526",
+        "working_tree_bytes": 2214,
+        "base_blob_sha256": "c7b1055d6c951a89b39b0faef183c135dfb1ffca4dffc0ec9df2cf121925e526",
+        "import_blob_sha256": "c7b1055d6c951a89b39b0faef183c135dfb1ffca4dffc0ec9df2cf121925e526",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/neruds_gui/neruds_gui.info.yml",
+        "expected_sha256": "f6319dd2c2a643d3840233e2e1dc64b9df922b8e46e3bd30e5c6b907d4828e89",
+        "expected_bytes": 2501,
+        "working_tree_sha256": "f6319dd2c2a643d3840233e2e1dc64b9df922b8e46e3bd30e5c6b907d4828e89",
+        "working_tree_bytes": 2501,
+        "base_blob_sha256": "f6319dd2c2a643d3840233e2e1dc64b9df922b8e46e3bd30e5c6b907d4828e89",
+        "import_blob_sha256": "f6319dd2c2a643d3840233e2e1dc64b9df922b8e46e3bd30e5c6b907d4828e89",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/neruds_gui/neruds_gui.theme",
+        "expected_sha256": "72cefb7a33ee9eb042da1b780b93f747e7c6c3f5b8156b9f6249ca824f834e6a",
+        "expected_bytes": 14063,
+        "working_tree_sha256": "72cefb7a33ee9eb042da1b780b93f747e7c6c3f5b8156b9f6249ca824f834e6a",
+        "working_tree_bytes": 14063,
+        "base_blob_sha256": "72cefb7a33ee9eb042da1b780b93f747e7c6c3f5b8156b9f6249ca824f834e6a",
+        "import_blob_sha256": "72cefb7a33ee9eb042da1b780b93f747e7c6c3f5b8156b9f6249ca824f834e6a",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/neruds_gui/templates/layout/page--front.html.twig",
+        "expected_sha256": "7fd7fd46b52c672268c8b9ac0e8046ed3f17d40ec8dde13ebe9a5b66ee2ca07e",
+        "expected_bytes": 7537,
+        "working_tree_sha256": "7fd7fd46b52c672268c8b9ac0e8046ed3f17d40ec8dde13ebe9a5b66ee2ca07e",
+        "working_tree_bytes": 7537,
+        "base_blob_sha256": "7fd7fd46b52c672268c8b9ac0e8046ed3f17d40ec8dde13ebe9a5b66ee2ca07e",
+        "import_blob_sha256": "7fd7fd46b52c672268c8b9ac0e8046ed3f17d40ec8dde13ebe9a5b66ee2ca07e",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/neruds_theme/neruds_theme.info.yml",
+        "expected_sha256": "ac10c50615ddc861a3e068b8efe2410d3e3a453815b79ea2d59a746fbfa04976",
+        "expected_bytes": 941,
+        "working_tree_sha256": "ac10c50615ddc861a3e068b8efe2410d3e3a453815b79ea2d59a746fbfa04976",
+        "working_tree_bytes": 941,
+        "base_blob_sha256": "ac10c50615ddc861a3e068b8efe2410d3e3a453815b79ea2d59a746fbfa04976",
+        "import_blob_sha256": "ac10c50615ddc861a3e068b8efe2410d3e3a453815b79ea2d59a746fbfa04976",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/neruds_theme/neruds_theme.theme",
+        "expected_sha256": "017f6cbc87562e9a8952c8e6ff461d8f24b4c74d89b6ca4bb9098895cd9fb096",
+        "expected_bytes": 10987,
+        "working_tree_sha256": "017f6cbc87562e9a8952c8e6ff461d8f24b4c74d89b6ca4bb9098895cd9fb096",
+        "working_tree_bytes": 10987,
+        "base_blob_sha256": "017f6cbc87562e9a8952c8e6ff461d8f24b4c74d89b6ca4bb9098895cd9fb096",
+        "import_blob_sha256": "017f6cbc87562e9a8952c8e6ff461d8f24b4c74d89b6ca4bb9098895cd9fb096",
+        "match": true
+      },
+      {
+        "path": "web/themes/custom/templates/block/block--footer.html.twig",
+        "expected_sha256": "99afc7fe3d27ddb40eaebbbf50092f9dfaf8c5266013f92d4a1fcbf6e8f5ec71",
+        "expected_bytes": 293,
+        "working_tree_sha256": "99afc7fe3d27ddb40eaebbbf50092f9dfaf8c5266013f92d4a1fcbf6e8f5ec71",
+        "working_tree_bytes": 293,
+        "base_blob_sha256": "99afc7fe3d27ddb40eaebbbf50092f9dfaf8c5266013f92d4a1fcbf6e8f5ec71",
+        "import_blob_sha256": "99afc7fe3d27ddb40eaebbbf50092f9dfaf8c5266013f92d4a1fcbf6e8f5ec71",
+        "match": true
+      }
+    ],
+    "sample_selection": "Both Composer files; all nine module and all three theme info.yml files; one executable source from each component; CSS, JavaScript and Twig from the selected theme and shared theme directories.",
+    "private_runtime_recheck": {
+      "status": "not_performed",
+      "reason": "Authenticated SSH access to the preserved private runtime was unavailable from the selected workstation. No additional host or account was tried.",
+      "attempts": "Windows OpenSSH returned 255 without diagnostics even for -V. Installed Git OpenSSH reported authentication denied with BatchMode=yes and StrictHostKeyChecking=yes.",
+      "limitation": "This does not diagnose the VPS or invalidate the verified Git source selection. Current integrity and availability of private runtime, dumps, uploads and database were not revalidated."
+    }
+  },
+  "source_groups": {
+    "composer.json": 1,
+    "composer.lock": 1,
+    "web/modules/custom/neruds_analytics": 6,
+    "web/modules/custom/neruds_blocks": 8,
+    "web/modules/custom/neruds_extensionista_guard": 6,
+    "web/modules/custom/neruds_google_integration": 46,
+    "web/modules/custom/neruds_gui_views": 11,
+    "web/modules/custom/neruds_mcp": 10,
+    "web/modules/custom/neruds_notifications": 7,
+    "web/modules/custom/neruds_orcid": 4,
+    "web/modules/custom/neruds_related_content": 4,
+    "web/themes/custom/bico_papagaio": 28,
+    "web/themes/custom/css": 4,
+    "web/themes/custom/js": 3,
+    "web/themes/custom/neruds_gui": 81,
+    "web/themes/custom/neruds_theme": 48,
+    "web/themes/custom/templates": 19
+  },
+  "custom_components": [
+    {
+      "path": "web/modules/custom/neruds_analytics/neruds_analytics.info.yml",
+      "machine_name": "neruds_analytics",
+      "file_count": 6,
+      "name": "NERUDS Analytics Dashboard",
+      "type": "module",
+      "version": "1.0.0",
+      "core_version_requirement": "^11",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_blocks/neruds_blocks.info.yml",
+      "machine_name": "neruds_blocks",
+      "file_count": 8,
+      "name": "NERUDS Blocks",
+      "type": "module",
+      "version": "1.0.0",
+      "core_version_requirement": "^11 || ^12",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.info.yml",
+      "machine_name": "neruds_extensionista_guard",
+      "file_count": 6,
+      "name": "NERUDS Extensionista Guard",
+      "type": "module",
+      "version": null,
+      "core_version_requirement": "^10 || ^11",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_google_integration/neruds_google_integration.info.yml",
+      "machine_name": "neruds_google_integration",
+      "file_count": 46,
+      "name": "NERUDS Google Integration",
+      "type": "module",
+      "version": null,
+      "core_version_requirement": "^11",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_gui_views/neruds_gui_views.info.yml",
+      "machine_name": "neruds_gui_views",
+      "file_count": 11,
+      "name": "NERUDS GUI — Views & Layouts",
+      "type": "module",
+      "version": "1.0.0",
+      "core_version_requirement": "^11 || ^12",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_mcp/neruds_mcp.info.yml",
+      "machine_name": "neruds_mcp",
+      "file_count": 10,
+      "name": "NERUDS MCP — AI Content Management",
+      "type": "module",
+      "version": "1.0.0",
+      "core_version_requirement": "^11 || ^12",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_notifications/neruds_notifications.info.yml",
+      "machine_name": "neruds_notifications",
+      "file_count": 7,
+      "name": "NERUDS Notifications",
+      "type": "module",
+      "version": "1.0.0",
+      "core_version_requirement": "^11",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_orcid/neruds_orcid.info.yml",
+      "machine_name": "neruds_orcid",
+      "file_count": 4,
+      "name": "NERUDS ORCID Integration",
+      "type": "module",
+      "version": "1.0.0",
+      "core_version_requirement": "^11",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/modules/custom/neruds_related_content/neruds_related_content.info.yml",
+      "machine_name": "neruds_related_content",
+      "file_count": 4,
+      "name": "NERUDS Related Content",
+      "type": "module",
+      "version": "1.0.0",
+      "core_version_requirement": "^11",
+      "base theme": null,
+      "package": "NERUDS"
+    },
+    {
+      "path": "web/themes/custom/bico_papagaio/bico_papagaio.info.yml",
+      "machine_name": "bico_papagaio",
+      "file_count": 28,
+      "name": "Bico do Papagaio — Trama e Barro",
+      "type": "theme",
+      "version": "1.0.0",
+      "core_version_requirement": "^11 || ^12",
+      "base theme": "olivero",
+      "package": "Custom"
+    },
+    {
+      "path": "web/themes/custom/neruds_gui/neruds_gui.info.yml",
+      "machine_name": "neruds_gui",
+      "file_count": 81,
+      "name": "NERUDS-GUI — Acadêmico Premium",
+      "type": "theme",
+      "version": "2.0.0",
+      "core_version_requirement": "^11 || ^12",
+      "base theme": "olivero",
+      "package": "Custom"
+    },
+    {
+      "path": "web/themes/custom/neruds_theme/neruds_theme.info.yml",
+      "machine_name": "neruds_theme",
+      "file_count": 48,
+      "name": "NERUDS Theme",
+      "type": "theme",
+      "version": "1.0.0",
+      "core_version_requirement": "^11 || ^12",
+      "base theme": "olivero",
+      "package": "Custom"
+    }
+  ],
+  "composer": {
+    "project": {
+      "name": "drupal/cms",
+      "version": "1.2.8"
+    },
+    "package_count": 295,
+    "packages_dev_count": 0,
+    "types": {
+      "class": 1,
+      "composer-plugin": 6,
+      "drupal-core": 1,
+      "drupal-library": 5,
+      "drupal-module": 94,
+      "drupal-recipe": 27,
+      "drupal-theme": 4,
+      "library": 153,
+      "metapackage": 3,
+      "symfony-bridge": 1
+    },
+    "packages": [
+      {
+        "name": "adci/full-name-parser",
+        "version": "0.2.4",
+        "type": "library"
+      },
+      {
+        "name": "asm89/stack-cors",
+        "version": "v2.3.0",
+        "type": "library"
+      },
+      {
+        "name": "brick/math",
+        "version": "0.14.8",
+        "type": "library"
+      },
+      {
+        "name": "caseyamcl/php-marc21",
+        "version": "v2.0",
+        "type": "library"
+      },
+      {
+        "name": "chi-teck/drupal-code-generator",
+        "version": "4.2.0",
+        "type": "library"
+      },
+      {
+        "name": "citation-style-language/locales",
+        "version": "v0.0.93",
+        "type": "library"
+      },
+      {
+        "name": "citation-style-language/styles",
+        "version": "v0.0.772",
+        "type": "library"
+      },
+      {
+        "name": "clue/stream-filter",
+        "version": "v1.7.0",
+        "type": "library"
+      },
+      {
+        "name": "commerceguys/addressing",
+        "version": "v2.2.4",
+        "type": "library"
+      },
+      {
+        "name": "composer/ca-bundle",
+        "version": "1.5.12",
+        "type": "library"
+      },
+      {
+        "name": "composer/class-map-generator",
+        "version": "1.7.3",
+        "type": "library"
+      },
+      {
+        "name": "composer/composer",
+        "version": "2.9.8",
+        "type": "library"
+      },
+      {
+        "name": "composer/installers",
+        "version": "v2.3.0",
+        "type": "composer-plugin"
+      },
+      {
+        "name": "composer/metadata-minifier",
+        "version": "1.0.0",
+        "type": "library"
+      },
+      {
+        "name": "composer/pcre",
+        "version": "3.3.2",
+        "type": "library"
+      },
+      {
+        "name": "composer/semver",
+        "version": "3.4.4",
+        "type": "library"
+      },
+      {
+        "name": "composer/spdx-licenses",
+        "version": "1.6.0",
+        "type": "library"
+      },
+      {
+        "name": "composer/xdebug-handler",
+        "version": "3.0.5",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/annotated-command",
+        "version": "4.10.2",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/config",
+        "version": "3.1.1",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/filter-via-dot-access-data",
+        "version": "2.0.2",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/log",
+        "version": "3.1.0",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/output-formatters",
+        "version": "4.6.1",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/robo",
+        "version": "5.1.0",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/site-alias",
+        "version": "4.1.1",
+        "type": "library"
+      },
+      {
+        "name": "consolidation/site-process",
+        "version": "5.4.2",
+        "type": "library"
+      },
+      {
+        "name": "davedevelopment/stiphle",
+        "version": "0.9.4",
+        "type": "library"
+      },
+      {
+        "name": "dflydev/dot-access-data",
+        "version": "v3.0.3",
+        "type": "library"
+      },
+      {
+        "name": "doctrine/annotations",
+        "version": "2.0.2",
+        "type": "library"
+      },
+      {
+        "name": "doctrine/collections",
+        "version": "2.6.0",
+        "type": "library"
+      },
+      {
+        "name": "doctrine/deprecations",
+        "version": "1.1.6",
+        "type": "library"
+      },
+      {
+        "name": "doctrine/lexer",
+        "version": "2.1.1",
+        "type": "library"
+      },
+      {
+        "name": "dragonmantank/cron-expression",
+        "version": "v3.6.0",
+        "type": "library"
+      },
+      {
+        "name": "drupal/a11y_form_helpers",
+        "version": "2.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/ableplayer",
+        "version": "3.4.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/add_content_by_bundle",
+        "version": "1.2.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/address",
+        "version": "2.0.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/addtoany",
+        "version": "2.0.7",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/addtocal_augment",
+        "version": "1.2.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/admin_toolbar",
+        "version": "3.6.3",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/ai",
+        "version": "1.3.5",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/ai_agents",
+        "version": "1.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/ai_image_alt_text",
+        "version": "1.0.1",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/ai_provider_anthropic",
+        "version": "1.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/ai_provider_openai",
+        "version": "1.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/automatic_updates",
+        "version": "4.0.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/autosave_form",
+        "version": "1.10.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/better_exposed_filters",
+        "version": "7.0.5",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/bibcite",
+        "version": "3.1.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/bootstrap5",
+        "version": "4.0.6",
+        "type": "drupal-theme"
+      },
+      {
+        "name": "drupal/bpmn_io",
+        "version": "2.0.11",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/captcha",
+        "version": "2.0.10",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/charts",
+        "version": "5.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/checklistapi",
+        "version": "2.1.6",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/coffee",
+        "version": "2.0.1",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/core",
+        "version": "11.2.12",
+        "type": "drupal-core"
+      },
+      {
+        "name": "drupal/core-composer-scaffold",
+        "version": "11.2.12",
+        "type": "composer-plugin"
+      },
+      {
+        "name": "drupal/core-project-message",
+        "version": "11.2.12",
+        "type": "composer-plugin"
+      },
+      {
+        "name": "drupal/core-recipe-unpack",
+        "version": "11.2.5",
+        "type": "composer-plugin"
+      },
+      {
+        "name": "drupal/core-recommended",
+        "version": "11.2.12",
+        "type": "metapackage"
+      },
+      {
+        "name": "drupal/core-vendor-hardening",
+        "version": "11.2.5",
+        "type": "composer-plugin"
+      },
+      {
+        "name": "drupal/crop",
+        "version": "2.4.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/ctools",
+        "version": "4.1.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/dashboard",
+        "version": "2.1.1",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/date_augmenter",
+        "version": "1.1.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/drupal_cms_accessibility_tools",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_admin_ui",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_ai",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_anti_spam",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_authentication",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_blog",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_case_study",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_content_type_base",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_events",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_forms",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_google_analytics",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_helper",
+        "version": "1.2.8",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/drupal_cms_image",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_news",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_olivero",
+        "version": "1.2.8",
+        "type": "drupal-theme"
+      },
+      {
+        "name": "drupal/drupal_cms_page",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_person",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_privacy_basic",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_project",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_remote_video",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_search",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_seo_basic",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_seo_tools",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/drupal_cms_starter",
+        "version": "1.2.8",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/easy_breadcrumb",
+        "version": "2.0.9",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/easy_email",
+        "version": "3.0.6",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/easy_email_express",
+        "version": "1.0.4",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/easy_email_standard",
+        "version": "1.0.3",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/easy_email_text_format",
+        "version": "1.0.3",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/easy_email_theme",
+        "version": "1.1.0",
+        "type": "drupal-theme"
+      },
+      {
+        "name": "drupal/easy_email_types_core",
+        "version": "1.0.4",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/easy_email_types_default",
+        "version": "1.0.2",
+        "type": "drupal-recipe"
+      },
+      {
+        "name": "drupal/eca",
+        "version": "2.1.15",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/eca_modeller_bpmn",
+        "version": "2.1.15",
+        "type": "metapackage"
+      },
+      {
+        "name": "drupal/eca_ui",
+        "version": "3.0.6",
+        "type": "metapackage"
+      },
+      {
+        "name": "drupal/editoria11y",
+        "version": "2.2.18",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/entity",
+        "version": "1.6.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/entity_reference_revisions",
+        "version": "1.14.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/facets",
+        "version": "3.0.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/field_group",
+        "version": "4.0.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/focal_point",
+        "version": "2.1.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/friendly_captcha_challenge",
+        "version": "0.9.18",
+        "type": "drupal-library"
+      },
+      {
+        "name": "drupal/friendlycaptcha",
+        "version": "1.1.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/fullcalendar",
+        "version": "3.0.3",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/fullcalendar_io",
+        "version": "6.1.20",
+        "type": "drupal-library"
+      },
+      {
+        "name": "drupal/gemini_provider",
+        "version": "1.0.1",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/geocoder",
+        "version": "4.30.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/geofield",
+        "version": "1.66.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/gin",
+        "version": "5.0.5",
+        "type": "drupal-theme"
+      },
+      {
+        "name": "drupal/gin_toolbar",
+        "version": "3.0.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/google_api_client",
+        "version": "4.5.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/google_tag",
+        "version": "2.0.9",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/honeypot",
+        "version": "2.2.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/imce",
+        "version": "3.1.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/inline_entity_form",
+        "version": "3.0.0-rc21",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/jquery_ui",
+        "version": "1.8.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/jquery_ui_resizable",
+        "version": "2.1.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/jsonrpc",
+        "version": "2.1.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/key",
+        "version": "1.22.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/klaro",
+        "version": "3.0.7",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/klaro_js",
+        "version": "3.0.1",
+        "type": "drupal-library"
+      },
+      {
+        "name": "drupal/leaflet",
+        "version": "10.3.11",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/linkit",
+        "version": "7.0.10",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/login_emailusername",
+        "version": "3.0.1",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/mailsystem",
+        "version": "4.5.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/mcp",
+        "version": "1.2.1",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/menu_link_attributes",
+        "version": "1.5.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/metatag",
+        "version": "2.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/modeler_api",
+        "version": "1.0.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/nouislider_js",
+        "version": "15.8.1",
+        "type": "drupal-library"
+      },
+      {
+        "name": "drupal/paragraphs",
+        "version": "1.20.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/pathauto",
+        "version": "1.14.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/project_browser",
+        "version": "2.1.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/pwa",
+        "version": "2.1.0-beta7",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/rat",
+        "version": "1.0.1",
+        "type": "library"
+      },
+      {
+        "name": "drupal/recaptcha",
+        "version": "3.4.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/recaptcha_v3",
+        "version": "2.0.5",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/recipe_installer_kit",
+        "version": "1.0.0-alpha8",
+        "type": "library"
+      },
+      {
+        "name": "drupal/redirect",
+        "version": "1.12.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/robotstxt",
+        "version": "1.6.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/sam",
+        "version": "1.3.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/scheduler",
+        "version": "2.2.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/scheduler_content_moderation_integration",
+        "version": "3.0.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/schema_metatag",
+        "version": "3.0.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/search_api",
+        "version": "1.40.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/search_api_autocomplete",
+        "version": "1.11.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/search_api_exclude",
+        "version": "2.0.3",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/selective_better_exposed_filters",
+        "version": "3.0.3",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/seo_checklist",
+        "version": "5.2.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/simple_search_form",
+        "version": "1.8.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/simple_sitemap",
+        "version": "4.2.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/simplenews",
+        "version": "4.1.1",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/sitemap",
+        "version": "2.4.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/smart_date",
+        "version": "4.2.4",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/social_api",
+        "version": "4.0.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/social_auth",
+        "version": "4.1.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/social_auth_google",
+        "version": "4.0.3",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/svg_image",
+        "version": "3.2.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/symfony_mailer_lite",
+        "version": "2.0.3",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/tagify",
+        "version": "1.2.51",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/token",
+        "version": "1.17.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/token_or",
+        "version": "2.3.2",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/trash",
+        "version": "3.0.21",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/vefl",
+        "version": "3.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/views_infinite_scroll",
+        "version": "2.0.3",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/webform",
+        "version": "6.3.0-beta9",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drupal/yoast_seo",
+        "version": "2.2.0",
+        "type": "drupal-module"
+      },
+      {
+        "name": "drush/drush",
+        "version": "13.7.3",
+        "type": "library"
+      },
+      {
+        "name": "e0ipso/shaper",
+        "version": "1.2.7",
+        "type": "library"
+      },
+      {
+        "name": "egulias/email-validator",
+        "version": "4.0.4",
+        "type": "library"
+      },
+      {
+        "name": "enshrined/svg-sanitize",
+        "version": "0.22.0",
+        "type": "library"
+      },
+      {
+        "name": "firebase/php-jwt",
+        "version": "v7.0.5",
+        "type": "library"
+      },
+      {
+        "name": "geocoder-php/common-http",
+        "version": "4.7.0",
+        "type": "library"
+      },
+      {
+        "name": "geocoder-php/nominatim-provider",
+        "version": "5.8.0",
+        "type": "library"
+      },
+      {
+        "name": "goalgorilla/rtseo.js",
+        "version": "2.1.0",
+        "type": "drupal-library"
+      },
+      {
+        "name": "google-gemini-php/client",
+        "version": "2.7.4",
+        "type": "library"
+      },
+      {
+        "name": "google/apiclient",
+        "version": "v2.19.3",
+        "type": "library"
+      },
+      {
+        "name": "google/apiclient-services",
+        "version": "v0.441.1",
+        "type": "library"
+      },
+      {
+        "name": "google/auth",
+        "version": "v1.50.1",
+        "type": "library"
+      },
+      {
+        "name": "google/cloud-bigquery",
+        "version": "v1.38.0",
+        "type": "library"
+      },
+      {
+        "name": "google/cloud-core",
+        "version": "v1.72.1",
+        "type": "library"
+      },
+      {
+        "name": "google/common-protos",
+        "version": "4.14.0",
+        "type": "library"
+      },
+      {
+        "name": "google/gax",
+        "version": "v1.42.4",
+        "type": "library"
+      },
+      {
+        "name": "google/grpc-gcp",
+        "version": "0.4.2",
+        "type": "library"
+      },
+      {
+        "name": "google/longrunning",
+        "version": "0.7.1",
+        "type": "library"
+      },
+      {
+        "name": "google/protobuf",
+        "version": "v5.35.0",
+        "type": "library"
+      },
+      {
+        "name": "google/recaptcha",
+        "version": "1.4.2",
+        "type": "library"
+      },
+      {
+        "name": "grasmash/expander",
+        "version": "3.0.1",
+        "type": "library"
+      },
+      {
+        "name": "grasmash/yaml-cli",
+        "version": "3.2.1",
+        "type": "library"
+      },
+      {
+        "name": "grpc/grpc",
+        "version": "1.80.0",
+        "type": "library"
+      },
+      {
+        "name": "guzzlehttp/guzzle",
+        "version": "7.9.3",
+        "type": "library"
+      },
+      {
+        "name": "guzzlehttp/promises",
+        "version": "2.2.0",
+        "type": "library"
+      },
+      {
+        "name": "guzzlehttp/psr7",
+        "version": "2.7.1",
+        "type": "library"
+      },
+      {
+        "name": "html2text/html2text",
+        "version": "4.3.2",
+        "type": "library"
+      },
+      {
+        "name": "itamair/geophp",
+        "version": "1.8",
+        "type": "library"
+      },
+      {
+        "name": "justinrainbow/json-schema",
+        "version": "6.8.2",
+        "type": "library"
+      },
+      {
+        "name": "laravel/prompts",
+        "version": "v0.3.7",
+        "type": "library"
+      },
+      {
+        "name": "league/commonmark",
+        "version": "2.8.2",
+        "type": "library"
+      },
+      {
+        "name": "league/config",
+        "version": "v1.2.0",
+        "type": "library"
+      },
+      {
+        "name": "league/container",
+        "version": "4.2.5",
+        "type": "library"
+      },
+      {
+        "name": "league/html-to-markdown",
+        "version": "5.1.1",
+        "type": "library"
+      },
+      {
+        "name": "league/oauth2-client",
+        "version": "2.9.0",
+        "type": "library"
+      },
+      {
+        "name": "league/oauth2-google",
+        "version": "4.2.0",
+        "type": "library"
+      },
+      {
+        "name": "marc-mabe/php-enum",
+        "version": "v4.7.2",
+        "type": "library"
+      },
+      {
+        "name": "masterminds/html5",
+        "version": "2.9.0",
+        "type": "library"
+      },
+      {
+        "name": "mck89/peast",
+        "version": "v1.17.6",
+        "type": "library"
+      },
+      {
+        "name": "monolog/monolog",
+        "version": "3.10.0",
+        "type": "library"
+      },
+      {
+        "name": "mtownsend/xml-to-array",
+        "version": "2.0.0",
+        "type": "library"
+      },
+      {
+        "name": "myclabs/php-enum",
+        "version": "1.8.5",
+        "type": "library"
+      },
+      {
+        "name": "nette/schema",
+        "version": "v1.3.5",
+        "type": "library"
+      },
+      {
+        "name": "nette/utils",
+        "version": "v4.1.4",
+        "type": "library"
+      },
+      {
+        "name": "nikic/php-parser",
+        "version": "v5.7.0",
+        "type": "library"
+      },
+      {
+        "name": "openai-php/client",
+        "version": "v0.19.2",
+        "type": "library"
+      },
+      {
+        "name": "pear/archive_tar",
+        "version": "1.5.0",
+        "type": "library"
+      },
+      {
+        "name": "pear/console_getopt",
+        "version": "v1.4.3",
+        "type": "library"
+      },
+      {
+        "name": "pear/pear-core-minimal",
+        "version": "v1.10.18",
+        "type": "library"
+      },
+      {
+        "name": "pear/pear_exception",
+        "version": "v1.0.2",
+        "type": "class"
+      },
+      {
+        "name": "phootwork/collection",
+        "version": "v3.2.3",
+        "type": "library"
+      },
+      {
+        "name": "phootwork/lang",
+        "version": "v3.2.3",
+        "type": "library"
+      },
+      {
+        "name": "php-http/discovery",
+        "version": "1.20.0",
+        "type": "composer-plugin"
+      },
+      {
+        "name": "php-http/guzzle7-adapter",
+        "version": "1.1.0",
+        "type": "library"
+      },
+      {
+        "name": "php-http/httplug",
+        "version": "2.4.1",
+        "type": "library"
+      },
+      {
+        "name": "php-http/message",
+        "version": "1.16.2",
+        "type": "library"
+      },
+      {
+        "name": "php-http/multipart-stream-builder",
+        "version": "1.4.2",
+        "type": "library"
+      },
+      {
+        "name": "php-http/promise",
+        "version": "1.3.1",
+        "type": "library"
+      },
+      {
+        "name": "php-tuf/composer-stager",
+        "version": "v2.0.2",
+        "type": "library"
+      },
+      {
+        "name": "phpowermove/docblock",
+        "version": "v4.0",
+        "type": "library"
+      },
+      {
+        "name": "psr/cache",
+        "version": "3.0.0",
+        "type": "library"
+      },
+      {
+        "name": "psr/container",
+        "version": "2.0.2",
+        "type": "library"
+      },
+      {
+        "name": "psr/event-dispatcher",
+        "version": "1.0.0",
+        "type": "library"
+      },
+      {
+        "name": "psr/http-client",
+        "version": "1.0.3",
+        "type": "library"
+      },
+      {
+        "name": "psr/http-factory",
+        "version": "1.1.0",
+        "type": "library"
+      },
+      {
+        "name": "psr/http-message",
+        "version": "2.0",
+        "type": "library"
+      },
+      {
+        "name": "psr/log",
+        "version": "3.0.2",
+        "type": "library"
+      },
+      {
+        "name": "psy/psysh",
+        "version": "v0.12.23",
+        "type": "library"
+      },
+      {
+        "name": "ralouphie/getallheaders",
+        "version": "3.0.3",
+        "type": "library"
+      },
+      {
+        "name": "ramsey/collection",
+        "version": "2.1.1",
+        "type": "library"
+      },
+      {
+        "name": "ramsey/uuid",
+        "version": "4.9.2",
+        "type": "library"
+      },
+      {
+        "name": "react/promise",
+        "version": "v3.3.0",
+        "type": "library"
+      },
+      {
+        "name": "renanbr/bibtex-parser",
+        "version": "2.3.0",
+        "type": "library"
+      },
+      {
+        "name": "researchgate/libris",
+        "version": "2.4.1",
+        "type": "library"
+      },
+      {
+        "name": "revolt/event-loop",
+        "version": "v1.0.9",
+        "type": "library"
+      },
+      {
+        "name": "rize/uri-template",
+        "version": "0.4.2",
+        "type": "library"
+      },
+      {
+        "name": "sebastian/diff",
+        "version": "7.0.0",
+        "type": "library"
+      },
+      {
+        "name": "seboettg/citeproc-php",
+        "version": "v2.7.1",
+        "type": "library"
+      },
+      {
+        "name": "seboettg/collection",
+        "version": "v3.1.0",
+        "type": "library"
+      },
+      {
+        "name": "seld/jsonlint",
+        "version": "1.11.0",
+        "type": "library"
+      },
+      {
+        "name": "seld/phar-utils",
+        "version": "1.2.1",
+        "type": "library"
+      },
+      {
+        "name": "seld/signal-handler",
+        "version": "2.0.2",
+        "type": "library"
+      },
+      {
+        "name": "simshaun/recurr",
+        "version": "v5.0.3",
+        "type": "library"
+      },
+      {
+        "name": "symfony/console",
+        "version": "v7.4.11",
+        "type": "library"
+      },
+      {
+        "name": "symfony/css-selector",
+        "version": "v7.3.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/dependency-injection",
+        "version": "v7.4.10",
+        "type": "library"
+      },
+      {
+        "name": "symfony/deprecation-contracts",
+        "version": "v3.7.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/error-handler",
+        "version": "v7.4.8",
+        "type": "library"
+      },
+      {
+        "name": "symfony/event-dispatcher",
+        "version": "v7.4.9",
+        "type": "library"
+      },
+      {
+        "name": "symfony/event-dispatcher-contracts",
+        "version": "v3.7.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/filesystem",
+        "version": "v7.4.11",
+        "type": "library"
+      },
+      {
+        "name": "symfony/finder",
+        "version": "v7.4.8",
+        "type": "library"
+      },
+      {
+        "name": "symfony/http-foundation",
+        "version": "v7.4.8",
+        "type": "library"
+      },
+      {
+        "name": "symfony/http-kernel",
+        "version": "v7.4.12",
+        "type": "library"
+      },
+      {
+        "name": "symfony/mailer",
+        "version": "v7.4.12",
+        "type": "library"
+      },
+      {
+        "name": "symfony/mime",
+        "version": "v7.4.12",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-ctype",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-iconv",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-intl-grapheme",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-intl-idn",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-intl-normalizer",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-mbstring",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-php73",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-php80",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-php81",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-php83",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-php84",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/polyfill-php85",
+        "version": "v1.37.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/process",
+        "version": "v7.4.11",
+        "type": "library"
+      },
+      {
+        "name": "symfony/psr-http-message-bridge",
+        "version": "v7.4.8",
+        "type": "symfony-bridge"
+      },
+      {
+        "name": "symfony/routing",
+        "version": "v7.4.12",
+        "type": "library"
+      },
+      {
+        "name": "symfony/serializer",
+        "version": "v7.4.10",
+        "type": "library"
+      },
+      {
+        "name": "symfony/service-contracts",
+        "version": "v3.7.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/string",
+        "version": "v7.4.11",
+        "type": "library"
+      },
+      {
+        "name": "symfony/translation-contracts",
+        "version": "v3.7.0",
+        "type": "library"
+      },
+      {
+        "name": "symfony/validator",
+        "version": "v7.4.10",
+        "type": "library"
+      },
+      {
+        "name": "symfony/var-dumper",
+        "version": "v7.4.8",
+        "type": "library"
+      },
+      {
+        "name": "symfony/var-exporter",
+        "version": "v7.4.9",
+        "type": "library"
+      },
+      {
+        "name": "symfony/yaml",
+        "version": "v7.4.12",
+        "type": "library"
+      },
+      {
+        "name": "tijsverkoyen/css-to-inline-styles",
+        "version": "v2.3.0",
+        "type": "library"
+      },
+      {
+        "name": "twig/twig",
+        "version": "v3.26.0",
+        "type": "library"
+      },
+      {
+        "name": "willdurand/geocoder",
+        "version": "5.0.0",
+        "type": "library"
+      },
+      {
+        "name": "yethee/tiktoken",
+        "version": "0.5.1",
+        "type": "library"
+      }
+    ],
+    "interpretation": "Resolved package metadata only. Package count is not the count of enabled Drupal modules; packages can include submodules. The root project is not one of the 295 lock packages.",
+    "enabled_extensions_status": "unknown_from_versioned_evidence; core.extension is absent from the structural reference",
+    "future_version_selection": "not_performed; M02 scope"
+  },
+  "theme_selection_reference": {
+    "path": "docs/architecture/structural-reference/system.theme.reference.json",
+    "data": {
+      "admin": "claro",
+      "default": "neruds_gui"
+    }
+  },
+  "snapshot_reference": {
+    "path": "docs/operations/SNAPSHOT-2026-10-06.evidence.json",
+    "sha256": "107f2a3b0e383abd54e9dd1dbcad4bb86431e4ace1c8eb733935c355cfa082bf",
+    "snapshot_started": "2026-10-06T18:31:43.282008+00:00",
+    "runtime_rehashed_at": "2026-10-06T18:46:57.436064+00:00",
+    "historical_runtime": {
+      "file_count": 98284,
+      "logical_bytes": 641340368,
+      "aggregate_sha256": "ea4e4303bf023d6286a3c1200fa397678458a0766d73c851202efe7fb3b56986",
+      "symlink_count": 0,
+      "escaping_symlink_count": 0,
+      "filenames_exported": false,
+      "excluded_patterns": [
+        "settings*.php",
+        ".env*",
+        "auth.json",
+        ".git",
+        "*.sql",
+        "*.sql.*",
+        "*.dump",
+        "*.bak",
+        "*.bak*",
+        "*backup*",
+        "/web/sites/*/files/config_*/",
+        "*.log"
+      ]
+    },
+    "historical_uploads": {
+      "file_count": 391,
+      "logical_bytes": 54319491,
+      "aggregate_sha256": "6660c2bbefb8f9360a15a3cce3338e417c9c22e4456ba5fdc058d332ece76c7b",
+      "symlink_count": 0,
+      "escaping_symlink_count": 0,
+      "filenames_exported": false
+    },
+    "historical_database": {
+      "container": "neruds_portal_snapshot_db_20261006",
+      "volume": "neruds_portal_snapshot_db_20261006_data",
+      "version": "11.8.3-MariaDB-ubu2404",
+      "image_digests": [
+        "mariadb@sha256:ae6119716edac6998ae85508431b3d2e666530ddf4e94c61a10710caec9b0f71"
+      ],
+      "network_mode": "none",
+      "host_port_bindings": [],
+      "restored_at": "2026-10-06T18:33:51.903301+00:00",
+      "sanitized": true,
+      "drupal_bootstrapped": false,
+      "web_started": false
+    },
+    "historical_sanitization": {
+      "active_accounts_remaining": 0,
+      "real_account_emails_remaining": 0,
+      "valid_password_hashes_remaining": 0,
+      "purged_table_count": 72,
+      "purged_rows": 36085,
+      "configuration_changes": 68,
+      "controls": {
+        "mailer": "test_mail_collector",
+        "automated_cron_interval": 0,
+        "jsonapi_read_only": true,
+        "user_registration": "admin_only",
+        "maintenance_mode": true,
+        "state_operational_values_removed": true,
+        "production_environment_not_loaded": true
+      },
+      "verified_at": "2026-10-06T18:43:34.519725+00:00",
+      "not_a_public_anonymized_dataset": true
+    }
+  },
+  "purpose": "Derived evidence for NERUDS-001. Does not replace source-manifest.json or composer.lock and does not authorize import, bootstrap, upgrade or publication.",
+  "runtime_observed_at_capture": {
+    "cms": "Drupal CMS 1.2.8",
+    "core": "11.2.12",
+    "php": "8.4.14",
+    "database": "MariaDB 11.8.3",
+    "composer_cli_from_prior_static_validation": "2.8.12",
+    "composer_library_in_lock": "2.9.8",
+    "current_workstation_php": "unavailable",
+    "current_workstation_composer": "unavailable"
+  },
+  "capture_timeline": [
+    {
+      "event": "source_selection",
+      "at": "2026-10-06T18:23:59.757394+00:00"
+    },
+    {
+      "event": "database_snapshot_started",
+      "at": "2026-10-06T18:31:43.282008+00:00"
+    },
+    {
+      "event": "raw_database_snapshot_completed",
+      "at": "2026-10-06T18:31:45.855731+00:00"
+    },
+    {
+      "event": "initial_runtime_copy_completed",
+      "at": "2026-10-06T18:33:44.836610+00:00"
+    },
+    {
+      "event": "restore_completed",
+      "at": "2026-10-06T18:33:51.903301+00:00"
+    },
+    {
+      "event": "sanitized_structural_reference",
+      "at": "2026-10-06T18:41:32+00:00"
+    },
+    {
+      "event": "sanitization_controls_verified",
+      "at": "2026-10-06T18:43:34.519725+00:00"
+    },
+    {
+      "event": "runtime_filters_refined",
+      "at": "2026-10-06T18:46:57.436064+00:00"
+    },
+    {
+      "event": "sanitized_export",
+      "at": "2026-10-06T18:50:16.581624+00:00"
+    },
+    {
+      "event": "source_inventory_checked",
+      "at": "2026-10-06T21:53:18.972150+00:00"
+    }
+  ],
+  "freshness": {
+    "production_read_in_this_review": false,
+    "production_modified": false,
+    "atomic_database_and_files_snapshot_proven": false,
+    "post_capture_changes_included": false,
+    "statement": "The code selection, database and runtime were captured at different times. The transactional dump does not prove an atomic snapshot across those objects. Changes after the respective captures were not assessed."
+  },
+  "structural_reference": {
+    "path": "docs/architecture/structural-reference",
+    "file_count": 570,
+    "aggregate_sha256": "9f64a69f2a1f878eeaa92a7aa058433540d0888ec343acb747cd8894cf139ab6",
+    "reference_only": true,
+    "not_a_full_importable_export": true,
+    "core_extension_present": false,
+    "config_sync_present": false,
+    "media_reference_limitation": "Two historical theme settings descriptions retain public media references. Values and filenames are not reproduced in this review; no broad claim that all media references were removed.",
+    "counts": {
+      "content_types": 14,
+      "vocabularies": 38,
+      "field_storages": 146,
+      "bundle_fields": 210,
+      "form_displays": 26,
+      "view_displays": 85,
+      "views": 41,
+      "roles": 7,
+      "theme_records": 3
+    }
+  },
+  "import_policy": [
+    {
+      "category": "Composer manifests",
+      "disposition": "existing_tracked_source",
+      "paths": [
+        "composer.json",
+        "composer.lock"
+      ],
+      "count": 2
+    },
+    {
+      "category": "Custom modules",
+      "disposition": "existing_tracked_source",
+      "paths": [
+        "web/modules/custom/"
+      ],
+      "count": 102
+    },
+    {
+      "category": "Custom themes and shared theme assets",
+      "disposition": "existing_tracked_source",
+      "paths": [
+        "web/themes/custom/"
+      ],
+      "count": 183
+    },
+    {
+      "category": "Private runtime, vendor, core, contrib and recipes",
+      "disposition": "private_preserved_reference; generated dependencies stay out of Git"
+    },
+    {
+      "category": "Raw and sanitized databases, uploads and account content",
+      "disposition": "private_only; no Git or public dataset"
+    },
+    {
+      "category": "Production settings, environments, auth files, keys and credentials",
+      "disposition": "exclude_from_import; never reuse in development"
+    },
+    {
+      "category": "Backup code entries",
+      "disposition": "excluded_by_source_manifest",
+      "count": 11,
+      "paths_reference": "manifest.excluded"
+    },
+    {
+      "category": "Structural reference",
+      "disposition": "documentation_only; never config import"
+    },
+    {
+      "category": "Reviewed development settings and infra",
+      "disposition": "existing_development_preparation_only; not original production settings or functional proof"
+    },
+    {
+      "category": "Old Jaspr homologation and unrelated vhost aliases",
+      "disposition": "not_a_source_for_this_project"
+    }
+  ],
+  "integrations_to_isolate": [
+    {
+      "family": "Immediate and queued email",
+      "evidence": [
+        "web/modules/custom/neruds_notifications/neruds_notifications.module",
+        "composer.lock"
+      ],
+      "limit": "Comment insertion sends mail directly; disabling cron alone is insufficient. No send executed."
+    },
+    {
+      "family": "Cron, queues, automation and update mechanisms",
+      "evidence": [
+        "docs/operations/SNAPSHOT-2026-10-06.evidence.json",
+        "composer.lock"
+      ],
+      "limit": "Snapshot records purged queues and automatic cron interval zero; application behavior not tested."
+    },
+    {
+      "family": "Google, OAuth, Drive, Calendar, search and BigQuery",
+      "evidence": [
+        "web/modules/custom/neruds_google_integration/src/Service/PortalDataService.php",
+        "web/modules/custom/neruds_google_integration/src/Service/AuditService.php",
+        "composer.lock"
+      ],
+      "limit": "No real clients, credentials, accounts or APIs may be reused; search readiness can perform outbound requests."
+    },
+    {
+      "family": "AI providers and MCP",
+      "evidence": [
+        "web/modules/custom/neruds_mcp/neruds_mcp.routing.yml",
+        "web/modules/custom/neruds_mcp/src/Service/MCPService.php",
+        "composer.lock"
+      ],
+      "limit": "Contrib and custom MCP are distinct; custom content API includes writes and deletes; functionality and access are not approved."
+    },
+    {
+      "family": "Identity clients, REST and JSON:API",
+      "evidence": [
+        "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.routing.yml",
+        "docs/operations/SNAPSHOT-2026-10-06.evidence.json"
+      ],
+      "limit": "Keep external clients disconnected. JSON:API read-only config does not neutralize independent custom routes."
+    },
+    {
+      "family": "Webforms and CAPTCHA",
+      "evidence": [
+        "composer.lock",
+        "docs/operations/SNAPSHOT-2026-10-06.evidence.json"
+      ],
+      "limit": "Historical snapshot records Webform and CAPTCHA configuration changes. Handler execution and outbound transports were not exercised; keep them isolated until explicitly verified."
+    },
+    {
+      "family": "Browser analytics, embeds, fonts, CDNs and accessibility services",
+      "evidence": [
+        "web/modules/custom/neruds_google_integration/neruds_google_integration.module",
+        "web/modules/custom/neruds_google_integration/neruds_google_integration.libraries.yml",
+        "web/themes/custom/neruds_gui/neruds_gui.libraries.yml",
+        "web/themes/custom/bico_papagaio/bico_papagaio.libraries.yml",
+        "web/themes/custom/neruds_theme/neruds_theme.libraries.yml"
+      ],
+      "limit": "Browser traffic is independent of the database or PHP container network. Neutralize all environment variants and production fallbacks."
+    },
+    {
+      "family": "ORCID links and external icons",
+      "evidence": [
+        "web/modules/custom/neruds_orcid/neruds_orcid.module"
+      ],
+      "limit": "Links and icons do not prove OAuth or profile synchronization."
+    }
+  ],
+  "functional_limits": [
+    {
+      "component": "Google Sheets metric",
+      "evidence": "web/modules/custom/neruds_google_integration/src/Service/PortalDataService.php",
+      "finding": "getSheetMetric returns a local fallback; functional feed not demonstrated."
+    },
+    {
+      "component": "Firebase authentication",
+      "evidence": "web/modules/custom/neruds_google_integration/src/Controller/FirebaseAuthController.php",
+      "finding": "Placeholder returns not_configured / 501."
+    },
+    {
+      "component": "Custom chatbot",
+      "evidence": "web/modules/custom/neruds_google_integration/src/Controller/NerudsApiController.php",
+      "finding": "Calls sanitizeInput and chatWithGemini on PortalDataService, which does not declare them in this baseline; no functional claim; review belongs to issue #9."
+    }
+  ],
+  "coordination": {
+    "issue": "https://github.com/rafaloct/neruds-portal/issues/1",
+    "scope_comment": "https://github.com/rafaloct/neruds-portal/issues/1#issuecomment-6026116358",
+    "base_sha": "e600761ad0d5a133638cad66a093ca8087f09ae1",
+    "pr33_at_start": {
+      "number": 33,
+      "head_sha": "0383d4ee103b23ecafd6320eee5c63a881f4c784",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "reserved_files": [
+      "docs/architecture/source-inventory.md",
+      "docs/architecture/source-inventory-review-2026-10-06.json"
+    ],
+    "project": "https://github.com/users/rafaloct/projects/2",
+    "project_updates": "Only issue #1 Fila is updated directly; bootstrap_project.py is not reapplied.",
+    "merge_allowed": false,
+    "production_allowed": false,
+    "next_issue_started": false
+  },
+  "acceptance_mapping": [
+    {
+      "criterion": 1,
+      "evidence": [
+        "manifest",
+        "source_integrity",
+        "capture_timeline",
+        "freshness",
+        "snapshot_reference"
+      ],
+      "scope": "Origin and limits of the captured copy"
+    },
+    {
+      "criterion": 2,
+      "evidence": [
+        "custom_components",
+        "composer",
+        "runtime_observed_at_capture",
+        "theme_selection_reference"
+      ],
+      "scope": "Static and historical inventory without credential values"
+    },
+    {
+      "criterion": 3,
+      "evidence": [
+        "import_policy",
+        "manifest.excluded",
+        "integrations_to_isolate",
+        "structural_reference"
+      ],
+      "scope": "Import selection and integration boundaries"
+    },
+    {
+      "criterion": 4,
+      "evidence": [
+        "coordination",
+        "source_integrity",
+        "validation"
+      ],
+      "scope": "To be delivered by the single draft PR; final HEAD and remote verification recorded in its description and issue"
+    }
+  ],
+  "validation": {
+    "status": "passed_documentary_scope",
+    "local_source_sha256_matches": 287,
+    "local_source_total": 287,
+    "local_source_file_sets_match": true,
+    "private_runtime_recheck": "not_performed",
+    "drupal_bootstrap": "not_performed_out_of_scope",
+    "php_lint_current_execution": "not_performed_tool_unavailable",
+    "composer_validate_current_execution": "not_performed_tool_unavailable",
+    "hosted_ci": "recorded_on_the_delivered_PR_after_push",
+    "local_document_checks": {
+      "checked_at": "2026-10-06T22:01:33.497910+00:00",
+      "source_files_reconfirmed": 287,
+      "package_entries_consistent": 295,
+      "sample_records_consistent": 32,
+      "historical_php_hashes_consistent": 41,
+      "historical_composer_hashes_consistent": 2,
+      "relative_links_checked": 19,
+      "relative_links_pass": true,
+      "integration_evidence_paths_exist": true,
+      "scope_files": [
+        "docs/architecture/source-inventory-review-2026-10-06.json",
+        "docs/architecture/source-inventory.md"
+      ],
+      "source_manifest_and_source_diff_empty": true,
+      "utf8_and_whitespace_pass": true,
+      "static_limits_confirmed": [
+        "no core.extension in reference",
+        "config/sync not tracked",
+        "two media references not copied",
+        "chat methods absent from linked service",
+        "Firebase placeholder 501",
+        "direct mail in comment hook"
+      ],
+      "repository_guard_exit": 0,
+      "repository_guard_output": "Static repository checks passed: 895 candidate files, 706 text files, 0 binary/large text candidates skipped.\r\nSKIP PHP syntax: php executable is unavailable.\r\nSKIP Composer validate: composer executable is unavailable.\r\nRepository preparation checks passed. Not a complete security audit or runtime validation.",
+      "current_php_or_composer_executed": false
+    },
+    "staged_diff_and_final_head": "Recorded in the delivered PR and issue after final staging and push.",
+    "independent_agent_reviews": {
+      "count": 2,
+      "scope": [
+        "acceptance, provenance and evidence",
+        "component inventory and integration limits"
+      ],
+      "result": "No blocking findings after clarifying Webform/CAPTCHA historical configuration versus untested handler execution.",
+      "human_approval": false
+    }
+  },
+  "reference_sources": [
+    {
+      "url": "https://www.drupal.org/docs/extending-drupal/installing-modules",
+      "consulted_on": "2026-10-06",
+      "purpose": "Downloading Composer packages and installing/enabling Drupal extensions are distinct."
+    },
+    {
+      "url": "https://getcomposer.org/doc/01-basic-usage.md",
+      "consulted_on": "2026-10-06",
+      "purpose": "composer.lock records resolved dependency versions and is the reference for later installation."
+    }
+  ]
+}
