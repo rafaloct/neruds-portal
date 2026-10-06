@@ -8,7 +8,7 @@ Use [issues](https://github.com/rafaloct/neruds-portal/issues) para objetivos, e
 
 O planejamento inicial tem 32 issues. Chaves como `NERUDS-013` são identificadores do plano; o número real do GitHub e o link da issue devem ser usados quando disponíveis. Não deduza o número remoto pela ordem do documento.
 
-GitHub Projects é uma visualização adicional **ainda pendente da permissão `project`**. Não afirmar que um quadro foi criado nem deixar de trabalhar numa issue atribuída somente por essa pendência. Documentos de planejamento não devem manter uma segunda fila divergente.
+O [Project NERUDS #2](https://github.com/users/rafaloct/projects/2) é a visualização adicional das 32 issues, com tabela de planejamento e quadro por Fila. A configuração e a evidência estão em [PROJECT.md](../planning/PROJECT.md). Não há sincronização contínua: ao mudar uma etapa, registrar o estado e as labels na issue e manter Fila coerente no Project. Mover um cartão não muda automaticamente labels, dependências ou autorização. Prioridade, Marco e Tamanho foram importados do manifesto inicial; reconciliar decisões posteriores antes de reaplicá-lo. Documentos de planejamento não devem manter uma segunda fila divergente.
 
 ## Bootstrap e primeira execução
 

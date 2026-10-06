@@ -28,8 +28,41 @@
     "proposed_policy": "branch-protection.request.json"
   },
   "projects": {
-    "status": "blocked",
-    "reason": "OAuth scope project absent; no Project created"
+    "status": "configured",
+    "number": 2,
+    "id": "PVT_kwHOAJ_FRc4Bl-59",
+    "url": "https://github.com/users/rafaloct/projects/2",
+    "private": true,
+    "linked_repositories": [
+      "rafaloct/neruds-portal"
+    ],
+    "item_count": 32,
+    "fields": [
+      "Fila",
+      "Prioridade",
+      "Marco",
+      "Tamanho"
+    ],
+    "matching_field_values": 128,
+    "verified_at": "2026-10-06T21:25:01.602504+00:00",
+    "evidence": "../planning/project-verification-2026-10-06.json",
+    "views": [
+      {
+        "name": "Planejamento",
+        "number": 1,
+        "layout": "TABLE_LAYOUT",
+        "url": "https://github.com/users/rafaloct/projects/2/views/1"
+      },
+      {
+        "name": "Fluxo de trabalho",
+        "number": 2,
+        "layout": "BOARD_LAYOUT",
+        "url": "https://github.com/users/rafaloct/projects/2/views/2"
+      }
+    ],
+    "views_verified_at": "2026-10-06T21:27:24.853228+00:00",
+    "views_evidence": "../planning/project-views-2026-10-06.json",
+    "continuous_sync": false
   },
   "verified_at": "2026-10-06T19:00:30Z",
   "ci": {
