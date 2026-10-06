@@ -42,6 +42,12 @@ Os commits iniciais de importação e preparação de `main` fazem parte do boot
 
 Antes de trabalhar, leia [AGENTS.md](AGENTS.md) e o [contrato de coordenação](docs/operations/AGENT_COORDINATION.md). Alterações reversíveis já autorizadas não exigem confirmações repetidas. **Merge e alterações em produção exigem autorização específica; não há auto-merge, deploy automático ou execução automática da fila.**
 
+## Limites de automação da conta
+
+O código foi enviado e o guard passou localmente. Na cópia privada, os 41 arquivos PHP herdados passaram na análise de sintaxe e o Composer validou o manifesto/lockfile, sem iniciar Drupal ou instalar dependências; [evidência](docs/operations/STATIC-VALIDATION-2026-10-06.json). A [primeira execução do GitHub Actions](https://github.com/rafaloct/neruds-portal/actions/runs/37515555374) não chegou a iniciar: o GitHub informou falha recente de pagamentos ou necessidade de ampliar o limite de gastos. A conta precisa ser regularizada pelo titular antes de validar a CI hospedada.
+
+A API também retornou HTTP 403 para proteção de branches neste repositório privado, com exigência de GitHub Pro. Assim, o fluxo por PR e autorização está documentado, mas **a exigência de PR/checks ainda não é imposta pelo servidor**. Auto-merge permanece desativado e as restrições de Actions disponíveis foram aplicadas. Consulte [o estado verificado](docs/operations/repository-settings.json).
+
 ## Como começar
 
 1. Leia a issue atribuída, suas dependências, caminhos e critérios de aceite no GitHub.

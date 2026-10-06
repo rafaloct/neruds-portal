@@ -1,0 +1,131 @@
+{
+  "generated_utc": "2026-10-06T19:02:59.931064+00:00",
+  "target": "/root/neruds_portal_20261006/repo",
+  "production_access": "none during this validation",
+  "drupal_bootstrap": false,
+  "web_started": false,
+  "code_modified": false,
+  "php_lint": {
+    "tool": "/usr/bin/php",
+    "file_count": 41,
+    "extensions": [
+      ".inc",
+      ".install",
+      ".module",
+      ".php",
+      ".theme"
+    ],
+    "version": "PHP 8.4.14 (cli) (built: Oct 29 2025 02:04:13) (NTS)",
+    "command_template": [
+      "/usr/bin/php",
+      "-n",
+      "-l",
+      "<copy-source>"
+    ],
+    "passed_files": 41,
+    "failed_files": [],
+    "pass": true
+  },
+  "manifest_sha256": {
+    "composer.json": "a8104b7cf57eb6b28bf1332d950905738c54b5261c893c1fa99a30f6167c08d1",
+    "composer.lock": "cc1bfacc83dcb78df2e7fb3bced99eafac0685e778d5d5fc0b626dca92386d14"
+  },
+  "source_file_hashes": {
+    "web/modules/custom/neruds_analytics/neruds_analytics.module": "ca6a569fa1af0bf8682e180ee4a4a5e215db69680de738603cc5770cf4b1b431",
+    "web/modules/custom/neruds_analytics/src/Controller/AnalyticsDashboardController.php": "dd11774e805790c19eb90bd3a9ac684c5d29cbd07b42a7cb5f5c28562e0321e6",
+    "web/modules/custom/neruds_blocks/neruds_blocks.module": "a6ce06d01be58832742936ba3060240b0ca5f04408fb3d7ad4b98cff6ce41c5f",
+    "web/modules/custom/neruds_blocks/src/Plugin/Block/CardGridBlock.php": "6610da99ddfa8bae4278b0eaf96408e0b45c9a9f5b0c9875e2288d347aa404aa",
+    "web/modules/custom/neruds_blocks/src/Plugin/Block/HeroSectionBlock.php": "26ac042017579c3aa64a04d844890ec318ad1d1f3e9c89f7115338c36144b8fc",
+    "web/modules/custom/neruds_blocks/src/Plugin/Block/SearchBarBlock.php": "7496d3eb0e472046eb431b1376267bfe7998d69dad3ab681c29aec01b30b695b",
+    "web/modules/custom/neruds_extensionista_guard/neruds_extensionista_guard.module": "1f8ea6d3e1cccfe81b0120d82f19e33118257e0f02b401ae6c9bf6e84f803a1d",
+    "web/modules/custom/neruds_extensionista_guard/src/Controller/ControlController.php": "6e8d240ebca410a280d30a20a98fd22bdf4b196e9fa17492db75d6ed8024d686",
+    "web/modules/custom/neruds_extensionista_guard/src/Controller/IdentityController.php": "bdb2a2c69ef2f556e02603cc53b5ad39b982e709aa6160aab904fa0d3efb1a2c",
+    "web/modules/custom/neruds_google_integration/neruds_google_integration.install": "81e10aa1cd3afc1201c3d6b1321a186c4857fd255d5ed6b44b08d40f9a2c4dca",
+    "web/modules/custom/neruds_google_integration/neruds_google_integration.module": "d8e2032fa3f3939c2885fa6484db0ef9652a6d19c6b712c23f8720af19b1f6d5",
+    "web/modules/custom/neruds_google_integration/src/Access/NerudsRateLimitChecker.php": "dd97abbc5bf6cd433dca4c628a68bf3e1d1dbc883cee4020b54382bb767c0991",
+    "web/modules/custom/neruds_google_integration/src/Controller/FirebaseAuthController.php": "703bc28b9ed5c4b5d680e16e901e3a644f618075e55641b45b0f3baf7a83c509",
+    "web/modules/custom/neruds_google_integration/src/Controller/NerudsApiController.php": "fde9449dfb5558b7f0f7d1a95ce8cfabf16dac53c2c5ab69fa791ef06c836d6a",
+    "web/modules/custom/neruds_google_integration/src/Controller/NerudsPageController.php": "0edf58b7aae3547a64621dcf5e1a003174105edbbebf36d48445a7dfedd2ec13",
+    "web/modules/custom/neruds_google_integration/src/Plugin/Block/LiveDashboardBlock.php": "395062961af69b862f3eea1e1f4105b27d63c56d771aaca543d67f16b9af80e9",
+    "web/modules/custom/neruds_google_integration/src/Plugin/Block/PublicationDiscoveryBlock.php": "e7dfcf96b247cc70bcd3c4d5d49abaabf88041871c11e040375fb9765a8a9a17",
+    "web/modules/custom/neruds_google_integration/src/Plugin/Block/TerritorialTimelineBlock.php": "f5276bd59ec30ffd86d88a29db2e41b09bfbdd6eb0f9ba4fe76903ae0e04a53e",
+    "web/modules/custom/neruds_google_integration/src/Plugin/Block/TerritoryMapBlock.php": "de54da7259bdcb57fd3919cc10fc1772919252aea8cdfac9d85976d3496e88b1",
+    "web/modules/custom/neruds_google_integration/src/Service/AuditService.php": "f3027b41084f74d4a2cc8b2519b39de8e55744accf0ac68b31102d6b3ccf9e65",
+    "web/modules/custom/neruds_google_integration/src/Service/PortalDataService.php": "a1dfab82e14c2a4c9a2ab5716c213b508568b7df93ac1ca7733ae0f12782d723",
+    "web/modules/custom/neruds_gui_views/neruds_gui_views.module": "2e3860b6e66d06777897eec55d7d001c2c587e5ef095931f199777e765b2a408",
+    "web/modules/custom/neruds_gui_views/src/Controller/ResearchLinesController.php": "20732e796f8dd4225ab2f0859b892c8fd5610213f0c525606952884f8bda9e63",
+    "web/modules/custom/neruds_gui_views/tests/src/Unit/AccessibilityTest.php": "a975276795f0a8dfe2b5b05d8cb24d011ec813bdba079108681f6107c890401a",
+    "web/modules/custom/neruds_mcp/neruds_mcp.module": "70851d60dcb1f0571d0a19e3805701a2ea296f91526fed2d3a65ac037f431921",
+    "web/modules/custom/neruds_mcp/src/Controller/MCPController.php": "8e71f30b1bfb6819110d6f91ec29149f658cd9dade9e71e8d7d303ae27915ffd",
+    "web/modules/custom/neruds_mcp/src/Service/MCPService.php": "aee7d0fd6c1560a64565cbc6c8f23d6fdae74b4d82523dea76a4f62db8ab3f17",
+    "web/modules/custom/neruds_mcp/tests/src/Unit/MCPControllerTest.php": "7b959cd606e93683410c50a211940dc74da3f16e3a1790504d693e7274d5c8d8",
+    "web/modules/custom/neruds_mcp/tests/src/Unit/MCPServiceTest.php": "305b98ace7f36032a6c86e1b66565686e4f66059ef898898735285f0b03ac0a1",
+    "web/modules/custom/neruds_notifications/neruds_notifications.install": "ba58fe52afe9124e5bdfc699d2727b3bf5c0bd1ee5fc5f718d477cf528484cec",
+    "web/modules/custom/neruds_notifications/neruds_notifications.module": "8fa8b487942dc0c13e04a96ca66008cbf9583c0315d9d01da3bf2a3972aa72bc",
+    "web/modules/custom/neruds_notifications/src/Controller/NotificationsController.php": "1b873b325d6aa16c84be938e7da9eeeed1a78d1b42dc874a610803c01837e360",
+    "web/modules/custom/neruds_notifications/src/Form/NotificationPreferencesForm.php": "a44d123eaa2339635bf6257b9e85b21c811559c2cb3b6f9d2a748da4d3d8bb44",
+    "web/modules/custom/neruds_orcid/neruds_orcid.install": "daea6fc5880f6d399cd620718480738f6cce5e692e5208a921667768fa0c9108",
+    "web/modules/custom/neruds_orcid/neruds_orcid.module": "50b2ec169911c75c459f43b51f3524a3154e09a905a9dd695bda5e179354aa95",
+    "web/modules/custom/neruds_related_content/neruds_related_content.module": "993ef9b438b7603cdf9021f194b50c2f0808d87981dc2dc4f2eb314c1260cfcd",
+    "web/modules/custom/neruds_related_content/src/Plugin/Block/RelatedContentBlock.php": "cc5f60cf74c71f29f232a546d0467bd4893374cbf481d0989825130b30e021ef",
+    "web/themes/custom/bico_papagaio/bico_papagaio.theme": "2c3bb9f3c16e82c71584fb368e016c8daab4ac56a7ef895a9f94d3622cf97f08",
+    "web/themes/custom/neruds_gui/neruds_gui.theme": "72cefb7a33ee9eb042da1b780b93f747e7c6c3f5b8156b9f6249ca824f834e6a",
+    "web/themes/custom/neruds_gui/theme-settings.php": "03b9eacb9b426e567c249812efd84b1d270cba663d55bb8d69822495f4261ed6",
+    "web/themes/custom/neruds_theme/neruds_theme.theme": "017f6cbc87562e9a8952c8e6ff461d8f24b4c74d89b6ca4bb9098895cd9fb096"
+  },
+  "composer_validate": {
+    "tool": "/usr/local/bin/composer",
+    "php_tool": "/usr/bin/php",
+    "network_disabled": true,
+    "plugins_disabled": true,
+    "scripts_disabled": true,
+    "install_update_download": false,
+    "raw_logs_retained": false,
+    "version": "Composer version 2.8.12 2025-09-19 13:41:59",
+    "command": [
+      "/usr/bin/php",
+      "-d",
+      "auto_prepend_file=",
+      "-d",
+      "auto_append_file=",
+      "/usr/local/bin/composer",
+      "--no-plugins",
+      "--no-scripts",
+      "validate",
+      "--no-check-publish",
+      "--no-interaction"
+    ],
+    "exit_code": 0,
+    "pass": true,
+    "schema_valid_reported": true,
+    "lock_stale_reported": false,
+    "observations": [
+      "Composer reported composer.json valid",
+      "General warnings reported",
+      "Exact version constraints reported"
+    ],
+    "temporary_home_mode": "0700",
+    "temporary_home_removed": true,
+    "output_sha256": "7cdc30d4e6a4b23435010e84574235e87ca9d2b9a997c5d8b7c1f1506514b9ef"
+  },
+  "limitations": [
+    "Syntax and Composer metadata only; no runtime, integration, upgrade or functional tests",
+    "PHP lint used -n and never included or bootstrapped Drupal",
+    "Validation target is the isolated baseline source copy; newer repository infrastructure files are outside this VPS copy",
+    "No production settings, environment, content, database or working directory were accessed"
+  ],
+  "repository_commit_reported_by_coordinator": "674f3752db2f2a268a20498ef32b5052c25738a7",
+  "static_validation_pass": true,
+  "github_actions_context": "GitHub Actions did not execute because of a billing/spending block, as reported by the coordinator; this report records separate VPS static checks.",
+  "source_comparison": {
+    "reference": "local repository preparation tree supplied by coordinator",
+    "matched_baseline_php_files": 41,
+    "missing_baseline_files": [],
+    "differing_baseline_files": [],
+    "additional_local_php_files_not_in_vps_baseline": [
+      "web/sites/default/settings.php"
+    ],
+    "composer_manifests_match": true,
+    "pass": true
+  }
+}

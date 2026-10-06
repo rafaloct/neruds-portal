@@ -20,10 +20,26 @@
     "can_approve_pull_request_reviews": false
   },
   "branch_protection": {
-    "status": "pending_check_after_initial_push"
+    "status": "unavailable_for_current_private_repository_plan",
+    "http_status": 403,
+    "github_message": "Upgrade to GitHub Pro or make this repository public to enable this feature.",
+    "required_check_enforced": false,
+    "required_pr_enforced": false,
+    "proposed_policy": "branch-protection.request.json"
   },
   "projects": {
     "status": "blocked",
     "reason": "OAuth scope project absent; no Project created"
+  },
+  "verified_at": "2026-10-06T19:00:30Z",
+  "ci": {
+    "run_id": 37515555374,
+    "url": "https://github.com/rafaloct/neruds-portal/actions/runs/37515555374",
+    "head_sha": "674f3752db2f2a268a20498ef32b5052c25738a7",
+    "conclusion": "failure",
+    "job_started": false,
+    "github_annotation": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the Billing & plans section in your settings.",
+    "local_guard": "pass on Windows: 892 tracked candidate files; PHP and Composer unavailable there",
+    "additional_static_validation": "STATIC-VALIDATION-2026-10-06.json: PHP 41/41 pass and Composer validate exit 0 in isolated source copy, not a hosted CI run"
   }
 }
