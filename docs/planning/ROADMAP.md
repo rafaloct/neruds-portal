@@ -72,4 +72,4 @@ Os oito marcos terminam por evidência, sem datas artificiais. A candidata preci
 
 ## GitHub Projects
 
-A especificação do quadro está em [PROJECT.md](PROJECT.md). Issues, milestones e dependências são utilizáveis desde já. O quadro nativo depende do escopo adicional de autenticação `project`; sua preparação não equivale à criação remota.
+O [Project NERUDS #2](https://github.com/users/rafaloct/projects/2) está privado, vinculado ao repositório e preenchido com as 32 issues. A [tabela Planejamento](https://github.com/users/rafaloct/projects/2/views/1) mostra marcos e prioridades; o [quadro Fluxo de trabalho](https://github.com/users/rafaloct/projects/2/views/2) usa Fila como colunas. A conferência de itens, campos e visualizações está em [PROJECT.md](PROJECT.md). O estado operacional permanece nas issues, milestones e dependências nativas; a importação inicial não criou sincronização contínua.

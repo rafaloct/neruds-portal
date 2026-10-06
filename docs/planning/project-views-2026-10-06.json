@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "status": "verified",
+  "verification_mode": "read_only_graphql_after_configuration",
+  "verified_at": "2026-10-06T21:27:24.853228+00:00",
+  "project": {
+    "id": "PVT_kwHOAJ_FRc4Bl-59",
+    "title": "NERUDS | Novo portal de pesquisa",
+    "public": false,
+    "closed": false,
+    "views": {
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "Mg"
+      },
+      "nodes": [
+        {
+          "id": "PVTV_lAHOAJ_FRc4Bl-59zgL8hLI",
+          "number": 1,
+          "name": "Planejamento",
+          "layout": "TABLE_LAYOUT",
+          "filter": "is:issue",
+          "configuration": {
+            "visibleFields": {
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "OQ"
+              },
+              "nodes": [
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUQ",
+                  "name": "Title"
+                },
+                {
+                  "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppXw",
+                  "name": "Fila"
+                },
+                {
+                  "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppX0",
+                  "name": "Prioridade"
+                },
+                {
+                  "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppYQ",
+                  "name": "Marco"
+                },
+                {
+                  "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppY0",
+                  "name": "Tamanho"
+                },
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUk",
+                  "name": "Milestone"
+                },
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUU",
+                  "name": "Assignees"
+                },
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUc",
+                  "name": "Labels"
+                },
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUg",
+                  "name": "Linked pull requests"
+                }
+              ]
+            }
+          },
+          "verticalGroupByFields": {
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": null
+            },
+            "nodes": []
+          },
+          "groupByFields": {
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": null
+            },
+            "nodes": []
+          },
+          "url": "https://github.com/users/rafaloct/projects/2/views/1"
+        },
+        {
+          "id": "PVTV_lAHOAJ_FRc4Bl-59zgL8heM",
+          "number": 2,
+          "name": "Fluxo de trabalho",
+          "layout": "BOARD_LAYOUT",
+          "filter": "is:issue",
+          "configuration": {
+            "visibleFields": {
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "Ng"
+              },
+              "nodes": [
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUQ",
+                  "name": "Title"
+                },
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUU",
+                  "name": "Assignees"
+                },
+                {
+                  "id": "PVTF_lAHOAJ_FRc4Bl-59zhkppUc",
+                  "name": "Labels"
+                },
+                {
+                  "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppX0",
+                  "name": "Prioridade"
+                },
+                {
+                  "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppYQ",
+                  "name": "Marco"
+                },
+                {
+                  "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppY0",
+                  "name": "Tamanho"
+                }
+              ]
+            }
+          },
+          "verticalGroupByFields": {
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "MQ"
+            },
+            "nodes": [
+              {
+                "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppXw",
+                "name": "Fila"
+              }
+            ]
+          },
+          "groupByFields": {
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": null
+            },
+            "nodes": []
+          },
+          "url": "https://github.com/users/rafaloct/projects/2/views/2"
+        }
+      ]
+    }
+  },
+  "configuration_api": {
+    "table": "GraphQL updateProjectV2View",
+    "board": "POST /users/rafaloct/projectsV2/2/views",
+    "api_version": "2026-03-10"
+  },
+  "checks": {
+    "view_count": 2,
+    "filters": "is:issue",
+    "table_field_order_matches": true,
+    "board_field_set_matches": true,
+    "board_columns": "Fila",
+    "all_connections_complete": true
+  },
+  "notes": [
+    "Board visible fields are recorded in the order returned by GitHub; REST creation did not preserve the requested order.",
+    "No Project workflows or continuous synchronization were created."
+  ]
+}

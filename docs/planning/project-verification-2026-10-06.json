@@ -1,0 +1,1086 @@
+{
+  "schema_version": "1.0",
+  "verification_mode": "read_only",
+  "backlog_sha256": "a9203bcbaca88a623322a618496169f3a4725afdb2f4821d4db80934619d092e",
+  "started_at": "2026-10-06T21:25:00.106204+00:00",
+  "status": "verified",
+  "project": {
+    "id": "PVT_kwHOAJ_FRc4Bl-59",
+    "number": 2,
+    "title": "NERUDS | Novo portal de pesquisa",
+    "url": "https://github.com/users/rafaloct/projects/2",
+    "public": false,
+    "closed": false,
+    "updatedAt": "2026-10-06T21:24:46Z"
+  },
+  "repository": {
+    "nameWithOwner": "rafaloct/neruds-portal",
+    "isPrivate": true,
+    "defaultBranchRef": {
+      "name": "main",
+      "target": {
+        "oid": "e600761ad0d5a133638cad66a093ca8087f09ae1"
+      }
+    }
+  },
+  "linked_repositories": [
+    "rafaloct/neruds-portal"
+  ],
+  "field_definitions": {
+    "Fila": {
+      "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppXw",
+      "options": {
+        "Backlog": "d1f47095",
+        "Pronto": "f2040253",
+        "Em execução": "2ccdd78a",
+        "Em revisão": "4938f801",
+        "Bloqueado": "434a4e6d",
+        "Concluído": "493b438b"
+      }
+    },
+    "Prioridade": {
+      "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppX0",
+      "options": {
+        "P0": "1bfa3436",
+        "P1": "3d484b91",
+        "P2": "5ffc22d7"
+      }
+    },
+    "Marco": {
+      "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppYQ",
+      "options": {
+        "M01": "7a4764f2",
+        "M02": "fa31e615",
+        "M03": "38d6ad81",
+        "M04": "231f5696",
+        "M05": "0215f574",
+        "M06": "a240516e",
+        "M07": "eee78cd8",
+        "M08": "9f06c4af"
+      }
+    },
+    "Tamanho": {
+      "id": "PVTSSF_lAHOAJ_FRc4Bl-59zhkppY0",
+      "options": {
+        "S": "ff47676b",
+        "M": "9639ba13",
+        "L": "ed657dfc"
+      }
+    }
+  },
+  "expected_issues": 32,
+  "observed_items_including_archived": 32,
+  "observed_issue_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "duplicate_issue_urls": {},
+  "missing_issue_numbers": [],
+  "archived_item_count": 0,
+  "compared_field_values": 128,
+  "matching_field_values": 128,
+  "queue_counts": {
+    "Pronto": 1,
+    "Backlog": 30,
+    "Bloqueado": 1
+  },
+  "items": [
+    {
+      "issue": 1,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/1",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_PSk",
+      "state": "OPEN",
+      "labels": [
+        "agent:ready",
+        "area:base",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T19:03:28Z",
+      "expected": {
+        "Fila": "Pronto",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Pronto",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 2,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/2",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_PXU",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:base",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T19:03:29Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 3,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/3",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Pbk",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:base",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T19:03:30Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "L"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "L"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 4,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/4",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Ph0",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:base",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T19:03:31Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 5,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/5",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Pls",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:base",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T21:24:44Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M01",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 6,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/6",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_PoU",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:drupal",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T19:08:18Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 7,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/7",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Pt8",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:drupal",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:47:49Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "L"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "L"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 8,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/8",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_PxY",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:drupal",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:47:50Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "L"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "L"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 9,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/9",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_P1I",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:drupal",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:53:12Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "L"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M02",
+        "Tamanho": "L"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 10,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/10",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_P48",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:editorial",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:07Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M03",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M03",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 11,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/11",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_P8w",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:editorial",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:08Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M03",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M03",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 12,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/12",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QBM",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:editorial",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:53:13Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M03",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M03",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 13,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/13",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QFA",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:design",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:10Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 14,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/14",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QJ4",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:design",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:11Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 15,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/15",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QOU",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:design",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:12Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 16,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/16",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QTE",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:design",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:13Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M04",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 17,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/17",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QYE",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:conteudo",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:14Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 18,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/18",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QcU",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:conteudo",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:15Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 19,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/19",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QgY",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:conteudo",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:16Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 20,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/20",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QlA",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:conteudo",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:18Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 21,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/21",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_QpU",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:conteudo",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:19Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M05",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 22,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/22",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Qtk",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:conteudo",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:20Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M05",
+        "Tamanho": "L"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M05",
+        "Tamanho": "L"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 23,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/23",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Qyc",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:descoberta",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:21Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "L"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "L"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 24,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/24",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Q20",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:descoberta",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:22Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 25,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/25",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Q64",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:descoberta",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:23Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 26,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/26",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_RAE",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:descoberta",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:24Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M06",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 27,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/27",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_RFM",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:operacoes",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:25Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M07",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M07",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 28,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/28",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_RKA",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:operacoes",
+        "priority:P1"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:26Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M07",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P1",
+        "Marco": "M07",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 29,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/29",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_ROo",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:operacoes",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:28Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M07",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M07",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 30,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/30",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_RSg",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:release",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:29Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M08",
+        "Tamanho": "L"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M08",
+        "Tamanho": "L"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 31,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/31",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_RW4",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:release",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:30Z",
+      "expected": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M08",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Backlog",
+        "Prioridade": "P0",
+        "Marco": "M08",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    },
+    {
+      "issue": 32,
+      "url": "https://github.com/rafaloct/neruds-portal/issues/32",
+      "item_id": "PVTI_lAHOAJ_FRc4Bl-59zg-_Rbo",
+      "state": "OPEN",
+      "labels": [
+        "agent:backlog",
+        "area:release",
+        "human-gate",
+        "priority:P0"
+      ],
+      "issue_updated_at": "2026-10-06T18:34:31Z",
+      "expected": {
+        "Fila": "Bloqueado",
+        "Prioridade": "P0",
+        "Marco": "M08",
+        "Tamanho": "M"
+      },
+      "actual": {
+        "Fila": "Bloqueado",
+        "Prioridade": "P0",
+        "Marco": "M08",
+        "Tamanho": "M"
+      },
+      "matches": {
+        "Fila": true,
+        "Prioridade": true,
+        "Marco": true,
+        "Tamanho": true
+      }
+    }
+  ],
+  "divergences": [],
+  "limitations": [
+    "Point-in-time read; later issue or Project changes can change field consistency.",
+    "No verification of Project views or workflows; the importer does not claim to create them."
+  ],
+  "finished_at": "2026-10-06T21:25:01.602504+00:00"
+}
