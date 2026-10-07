@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * EXAMPLE ONLY — template of optional local development overrides.
+ *
+ * The reviewed web/sites/default/settings.php of this isolated recipe never
+ * includes a local settings file (that is enforced by the repository guard).
+ * This file therefore has NO effect unless a reviewed change to settings.php
+ * explicitly loads it. It exists to document which overrides are acceptable
+ * for local debugging and which are forbidden.
+ *
+ * Rules for any future settings.local.php:
+ * - Development copy only; never commit a real settings.local.php.
+ * - No production hosts, credentials, salts, API keys or destinations.
+ * - Keep the isolation controls from settings.php (test mail collector,
+ *   automated cron off, JSON:API read-only, trusted hosts loopback-only).
+ */
+
+// Example of an acceptable local override while debugging (still subject to
+// a reviewed change enabling local settings loading):
+// $config['system.logging']['error_level'] = 'verbose';
+
+// Example of a FORBIDDEN override — do not reintroduce production surfaces:
+// $settings['trusted_host_patterns'][] = '^neruds\.org$';
+// $databases['default']['default']['host'] = 'production-host';

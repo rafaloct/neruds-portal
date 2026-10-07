@@ -6,8 +6,10 @@ Esta pasta prepara uma cópia **Drupal nativa** para o repositório
 
 O inventário informou Drupal CMS 1.2.8, core 11.2.12 e MariaDB 11.8.3.
 Esses números descrevem a origem, não uma versão aprovada para publicação.
-A atualização de dependências pertence à issue de atualização. Nenhum container,
-instalação de Composer ou migração foi executado para preparar estes arquivos.
+A atualização de dependências pertence à issue de atualização. A receita foi
+construída e exercida na NERUDS-002 (build, `up`, verificação de isolamento e
+`down`), sem restauração de dados nem bootstrap do Drupal; ver
+[docs/development/local-environment.md](../../docs/development/local-environment.md).
 
 ## O que a receita contém
 
@@ -15,9 +17,15 @@ instalação de Composer ou migração foi executado para preparar estes arquivo
 - MariaDB 11.8.3 em serviço chamado `db`, sem porta publicada no host.
 - Porta HTTP publicada somente em `127.0.0.1`, padrão 18086. A porta 8088 da VPS
   já é utilizada pelo OpenLiteSpeed e não deve ser reutilizada.
-- Rede Compose `internal: true`, sem rede externa, volumes externos ou bind mounts.
+- Rede Compose `internal: true` para `web` e `db`, sem rede externa, volumes
+  externos ou bind mounts.
+- Proxy `edge` mínimo (nginx, `edge.Dockerfile` + `edge-nginx.conf`) ligado à
+  rede interna e a uma bridge própria: o Docker 28 não ativa a publicação de
+  porta para containers presos somente a redes `internal`, então o HTTP do
+  loopback entra por esse proxy enquanto `web` e `db` permanecem sem egresso.
 - Volumes próprios para banco, arquivos públicos e arquivos privados.
-- Limites por serviço de 1 CPU e 768 MiB de RAM; limites de processos também definidos.
+- Limites de 1 CPU e 768 MiB para `web`/`db` e 0.5 CPU e 128 MiB para `edge`;
+  limites de processos também definidos.
 - Configuração do Drupal por ambiente, sem senha ou salt embutidos e sem fallback
   para banco ou hostname de produção.
 - Cron automático desativado e JSON:API em leitura.
@@ -121,10 +129,10 @@ com credenciais não persistidas. A action está fixada no commit
 conferida pela API do repositório `actions/checkout` em 06/10/2026.
 O workflow não faz deploy nem merge.
 
-## Build e execução futuros
+## Build e execução
 
 Executar somente depois de revisar a importação e os arquivos de configuração
-da cópia. Estes comandos não foram executados na preparação:
+da cópia. Na NERUDS-002 estes comandos já foram exercidos com sucesso:
 
 Usar uma estação de desenvolvimento ou builder com limites próprios comprovados.
 Os limites CPU/RAM dos serviços Compose não limitam automaticamente a build.
