@@ -1,6 +1,33 @@
 name: neruds-portal-dev
 
 services:
+  # Loopback-only published HTTP entrypoint. Docker 28 does not wire host port
+  # publishing for containers attached only to an internal network, so this
+  # minimal proxy bridges the isolated network and the edge bridge. web and db
+  # stay without any external connectivity; only this proxy sees both.
+  edge:
+    build:
+      context: .
+      dockerfile: infra/dev/edge.Dockerfile
+    ports:
+      - "127.0.0.1:${NERUDS_HTTP_PORT:-18086}:80"
+    networks:
+      - isolated
+      - edge
+    depends_on:
+      - web
+    cpus: "0.5"
+    mem_limit: 128m
+    pids_limit: 64
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+    read_only: true
+    tmpfs:
+      - /run:size=8m
+      - /var/cache/nginx:size=16m
+      - /tmp:size=16m
+
   web:
     build:
       context: .
@@ -13,8 +40,6 @@ services:
       NERUDS_DB_USER: "${NERUDS_DB_USER:?Set NERUDS_DB_USER in the local .env}"
       NERUDS_DB_PASSWORD: "${NERUDS_DB_PASSWORD:?Generate NERUDS_DB_PASSWORD locally}"
       NERUDS_HASH_SALT: "${NERUDS_HASH_SALT:?Generate NERUDS_HASH_SALT locally}"
-    ports:
-      - "127.0.0.1:${NERUDS_HTTP_PORT:-18086}:80"
     volumes:
       - public_files:/var/www/html/web/sites/default/files
       - private_files:/var/www/private
@@ -60,6 +85,8 @@ networks:
   isolated:
     driver: bridge
     internal: true
+  edge:
+    driver: bridge
 
 volumes:
   database:
